@@ -1,0 +1,29 @@
+--- src/ui/unixdomainsocket.cpp.orig	2010-03-12 04:21:01.000000000 +0900
++++ src/ui/unixdomainsocket.cpp	2010-07-06 18:49:18.000000000 +0900
+@@ -46,7 +46,7 @@
+     bzero(&_local,sizeof(_local));
+     _local.sun_family = AF_UNIX;
+     strcpy(_local.sun_path,path.toLocal8Bit().data());
+-    len = strlen(_local.sun_path) + sizeof(_local.sun_family);
++    len = strlen(_local.sun_path) + sizeof(_local.sun_family) + 1;
+     bool res = !(::bind(_s, (struct sockaddr *)&_local, len));
+     if(res)
+ 	_bound = true;
+@@ -61,7 +61,7 @@
+     bzero(&server,sizeof(server));
+     server.sun_family = AF_UNIX;
+     strcpy(server.sun_path,path.toLocal8Bit().data());
+-    len = strlen(server.sun_path) + sizeof(server.sun_family);
++    len = strlen(server.sun_path) + sizeof(server.sun_family) + 1;
+ 
+     if (::connect(_s, (struct sockaddr *)&server, len) == -1)
+     {
+@@ -79,7 +79,7 @@
+     server.sun_family = AF_UNIX;
+     strcpy(server.sun_path,path.toLocal8Bit().data());
+ 
+-    len = strlen(server.sun_path) + sizeof(server.sun_family);
++    len = strlen(server.sun_path) + sizeof(server.sun_family) + 1;
+ 
+     sendto(_s,command,strlen(command),0,(struct sockaddr*)&server,len);
+ }

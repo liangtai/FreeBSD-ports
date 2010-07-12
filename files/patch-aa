@@ -1,0 +1,8 @@
+--- src/plugins/plugins.pri.orig	2008-07-22 20:09:09.000000000 +0900
++++ src/plugins/plugins.pri	2008-09-12 09:31:57.000000000 +0900
+@@ -1,2 +1,3 @@
+ include(../../qmmp.pri)
+-PLUGINS_PREFIX=../../../../lib/qmmp
+\ No newline at end of file
++PLUGINS_PREFIX=../../../../lib/qmmp
++INCLUDEPATH += ../../../qmmp
