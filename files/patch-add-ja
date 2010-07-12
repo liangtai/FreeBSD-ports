@@ -1926,7 +1926,7 @@
 +
 +美術:
 +
-+    Андрей Андреев (Andrey Adreev) <andreev00@gmail.com>
++    Андрей Андреев (Andrey Andreev) <andreev00@gmail.com>
 +
 --- /dev/null	2010-07-12 12:33:01.000000000 +0900
 +++ src/ui/txt/description_ja.txt	2010-07-08 12:58:19.000000000 +0900
@@ -1955,53 +1955,53 @@
 --- /dev/null	2010-07-12 12:33:01.000000000 +0900
 +++ src/ui/txt/translators_ja.txt	2010-07-08 13:10:42.000000000 +0900
 @@ -0,0 +1,47 @@
-+ブラジル ポルトガル語:
-+    Klaos Lacerda
-+    Bruno Gonçalves
++イタリア語:
++    Gian Paolo Renello <emmerkar@gmail.com>
 +
-+繁体字中国語:
-+    李红昆 (lon) <lon83129@126.com>
-+
-+簡体字中国語:
-+    李红昆 (lon) <lon83129@126.com>
-+
-+チェコ語:
-+    Karel Volný <kvolny@redhat.com>
++ウクライナ語:
++    Gennadi Motsyo <drool@altlinux.ru>
 +
 +オランダ語:
 +    Ronald Uitermark <ronald645@gmail.com>
 +
-+フランス語:
-+    Stanislas Zeller <uncensored.assault@gmail.com>
++カザフ語:
++    Baurzhan Muftakhidinov <baurthefirst@gmail.com>
++
++チェコ語:
++    Karel Volný <kvolny@redhat.com>
 +
 +ドイツ語:
 +    Stefan Koelling <stefankoelling.ext@googlemail.com>
 +    Panagiotis Papadopoulos <pano_90@gmx.net>
 +
-+ハンガリー語:
-+    Németh Gábor <sutee84@freemail.hu>
-+
-+イタリア語:
-+    Gian Paolo Renello <emmerkar@gmail.com>
-+
-+カザフ語:
-+    Baurzhan Muftakhidinov <baurthefirst@gmail.com>
-+
-+リトアニア語:
-+    Algirdas Butkus <butkus.algirdas@gmail.com>
-+
-+ポーランド語:
-+    Grzegorz Gibas <amigib@gmail.com>
-+
-+ロシア語:
-+    Илья Котов (Ilya Kotov) <forkotov02@hotmail.ru>
-+
 +トルコ語:
 +    Mustafa GUNAY <mustafagunay@pgmail.com>
 +    Bilgesu Güngör <h.ibrahim.gungor@gmail.com>
 +
-+ウクライナ語:
-+    Gennadi Motsyo <drool@altlinux.ru>
++ハンガリー語:
++    Németh Gábor <sutee84@freemail.hu>
++
++ブラジル ポルトガル語:
++    Klaos Lacerda
++    Bruno Gonçalves
++
++フランス語:
++    Stanislas Zeller <uncensored.assault@gmail.com>
++
++ポーランド語:
++    Grzegorz Gibas <amigib@gmail.com>
++
++リトアニア語:
++    Algirdas Butkus <butkus.algirdas@gmail.com>
++
++ロシア語:
++    Илья Котов (Ilya Kotov) <forkotov02@hotmail.ru>
++
++簡体字中国語:
++    李红昆 (lon) <lon83129@126.com>
++
++繁体字中国語:
++    李红昆 (lon) <lon83129@126.com>
 --- /dev/null	2010-07-12 12:35:39.000000000 +0900
 +++ src/plugins/CommandLineOptions/IncDecVolumeOption/translations/incdecvolume_plugin_ja.ts	2010-07-10 18:29:14.000000000 +0900
 @@ -0,0 +1,17 @@
