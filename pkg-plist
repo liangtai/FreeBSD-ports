@@ -75,6 +75,7 @@ lib/qmmp/Input/libsndfile.so
 lib/qmmp/Input/libvorbis.so
 lib/qmmp/Input/libwavpack.so
 %%JACK%%lib/qmmp/Output/libjack.so
+%%ALSA%%lib/qmmp/Output/libalsa.so
 lib/qmmp/Output/libnull.so
 lib/qmmp/Output/liboss.so
 %%PULSE_AUDIO%%lib/qmmp/Output/libpulseaudio.so

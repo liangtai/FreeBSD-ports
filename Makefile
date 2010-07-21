@@ -27,6 +27,7 @@ LIB_DEPENDS=	mad.2:${PORTSDIR}/audio/libmad \
 
 OPTIONS=	JACK "Support the JACK output server" on \
 		PULSE "Support the PulseAudio output" on \
+		ALSA "Support the ALSA output" on \
 		BS2B "Support the Bauer stereophonic2binaural" on \
 		FLAC "Support to playback FLAC files" on \
 		MUSEPACK "Support to playback MPC files" on \
@@ -53,6 +54,14 @@ LIB_DEPENDS+=	jack.0:${PORTSDIR}/audio/jack
 PLUGIN_OPTIONS+=	JACK_PLUGIN
 .else
 PLIST_SUB+=	JACK="@comment "
+.endif
+
+.if !defined(WITHOUT_ALSA)
+PLIST_SUB+=	ALSA=""
+LIB_DEPENDS+=	asound.2:${PORTSDIR}/audio/alsa-lib
+PLUGIN_OPTIONS+=	ALSA_PLUGIN
+.else
+PLIST_SUB+=	ALSA="@comment "
 .endif
 
 .if !defined(WITHOUT_BS2B)
