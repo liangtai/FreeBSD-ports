@@ -940,12 +940,12 @@
 +    <message>
 +        <location filename="../eqwidget.cpp" line="300"/>
 +        <source>preset #</source>
-+        <translation>プリセット番号:</translation>
++        <translation>プリセット番号</translation>
 +    </message>
 +    <message>
-+        <location filename="../eqwidget.cpp" line="392"/>
++        <location filename="../eqwidget.cpp" line="391"/>
 +        <source>Import Preset</source>
-+        <translation>プリセットを転入:</translation>
++        <translation>プリセットを転入</translation>
 +    </message>
 +</context>
 +<context>
