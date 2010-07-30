@@ -920,7 +920,7 @@
 +    <message>
 +        <location filename="../eqwidget.cpp" line="266"/>
 +        <source>&amp;Import</source>
-+        <translation>転入(&amp;I)</translation>
++        <translation>移入(&amp;I)</translation>
 +    </message>
 +    <message>
 +        <location filename="../eqwidget.cpp" line="269"/>
@@ -945,7 +945,7 @@
 +    <message>
 +        <location filename="../eqwidget.cpp" line="391"/>
 +        <source>Import Preset</source>
-+        <translation>プリセットを転入</translation>
++        <translation>プリセットを移入</translation>
 +    </message>
 +</context>
 +<context>
