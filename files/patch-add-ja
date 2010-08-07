@@ -259,8 +259,8 @@
 +    </message>
 +</context>
 +</TS>
---- /dev/null	2010-07-12 12:33:01.000000000 +0900
-+++ src/ui/translations/qmmp_ja.ts	2010-07-12 07:11:54.000000000 +0900
+--- /dev/null	2010-08-08 00:00:00.000000000 +0900
++++ src/ui/translations/qmmp_ja.ts	2010-07-25 10:29:11.000000000 +0900
 @@ -0,0 +1,1649 @@
 +<?xml version="1.0" encoding="utf-8"?>
 +<!DOCTYPE TS>
@@ -1911,8 +1911,8 @@
 +    </message>
 +</context>
 +</TS>
---- /dev/null	2010-07-12 12:33:01.000000000 +0900
-+++ src/ui/txt/authors_ja.txt	2010-07-08 12:57:23.000000000 +0900
+--- /dev/null	2010-08-08 06:44:00.000000000 +0900
++++ src/ui/txt/authors_ja.txt	2010-07-13 01:30:44.000000000 +0900
 @@ -0,0 +1,14 @@
 +中心的な開発者:
 +
@@ -1952,8 +1952,8 @@
 +    Sebastian Pipping <webmaster@hartwork.org> - bs2b パッチ
 +    Stefan Koelling <stefankoelling.ext@googlemail.com> - ビルド改修
 +    Yaakov Selkowitz <yselkowitz@gmail.com> - cygwin パッチ
---- /dev/null	2010-07-12 12:33:01.000000000 +0900
-+++ src/ui/txt/translators_ja.txt	2010-07-08 13:10:42.000000000 +0900
+--- /dev/null	2010-08-08 06:44:00.000000000 +0900
++++ src/ui/txt/translators_ja.txt	2010-07-14 21:00:58.000000000 +0900
 @@ -0,0 +1,47 @@
 +イタリア語:
 +    Gian Paolo Renello <emmerkar@gmail.com>
@@ -2569,8 +2569,8 @@
 +    </message>
 +</context>
 +</TS>
---- /dev/null	2010-07-12 12:35:39.000000000 +0900
-+++ src/plugins/General/covermanager/translations/covermanager_plugin_ja.ts	2010-07-11 00:46:37.000000000 +0900
+--- /dev/null	2010-08-08 00:00:00.000000000 +0900
++++ src/plugins/General/covermanager/translations/covermanager_plugin_ja.ts	2010-07-12 15:35:20.000000000 +0900
 @@ -0,0 +1,103 @@
 +<?xml version="1.0" encoding="utf-8"?>
 +<!DOCTYPE TS>
@@ -2675,8 +2675,8 @@
 +    </message>
 +</context>
 +</TS>
---- /dev/null	2010-07-12 12:35:39.000000000 +0900
-+++ src/plugins/General/fileops/translations/fileops_plugin_ja.ts	2010-07-11 10:06:31.000000000 +0900
+--- /dev/null	2010-08-08 00:00:00.000000000 +0900
++++ src/plugins/General/fileops/translations/fileops_plugin_ja.ts	2010-07-12 15:01:32.000000000 +0900
 @@ -0,0 +1,233 @@
 +<?xml version="1.0" encoding="utf-8"?>
 +<!DOCTYPE TS>
@@ -3331,8 +3331,8 @@
 +    </message>
 +</context>
 +</TS>
---- /dev/null	2010-07-12 12:35:39.000000000 +0900
-+++ src/plugins/General/notifier/translations/notifier_plugin_ja.ts	2010-07-11 16:26:14.000000000 +0900
+--- /dev/null	2010-08-08 00:00:00.000000000 +0900
++++ src/plugins/General/notifier/translations/notifier_plugin_ja.ts	2010-08-07 23:50:32.000000000 +0900
 @@ -0,0 +1,189 @@
 +<?xml version="1.0" encoding="utf-8"?>
 +<!DOCTYPE TS>
@@ -3363,7 +3363,7 @@
 +<context>
 +    <name>PopupWidget</name>
 +    <message>
-+        <location filename="../popupwidget.cpp" line="126"/>
++        <location filename="../popupwidget.cpp" line="127"/>
 +        <source>Volume:</source>
 +        <translation>音量:</translation>
 +    </message>
@@ -3738,8 +3738,8 @@
 +    </message>
 +</context>
 +</TS>
---- /dev/null	2010-07-12 12:35:39.000000000 +0900
-+++ src/plugins/Input/aac/translations/aac_plugin_ja.ts	2010-07-11 16:30:20.000000000 +0900
+--- /dev/null	2010-08-08 00:00:00.000000000 +0900
++++ src/plugins/Input/aac/translations/aac_plugin_ja.ts	2010-07-12 14:55:16.000000000 +0900
 @@ -0,0 +1,70 @@
 +<?xml version="1.0" encoding="utf-8"?>
 +<!DOCTYPE TS>
@@ -4186,8 +4186,8 @@
 +    </message>
 +</context>
 +</TS>
---- /dev/null	2010-07-12 12:35:39.000000000 +0900
-+++ src/plugins/Input/mad/translations/mad_plugin_ja.ts	2010-07-12 12:31:46.000000000 +0900
+--- /dev/null	2010-08-08 00:00:00.000000000 +0900
++++ src/plugins/Input/mad/translations/mad_plugin_ja.ts	2010-08-07 23:47:39.000000000 +0900
 @@ -0,0 +1,191 @@
 +<?xml version="1.0" encoding="utf-8"?>
 +<!DOCTYPE TS>
@@ -4195,37 +4195,37 @@
 +<context>
 +    <name>DecoderMADFactory</name>
 +    <message>
-+        <location filename="../decodermadfactory.cpp" line="90"/>
++        <location filename="../decodermadfactory.cpp" line="87"/>
 +        <source>MPEG Plugin</source>
 +        <translation>MPEG プラグイン</translation>
 +    </message>
 +    <message>
-+        <location filename="../decodermadfactory.cpp" line="93"/>
++        <location filename="../decodermadfactory.cpp" line="90"/>
 +        <source>MPEG Files</source>
 +        <translation>MPEG ファイル</translation>
 +    </message>
 +    <message>
-+        <location filename="../decodermadfactory.cpp" line="223"/>
++        <location filename="../decodermadfactory.cpp" line="220"/>
 +        <source>About MPEG Audio Plugin</source>
 +        <translation>MPEG 音響プラグインについて</translation>
 +    </message>
 +    <message>
-+        <location filename="../decodermadfactory.cpp" line="224"/>
++        <location filename="../decodermadfactory.cpp" line="221"/>
 +        <source>Qmmp MPEG Audio Plugin</source>
 +        <translation>QMMP MPEG 音響プラグイン</translation>
 +    </message>
 +    <message>
-+        <location filename="../decodermadfactory.cpp" line="225"/>
++        <location filename="../decodermadfactory.cpp" line="222"/>
 +        <source>Compiled against libmad version:</source>
 +        <translation>コンパイル時に使われた libmad の版はつぎのとおり</translation>
 +    </message>
 +    <message>
-+        <location filename="../decodermadfactory.cpp" line="229"/>
++        <location filename="../decodermadfactory.cpp" line="226"/>
 +        <source>Writen by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
 +        <translation>制作: Илья Котов (Ilya Kotov) &lt;forkotov02@hotmail.ru&gt;</translation>
 +    </message>
 +    <message>
-+        <location filename="../decodermadfactory.cpp" line="230"/>
++        <location filename="../decodermadfactory.cpp" line="227"/>
 +        <source>Source code based on mq3 progect</source>
 +        <translation>ソースコードは MP3 プロジェクトより流用</translation>
 +    </message>
