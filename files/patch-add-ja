@@ -3275,27 +3275,27 @@
 +        <translation>接続できません</translation>
 +    </message>
 +    <message>
-+        <location filename="../lyricswindow.cpp" line="63"/>
++        <location filename="../lyricswindow.cpp" line="64"/>
 +        <source>Done</source>
 +        <translation>完了</translation>
 +    </message>
 +    <message>
-+        <location filename="../lyricswindow.cpp" line="66"/>
++        <location filename="../lyricswindow.cpp" line="67"/>
 +        <source>Error</source>
 +        <translation>事故</translation>
 +    </message>
 +    <message>
-+        <location filename="../lyricswindow.cpp" line="85"/>
++        <location filename="../lyricswindow.cpp" line="115"/>
 +        <source>Not found</source>
 +        <translation>見付かりません</translation>
 +    </message>
 +    <message>
-+        <location filename="../lyricswindow.cpp" line="96"/>
++        <location filename="../lyricswindow.cpp" line="126"/>
 +        <source>Receiving</source>
 +        <translation>取得中</translation>
 +    </message>
 +    <message>
-+        <location filename="../lyricswindow.cpp" line="97"/>
++        <location filename="../lyricswindow.cpp" line="127"/>
 +        <source>Lyrics: %1 - %2</source>
 +        <translation>%1 - %2 の歌詞</translation>
 +    </message>
