@@ -39,8 +39,6 @@ OPTIONS=	JACK "Support the JACK output server" on \
 		ENCA "Support the sample rate converter" on \
 		MPLAYER "Support to playback through Mplayer" on
 
-LICENSE=	GPLv2
-
 USE_BZIP2=	yes
 USE_QT_VER=	4
 
