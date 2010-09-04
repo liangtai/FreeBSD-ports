@@ -42,11 +42,11 @@ include/qmmpui/templateeditor.h
 lib/libqmmp.so
 lib/libqmmp.so.0
 lib/libqmmp.so.0.4
-lib/libqmmp.so.0.4.1
+lib/libqmmp.so.0.4.2
 lib/libqmmpui.so
 lib/libqmmpui.so.0
 lib/libqmmpui.so.0.4
-lib/libqmmpui.so.0.4.1
+lib/libqmmpui.so.0.4.2
 lib/qmmp/CommandLineOptions/libincdecvolumeoption.so
 lib/qmmp/CommandLineOptions/libseekoption.so
 %%LADSPA%%lib/qmmp/Effect/libladspa.so
@@ -71,6 +71,7 @@ lib/qmmp/Input/libcue.so
 lib/qmmp/Input/libmad.so
 %%MODPLUG%%lib/qmmp/Input/libmodplug.so
 %%MUSEPACK%%lib/qmmp/Input/libmpc.so
+%%MPLAYER%%lib/qmmp/Input/libmplayer.so
 lib/qmmp/Input/libsndfile.so
 lib/qmmp/Input/libvorbis.so
 lib/qmmp/Input/libwavpack.so
@@ -85,7 +86,6 @@ lib/qmmp/PlaylistFormats/libxspfplaylistformat.so
 lib/qmmp/Transports/libhttp.so
 lib/qmmp/Transports/libmms.so
 lib/qmmp/Visual/libanalyzer.so
-%%MPLAYER%%lib/qmmp/Input/libmplayer.so
 share/applications/qmmp.desktop
 share/applications/qmmp_enqueue.desktop
 share/applications/qmmp_cue.desktop
