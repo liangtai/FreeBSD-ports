@@ -100,4 +100,3 @@ share/applications/qmmp_cue.desktop
 @dirrm lib/qmmp/PlaylistFormats
 @dirrm lib/qmmp/Transports
 @dirrm lib/qmmp/Visual
-%%PORTDOCS%%@dirrm %%DOCSDIR%%
