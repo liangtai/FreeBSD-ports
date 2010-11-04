@@ -42,11 +42,11 @@ include/qmmpui/templateeditor.h
 lib/libqmmp.so
 lib/libqmmp.so.0
 lib/libqmmp.so.0.4
-lib/libqmmp.so.0.4.2
+lib/libqmmp.so.0.4.3
 lib/libqmmpui.so
 lib/libqmmpui.so.0
 lib/libqmmpui.so.0.4
-lib/libqmmpui.so.0.4.2
+lib/libqmmpui.so.0.4.3
 lib/qmmp/CommandLineOptions/libincdecvolumeoption.so
 lib/qmmp/CommandLineOptions/libseekoption.so
 %%LADSPA%%lib/qmmp/Effect/libladspa.so

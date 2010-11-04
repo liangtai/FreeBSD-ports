@@ -6,7 +6,7 @@
 #
 
 PORTNAME=	qmmp
-PORTVERSION=	0.4.2
+PORTVERSION=	0.4.3
 CATEGORIES=	multimedia
 MASTER_SITES=	http://qmmp.ylsoftware.com/files/ \
 	${MASTER_SITE_GOOGLE_CODE}
@@ -26,7 +26,7 @@ LIB_DEPENDS=	mad.2:${PORTSDIR}/audio/libmad \
 
 OPTIONS=	JACK "Support the JACK output server" on \
 		PULSE "Support the PulseAudio output" on \
-		ALSA "Support the ALSA output" on \
+		ALSA "Support the ALSA output" off \
 		BS2B "Support the Bauer stereophonic2binaural" on \
 		FLAC "Support to playback FLAC files" on \
 		MUSEPACK "Support to playback MPC files" on \
