@@ -1,8 +1,9 @@
---- src/plugins/plugins.pri.orig	2008-07-22 20:09:09.000000000 +0900
-+++ src/plugins/plugins.pri	2008-09-12 09:31:57.000000000 +0900
-@@ -1,2 +1,3 @@
+Index: src/plugins/plugins.pri
+===================================================================
+--- src/plugins/plugins.pri	(リビジョン 2054)
++++ src/plugins/plugins.pri	(作業コピー)
+@@ -1,3 +1,4 @@
  include(../../qmmp.pri)
--PLUGINS_PREFIX=../../../../lib/qmmp
-\ No newline at end of file
-+PLUGINS_PREFIX=../../../../lib/qmmp
+ unix:PLUGINS_PREFIX=../../../../lib/qmmp
+ win32:PLUGINS_PREFIX=../../../../../bin/plugins
 +INCLUDEPATH += ../../../qmmp

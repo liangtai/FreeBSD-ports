@@ -19,4 +19,5 @@ or http://code.google.com/p/qmmp/
 
 ATTENTION:
 Sorry but this port disables its projectM support, since
-there is no port to *BSD for them yet.
+there is no port to *BSD for them yet.  See also this thread:
+http://lists.freebsd.org/pipermail/freebsd-ports/2011-February/thread.html#65813
