@@ -86,6 +86,7 @@ lib/qmmp/PlaylistFormats/libxspfplaylistformat.so
 lib/qmmp/Transports/libhttp.so
 lib/qmmp/Transports/libmms.so
 lib/qmmp/Visual/libanalyzer.so
+%%PROJECTM%%lib/qmmp/Visual/libprojectm.so
 share/applications/qmmp.desktop
 share/applications/qmmp_enqueue.desktop
 share/applications/qmmp_cue.desktop

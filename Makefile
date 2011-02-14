@@ -36,7 +36,8 @@ OPTIONS=	JACK "Support the JACK output server" on \
 		CDIO "Support to playback compact discs" on \
 		LADSPA "Support the LADSPA effect" on \
 		ENCA "Support the sample rate converter" on \
-		MPLAYER "Support to playback through Mplayer" on
+		MPLAYER "Support to playback through Mplayer" on \
+		PROJECTM "Support the projectM music visualiser" on
 
 USE_BZIP2=	yes
 USE_QT_VER=	4
@@ -139,6 +140,14 @@ RUN_DEPENDS=	mplayer:${PORTSDIR}/multimedia/mplayer
 PLUGIN_OPTIONS+=	MPLAYER_PLUGIN
 .else
 PLIST_SUB+=	MPLAYER="@comment "
+.endif
+
+.if !defined(WITHOUT_PROJECTM)
+PLIST_SUB+=	PROJECTM=""
+LIB_DEPENDS+=	projectM.2:${PORTSDIR}/graphics/libprojectm
+PLUGIN_OPTIONS+=	PROJECTM_PLUGIN WITH_PROJECTM20
+.else
+PLIST_SUB+=	PROJECTM="@comment "
 .endif
 
 .if !defined(WITHOUT_LADSPA)
