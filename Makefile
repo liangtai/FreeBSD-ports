@@ -23,6 +23,14 @@ LIB_DEPENDS=	mad.2:${PORTSDIR}/audio/libmad \
 		wavpack.2:${PORTSDIR}/audio/wavpack \
 		tag.1:${PORTSDIR}/audio/taglib \
 		curl.6:${PORTSDIR}/ftp/curl
+RUN_DEPENDS?=
+
+USE_BZIP2=	yes
+USE_QT_VER=	4
+USE_GMAKE=	yes
+QT_COMPONENTS=	corelib gui network xml dbus \
+		qmake_build rcc_build uic_build moc_build linguist_build
+USE_LDCONFIG=	yes
 
 OPTIONS=	JACK "Support the JACK output server" on \
 		PULSE "Support the PulseAudio output" on \
@@ -38,9 +46,6 @@ OPTIONS=	JACK "Support the JACK output server" on \
 		ENCA "Support the sample rate converter" on \
 		MPLAYER "Support to playback through Mplayer" on \
 		PROJECTM "Support the projectM music visualiser" on
-
-USE_BZIP2=	yes
-USE_QT_VER=	4
 
 .include <bsd.port.pre.mk>
 
@@ -158,15 +163,12 @@ PLUGIN_OPTIONS+=	LADSPA_PLUGIN
 PLIST_SUB+=	LADSPA="@comment "
 .endif
 
-USE_GMAKE=	yes
-QT_COMPONENTS=	gui network moc_build qmake_build rcc_build uic_build linguist
-QMAKE_ARGS+=	CONFIG+="${PLUGIN_OPTIONS}" PREFIX=${PREFIX} \
-		LIB_DIR=${PREFIX}/lib
-USE_LDCONFIG=	yes
-
 PORTDOCS=	README README.RUS AUTHORS
 SUB_FILES=	qmmp
 INSTALLS_ICONS=	yes
+
+QMAKE_ARGS+=	CONFIG+="${PLUGIN_OPTIONS}" PREFIX=${PREFIX} \
+		LIB_DIR=${PREFIX}/lib
 
 post-patch:
 	${REINPLACE_CMD} -e 's|^CONFIG += |#CONFIG +=|' \
@@ -183,6 +185,9 @@ post-patch:
 
 do-configure:
 	cd ${WRKSRC} && ${SETENV} ${MAKE_ENV} ${QMAKE} ${QMAKE_ARGS}
+
+pre-install:
+	${STRIP_CMD} ${WRKSRC}/bin/qmmp
 
 post-install:
 	${INSTALL_SCRIPT} ${WRKDIR}/qmmp ${PREFIX}/bin
