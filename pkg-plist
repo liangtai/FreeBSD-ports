@@ -17,6 +17,7 @@ include/qmmp/output.h
 include/qmmp/outputfactory.h
 include/qmmp/qmmp.h
 include/qmmp/qmmpsettings.h
+include/qmmp/recycler.h
 include/qmmp/soundcore.h
 include/qmmp/statehandler.h
 include/qmmp/tagmodel.h
@@ -29,6 +30,7 @@ include/qmmpui/commandlineoption.h
 include/qmmpui/detailsdialog.h
 include/qmmpui/filedialog.h
 include/qmmpui/filedialogfactory.h
+include/qmmpui/general.h
 include/qmmpui/generalfactory.h
 include/qmmpui/generalhandler.h
 include/qmmpui/mediaplayer.h
