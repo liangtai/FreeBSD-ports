@@ -133,7 +133,7 @@ PLIST_SUB+=	CDIO="@comment "
 
 .if !defined(WITHOUT_ENCA)
 PLIST_SUB+=	ENCA=""
-LIB_DEPENDS=	enca.5:${PORTSDIR}/converters/enca
+LIB_DEPENDS+=	enca.5:${PORTSDIR}/converters/enca
 PLUGIN_OPTIONS+=	WITH_ENCA
 .else
 PLIST_SUB+=	ENCA="@comment "
