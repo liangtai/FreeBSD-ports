@@ -6,7 +6,7 @@
 #
 
 PORTNAME=	qmmp
-PORTVERSION=	0.4.4
+PORTVERSION=	0.4.5
 CATEGORIES=	multimedia
 MASTER_SITES=	http://qmmp.ylsoftware.com/files/ \
 	${MASTER_SITE_GOOGLE_CODE}
@@ -141,7 +141,7 @@ PLIST_SUB+=	ENCA="@comment "
 
 .if !defined(WITHOUT_MPLAYER)
 PLIST_SUB+=	MPLAYER=""
-RUN_DEPENDS=	mplayer:${PORTSDIR}/multimedia/mplayer
+RUN_DEPENDS+=	mplayer:${PORTSDIR}/multimedia/mplayer
 PLUGIN_OPTIONS+=	MPLAYER_PLUGIN
 .else
 PLIST_SUB+=	MPLAYER="@comment "
