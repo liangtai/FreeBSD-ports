@@ -35,7 +35,8 @@ post-patch:
 		${REINPLACE_CMD} 's@/etc/@${DATADIR}/@' \
 			${WRKSRC}/docs/wildmidi.1 \
 			${WRKSRC}/docs/wildmidi.cfg.5
-		${REINPLACE_CMD} 's@/usr/local/share/wildmidi/@${DATADIR}/@' \
+		${REINPLACE_CMD} -e 's@/usr/local/share/wildmidi/@${DATADIR}/@' \
+			-e 's@default_timifityconf@default_wildmidiconf@' \
 			${WRKSRC}/configure
 
 .include <bsd.port.mk>
