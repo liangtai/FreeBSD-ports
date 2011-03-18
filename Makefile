@@ -22,8 +22,8 @@ LIB_DEPENDS=	mad.2:${PORTSDIR}/audio/libmad \
 		vorbis.4:${PORTSDIR}/audio/libvorbis \
 		wavpack.2:${PORTSDIR}/audio/wavpack \
 		tag.1:${PORTSDIR}/audio/taglib \
-		curl.6:${PORTSDIR}/ftp/curl
-RUN_DEPENDS?=
+		curl.6:${PORTSDIR}/ftp/curl \
+		mms.0:${PORTSDIR}/net/libmms
 
 USE_BZIP2=	yes
 USE_QT_VER=	4
