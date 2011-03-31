@@ -6,7 +6,7 @@
 #
 
 PORTNAME=	qmmp
-PORTVERSION=	0.4.5
+PORTVERSION=	0.5.0
 CATEGORIES=	multimedia
 MASTER_SITES=	http://qmmp.ylsoftware.com/files/ \
 	${MASTER_SITE_GOOGLE_CODE}
@@ -32,24 +32,28 @@ QT_COMPONENTS=	corelib gui network xml dbus \
 		qmake_build rcc_build uic_build moc_build linguist_build
 USE_LDCONFIG=	yes
 
-OPTIONS=	JACK "Support the JACK output server" on \
-		PULSE "Support the PulseAudio output" on \
-		ALSA "Support the ALSA output" off \
-		BS2B "Support the Bauer stereophonic2binaural" on \
-		FLAC "Support to playback FLAC files" on \
-		MUSEPACK "Support to playback MPC files" on \
-		FFMPEG "Support to playback FFMPEG files" on \
+OPTIONS=	JACK	"Support the JACK output server" on \
+		PULSE	"Support the PulseAudio output" on \
+		ALSA	"Support the ALSA output" off \
+		OSS4	"Support the OSS4 output" off \
+		BS2B	"Support the Bauer stereophonic2binaural" on \
+		FLAC	"Support to playback FLAC files" on \
+		MUSEPACK	"Support to playback MPC files" on \
+		FFMPEG	"Support to playback FFMPEG files" on \
 		MODPLUG "Support to playback MOD files" on \
-		FAAD "Support to playback through FAAD decoder" on \
-		CDIO "Support to playback compact discs" on \
-		LADSPA "Support the LADSPA effect" on \
-		ENCA "Support the sample rate converter" on \
-		MPLAYER "Support to playback through Mplayer" on \
-		PROJECTM "Support the projectM music visualiser" on
+		GME	"Support video game music files" on \
+		FAAD	"Support to playback through FAAD decoder" on \
+		CDIO	"Support to playback compact discs" on \
+		LADSPA	"Support the LADSPA effect" on \
+		CROSSFADE	"Support the crossfade effect (experimental)" off \
+		ENCA	"Support the sample rate converter" on \
+		MPLAYER "Support VIDEO playback through Mplayer" on \
+		PROJECTM	"Support the projectM music visualiser" on \
+		WILDMIDI	"Support SMF playback (needs WildMidi)" off
 
 .include <bsd.port.pre.mk>
 
-PLUGIN_OPTIONS?=	OSS_PLUGIN #default
+PLUGIN_OPTIONS?=	WITH_SKINNED OSS_PLUGIN #default
 
 .if !defined(WITHOUT_JACK)
 PLIST_SUB+=	JACK=""
@@ -97,6 +101,14 @@ LIB_DEPENDS+=	mpcdec.7:${PORTSDIR}/audio/musepack
 PLUGIN_OPTIONS+=	MUSEPACK_PLUGIN
 .else
 PLIST_SUB+=	MUSEPACK="@comment "
+.endif
+
+.if !defined(WITHOUT_GME)
+PLIST_SUB+=	GME=""
+LIB_DEPENDS+=	gme.0:${PORTSDIR}/audio/libgme
+PLUGIN_OPTIONS+=	GME_PLUGIN
+.else
+PLIST_SUB+=	GME="@comment "
 .endif
 
 .if !defined(WITHOUT_FFMPEG)
@@ -155,12 +167,38 @@ PLUGIN_OPTIONS+=	PROJECTM_PLUGIN WITH_PROJECTM20
 PLIST_SUB+=	PROJECTM="@comment "
 .endif
 
+.if !defined(WITHOUT_OSS4)
+PLIST_SUB+=	OSS4=""
+BUILD_DEPENDS+= ${LOCALBASE}/lib/oss/include/sys/soundcard.h:${PORTSDIR}/audio/oss
+EXTRA_PATCHES+=	files/extrapatch-plugins_Output_oss4.pro
+PLUGIN_OPTIONS+=	OSS4_PLUGIN
+.else
+PLIST_SUB+=	OSS4="@comment "
+.endif
+
 .if !defined(WITHOUT_LADSPA)
 PLIST_SUB+=	LADSPA=""
 RUN_DEPENDS+=	analyseplugin:${PORTSDIR}/audio/ladspa
 PLUGIN_OPTIONS+=	LADSPA_PLUGIN
 .else
 PLIST_SUB+=	LADSPA="@comment "
+.endif
+
+# port of WildMidi is also experimental
+.if !defined(WITHOUT_WILDMIDI)
+PLIST_SUB+=	WILDMIDI=""
+LIB_DEPENDS+=	WildMidi.1:${PORTSDIR}/audio/wildmidi
+PLUGIN_OPTIONS+=	WILDMIDI_PLUGIN
+.else
+PLIST_SUB+=	WILDMIDI="@comment "
+.endif
+
+.if !defined(WITHOUT_CROSSFADE)
+PLIST_SUB+=	CROSSFADE=""
+PLUGIN_OPTIONS+=	CROSSFADE_PLUGIN
+EXTRA_PATCHES+=	files/extrapatch-plugins_Effect.pro-crossfade
+.else
+PLIST_SUB+=	CROSSFADE="@comment "
 .endif
 
 PORTDOCS=	README README.RUS AUTHORS
@@ -173,10 +211,10 @@ QMAKE_ARGS+=	CONFIG+="${PLUGIN_OPTIONS}" PREFIX=${PREFIX} \
 post-patch:
 	${REINPLACE_CMD} -e 's|^CONFIG += |#CONFIG +=|' \
 		${WRKSRC}/qmmp.pri
-	${FIND} ${WRKSRC} -name Makefile -delete
 	${REINPLACE_CMD} -e 's|/usr/|${PREFIX}/|g' \
 		${WRKSRC}/src/plugins/Input/ffmpeg/ffmpeg.pro \
-		${WRKSRC}/src/plugins/Input/mpc/mpc.pro
+		${WRKSRC}/src/plugins/Input/mpc/mpc.pro \
+		${WRKSRC}/src/plugins/Output/oss4/oss4.pro
 	${REINPLACE_CMD} -e 's| /include| $$$$PREFIX/include|' \
 		${WRKSRC}/src/qmmp/qmmp.pro ${WRKSRC}/src/qmmpui/qmmpui.pro
 	${REINPLACE_CMD} -e 's| /bin| $$$$PREFIX/libexec|; \
@@ -184,6 +222,7 @@ post-patch:
 		${WRKSRC}/src/ui/ui.pro ${WRKSRC}/src/plugins/Input/cue/cue.pro
 
 do-configure:
+	${FIND} ${WRKSRC} -name Makefile -delete
 	cd ${WRKSRC} && ${SETENV} ${MAKE_ENV} ${QMAKE} ${QMAKE_ARGS}
 
 pre-install:

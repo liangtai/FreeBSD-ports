@@ -1,0 +1,12 @@
+--- src/plugins/Effect/Effect.pro.orig	2011-03-04 16:27:53.000000000 +0900
++++ src/plugins/Effect/Effect.pro	2011-03-31 01:13:15.000000000 +0900
+@@ -14,3 +14,9 @@
+ message(*************************)
+ SUBDIRS += ladspa
+ }
++contains(CONFIG, CROSSFADE_PLUGIN){
++message(*************************)
++message(* CROSSFADE plugin enabled *)
++message(*************************)
++SUBDIRS += crossfade
++}
