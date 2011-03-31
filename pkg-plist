@@ -51,9 +51,11 @@ lib/libqmmpui.so.0.5
 lib/libqmmpui.so.0.5.0
 lib/qmmp/CommandLineOptions/libincdecvolumeoption.so
 lib/qmmp/CommandLineOptions/libseekoption.so
+lib/qmmp/CommandLineOptions/libstatusoption.so
 %%LADSPA%%lib/qmmp/Effect/libladspa.so
 %%BS2B%%lib/qmmp/Effect/libbs2b.so
 lib/qmmp/Effect/libsrconverter.so
+lib/qmmp/Effect/libstereo.so
 %%CROSSFADE%%lib/qmmp/Effect/libcrossfade.so
 lib/qmmp/FileDialogs/libqmmpfiledialog.so
 lib/qmmp/General/libcovermanager.so
@@ -74,6 +76,7 @@ lib/qmmp/Input/libcue.so
 %%FLAC%%lib/qmmp/Input/libflac.so
 lib/qmmp/Input/libmad.so
 %%MODPLUG%%lib/qmmp/Input/libmodplug.so
+%%GME%%lib/qmmp/Input/libgme.so
 %%MUSEPACK%%lib/qmmp/Input/libmpc.so
 %%MPLAYER%%lib/qmmp/Input/libmplayer.so
 lib/qmmp/Input/libsndfile.so
