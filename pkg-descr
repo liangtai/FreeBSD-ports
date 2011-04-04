@@ -6,8 +6,8 @@ features:
 	streaming (MP3, Vorbis via IceCast/ShoutCast), projectm visualization,
 	device detection, MPRIS, global hotkey, video playback using Mplayer,
 	Bauer Stereophonic-to-Binaural DSP, projectM audio visulaliser,
-	lyrics (from LyricWiki.orig), crossfade effect, and all skins for
-	winamp and/or xmms
+	lyrics (from LyricWiki.orig), crossfade effect, extra stereo effect,
+	and all skins for xmms and from regacy winamp
 input plugins:
 	MPEG1 layer 1/2/3, Ogg Vorbis, native FLAC, Musepack, WavePack,
 	ModPlug, WMA (and other formats provided by FFmpeg library), PCM WAVE,
