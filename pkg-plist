@@ -44,11 +44,11 @@ include/qmmpui/templateeditor.h
 lib/libqmmp.so
 lib/libqmmp.so.0
 lib/libqmmp.so.0.5
-lib/libqmmp.so.0.5.0
+lib/libqmmp.so.0.5.1
 lib/libqmmpui.so
 lib/libqmmpui.so.0
 lib/libqmmpui.so.0.5
-lib/libqmmpui.so.0.5.0
+lib/libqmmpui.so.0.5.1
 lib/qmmp/CommandLineOptions/libincdecvolumeoption.so
 lib/qmmp/CommandLineOptions/libseekoption.so
 lib/qmmp/CommandLineOptions/libstatusoption.so

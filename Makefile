@@ -6,7 +6,7 @@
 #
 
 PORTNAME=	qmmp
-PORTVERSION=	0.5.0
+PORTVERSION=	0.5.1
 CATEGORIES=	multimedia
 MASTER_SITES=	http://qmmp.ylsoftware.com/files/ \
 	${MASTER_SITE_GOOGLE_CODE}
@@ -170,7 +170,6 @@ PLIST_SUB+=	PROJECTM="@comment "
 .if !defined(WITHOUT_OSS4)
 PLIST_SUB+=	OSS4=""
 BUILD_DEPENDS+= ${LOCALBASE}/lib/oss/include/sys/soundcard.h:${PORTSDIR}/audio/oss
-EXTRA_PATCHES+=	files/extrapatch-plugins_Output_oss4.pro
 PLUGIN_OPTIONS+=	OSS4_PLUGIN
 .else
 PLIST_SUB+=	OSS4="@comment "
