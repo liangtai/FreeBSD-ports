@@ -30,7 +30,6 @@ MAN3=		WildMidi_GetString.3 WildMidi_Init.3 WildMidi_MasterVolume.3 \
 MAN5=		wildmidi.cfg.5
 PLIST_FILES=	bin/wildmidi include/wildmidi_lib.h \
 		lib/libWildMidi.la lib/libWildMidi.so.1 lib/libWildMidi.so
-PORTDOCS=	ProgRef.odt TechDoc.odt
 
 post-patch:
 		${REINPLACE_CMD} 's@/etc/@${DATADIR}/@' \
@@ -39,11 +38,5 @@ post-patch:
 		${REINPLACE_CMD} -e 's@/usr/local/share/wildmidi/@${DATADIR}/@' \
 			-e 's@default_timifityconf@default_wildmidiconf@' \
 			${WRKSRC}/configure
-
-post-install:
-.if !defined(NOPORTDOCS)
-		${MKDIR} ${DOCSDIR}
-		cd ${WRKSRC}/docs && ${INSTALL_DATA} ${PORTDOCS} ${DOCSDIR}
-.endif
 
 .include <bsd.port.mk>
