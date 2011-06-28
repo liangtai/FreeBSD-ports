@@ -45,7 +45,6 @@ OPTIONS=	JACK	"Support the JACK output server" on \
 		FAAD	"Support to playback through FAAD decoder" on \
 		CDIO	"Support to playback compact discs" on \
 		LADSPA	"Support the LADSPA effect" on \
-		CROSSFADE	"Support the crossfade effect (experimental)" off \
 		ENCA	"Support the sample rate converter" on \
 		MPLAYER "Support VIDEO playback through Mplayer" on \
 		PROJECTM	"Support the projectM music visualiser" on \
@@ -190,14 +189,6 @@ LIB_DEPENDS+=	WildMidi.1:${PORTSDIR}/audio/wildmidi
 PLUGIN_OPTIONS+=	WILDMIDI_PLUGIN
 .else
 PLIST_SUB+=	WILDMIDI="@comment "
-.endif
-
-.if !defined(WITHOUT_CROSSFADE)
-PLIST_SUB+=	CROSSFADE=""
-PLUGIN_OPTIONS+=	CROSSFADE_PLUGIN
-EXTRA_PATCHES+=	files/extrapatch-plugins_Effect.pro-crossfade
-.else
-PLIST_SUB+=	CROSSFADE="@comment "
 .endif
 
 PORTDOCS=	README README.RUS AUTHORS
