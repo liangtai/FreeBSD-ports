@@ -56,7 +56,7 @@ lib/qmmp/CommandLineOptions/libstatusoption.so
 %%BS2B%%lib/qmmp/Effect/libbs2b.so
 lib/qmmp/Effect/libsrconverter.so
 lib/qmmp/Effect/libstereo.so
-%%CROSSFADE%%lib/qmmp/Effect/libcrossfade.so
+lib/qmmp/Effect/libcrossfade.so
 lib/qmmp/FileDialogs/libqmmpfiledialog.so
 lib/qmmp/General/libcovermanager.so
 lib/qmmp/General/libfileops.so
