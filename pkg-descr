@@ -7,14 +7,14 @@ features:
 	device detection, MPRIS, global hotkey, video playback using Mplayer,
 	Bauer Stereophonic-to-Binaural DSP, projectM audio visulaliser,
 	lyrics (from LyricWiki.orig), crossfade effect, extra stereo effect,
-	and all skins for xmms and from regacy winamp
+	and skinned UI (supports all skins for xmms and from regacy winamp)
 input plugins:
 	MPEG1 layer 1/2/3, Ogg Vorbis, native FLAC, Musepack, WavePack,
 	ModPlug, WMA (and other formats provided by FFmpeg library), PCM WAVE,
 	AAC, CD audio, Game Music Emulation, and CUE (including flac, WavPack
 	embeded cue)
 output plugins:
-	PulseAudio, OSS, OSS4 (experimental), MIDI, and Jack
+	PulseAudio, OSS, OSS4, alsa, and MIDI; jack2(DISABLED in this port)
 
 WWW: http://qmmp.ylsoftware.com/
 or http://code.google.com/p/qmmp/

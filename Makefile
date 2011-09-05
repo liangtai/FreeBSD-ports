@@ -6,7 +6,7 @@
 #
 
 PORTNAME=	qmmp
-PORTVERSION=	0.5.1
+PORTVERSION=	0.5.2
 CATEGORIES=	multimedia
 MASTER_SITES=	http://qmmp.ylsoftware.com/files/ \
 	${MASTER_SITE_GOOGLE_CODE}
@@ -32,9 +32,10 @@ QT_COMPONENTS=	corelib gui network xml dbus \
 		qmake_build rcc_build uic_build moc_build linguist_build
 USE_LDCONFIG=	yes
 
-OPTIONS=	JACK	"Support the JACK output server" on \
+OPTIONS= \
 		PULSE	"Support the PulseAudio output" on \
 		ALSA	"Support the ALSA output" off \
+		OSS	"Support the OSS output" off \
 		OSS4	"Support the OSS4 output" off \
 		BS2B	"Support the Bauer stereophonic2binaural" on \
 		FLAC	"Support to playback FLAC files" on \
@@ -49,18 +50,14 @@ OPTIONS=	JACK	"Support the JACK output server" on \
 		MPLAYER "Support VIDEO playback through Mplayer" on \
 		PROJECTM	"Support the projectM music visualiser" on \
 		WILDMIDI	"Support SMF playback (needs WildMidi)" off
+#	JACK2	"Support the JACK output server" off
 
 .include <bsd.port.pre.mk>
 
-PLUGIN_OPTIONS?=	WITH_SKINNED OSS_PLUGIN #default
+PLUGIN_OPTIONS?=	WITH_SKINNED #anyway
 
-.if !defined(WITHOUT_JACK)
-PLIST_SUB+=	JACK=""
-LIB_DEPENDS+=	jack.0:${PORTSDIR}/audio/jack
-PLUGIN_OPTIONS+=	JACK_PLUGIN
-.else
+#LIB_DEPENDS+=	jack.0:${PORTSDIR}/audio/jack2
 PLIST_SUB+=	JACK="@comment "
-.endif
 
 .if !defined(WITHOUT_ALSA)
 PLIST_SUB+=	ALSA=""
@@ -164,6 +161,13 @@ LIB_DEPENDS+=	projectM.2:${PORTSDIR}/graphics/libprojectm
 PLUGIN_OPTIONS+=	PROJECTM_PLUGIN WITH_PROJECTM20
 .else
 PLIST_SUB+=	PROJECTM="@comment "
+.endif
+
+.if !defined(WITHOUT_OSS)
+PLIST_SUB+=	OSS=""
+PLUGIN_OPTIONS+=	OSS_PLUGIN
+.else
+PLIST_SUB+=	OSS="@comment "
 .endif
 
 .if !defined(WITHOUT_OSS4)

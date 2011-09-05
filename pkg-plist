@@ -44,11 +44,11 @@ include/qmmpui/templateeditor.h
 lib/libqmmp.so
 lib/libqmmp.so.0
 lib/libqmmp.so.0.5
-lib/libqmmp.so.0.5.1
+lib/libqmmp.so.0.5.2
 lib/libqmmpui.so
 lib/libqmmpui.so.0
 lib/libqmmpui.so.0.5
-lib/libqmmpui.so.0.5.1
+lib/libqmmpui.so.0.5.2
 lib/qmmp/CommandLineOptions/libincdecvolumeoption.so
 lib/qmmp/CommandLineOptions/libseekoption.so
 lib/qmmp/CommandLineOptions/libstatusoption.so
@@ -86,7 +86,7 @@ lib/qmmp/Input/libwavpack.so
 %%JACK%%lib/qmmp/Output/libjack.so
 %%ALSA%%lib/qmmp/Output/libalsa.so
 lib/qmmp/Output/libnull.so
-lib/qmmp/Output/liboss.so
+%%OSS%%lib/qmmp/Output/liboss.so
 %%OSS4%%lib/qmmp/Output/liboss4.so
 %%PULSE_AUDIO%%lib/qmmp/Output/libpulseaudio.so
 lib/qmmp/PlaylistFormats/libm3uplaylistformat.so
