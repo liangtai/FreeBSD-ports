@@ -1,5 +1,5 @@
-bin/qmmp
-libexec/qmmp
+%%SKINNEDUI%%bin/qmmp
+%%SKINNEDUI%%libexec/qmmp
 include/qmmp/abstractengine.h
 include/qmmp/audioparameters.h
 include/qmmp/buffer.h
@@ -96,18 +96,18 @@ lib/qmmp/Transports/libhttp.so
 lib/qmmp/Transports/libmms.so
 lib/qmmp/Visual/libanalyzer.so
 %%PROJECTM%%lib/qmmp/Visual/libprojectm.so
-share/applications/qmmp.desktop
-share/applications/qmmp_enqueue.desktop
+%%SKINNEDUI%%share/applications/qmmp.desktop
+%%SKINNEDUI%%share/applications/qmmp_enqueue.desktop
 share/applications/qmmp_cue.desktop
-share/icons/hicolor/16x16/apps/qmmp.png
-share/icons/hicolor/32x32/apps/qmmp.png
-share/icons/hicolor/48x48/apps/qmmp.png
-@dirrmtry share/icons/hicolor/48x48/apps
-@dirrmtry share/icons/hicolor/48x48
-@dirrmtry share/icons/hicolor/32x32/apps
-@dirrmtry share/icons/hicolor/32x32
-@dirrmtry share/icons/hicolor/16x16/apps
-@dirrmtry share/icons/hicolor/16x16
+%%SKINNEDUI%%share/icons/hicolor/16x16/apps/qmmp.png
+%%SKINNEDUI%%share/icons/hicolor/32x32/apps/qmmp.png
+%%SKINNEDUI%%share/icons/hicolor/48x48/apps/qmmp.png
+%%SKINNEDUI%%@dirrmtry share/icons/hicolor/48x48/apps
+%%SKINNEDUI%%@dirrmtry share/icons/hicolor/48x48
+%%SKINNEDUI%%@dirrmtry share/icons/hicolor/32x32/apps
+%%SKINNEDUI%%@dirrmtry share/icons/hicolor/32x32
+%%SKINNEDUI%%@dirrmtry share/icons/hicolor/16x16/apps
+%%SKINNEDUI%%@dirrmtry share/icons/hicolor/16x16
 @dirrm include/qmmp
 @dirrm include/qmmpui
 @dirrm lib/qmmp/CommandLineOptions

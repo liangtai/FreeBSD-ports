@@ -33,31 +33,42 @@ QT_COMPONENTS=	corelib gui network xml dbus \
 USE_LDCONFIG=	yes
 
 OPTIONS= \
+		SKINNEDUI	"Skinned GUI" on \
 		PULSE	"Support the PulseAudio output" on \
 		ALSA	"Support the ALSA output" off \
-		OSS	"Support the OSS output" off \
-		OSS4	"Support the OSS4 output" off \
+		OSS	"Support the OSS output" on \
+		OSS4	"Support the OSS4 output" on \
+		JACK	"Support the JACK output" on \
 		BS2B	"Support the Bauer stereophonic2binaural" on \
 		FLAC	"Support to playback FLAC files" on \
 		MUSEPACK	"Support to playback MPC files" on \
 		FFMPEG	"Support to playback FFMPEG files" on \
 		MODPLUG "Support to playback MOD files" on \
+		WILDMIDI	"Support to playback MIDI files" on \
 		GME	"Support video game music files" on \
 		FAAD	"Support to playback through FAAD decoder" on \
 		CDIO	"Support to playback compact discs" on \
 		LADSPA	"Support the LADSPA effect" on \
 		ENCA	"Support the sample rate converter" on \
 		MPLAYER "Support VIDEO playback through Mplayer" on \
-		PROJECTM	"Support the projectM music visualiser" on \
-		WILDMIDI	"Support SMF playback (needs WildMidi)" off
-#	JACK2	"Support the JACK output server" off
+		PROJECTM	"Support the projectM music visualiser" on
 
 .include <bsd.port.pre.mk>
 
-PLUGIN_OPTIONS?=	WITH_SKINNED #anyway
+.if !defined(WITHOUT_SKINNEDUI)
+PLIST_SUB+=	SKINNEDUI=""
+PLUGIN_OPTIONS+=	WITH_SKINNED
+.else
+PLIST_SUB+=	SKINNEDUI="@comment "
+.endif
 
-#LIB_DEPENDS+=	jack.0:${PORTSDIR}/audio/jack2
+.if !defined(WITHOUT_JACK)
+PLIST_SUB+=	JACK=""
+LIB_DEPENDS+=	jack.0:${PORTSDIR}/audio/jackit
+PLUGIN_OPTIONS+=	JACK_PLUGIN
+.else
 PLIST_SUB+=	JACK="@comment "
+.endif
 
 .if !defined(WITHOUT_ALSA)
 PLIST_SUB+=	ALSA=""
@@ -220,10 +231,14 @@ do-configure:
 	cd ${WRKSRC} && ${SETENV} ${MAKE_ENV} ${QMAKE} ${QMAKE_ARGS}
 
 pre-install:
+.if !defined(WITHOUT_SKINNEDUI)
 	${STRIP_CMD} ${WRKSRC}/bin/qmmp
+.endif
 
 post-install:
+.if !defined(WITHOUT_SKINNEDUI)
 	${INSTALL_SCRIPT} ${WRKDIR}/qmmp ${PREFIX}/bin
+.endif
 .if !defined(NOPORTDOCS)
 	${MKDIR} ${DOCSDIR}; \
 	cd ${WRKSRC} && ${INSTALL_MAN} ${PORTDOCS} ${DOCSDIR}

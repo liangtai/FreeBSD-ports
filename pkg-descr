@@ -14,7 +14,7 @@ input plugins:
 	AAC, CD audio, Game Music Emulation, and CUE (including flac, WavPack
 	embeded cue)
 output plugins:
-	PulseAudio, OSS, OSS4, alsa, and MIDI; jack2(DISABLED in this port)
+	PulseAudio, OSS, OSS4, jack, alsa, and MIDI
 
 WWW: http://qmmp.ylsoftware.com/
 or http://code.google.com/p/qmmp/
