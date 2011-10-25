@@ -64,7 +64,8 @@ PLIST_SUB+=	SKINNEDUI="@comment "
 
 .if !defined(WITHOUT_JACK)
 PLIST_SUB+=	JACK=""
-LIB_DEPENDS+=	jack.0:${PORTSDIR}/audio/jackit
+LIB_DEPENDS+=	jack.0:${PORTSDIR}/audio/jack
+BUILD_DEPENDS+=	jack>=0.121.2:${PORTSDIR}/audio/jack
 PLUGIN_OPTIONS+=	JACK_PLUGIN
 .else
 PLIST_SUB+=	JACK="@comment "
