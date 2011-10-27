@@ -56,6 +56,10 @@ OPTIONS= \
 
 .include <bsd.port.pre.mk>
 
+.ifndef(WITHOUT_APIDOC)
+BUILD_DEPENDS+=	doxygen:${PORTSDIR}/devel/doxygen
+.endif
+
 .ifndef(WITHOUT_SKINNEDUI)
 PLIST_SUB+=	SKINNEDUI=""
 PLUGIN_OPTIONS+=	WITH_SKINNED
