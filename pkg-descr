@@ -1,5 +1,4 @@
 This program is an audio-player, written with help of Qt library.
-
 Supported formats:
 	MPEG1 layer 2/3, Ogg Vorbis, Native FLAC, Ogg FLAC, Musepack, WavePack,
 	tracker modules (mod, s3m, it, xm, etc.), ADTS AAC, CD Audio, MIDI,
@@ -14,15 +13,12 @@ Visual effects:
 Output system support:
 	PulseAudio, OSS, OSS4, jack, and ALSA
 Other features:
-	10-band equalizer, Last.fm/Libre.fm scrobbler, MMS support,
-	streaming (MP3, Vorbis, AAC, AAC+ via IceCast/ShoutCast), MPRIS,
-	removable device detection (via HAL or UDisks), global hotkey,
-	video playback via Mplayer, lyrics (using lyrics.wikia.com),
-	cover art support, multiple playlists, ReplayGain support,
-	CUE sheet support, embedded CUE support (for FLAC and WavPack),
+	10-band equalizer, Last.fm/Libre.fm scrobbler, MMS support, global hotkey,
+	streaming (MP3, Vorbis, AAC, AAC+ via IceCast/ShoutCast), CDDB support,
+	removable device detection (via HAL or UDisks), MPRIS, cover art support,
+	multiple playlists, ReplayGain support, CUE sheet support,
+	embedded CUE support (for FLAC and WavPack), MPRIS (1.0 and 2.0),
 	automatic charset detection for cue files and ShoutCast metadata,
-	CDDB support, MPRIS (1.0 and 2.0), and
+	video playback via Mplayer, lyrics (using lyrics.wikia.com), and
 	skinned UI (supports all skins for XMMS and Winamp 2.x)
-
-WWW: http://qmmp.ylsoftware.com/
-or http://code.google.com/p/qmmp/
+WWW: http://qmmp.ylsoftware.com/ or http://code.google.com/p/qmmp/

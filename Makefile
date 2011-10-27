@@ -71,6 +71,10 @@ OPTIONS= \
 
 .include <bsd.port.pre.mk>
 
+.ifndef(WITHOUT_APIDOC)
+BUILD_DEPENDS+=	doxygen:${PORTSDIR}/devel/doxygen
+.endif
+
 .ifndef(WITHOUT_SKINNEDUI)
 PLIST_SUB+=	SKINNEDUI=""
 PLUGIN_OPTIONS_CMAKE+=	-DUSE_SKINNED:BOOL=TRUE
@@ -480,13 +484,13 @@ post-install:
 	cd ${WRKSRC} && ${INSTALL_MAN} ${PORTDOCS} ${DOCSDIR}
 .endif
 .ifndef(WITHOUT_APIDOC)
-	${MKDIR} -p ${DOCSDIR}/html/search; \
-	cd ${WRKSRC}/doc/html && ${INSTALL_MAN} *.html *.png *.css ${DOCSDIR}/html; \
+	${MKDIR} ${DOCSDIR}/html/search ; \
+	cd ${WRKSRC}/doc/html && ${INSTALL_MAN} *.html *.png *.css ${DOCSDIR}/html ; \
 	cd ${WRKSRC}/doc/html/search && ${INSTALL_MAN} *.html *.png *.css *.js ${DOCSDIR}/html/search ; \
 	${RM} -f ${WRKDIR}/PLIST.doc ; \
-	${FIND} ${DOCSDIR}/html -type f | sed 's|${LOCALBASE}/||' \
+	${FIND} ${DOCSDIR}/html -type f | ${SED} 's|${LOCALBASE}/||' \
 	>> ${WRKDIR}/PLIST.doc ; \
-	${FIND} ${DOCSDIR}/html -type d | sed 's|${LOCALBASE}/|@dirrm |' \
+	${FIND} ${DOCSDIR}/html -type d | ${SED} 's|${LOCALBASE}/|@dirrm |' \
 	| ${SORT} -r >> ${WRKDIR}/PLIST.doc ; \
 	cd ${WRKDIR} ; ${SED} -i -e '/PLIST.doc/ r PLIST.doc' ${TMPPLIST}
 .endif
