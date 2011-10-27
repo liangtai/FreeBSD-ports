@@ -111,6 +111,7 @@ lib/qmmp/PlaylistFormats/libxspfplaylistformat.so
 @dirrm include/qmmpui
 @dirrmtry lib/qmmp/CommandLineOptions
 @dirrmtry lib/qmmp/Effect
+@dirrmtry lib/qmmp/Engines
 @dirrmtry lib/qmmp/FileDialogs
 @dirrmtry lib/qmmp/General
 @dirrmtry lib/qmmp/Input

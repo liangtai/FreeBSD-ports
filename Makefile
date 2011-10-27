@@ -456,16 +456,15 @@ INSTALLS_ICONS=	yes
 CMAKE_ARGS+= ${PLUGIN_OPTIONS_CMAKE} \
 	-DCMAKE_REQUIRED_INCLUDES:PATH=${LOCALBASE}/include
 CMAKE_OUTSOURCE=yes
+CFLAGS+=	-I${LOCALBASE}/include -L${LOCALBASE}/lib
 
 post-patch:
 	${REINPLACE_CMD} -e 's| -ldl| $${CMAKE_DL_LIBS}|' \
 		${WRKSRC}/src/plugins/Effect/ladspa/CMakeLists.txt
 	${REINPLACE_CMD} -e 's|/usr/|${LOCALBASE}/|g' \
 		${WRKSRC}/src/plugins/Output/oss4/CMakeLists.txt
-.ifndef(WITHOUT_SKINNEDUI)
 	${REINPLACE_CMD} -e 's|DESTINATION bin|DESTINATION libexec|' \
 		${WRKSRC}/src/ui/CMakeLists.txt
-.endif
 
 pre-configure:
 	${FIND} ${BUILD_WRKSRC} -type f -name CMakeCache.txt -delete
@@ -489,9 +488,9 @@ post-install:
 	cd ${WRKSRC}/doc/html/search && ${INSTALL_MAN} *.html *.png *.css *.js ${DOCSDIR}/html/search ; \
 	${RM} -f ${WRKDIR}/PLIST.doc ; \
 	${FIND} ${DOCSDIR}/html -type f | ${SED} 's|${LOCALBASE}/||' \
-	>> ${WRKDIR}/PLIST.doc ; \
+		>> ${WRKDIR}/PLIST.doc ; \
 	${FIND} ${DOCSDIR}/html -type d | ${SED} 's|${LOCALBASE}/|@dirrm |' \
-	| ${SORT} -r >> ${WRKDIR}/PLIST.doc ; \
+		| ${SORT} -r >> ${WRKDIR}/PLIST.doc ; \
 	cd ${WRKDIR} ; ${SED} -i -e '/PLIST.doc/ r PLIST.doc' ${TMPPLIST}
 .endif
 
