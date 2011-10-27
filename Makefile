@@ -35,39 +35,39 @@ OPTIONS= \
 		FLAC	"Support to playback FLAC files" on \
 		MUSEPACK	"Support to playback MPC files" on \
 		FFMPEG	"Support to playback FFMPEG files" on \
-		MODPLUG "Support to playback MOD files" on \
+		MODPLUG	"Support to playback MOD files" on \
 		WILDMIDI	"Support to playback MIDI files" on \
 		GME	"Support video game music files" on \
-		MAD "Support to playback MAD files" on \
-		VORBIS "Support to playback Vorbis/OGG files" on \
+		MAD	"Support to playback MAD files" on \
+		VORBIS	"Support to playback Vorbis/OGG files" on \
 		SNDFILE "Support to playback Sndfile files" on \
 		WAVPACK "Support to playback WAVPack files" on \
-		CUE "Support to CUE sheets" on \
+		CUE	"Support to CUE sheets" on \
 		CDIO	"Support to playback compact discs" on \
 		FAAD	"Support to playback through FAAD decoder" on \
 		LADSPA	"Support the LADSPA effect" on \
 		CROSSFADE "Support cross-fade effect" on \
 		BS2B	"Support the Bauer stereophonic2binaural effect" on \
-		STEREO "Support stereo effect" on \
+		STEREO	"Support stereo effect" on \
 		SRCONV 	"Support the sample rate converter" on \
-		MPLAYER "Support VIDEO playback through Mplayer" on \
+		MPLAYER	"Support VIDEO playback through Mplayer" on \
 		CURL	"Support cURL streaming transport" on \
 		MMS	"Support MMS streaming transport" on \
 		PROJECTM	"Support the projectM music visualiser" on \
-		ANALYZER "Supoort graph visualization" on \
+		ANALYZER	"Supoort spectrum analyzer visualization" on \
 		ENCA	"Support automatic character set detection" on \
-		MPRIS "Support the Media Player Remote Interfacing Specification" on \
-		SCROBBLER "Support Libre.fm/Last.fm scrobbler feature" on \
-		STATICON "Support to show status icon" on \
-		NOTIFIER "Support to popup notifier" on \
-		LYRICS "Support to show lyrics using lyrics.wikia.com" on \
-		HOTKEY "Support to set shortcut keys" on \
-		FILEOPS "Support file operation" on \
-		COVER "Support to show cover images" on \
-		KDENOTIFY "Support to popup notifier for KDE" on \
+		MPRIS	"Support the Media Player Remote Interfacing Specification" on \
+		SCROBBLER	"Support Libre.fm/Last.fm scrobbler feature" on \
+		STATICON	"Support to show status icon" on \
+		NOTIFIER	"Support to popup notifier" on \
+		LYRICS	"Support to show lyrics using lyrics.wikia.com" on \
+		HOTKEY	"Support to set shortcut keys" on \
+		FILEOPS	"Support file operation" on \
+		COVER	"Support to show cover images" on \
+		KDENOTIFY	"Support to popup notifier for KDE" on \
 		HAL "Support removable disc detection using HAL" on \
-		UDISKS "Support removable disc detection using UDisks" on \
-		QMMP_DIALOG "An original dialog" on
+		UDISKS	"Support removable disc detection using UDisks" on \
+		QMMP_DIALOG	"An original dialog" on
 
 .include <bsd.port.pre.mk>
 
