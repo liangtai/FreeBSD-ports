@@ -108,15 +108,16 @@ share/applications/qmmp_cue.desktop
 %%SKINNEDUI%%@dirrmtry share/icons/hicolor/32x32
 %%SKINNEDUI%%@dirrmtry share/icons/hicolor/16x16/apps
 %%SKINNEDUI%%@dirrmtry share/icons/hicolor/16x16
+@comment Insert PLIST.doc here
 @dirrm include/qmmp
 @dirrm include/qmmpui
-@dirrm lib/qmmp/CommandLineOptions
-@dirrm lib/qmmp/Effect
-@dirrm lib/qmmp/FileDialogs
-@dirrm lib/qmmp/General
-@dirrm lib/qmmp/Input
-@dirrm lib/qmmp/Output
-@dirrm lib/qmmp/PlaylistFormats
-@dirrm lib/qmmp/Transports
-@dirrm lib/qmmp/Visual
+@dirrmtry lib/qmmp/CommandLineOptions
+@dirrmtry lib/qmmp/Effect
+@dirrmtry lib/qmmp/FileDialogs
+@dirrmtry lib/qmmp/General
+@dirrmtry lib/qmmp/Input
+@dirrmtry lib/qmmp/Output
+@dirrmtry lib/qmmp/PlaylistFormats
+@dirrmtry lib/qmmp/Transports
+@dirrmtry lib/qmmp/Visual
 @dirrm lib/qmmp
