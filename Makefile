@@ -467,7 +467,7 @@ post-patch:
 		${WRKSRC}/src/ui/CMakeLists.txt
 
 pre-configure:
-	${FIND} ${BUILD_WRKSRC} -type f -name CMakeCache.txt -delete
+	${RM} -f ${BUILD_WRKSRC}/CMakeCache.txt
 
 post-build:
 .ifndef(WITHOUT_APIDOC)
@@ -485,7 +485,8 @@ post-install:
 .ifndef(WITHOUT_APIDOC)
 	${MKDIR} ${DOCSDIR}/html/search ; \
 	cd ${WRKSRC}/doc/html && ${INSTALL_MAN} *.html *.png *.css ${DOCSDIR}/html ; \
-	cd ${WRKSRC}/doc/html/search && ${INSTALL_MAN} *.html *.png *.css *.js ${DOCSDIR}/html/search ; \
+	cd ${WRKSRC}/doc/html/search && \
+		${INSTALL_MAN} *.html *.png *.css *.js ${DOCSDIR}/html/search ; \
 	${RM} -f ${WRKDIR}/PLIST.doc ; \
 	${FIND} ${DOCSDIR}/html -type f | ${SED} 's|${LOCALBASE}/||' \
 		>> ${WRKDIR}/PLIST.doc ; \
