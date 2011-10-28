@@ -31,7 +31,7 @@ OPTIONS= \
 		OSS	"Support the OSS output" on \
 		OSS4	"Support the OSS4 output" off \
 		JACK	"Support the JACK output" on \
-		NULLOUT "Support a null output" on \
+		NULLOUT	"Support a null output" on \
 		FLAC	"Support to playback FLAC files" on \
 		MUSEPACK	"Support to playback MPC files" on \
 		FFMPEG	"Support to playback FFMPEG files" on \
@@ -40,13 +40,13 @@ OPTIONS= \
 		GME	"Support video game music files" on \
 		MAD	"Support to playback MAD files" on \
 		VORBIS	"Support to playback Vorbis/OGG files" on \
-		SNDFILE "Support to playback Sndfile files" on \
-		WAVPACK "Support to playback WAVPack files" on \
+		SNDFILE	"Support to playback Sndfile files" on \
+		WAVPACK	"Support to playback WAVPack files" on \
 		CUE	"Support to CUE sheets" on \
 		CDIO	"Support to playback compact discs" on \
 		FAAD	"Support to playback through FAAD decoder" on \
 		LADSPA	"Support the LADSPA effect" on \
-		CROSSFADE "Support cross-fade effect" on \
+		CROSSFADE	"Support cross-fade effect" on \
 		BS2B	"Support the Bauer stereophonic2binaural effect" on \
 		STEREO	"Support stereo effect" on \
 		SRCONV 	"Support the sample rate converter" on \
@@ -65,7 +65,7 @@ OPTIONS= \
 		FILEOPS	"Support file operation" on \
 		COVER	"Support to show cover images" on \
 		KDENOTIFY	"Support to popup notifier for KDE" on \
-		HAL "Support removable disc detection using HAL" on \
+		HAL	"Support removable disc detection using HAL" on \
 		UDISKS	"Support removable disc detection using UDisks" on \
 		QMMP_DIALOG	"An original dialog" on
 
@@ -220,7 +220,7 @@ PLUGIN_OPTIONS_CMAKE+=	-DUSE_OSS:BOOL=FALSE
 
 .ifndef(WITHOUT_OSS4)
 PLIST_SUB+=	OSS4=""
-BUILD_DEPENDS+= ${LOCALBASE}/lib/oss/include/sys/soundcard.h:${PORTSDIR}/audio/oss
+BUILD_DEPENDS+=	${LOCALBASE}/lib/oss/include/sys/soundcard.h:${PORTSDIR}/audio/oss
 PLUGIN_OPTIONS_CMAKE+=	-DUSE_OSS4:BOOL=TRUE
 .else
 PLIST_SUB+=	OSS4="@comment "
