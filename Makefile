@@ -9,7 +9,7 @@ PORTNAME=	qmmp
 PORTVERSION=	0.5.2
 CATEGORIES=	multimedia
 MASTER_SITES=	http://qmmp.ylsoftware.com/files/ \
-	${MASTER_SITE_GOOGLE_CODE}
+		${MASTER_SITE_GOOGLE_CODE}
 
 MAINTAINER=	liangtai.s4@gmail.com
 COMMENT=	A Qt4-based multimedia player
@@ -23,8 +23,7 @@ QT_COMPONENTS=	corelib gui network xml dbus \
 		qmake_build rcc_build uic_build moc_build linguist_build
 USE_LDCONFIG=	yes
 
-OPTIONS= \
-		SKINNEDUI	"Skinned GUI" on \
+OPTIONS=	SKINNEDUI	"Skinned GUI" on \
 		APIDOC	"Doxygen generated class reference document" off \
 		PULSE	"Support the PulseAudio output" on \
 		ALSA	"Support the ALSA output" off \
@@ -56,7 +55,7 @@ OPTIONS= \
 		PROJECTM	"Support the projectM music visualiser" on \
 		ANALYZER	"Supoort spectrum analyzer visualization" on \
 		ENCA	"Support automatic character set detection" on \
-		MPRIS	"Support the Media Player Remote Interfacing Specification" on \
+		MPRIS	"Support the Media Player Remote" on \
 		SCROBBLER	"Support Libre.fm/Last.fm scrobbler feature" on \
 		STATICON	"Support to show status icon" on \
 		NOTIFIER	"Support to popup notifier" on \
@@ -69,7 +68,7 @@ OPTIONS= \
 		UDISKS	"Support removable disc detection using UDisks" on \
 		QMMP_DIALOG	"An original dialog" on
 
-.include <bsd.port.pre.mk>
+.include <bsd.port.options.mk>
 
 .ifndef(WITHOUT_APIDOC)
 BUILD_DEPENDS+=	doxygen:${PORTSDIR}/devel/doxygen
@@ -495,4 +494,4 @@ post-install:
 	cd ${WRKDIR} ; ${SED} -i -e '/PLIST.doc/ r PLIST.doc' ${TMPPLIST}
 .endif
 
-.include <bsd.port.post.mk>
+.include <bsd.port.mk>

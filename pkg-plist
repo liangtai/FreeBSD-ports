@@ -100,6 +100,14 @@ lib/qmmp/PlaylistFormats/libxspfplaylistformat.so
 %%SKINNEDUI%%share/icons/hicolor/16x16/apps/qmmp.png
 %%SKINNEDUI%%share/icons/hicolor/32x32/apps/qmmp.png
 %%SKINNEDUI%%share/icons/hicolor/48x48/apps/qmmp.png
+%%SKINNEDUI%%share/icons/hicolor/scalable/apps/qmmp.svgz
+%%SKINNEDUI%%share/icons/hicolor/scalable/apps/qmmp-simple.svgz
+%%KDENOTIFY%%%%DATADIR%%/images/app_icon.png
+%%KDENOTIFY%%%%DATADIR%%/images/empty_cover.png
+%%KDENOTIFY%%@dirrm %%DATADIR%%/images
+%%KDENOTIFY%%@dirrm %%DATADIR%%
+%%SKINNEDUI%%@dirrmtry share/icons/hicolor/scalable/apps
+%%SKINNEDUI%%@dirrmtry share/icons/hicolor/scalable
 %%SKINNEDUI%%@dirrmtry share/icons/hicolor/48x48/apps
 %%SKINNEDUI%%@dirrmtry share/icons/hicolor/48x48
 %%SKINNEDUI%%@dirrmtry share/icons/hicolor/32x32/apps
