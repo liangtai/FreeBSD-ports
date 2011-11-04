@@ -460,7 +460,7 @@ CFLAGS+=	-I${LOCALBASE}/include -L${LOCALBASE}/lib
 post-patch:
 	${REINPLACE_CMD} -e 's| -ldl| $${CMAKE_DL_LIBS}|' \
 		${WRKSRC}/src/plugins/Effect/ladspa/CMakeLists.txt
-	${REINPLACE_CMD} -e 's|/usr/|${LOCALBASE}/|g' \
+	${REINPLACE_CMD} -e 's|/usr/|${PREFIX}/|g' \
 		${WRKSRC}/src/plugins/Output/oss4/CMakeLists.txt
 	${REINPLACE_CMD} -e 's|DESTINATION bin|DESTINATION libexec|' \
 		${WRKSRC}/src/ui/CMakeLists.txt
@@ -487,9 +487,9 @@ post-install:
 	cd ${WRKSRC}/doc/html/search && \
 		${INSTALL_MAN} *.html *.png *.css *.js ${DOCSDIR}/html/search ; \
 	${RM} -f ${WRKDIR}/PLIST.doc ; \
-	${FIND} ${DOCSDIR}/html -type f | ${SED} 's|${LOCALBASE}/||' \
+	${FIND} ${DOCSDIR}/html -type f | ${SED} 's|${PREFIX}/||' \
 		>> ${WRKDIR}/PLIST.doc ; \
-	${FIND} ${DOCSDIR}/html -type d | ${SED} 's|${LOCALBASE}/|@dirrm |' \
+	${FIND} ${DOCSDIR}/html -type d | ${SED} 's|${PREFIX}/|@dirrm |' \
 		| ${SORT} -r >> ${WRKDIR}/PLIST.doc ; \
 	cd ${WRKDIR} ; ${SED} -i -e '/PLIST.doc/ r PLIST.doc' ${TMPPLIST}
 .endif
