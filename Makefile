@@ -222,7 +222,7 @@ MAKE_ENV+=	INSTALL_PREFIX=${PREFIX}
 post-patch:
 	${REINPLACE_CMD} -e 's|^CONFIG += |#CONFIG +=|' \
 		${WRKSRC}/qmmp.pri
-	${REINPLACE_CMD} -e 's|/usr/|${PREFIX}/|g' \
+	${REINPLACE_CMD} -e 's|/usr/|${LOCALBASE}/|g' \
 		${WRKSRC}/src/plugins/Input/mpc/mpc.pro \
 		${WRKSRC}/src/plugins/Output/oss4/oss4.pro
 	${REINPLACE_CMD} -e 's| /bin| /libexec|' ${WRKSRC}/src/ui/ui.pro
