@@ -6,7 +6,7 @@
 #
 
 PORTNAME=	qmmp
-PORTVERSION=	0.5.2
+PORTVERSION=	0.5.3
 CATEGORIES=	multimedia
 MASTER_SITES=	http://qmmp.ylsoftware.com/files/ \
 	${MASTER_SITE_GOOGLE_CODE}
@@ -150,7 +150,7 @@ PLIST_SUB+=	FAAD="@comment "
 
 .ifndef(WITHOUT_CDIO)
 PLIST_SUB+=	CDIO=""
-LIB_DEPENDS+=	cdio.12:${PORTSDIR}/sysutils/libcdio
+LIB_DEPENDS+=	cdio.13:${PORTSDIR}/sysutils/libcdio
 PLUGIN_OPTIONS+=	CDAUDIO_PLUGIN
 .else
 PLIST_SUB+=	CDIO="@comment "
@@ -205,7 +205,7 @@ PLIST_SUB+=	LADSPA="@comment "
 
 .ifndef(WITHOUT_WILDMIDI)
 PLIST_SUB+=	WILDMIDI=""
-LIB_DEPENDS+=	WildMidi.1:${PORTSDIR}/audio/wildmidi
+LIB_DEPENDS+=	WildMidi.2:${PORTSDIR}/audio/wildmidi
 PLUGIN_OPTIONS+=	WILDMIDI_PLUGIN
 .else
 PLIST_SUB+=	WILDMIDI="@comment "
@@ -215,21 +215,17 @@ PORTDOCS=	README README.RUS AUTHORS
 SUB_FILES=	qmmp
 INSTALLS_ICONS=	yes
 
-QMAKE_ARGS+=	CONFIG+="${PLUGIN_OPTIONS}" PREFIX=${PREFIX} \
+QMAKE_ARGS+=	CONFIG+="${PLUGIN_OPTIONS}" PREFIX=${LOCALBASE} \
 		LIB_DIR=${PREFIX}/lib
+MAKE_ENV+=	INSTALL_PREFIX=${PREFIX}
 
 post-patch:
 	${REINPLACE_CMD} -e 's|^CONFIG += |#CONFIG +=|' \
 		${WRKSRC}/qmmp.pri
 	${REINPLACE_CMD} -e 's|/usr/|${PREFIX}/|g' \
-		${WRKSRC}/src/plugins/Input/ffmpeg/ffmpeg.pro \
 		${WRKSRC}/src/plugins/Input/mpc/mpc.pro \
 		${WRKSRC}/src/plugins/Output/oss4/oss4.pro
-	${REINPLACE_CMD} -e 's| /include| $$$$PREFIX/include|' \
-		${WRKSRC}/src/qmmp/qmmp.pro ${WRKSRC}/src/qmmpui/qmmpui.pro
-	${REINPLACE_CMD} -e 's| /bin| $$$$PREFIX/libexec|; \
-		s| /share| $$$$PREFIX/share|' \
-		${WRKSRC}/src/ui/ui.pro ${WRKSRC}/src/plugins/Input/cue/cue.pro
+	${REINPLACE_CMD} -e 's| /bin| /libexec|' ${WRKSRC}/src/ui/ui.pro
 
 do-configure:
 	${FIND} ${WRKSRC} -name Makefile -delete
