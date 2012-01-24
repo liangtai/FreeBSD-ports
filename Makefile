@@ -460,7 +460,7 @@ CFLAGS+=	-I${LOCALBASE}/include -L${LOCALBASE}/lib
 post-patch:
 	${REINPLACE_CMD} -e 's| -ldl| $${CMAKE_DL_LIBS}|' \
 		${WRKSRC}/src/plugins/Effect/ladspa/CMakeLists.txt
-	${REINPLACE_CMD} -e 's|/usr/|${PREFIX}/|g' \
+	${REINPLACE_CMD} -e 's|/usr/|${LOCALBASE}/|g' \
 		${WRKSRC}/src/plugins/Output/oss4/CMakeLists.txt
 	${REINPLACE_CMD} -e 's|DESTINATION bin|DESTINATION libexec|' \
 		${WRKSRC}/src/ui/CMakeLists.txt
