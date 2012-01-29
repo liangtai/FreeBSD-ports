@@ -32,8 +32,7 @@ QT_COMPONENTS=	corelib gui network xml dbus \
 		qmake_build rcc_build uic_build moc_build linguist_build
 USE_LDCONFIG=	yes
 
-OPTIONS= \
-		APIDOC	"Doxygen generated class reference document" off \
+OPTIONS=	APIDOC	"Doxygen generated class reference document" off \
 		SKINNEDUI	"Skinned GUI" on \
 		PULSE	"Support the PulseAudio output" on \
 		ALSA	"Support the ALSA output" off \
@@ -189,7 +188,7 @@ PLIST_SUB+=	OSS="@comment "
 
 .ifndef(WITHOUT_OSS4)
 PLIST_SUB+=	OSS4=""
-BUILD_DEPENDS+= ${LOCALBASE}/lib/oss/include/sys/soundcard.h:${PORTSDIR}/audio/oss
+BUILD_DEPENDS+=	${LOCALBASE}/lib/oss/include/sys/soundcard.h:${PORTSDIR}/audio/oss
 PLUGIN_OPTIONS+=	OSS4_PLUGIN
 .else
 PLIST_SUB+=	OSS4="@comment "
