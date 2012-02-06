@@ -124,6 +124,11 @@ PLIST_SUB+=	GME="@comment "
 .endif
 
 .ifndef(WITHOUT_FFMPEG)
+. if exists(${LOCALBASE}/include/libavcodec/vda.h)
+IGNORE=	You have already ffmpeg-devel installed.  To use it, please\
+	edit this Makefile manually by appending '-devel' behind the line \
+	LIB_DEPENDS+=   avcodec.1:$${PORTSDIR}/multimedia/ffmpeg
+. endif
 PLIST_SUB+=	FFMPEG=""
 LIB_DEPENDS+=	avcodec.1:${PORTSDIR}/multimedia/ffmpeg
 PLUGIN_OPTIONS+=	FFMPEG_PLUGIN
