@@ -6,7 +6,7 @@
 #
 
 PORTNAME=	qmmp
-PORTVERSION=	0.5.3
+PORTVERSION=	0.5.4
 CATEGORIES=	multimedia
 MASTER_SITES=	http://qmmp.ylsoftware.com/files/ \
 		${MASTER_SITE_GOOGLE_CODE}
@@ -460,11 +460,10 @@ INSTALLS_ICONS=	yes
 CMAKE_ARGS+=	${PLUGIN_OPTIONS_CMAKE} \
 	-DCMAKE_REQUIRED_INCLUDES:PATH=${LOCALBASE}/include
 CMAKE_OUTSOURCE=yes
-CFLAGS+=	-I${LOCALBASE}/include -L${LOCALBASE}/lib
+CFLAGS+=	-I${LOCALBASE}/include
+LDFLAGS+=	-L${LOCALBASE}/lib
 
 post-patch:
-	${REINPLACE_CMD} -e 's| -ldl| $${CMAKE_DL_LIBS}|' \
-		${WRKSRC}/src/plugins/Effect/ladspa/CMakeLists.txt
 	${REINPLACE_CMD} -e 's|/usr/|${LOCALBASE}/|g' \
 		${WRKSRC}/src/plugins/Output/oss4/CMakeLists.txt
 	${REINPLACE_CMD} -e 's|DESTINATION bin|DESTINATION libexec|' \
