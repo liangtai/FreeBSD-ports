@@ -126,9 +126,9 @@ PLIST_SUB+=	GME="@comment "
 .ifndef(WITHOUT_FFMPEG)
 PLIST_SUB+=	FFMPEG=""
 . if exists(${LOCALBASE}/include/libavcodec/vda.h)
-LIB_DEPENDS+=  avcodec.1:${PORTSDIR}/multimedia/ffmpeg-devel
+LIB_DEPENDS+=	avcodec.1:${PORTSDIR}/multimedia/ffmpeg-devel
 . else
-LIB_DEPENDS+=  avcodec.1:${PORTSDIR}/multimedia/ffmpeg
+LIB_DEPENDS+=	avcodec.1:${PORTSDIR}/multimedia/ffmpeg
 . endif
 PLUGIN_OPTIONS+=	FFMPEG_PLUGIN
 .else
