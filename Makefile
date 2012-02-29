@@ -2,7 +2,7 @@
 # Date created:		Fri Jan 30 01:13:20 JST 2009
 # Whom:      SimaMoto,RyoTa <liangtai.s4@gmail.com>
 #
-# $FreeBSD$
+# $FreeBSD: ports/multimedia/qmmp/Makefile,v 1.6 2012/02/24 23:14:56 pgollucci Exp $
 #
 
 PORTNAME=	qmmp
@@ -149,9 +149,9 @@ PLUGIN_OPTIONS_CMAKE+=	-DUSE_GME:BOOL=FALSE
 .ifndef(WITHOUT_FFMPEG)
 PLIST_SUB+=	FFMPEG=""
 . if exists(${LOCALBASE}/include/libavcodec/vda.h)
-LIB_DEPENDS+=  avcodec.1:${PORTSDIR}/multimedia/ffmpeg-devel
+LIB_DEPENDS+=	avcodec.1:${PORTSDIR}/multimedia/ffmpeg-devel
 . else
-LIB_DEPENDS+=  avcodec.1:${PORTSDIR}/multimedia/ffmpeg
+LIB_DEPENDS+=	avcodec.1:${PORTSDIR}/multimedia/ffmpeg
 . endif
 PLUGIN_OPTIONS_CMAKE+=	-DUSE_FFMPEG:BOOL=TRUE
 .else
