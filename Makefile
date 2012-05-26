@@ -2,7 +2,7 @@
 # Date created:		Fri Jan 30 01:13:20 JST 2009
 # Whom:      SimaMoto,RyoTa <liangtai.s4@gmail.com>
 #
-# $FreeBSD: ports/multimedia/qmmp/Makefile,v 1.6 2012/02/24 23:14:56 pgollucci Exp $
+# $FreeBSD: ports/multimedia/qmmp/Makefile,v 1.7 2012/03/01 21:27:36 crees Exp $
 #
 
 PORTNAME=	qmmp
@@ -27,8 +27,8 @@ OPTIONS=	SKINNEDUI	"Skinned GUI" on \
 		APIDOC	"Doxygen generated class reference document" off \
 		PULSE	"Support the PulseAudio output" on \
 		ALSA	"Support the ALSA output" off \
-		OSS	"Support the OSS output" on \
-		OSS4	"Support the OSS4 output" off \
+		OSS	"Support the OSS output" off \
+		OSS4	"Support the OSS4 output" on \
 		JACK	"Support the JACK output" on \
 		NULLOUT	"Support a null output" on \
 		FLAC	"Support to playback FLAC files" on \
