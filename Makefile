@@ -6,7 +6,7 @@
 #
 
 PORTNAME=	qmmp
-PORTVERSION=	0.5.5
+PORTVERSION=	0.5.6
 CATEGORIES=	multimedia
 MASTER_SITES=	http://qmmp.ylsoftware.com/files/ \
 	${MASTER_SITE_GOOGLE_CODE}
@@ -32,41 +32,38 @@ QT_COMPONENTS=	corelib gui network xml dbus \
 		qmake_build rcc_build uic_build moc_build linguist_build
 USE_LDCONFIG=	yes
 
-OPTIONS=	APIDOC	"Doxygen generated class reference document" off \
-		SKINNEDUI	"Skinned GUI" on \
-		PULSE	"Support the PulseAudio output" on \
-		ALSA	"Support the ALSA output" off \
-		OSS	"Support the OSS output" on \
-		OSS4	"Support the OSS4 output" on \
-		JACK	"Support the JACK output" on \
-		FLAC	"Support to playback FLAC files" on \
-		MUSEPACK	"Support to playback MPC files" on \
-		FFMPEG	"Support to playback FFMPEG files" on \
-		MODPLUG "Support to playback MOD files" on \
-		WILDMIDI	"Support to playback MIDI files" on \
-		GME	"Support video game music files" on \
-		FAAD	"Support to playback through FAAD decoder" on \
-		CDIO	"Support to playback compact discs" on \
-		LADSPA	"Support the LADSPA effect" on \
-		BS2B	"Support the Bauer stereophonic2binaural effect" on \
-		ENCA	"Support automatic charset detection" on \
-		MPLAYER "Support VIDEO playback through Mplayer" on \
-		PROJECTM	"Support the projectM music visualiser" on
+OPTONS_DEFINE=	ALSA APIDOC BS2B CDIO ENCA FAAD FFMPEG FLAC GME JACK \
+		LADSPA MODPLUG MPLAYER MUSEPACK OSS OSS4 PROJECTM PULSEAUDIO \
+		SKINNEDUI WILDMIDI
+OPTIONS_DEFAULT= ALSA BS2B CDIO ENCA FAAD FFMPEG FLAC GME JACK \
+		LADSPA MODPLUG MPLAYER MUSEPACK OSS OSS4 PROJECTM PULSEAUDIO \
+		SKINNEDUI WILDMIDI
+APIDOC_DESC=	Doxygen generated class reference document
+BS2B_DESC=	Support the Bauer stereophonic2binaural effect
+CDIO_DESC=	Support to playback compact discs
+ENCA_DESC=	Support automatic character set detection
+GME_DESC=	Support video game music files
+MPLAYER_DESC=	Support VIDEO playback through Mplayer
+OSS_DESC=	Support the OSS output
+OSS4_DESC=	Support the OSS4 output
+PROJECTM_DESC=	Support the projectM music visualiser
+SKINNEDUI_DESC=	Skinned GUI
+WILDMIDI_DESC=	Support to playback MIDI files
 
 .include <bsd.port.pre.mk>
 
-.ifndef(WITHOUT_APIDOC)
+.if ${PORT_OPTIONS:MAPIDOC}
 BUILD_DEPENDS+=	doxygen:${PORTSDIR}/devel/doxygen
 .endif
 
-.ifndef(WITHOUT_SKINNEDUI)
+.if ${PORT_OPTIONS:MSKINNEDUI}
 PLIST_SUB+=	SKINNEDUI=""
 PLUGIN_OPTIONS+=	WITH_SKINNED
 .else
 PLIST_SUB+=	SKINNEDUI="@comment "
 .endif
 
-.ifndef(WITHOUT_JACK)
+.if ${PORT_OPTIONS:MJACK}
 PLIST_SUB+=	JACK=""
 LIB_DEPENDS+=	jack.0:${PORTSDIR}/audio/jack
 BUILD_DEPENDS+=	jackit>=0.121.2:${PORTSDIR}/audio/jack
@@ -75,7 +72,7 @@ PLUGIN_OPTIONS+=	JACK_PLUGIN
 PLIST_SUB+=	JACK="@comment "
 .endif
 
-.ifndef(WITHOUT_ALSA)
+.if ${PORT_OPTIONS:MALSA}
 PLIST_SUB+=	ALSA=""
 LIB_DEPENDS+=	asound.2:${PORTSDIR}/audio/alsa-lib
 PLUGIN_OPTIONS+=	ALSA_PLUGIN
@@ -83,7 +80,7 @@ PLUGIN_OPTIONS+=	ALSA_PLUGIN
 PLIST_SUB+=	ALSA="@comment "
 .endif
 
-.ifndef(WITHOUT_BS2B)
+.if ${PORT_OPTIONS:MBS2B}
 PLIST_SUB+=	BS2B=""
 LIB_DEPENDS+=	bs2b.0:${PORTSDIR}/audio/libbs2b
 PLUGIN_OPTIONS+=	BS2B_PLUGIN
@@ -91,7 +88,7 @@ PLUGIN_OPTIONS+=	BS2B_PLUGIN
 PLIST_SUB+=	BS2B="@comment "
 .endif
 
-.ifndef(WITHOUT_PULSE)
+.if ${PORT_OPTIONS:MPULSEAUDIO}
 PLIST_SUB+=	PULSE_AUDIO=""
 LIB_DEPENDS+=	pulse.0:${PORTSDIR}/audio/pulseaudio
 PLUGIN_OPTIONS+=	PULSE_AUDIO_PLUGIN
@@ -99,7 +96,7 @@ PLUGIN_OPTIONS+=	PULSE_AUDIO_PLUGIN
 PLIST_SUB+=	PULSE_AUDIO="@comment "
 .endif
 
-.ifndef(WITHOUT_FLAC)
+.if ${PORT_OPTIONS:MFLAC}
 PLIST_SUB+=	FLAC=""
 LIB_DEPENDS+=	FLAC.10:${PORTSDIR}/audio/flac
 PLUGIN_OPTIONS+=	FLAC_PLUGIN
@@ -107,7 +104,7 @@ PLUGIN_OPTIONS+=	FLAC_PLUGIN
 PLIST_SUB+=	FLAC="@comment "
 .endif
 
-.ifndef(WITHOUT_MUSEPACK)
+.if ${PORT_OPTIONS:MMUSEPACK}
 PLIST_SUB+=	MUSEPACK=""
 LIB_DEPENDS+=	mpcdec.7:${PORTSDIR}/audio/musepack
 PLUGIN_OPTIONS+=	MUSEPACK_PLUGIN
@@ -115,7 +112,7 @@ PLUGIN_OPTIONS+=	MUSEPACK_PLUGIN
 PLIST_SUB+=	MUSEPACK="@comment "
 .endif
 
-.ifndef(WITHOUT_GME)
+.if ${PORT_OPTIONS:MGME}
 PLIST_SUB+=	GME=""
 LIB_DEPENDS+=	gme.0:${PORTSDIR}/audio/libgme
 PLUGIN_OPTIONS+=	GME_PLUGIN
@@ -123,7 +120,7 @@ PLUGIN_OPTIONS+=	GME_PLUGIN
 PLIST_SUB+=	GME="@comment "
 .endif
 
-.ifndef(WITHOUT_FFMPEG)
+.if ${PORT_OPTIONS:MFFMPEG}
 PLIST_SUB+=	FFMPEG=""
 . if exists(${LOCALBASE}/include/libavcodec/vda.h)
 LIB_DEPENDS+=	avcodec.1:${PORTSDIR}/multimedia/ffmpeg-devel
@@ -135,7 +132,7 @@ PLUGIN_OPTIONS+=	FFMPEG_PLUGIN
 PLIST_SUB+=	FFMPEG="@comment "
 .endif
 
-.ifndef(WITHOUT_MODPLUG)
+.if ${PORT_OPTIONS:MMODPLUG}
 PLIST_SUB+=	MODPLUG=""
 LIB_DEPENDS+=	modplug.1:${PORTSDIR}/audio/libmodplug
 PLUGIN_OPTIONS+=	MODPLUG_PLUGIN
@@ -143,7 +140,7 @@ PLUGIN_OPTIONS+=	MODPLUG_PLUGIN
 PLIST_SUB+=	MODPLUG="@comment "
 .endif
 
-.ifndef(WITHOUT_FAAD)
+.if ${PORT_OPTIONS:MFAAD}
 PLIST_SUB+=	FAAD=""
 LIB_DEPENDS+=	faad.2:${PORTSDIR}/audio/faad
 PLUGIN_OPTIONS+=	AAC_PLUGIN
@@ -151,7 +148,7 @@ PLUGIN_OPTIONS+=	AAC_PLUGIN
 PLIST_SUB+=	FAAD="@comment "
 .endif
 
-.ifndef(WITHOUT_CDIO)
+.if ${PORT_OPTIONS:MCDIO}
 PLIST_SUB+=	CDIO=""
 LIB_DEPENDS+=	cdio.13:${PORTSDIR}/sysutils/libcdio
 PLUGIN_OPTIONS+=	CDAUDIO_PLUGIN
@@ -159,7 +156,7 @@ PLUGIN_OPTIONS+=	CDAUDIO_PLUGIN
 PLIST_SUB+=	CDIO="@comment "
 .endif
 
-.ifndef(WITHOUT_ENCA)
+.if ${PORT_OPTIONS:MENCA}
 PLIST_SUB+=	ENCA=""
 LIB_DEPENDS+=	enca.5:${PORTSDIR}/converters/enca
 PLUGIN_OPTIONS+=	WITH_ENCA
@@ -167,7 +164,7 @@ PLUGIN_OPTIONS+=	WITH_ENCA
 PLIST_SUB+=	ENCA="@comment "
 .endif
 
-.ifndef(WITHOUT_MPLAYER)
+.if ${PORT_OPTIONS:MMPLAYER}
 PLIST_SUB+=	MPLAYER=""
 RUN_DEPENDS+=	mplayer:${PORTSDIR}/multimedia/mplayer
 PLUGIN_OPTIONS+=	MPLAYER_PLUGIN
@@ -175,7 +172,7 @@ PLUGIN_OPTIONS+=	MPLAYER_PLUGIN
 PLIST_SUB+=	MPLAYER="@comment "
 .endif
 
-.ifndef(WITHOUT_PROJECTM)
+.if ${PORT_OPTIONS:MPROJECTM}
 PLIST_SUB+=	PROJECTM=""
 LIB_DEPENDS+=	projectM.2:${PORTSDIR}/graphics/libprojectm
 PLUGIN_OPTIONS+=	PROJECTM_PLUGIN WITH_PROJECTM20
@@ -183,14 +180,14 @@ PLUGIN_OPTIONS+=	PROJECTM_PLUGIN WITH_PROJECTM20
 PLIST_SUB+=	PROJECTM="@comment "
 .endif
 
-.ifndef(WITHOUT_OSS)
+.if ${PORT_OPTIONS:MOSS}
 PLIST_SUB+=	OSS=""
 PLUGIN_OPTIONS+=	OSS_PLUGIN
 .else
 PLIST_SUB+=	OSS="@comment "
 .endif
 
-.ifndef(WITHOUT_OSS4)
+.if ${PORT_OPTIONS:MOSS4}
 PLIST_SUB+=	OSS4=""
 BUILD_DEPENDS+=	${LOCALBASE}/lib/oss/include/sys/soundcard.h:${PORTSDIR}/audio/oss
 PLUGIN_OPTIONS+=	OSS4_PLUGIN
@@ -198,7 +195,7 @@ PLUGIN_OPTIONS+=	OSS4_PLUGIN
 PLIST_SUB+=	OSS4="@comment "
 .endif
 
-.ifndef(WITHOUT_LADSPA)
+.if ${PORT_OPTIONS:MLADSPA}
 PLIST_SUB+=	LADSPA=""
 RUN_DEPENDS+=	analyseplugin:${PORTSDIR}/audio/ladspa
 PLUGIN_OPTIONS+=	LADSPA_PLUGIN
@@ -206,7 +203,7 @@ PLUGIN_OPTIONS+=	LADSPA_PLUGIN
 PLIST_SUB+=	LADSPA="@comment "
 .endif
 
-.ifndef(WITHOUT_WILDMIDI)
+.if ${PORT_OPTIONS:MWILDMIDI}
 PLIST_SUB+=	WILDMIDI=""
 LIB_DEPENDS+=	WildMidi.2:${PORTSDIR}/audio/wildmidi
 PLUGIN_OPTIONS+=	WILDMIDI_PLUGIN
@@ -220,7 +217,7 @@ PORTDOCS=	README README.RUS AUTHORS
 SUB_FILES=	qmmp
 INSTALLS_ICONS=	yes
 
-QMAKE_ARGS+=	CONFIG+="${PLUGIN_OPTIONS}" PREFIX=${LOCALBASE} \
+QMAKE_ARGS+=	CONFIG+="${PLUGIN_OPTIONS}" PREFIX=${PREFIX} \
 		LIB_DIR=${PREFIX}/lib
 MAKE_ENV+=	INSTALL_PREFIX=${PREFIX}
 
@@ -237,24 +234,24 @@ do-configure:
 	cd ${WRKSRC} && ${SETENV} ${MAKE_ENV} ${QMAKE} ${QMAKE_ARGS}
 
 post-build:
-.ifndef(WITHOUT_APIDOC)
+.if ${PORT_OPTIONS:MAPIDOC}
 	cd ${WRKSRC}/doc && doxygen Doxyfile
 .endif
 
 pre-install:
-.ifndef(WITHOUT_SKINNEDUI)
+.if ${PORT_OPTIONS:MSKINNEDUI}
 	${STRIP_CMD} ${WRKSRC}/bin/qmmp
 .endif
 
 post-install:
-.ifndef(WITHOUT_SKINNEDUI)
+.if ${PORT_OPTIONS:MSKINNEDUI}
 	${INSTALL_SCRIPT} ${WRKDIR}/qmmp ${PREFIX}/bin
 .endif
 .ifndef(NOPORTDOCS)
 	${MKDIR} ${DOCSDIR}; \
 	cd ${WRKSRC} && ${INSTALL_MAN} ${PORTDOCS} ${DOCSDIR}
 .endif
-.ifndef(WITHOUT_APIDOC)
+.if ${PORT_OPTIONS:MAPIDOC}
 	${MKDIR} ${DOCSDIR}/html/search ; \
 	cd ${WRKSRC}/doc/html && ${INSTALL_MAN} *.html *.png *.css ${DOCSDIR}/html ; \
 	cd ${WRKSRC}/doc/html/search && ${INSTALL_MAN} *.html *.png *.css *.js ${DOCSDIR}/html/search ; \
