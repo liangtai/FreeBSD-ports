@@ -36,7 +36,7 @@ OPTIONS_DEFAULT=	SKINNEDUI PULSEAUDIO ALSA OSS4 JACK NULLOUT FLAC \
 		STATICON NOTIFIER LYRICS HOTKEY FILEOPS COVER KDENOTIFY HAL \
 		UDISKS QMMP_DIALOG
 SKINNEDUI_DESC=	Skinned GUI
-APIDOC_DESC=	Doxygen generated class reference document
+APIDOC_DESC=	Doxygen generated doc (libqmmp libqmmpui)
 OSS_DESC=	Support the OSS output
 OSS4_DESC=	Support the OSS4 output
 NULLOUT_DESC=	Support a null output
