@@ -38,7 +38,7 @@ OPTONS_DEFINE=	ALSA APIDOC BS2B CDIO ENCA FAAD FFMPEG FLAC GME JACK \
 OPTIONS_DEFAULT= ALSA BS2B CDIO ENCA FAAD FFMPEG FLAC GME JACK \
 		LADSPA MODPLUG MPLAYER MUSEPACK OSS OSS4 PROJECTM PULSEAUDIO \
 		SKINNEDUI WILDMIDI
-APIDOC_DESC=	Doxygen generated class reference document
+APIDOC_DESC=	Doxygen generated doc (libqmmp libqmmpui)
 BS2B_DESC=	Support the Bauer stereophonic2binaural effect
 CDIO_DESC=	Support to playback compact discs
 ENCA_DESC=	Support automatic character set detection
