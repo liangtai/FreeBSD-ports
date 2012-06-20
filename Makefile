@@ -26,9 +26,8 @@ LIB_DEPENDS=	mad:${PORTSDIR}/audio/libmad \
 		mms:${PORTSDIR}/net/libmms
 
 USE_BZIP2=	yes
-USE_QT_VER=	4
 USE_GMAKE=	yes
-QT_COMPONENTS=	corelib gui network xml dbus \
+USE_QT4=	corelib gui network xml dbus \
 		qmake_build rcc_build uic_build moc_build linguist_build
 USE_LDCONFIG=	yes
 
@@ -43,9 +42,7 @@ BS2B_DESC=	Support the Bauer stereophonic2binaural effect
 CDIO_DESC=	Support to playback compact discs
 ENCA_DESC=	Support automatic character set detection
 GME_DESC=	Support video game music files
-MPLAYER_DESC=	Support VIDEO playback through Mplayer
-OSS_DESC=	Support the OSS output
-OSS4_DESC=	Support the OSS4 output
+OSS4_DESC=	Enable Open Sound System (ver4) support
 PROJECTM_DESC=	Support the projectM music visualiser
 SKINNEDUI_DESC=	Skinned GUI
 WILDMIDI_DESC=	Support to playback MIDI files
