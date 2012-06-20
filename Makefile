@@ -16,14 +16,14 @@ COMMENT=	A Qt4-based multimedia player
 
 LICENSE=	GPLv2
 
-LIB_DEPENDS=	mad.2:${PORTSDIR}/audio/libmad \
-		sndfile.1:${PORTSDIR}/audio/libsndfile \
-		ogg.7:${PORTSDIR}/audio/libogg \
-		vorbis.4:${PORTSDIR}/audio/libvorbis \
-		wavpack.2:${PORTSDIR}/audio/wavpack \
-		tag.1:${PORTSDIR}/audio/taglib \
-		curl.6:${PORTSDIR}/ftp/curl \
-		mms.0:${PORTSDIR}/net/libmms
+LIB_DEPENDS=	mad:${PORTSDIR}/audio/libmad \
+		sndfile:${PORTSDIR}/audio/libsndfile \
+		ogg:${PORTSDIR}/audio/libogg \
+		vorbis:${PORTSDIR}/audio/libvorbis \
+		wavpack:${PORTSDIR}/audio/wavpack \
+		tag:${PORTSDIR}/audio/taglib \
+		curl:${PORTSDIR}/ftp/curl \
+		mms:${PORTSDIR}/net/libmms
 
 USE_BZIP2=	yes
 USE_QT_VER=	4
@@ -65,8 +65,8 @@ PLIST_SUB+=	SKINNEDUI="@comment "
 
 .if ${PORT_OPTIONS:MJACK}
 PLIST_SUB+=	JACK=""
-LIB_DEPENDS+=	jack.0:${PORTSDIR}/audio/jack
 BUILD_DEPENDS+=	jackit>=0.121.2:${PORTSDIR}/audio/jack
+LIB_DEPENDS+=	jack:${PORTSDIR}/audio/jack
 PLUGIN_OPTIONS+=	JACK_PLUGIN
 .else
 PLIST_SUB+=	JACK="@comment "
@@ -74,7 +74,7 @@ PLIST_SUB+=	JACK="@comment "
 
 .if ${PORT_OPTIONS:MALSA}
 PLIST_SUB+=	ALSA=""
-LIB_DEPENDS+=	asound.2:${PORTSDIR}/audio/alsa-lib
+LIB_DEPENDS+=	asound:${PORTSDIR}/audio/alsa-lib
 PLUGIN_OPTIONS+=	ALSA_PLUGIN
 .else
 PLIST_SUB+=	ALSA="@comment "
@@ -82,7 +82,7 @@ PLIST_SUB+=	ALSA="@comment "
 
 .if ${PORT_OPTIONS:MBS2B}
 PLIST_SUB+=	BS2B=""
-LIB_DEPENDS+=	bs2b.0:${PORTSDIR}/audio/libbs2b
+LIB_DEPENDS+=	bs2b:${PORTSDIR}/audio/libbs2b
 PLUGIN_OPTIONS+=	BS2B_PLUGIN
 .else
 PLIST_SUB+=	BS2B="@comment "
@@ -90,7 +90,7 @@ PLIST_SUB+=	BS2B="@comment "
 
 .if ${PORT_OPTIONS:MPULSEAUDIO}
 PLIST_SUB+=	PULSE_AUDIO=""
-LIB_DEPENDS+=	pulse.0:${PORTSDIR}/audio/pulseaudio
+LIB_DEPENDS+=	pulse:${PORTSDIR}/audio/pulseaudio
 PLUGIN_OPTIONS+=	PULSE_AUDIO_PLUGIN
 .else
 PLIST_SUB+=	PULSE_AUDIO="@comment "
@@ -98,7 +98,7 @@ PLIST_SUB+=	PULSE_AUDIO="@comment "
 
 .if ${PORT_OPTIONS:MFLAC}
 PLIST_SUB+=	FLAC=""
-LIB_DEPENDS+=	FLAC.10:${PORTSDIR}/audio/flac
+LIB_DEPENDS+=	FLAC:${PORTSDIR}/audio/flac
 PLUGIN_OPTIONS+=	FLAC_PLUGIN
 .else
 PLIST_SUB+=	FLAC="@comment "
@@ -106,7 +106,7 @@ PLIST_SUB+=	FLAC="@comment "
 
 .if ${PORT_OPTIONS:MMUSEPACK}
 PLIST_SUB+=	MUSEPACK=""
-LIB_DEPENDS+=	mpcdec.7:${PORTSDIR}/audio/musepack
+LIB_DEPENDS+=	mpcdec:${PORTSDIR}/audio/musepack
 PLUGIN_OPTIONS+=	MUSEPACK_PLUGIN
 .else
 PLIST_SUB+=	MUSEPACK="@comment "
@@ -114,7 +114,7 @@ PLIST_SUB+=	MUSEPACK="@comment "
 
 .if ${PORT_OPTIONS:MGME}
 PLIST_SUB+=	GME=""
-LIB_DEPENDS+=	gme.0:${PORTSDIR}/audio/libgme
+LIB_DEPENDS+=	gme:${PORTSDIR}/audio/libgme
 PLUGIN_OPTIONS+=	GME_PLUGIN
 .else
 PLIST_SUB+=	GME="@comment "
@@ -123,9 +123,9 @@ PLIST_SUB+=	GME="@comment "
 .if ${PORT_OPTIONS:MFFMPEG}
 PLIST_SUB+=	FFMPEG=""
 . if exists(${LOCALBASE}/include/libavcodec/vda.h)
-LIB_DEPENDS+=	avcodec.1:${PORTSDIR}/multimedia/ffmpeg-devel
+LIB_DEPENDS+=	avcodec:${PORTSDIR}/multimedia/ffmpeg-devel
 . else
-LIB_DEPENDS+=	avcodec.1:${PORTSDIR}/multimedia/ffmpeg
+LIB_DEPENDS+=	avcodec:${PORTSDIR}/multimedia/ffmpeg
 . endif
 PLUGIN_OPTIONS+=	FFMPEG_PLUGIN
 .else
@@ -134,7 +134,7 @@ PLIST_SUB+=	FFMPEG="@comment "
 
 .if ${PORT_OPTIONS:MMODPLUG}
 PLIST_SUB+=	MODPLUG=""
-LIB_DEPENDS+=	modplug.1:${PORTSDIR}/audio/libmodplug
+LIB_DEPENDS+=	modplug:${PORTSDIR}/audio/libmodplug
 PLUGIN_OPTIONS+=	MODPLUG_PLUGIN
 .else
 PLIST_SUB+=	MODPLUG="@comment "
@@ -142,7 +142,7 @@ PLIST_SUB+=	MODPLUG="@comment "
 
 .if ${PORT_OPTIONS:MFAAD}
 PLIST_SUB+=	FAAD=""
-LIB_DEPENDS+=	faad.2:${PORTSDIR}/audio/faad
+LIB_DEPENDS+=	faad:${PORTSDIR}/audio/faad
 PLUGIN_OPTIONS+=	AAC_PLUGIN
 .else
 PLIST_SUB+=	FAAD="@comment "
@@ -150,7 +150,7 @@ PLIST_SUB+=	FAAD="@comment "
 
 .if ${PORT_OPTIONS:MCDIO}
 PLIST_SUB+=	CDIO=""
-LIB_DEPENDS+=	cdio.13:${PORTSDIR}/sysutils/libcdio
+LIB_DEPENDS+=	cdio:${PORTSDIR}/sysutils/libcdio
 PLUGIN_OPTIONS+=	CDAUDIO_PLUGIN
 .else
 PLIST_SUB+=	CDIO="@comment "
@@ -158,7 +158,7 @@ PLIST_SUB+=	CDIO="@comment "
 
 .if ${PORT_OPTIONS:MENCA}
 PLIST_SUB+=	ENCA=""
-LIB_DEPENDS+=	enca.5:${PORTSDIR}/converters/enca
+LIB_DEPENDS+=	enca:${PORTSDIR}/converters/enca
 PLUGIN_OPTIONS+=	WITH_ENCA
 .else
 PLIST_SUB+=	ENCA="@comment "
@@ -205,7 +205,7 @@ PLIST_SUB+=	LADSPA="@comment "
 
 .if ${PORT_OPTIONS:MWILDMIDI}
 PLIST_SUB+=	WILDMIDI=""
-LIB_DEPENDS+=	WildMidi.2:${PORTSDIR}/audio/wildmidi
+LIB_DEPENDS+=	WildMidi:${PORTSDIR}/audio/wildmidi
 PLUGIN_OPTIONS+=	WILDMIDI_PLUGIN
 .else
 PLIST_SUB+=	WILDMIDI="@comment "
