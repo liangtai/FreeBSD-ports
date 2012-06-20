@@ -2,7 +2,7 @@
 # Date created:		Fri Jan 30 01:13:20 JST 2009
 # Whom:      SimaMoto,RyoTa <liangtai.s4@gmail.com>
 #
-# $FreeBSD: ports/multimedia/qmmp/Makefile,v 1.7 2012/03/01 21:27:36 crees Exp $
+# $FreeBSD: ports/multimedia/qmmp/Makefile,v 1.10 2012/06/06 06:44:10 miwi Exp $
 #
 
 PORTNAME=	qmmp
@@ -17,9 +17,8 @@ COMMENT=	A Qt4-based multimedia player
 LICENSE=	GPLv2
 
 USE_BZIP2=	yes
-USE_QT_VER=	4
 USE_CMAKE=	yes
-QT_COMPONENTS=	corelib gui network xml dbus \
+USE_QT4=	corelib gui network xml dbus \
 		qmake_build rcc_build uic_build moc_build linguist_build
 USE_LDCONFIG=	yes
 
@@ -37,8 +36,7 @@ OPTIONS_DEFAULT=	SKINNEDUI PULSEAUDIO ALSA OSS4 JACK NULLOUT FLAC \
 		UDISKS QMMP_DIALOG
 SKINNEDUI_DESC=	Skinned GUI
 APIDOC_DESC=	Doxygen generated doc (libqmmp libqmmpui)
-OSS_DESC=	Support the OSS output
-OSS4_DESC=	Support the OSS4 output
+OSS4_DESC=	Enable Open Sound System (ver4) support
 NULLOUT_DESC=	Support a null output
 WILDMIDI_DESC=	Support to playback MIDI files
 GME_DESC=	Support video game music files
@@ -47,7 +45,6 @@ CROSSFADE_DESC=	Support cross-fade effect
 BS2B_DESC=	Support the Bauer stereophonic2binaural effect
 STEREO_DESC=	Support stereo effect
 SRCONV_DESC=	Support the sample rate converter
-MPLAYER_DESC=	Support VIDEO playback through Mplayer
 PROJECTM_DESC=	Support the projectM music visualiser
 ANALYZER_DESC=	Supoort spectrum analyzer visualization
 ENCA_DESC=	Support automatic character set detection
@@ -79,8 +76,8 @@ PLUGIN_OPTIONS_CMAKE+=	-DUSE_SKINNED:BOOL=FALSE
 
 .if ${PORT_OPTIONS:MJACK}
 PLIST_SUB+=	JACK=""
-BUILD_DEPENDS+=	jackit>=0.121.2:${PORTSDIR}/audio/jack
 LIB_DEPENDS+=	jack:${PORTSDIR}/audio/jack
+BUILD_DEPENDS+=	jackit>=0.121.2:${PORTSDIR}/audio/jack
 PLUGIN_OPTIONS_CMAKE+=	-DUSE_JACK:BOOL=TRUE
 .else
 PLIST_SUB+=	JACK="@comment "
