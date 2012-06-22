@@ -239,9 +239,6 @@ pre-install:
 .endif
 
 post-install:
-.if ${PORT_OPTIONS:MSKINNEDUI}
-	${INSTALL_SCRIPT} ${WRKDIR}/qmmp ${PREFIX}/bin
-.endif
 .ifndef(NOPORTDOCS)
 	${MKDIR} ${DOCSDIR}; \
 	cd ${WRKSRC} && ${INSTALL_MAN} ${PORTDOCS} ${DOCSDIR}
