@@ -459,8 +459,6 @@ LDFLAGS+=	-L${LOCALBASE}/lib
 post-patch:
 	${REINPLACE_CMD} -e 's|/usr/local/|${LOCALBASE}/|' \
 		${WRKSRC}/src/plugins/Output/oss4/CMakeLists.txt
-	${REINPLACE_CMD} -e 's|DESTINATION bin|DESTINATION libexec|' \
-		${WRKSRC}/src/ui/CMakeLists.txt
 
 pre-configure:
 	${RM} -f ${BUILD_WRKSRC}/CMakeCache.txt
