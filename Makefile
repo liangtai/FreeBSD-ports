@@ -211,7 +211,6 @@ PLIST_SUB+=	WILDMIDI="@comment "
 PLIST_SUB+=	SHLIB_VER=${PORTVERSION:C/-.*//}
 
 PORTDOCS=	README README.RUS AUTHORS
-SUB_FILES=	qmmp
 INSTALLS_ICONS=	yes
 
 QMAKE_ARGS+=	CONFIG+="${PLUGIN_OPTIONS}" PREFIX=${PREFIX} \
@@ -224,7 +223,6 @@ post-patch:
 	${REINPLACE_CMD} -e 's|/usr/|${LOCALBASE}/|g' \
 		${WRKSRC}/src/plugins/Input/mpc/mpc.pro \
 		${WRKSRC}/src/plugins/Output/oss4/oss4.pro
-	${REINPLACE_CMD} -e 's| /bin| /libexec|' ${WRKSRC}/src/ui/ui.pro
 
 do-configure:
 	${FIND} ${WRKSRC} -name Makefile -delete
