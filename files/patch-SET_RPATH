@@ -1,0 +1,10 @@
+--- CMakeLists.txt.orig	2012-06-16 00:17:12.000000000 +0900
++++ CMakeLists.txt	2012-06-26 10:25:26.000000000 +0900
+@@ -7,6 +7,7 @@
+ link_directories(/usr/local/lib64)
+ SET(CMAKE_REQUIRED_INCLUDES ${CMAKE_REQUIRED_INCLUDES} /usr/local/include)
+ 
++SET(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
+ 
+ CONFIGURE_FILE(
+   "${CMAKE_CURRENT_SOURCE_DIR}/cmake_uninstall.cmake.in"
