@@ -473,8 +473,7 @@ PLUGIN_OPTIONS_CMAKE+=	-DUSE_QMMP_DIALOG:BOOL=FALSE
 LIB_DEPENDS+=	tag:${PORTSDIR}/audio/taglib
 .endif
 .if ${PORT_OPTIONS:MKDENOTIFY} || ${PORT_OPTIONS:MUDISKS} \
- || ${PORT_OPTIONS:MKDENOTIFY} || ${PORT_OPTIONS:MHAL} \
- || ${PORT_OPTIONS:MSCROBBLER} || ${PORT_OPTIONS:MMPRIS}
+	|| ${PORT_OPTIONS:MHAL}  || ${PORT_OPTIONS:MMPRIS}
 USE_QT4+=	dbus
 .endif
 
@@ -511,7 +510,8 @@ post-install:
 .endif
 .if ${PORT_OPTIONS:MAPIDOC}
 	${MKDIR} ${DOCSDIR}/html/search ; \
-	cd ${WRKSRC}/doc/html && ${INSTALL_MAN} *.html *.png *.css ${DOCSDIR}/html ; \
+	cd ${WRKSRC}/doc/html && \
+		${INSTALL_MAN} *.html *.png *.css ${DOCSDIR}/html ; \
 	cd ${WRKSRC}/doc/html/search && \
 		${INSTALL_MAN} *.html *.png *.css *.js ${DOCSDIR}/html/search ; \
 	${RM} -f ${WRKDIR}/PLIST.doc ; \
