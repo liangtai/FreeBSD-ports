@@ -6,10 +6,10 @@
 #
 
 PORTNAME=	qmmp
-PORTVERSION=	0.5.6
+PORTVERSION=	0.6.0
 CATEGORIES=	multimedia
 MASTER_SITES=	http://qmmp.ylsoftware.com/files/ \
-	${MASTER_SITE_GOOGLE_CODE}
+		${MASTER_SITE_GOOGLE_CODE}
 
 MAINTAINER=	liangtai.s4@gmail.com
 COMMENT=	A Qt4-based multimedia player
@@ -35,19 +35,19 @@ OPTONS_DEFINE=	ALSA APIDOC BS2B CDIO ENCA FAAD FFMPEG FLAC GME JACK \
 		LADSPA MODPLUG MPLAYER MUSEPACK OSS OSS4 PROJECTM PULSEAUDIO \
 		SKINNEDUI WILDMIDI
 OPTIONS_DEFAULT= ALSA BS2B CDIO ENCA FAAD FFMPEG FLAC GME JACK \
-		LADSPA MODPLUG MPLAYER MUSEPACK OSS OSS4 PROJECTM PULSEAUDIO \
+		LADSPA MODPLUG MPLAYER MUSEPACK OSS4 PROJECTM PULSEAUDIO \
 		SKINNEDUI WILDMIDI
 APIDOC_DESC=	Doxygen generated doc (libqmmp libqmmpui)
 BS2B_DESC=	Support the Bauer stereophonic2binaural effect
 CDIO_DESC=	Support to playback compact discs
 ENCA_DESC=	Support automatic character set detection
 GME_DESC=	Support video game music files
-OSS4_DESC=	Enable Open Sound System (ver4) support
+OSS4_DESC=	Open Sound System (ver4) support
 PROJECTM_DESC=	Support the projectM music visualiser
 SKINNEDUI_DESC=	Skinned GUI
 WILDMIDI_DESC=	Support to playback MIDI files
 
-.include <bsd.port.pre.mk>
+.include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MAPIDOC}
 BUILD_DEPENDS+=	doxygen:${PORTSDIR}/devel/doxygen
@@ -153,7 +153,7 @@ PLUGIN_OPTIONS+=	CDAUDIO_PLUGIN
 PLIST_SUB+=	CDIO="@comment "
 .endif
 
-.if ${PORT_OPTIONS:MENCA}
+.if exists(${LOCALBASE}/include/enca.h) || ${PORT_OPTIONS:MENCA}
 PLIST_SUB+=	ENCA=""
 LIB_DEPENDS+=	enca:${PORTSDIR}/converters/enca
 PLUGIN_OPTIONS+=	WITH_ENCA
@@ -171,6 +171,7 @@ PLIST_SUB+=	MPLAYER="@comment "
 
 .if ${PORT_OPTIONS:MPROJECTM}
 PLIST_SUB+=	PROJECTM=""
+USE_QT4+=	opengl
 LIB_DEPENDS+=	projectM.2:${PORTSDIR}/graphics/libprojectm
 PLUGIN_OPTIONS+=	PROJECTM_PLUGIN WITH_PROJECTM20
 .else
@@ -213,12 +214,11 @@ PLIST_SUB+=	SHLIB_VER=${PORTVERSION:C/-.*//}
 PORTDOCS=	README README.RUS AUTHORS
 INSTALLS_ICONS=	yes
 
-QMAKE_ARGS+=	CONFIG+="${PLUGIN_OPTIONS}" PREFIX=${PREFIX} \
-		LIB_DIR=${PREFIX}/lib
-MAKE_ENV+=	INSTALL_PREFIX=${PREFIX}
+QMAKE_ARGS+=	CONFIG+="${PLUGIN_OPTIONS}" PREFIX=${PREFIX}
+MAKE_ENV+=	INSTALL_ROOT=${PREFIX}
 
 post-patch:
-	${REINPLACE_CMD} -e 's|^CONFIG += |#CONFIG +=|' \
+	${REINPLACE_CMD} -e 's|^CONFIG += |#CONFIG += |' \
 		${WRKSRC}/qmmp.pri
 	${REINPLACE_CMD} -e 's|/usr/|${LOCALBASE}/|g' \
 		${WRKSRC}/src/plugins/Input/mpc/mpc.pro \
@@ -245,14 +245,16 @@ post-install:
 .endif
 .if ${PORT_OPTIONS:MAPIDOC}
 	${MKDIR} ${DOCSDIR}/html/search ; \
-	cd ${WRKSRC}/doc/html && ${INSTALL_MAN} *.html *.png *.css ${DOCSDIR}/html ; \
-	cd ${WRKSRC}/doc/html/search && ${INSTALL_MAN} *.html *.png *.css *.js ${DOCSDIR}/html/search ; \
+	cd ${WRKSRC}/doc/html && \
+		${INSTALL_MAN} *.html *.png *.css ${DOCSDIR}/html ; \
+	cd ${WRKSRC}/doc/html/search && \
+		${INSTALL_MAN} *.html *.png *.css *.js ${DOCSDIR}/html/search ; \
 	${RM} -f ${WRKDIR}/PLIST.doc ; \
 	${FIND} ${DOCSDIR}/html -type f | ${SED} 's|${PREFIX}/||' \
-	>> ${WRKDIR}/PLIST.doc ; \
+		>> ${WRKDIR}/PLIST.doc ; \
 	${FIND} ${DOCSDIR}/html -type d | ${SED} 's|${PREFIX}/|@dirrm |' \
-	| ${SORT} -r >> ${WRKDIR}/PLIST.doc ; \
+		| ${SORT} -r >> ${WRKDIR}/PLIST.doc ; \
 	cd ${WRKDIR} ; ${SED} -i -e '/PLIST.doc/ r PLIST.doc' ${TMPPLIST}
 .endif
 
-.include <bsd.port.post.mk>
+.include <bsd.port.mk>
