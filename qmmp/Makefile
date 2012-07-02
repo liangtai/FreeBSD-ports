@@ -491,7 +491,7 @@ LDFLAGS+=	-L${LOCALBASE}/lib
 post-patch:
 	${REINPLACE_CMD} -e 's|/usr/local/|${LOCALBASE}/|' \
 		${WRKSRC}/src/plugins/Output/oss4/CMakeLists.txt
-	${REINPLACE_CMD} -e '|pkgconfig|s|$${LIB_DIR}|libdata|' \
+	${REINPLACE_CMD} -e '/pkgconfig/s/$${LIB_DIR}/libdata/' \
 		${WRKSRC}/src/qmmp/CMakeLists.txt \
 		${WRKSRC}/src/qmmpui/CMakeLists.txt
 
