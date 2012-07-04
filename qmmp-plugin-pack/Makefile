@@ -8,8 +8,8 @@
 PORTNAME=	qmmp-plugin-pack
 PORTVERSION=	0.6.0
 CATEGORIES=	multimedia
-MASTER_SITES=	http://qmmp.ylsoftware.com/files/ \
-		${MASTER_SITE_GOOGLE_CODE}
+MASTER_SITES=	http://qmmp.ylsoftware.com/files/plugins/ \
+		http://qmmp.googlecode.com/files/
 
 MAINTAINER=	liangtai.s4@gmail.com
 COMMENT=	additional plug-ins for QMMP
