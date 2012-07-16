@@ -2,7 +2,7 @@
 # Date created:		Fri Jul 01 02:59:13 JST 2012
 # Whom:      SimaMoto,RyoTa <liangtai.s4@gmail.com>
 #
-# $FreeBSD$
+# $FreeBSD: head/multimedia/qmmp-plugin-pack/Makefile 300896 2012-07-14 13:54:48Z beat $
 #
 
 PORTNAME=	qmmp-plugin-pack
@@ -12,7 +12,7 @@ MASTER_SITES=	http://qmmp.ylsoftware.com/files/plugins/ \
 		http://qmmp.googlecode.com/files/
 
 MAINTAINER=	liangtai.s4@gmail.com
-COMMENT=	additional plug-ins for QMMP
+COMMENT=	Additional plug-ins for QMMP
 
 LICENSE=	GPLv2
 
@@ -24,7 +24,8 @@ USE_CMAKE=	yes
 USE_QT4=	corelib gui qmake_build rcc_build moc_build linguist_build
 USE_LDCONFIG=	yes
 
-OPTIONS_DEFINE=	FFAP MPG123 QSUI
+OPTIONS_MULTI=	PLUGINS
+OPTIONS_MULTI_PLUGINS=	FFAP MPG123 QSUI
 OPTIONS_DEFAULT=	FFAP MPG123 QSUI
 FFAP_DESC=		Support APE sound file
 MPG123_DESC=	Support libmpg123 (MPEG v1/2 layer1/2/3)
@@ -49,6 +50,8 @@ PLUGIN_OPTIONS_CMAKE+=	-DUSE_MPG123:BOOL=TRUE
 PLIST_SUB+=	MPG123="@comment "
 PLUGIN_OPTIONS_CMAKE+=	-DUSE_MPG123:BOOL=FALSE
 .endif
+
+.include <bsd.port.pre.mk>
 
 .if ${PORT_OPTIONS:MFFAP}
 PLIST_SUB+=	FFAP=""
@@ -75,4 +78,4 @@ LDFLAGS+=	-L${LOCALBASE}/lib
 pre-configure:
 	${RM} -f ${BUILD_WRKSRC}/CMakeCache.txt
 
-.include <bsd.port.mk>
+.include <bsd.port.post.mk>

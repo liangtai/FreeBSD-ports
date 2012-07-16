@@ -2,7 +2,7 @@
 # Date created:		Fri Jan 30 01:13:20 JST 2009
 # Whom:      SimaMoto,RyoTa <liangtai.s4@gmail.com>
 #
-# $FreeBSD: ports/multimedia/qmmp/Makefile,v 1.11 2012/06/24 10:04:33 scheidell Exp $
+# $FreeBSD: head/multimedia/qmmp/Makefile 300896 2012-07-14 13:54:48Z beat $
 #
 
 PORTNAME=	qmmp
