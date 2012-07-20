@@ -2,11 +2,12 @@
 # Date created:		Fri Jan 30 01:13:20 JST 2009
 # Whom:      SimaMoto,RyoTa <liangtai.s4@gmail.com>
 #
-# $FreeBSD: head/multimedia/qmmp/Makefile 300896 2012-07-14 13:54:48Z beat $
+# $FreeBSD: head/multimedia/qmmp/Makefile 301188 2012-07-19 20:15:37Z naddy $
 #
 
 PORTNAME=	qmmp
 PORTVERSION=	0.6.0
+PORTREVISION=	1
 CATEGORIES=	multimedia
 MASTER_SITES=	http://qmmp.ylsoftware.com/files/ \
 		${MASTER_SITE_GOOGLE_CODE}
