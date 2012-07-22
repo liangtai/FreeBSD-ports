@@ -2,7 +2,7 @@
 # Date created:				02 Aug 2010
 # Whom:					SimaMoto,RyoTa <liangtai.s4@gmail.com>
 #
-# $FreeBSD$
+# $FreeBSD: head/audio/wildmidi/Makefile 300895 2012-07-14 12:56:14Z beat $
 #
 
 PORTNAME=	wildmidi
@@ -16,6 +16,7 @@ COMMENT=	A simple software midi player and a core softsynth library
 # player: GPLv3, library: LGPL3
 LICENSE_COMB=	multi
 LICENSE=	GPLv3 LGPL3
+MAKE_JOBS_UNSAFE=	yes
 
 USE_GZIP=	yes
 USE_GMAKE=	yes
