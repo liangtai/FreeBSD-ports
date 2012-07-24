@@ -2,7 +2,7 @@
 # Date created:				22 May 2010
 # Whom:					SimaMoto,RyoTa <liangtai.s4@gmail.com>
 #
-# $FreeBSD: head/audio/libbs2b/Makefile 300895 2012-07-14 12:56:14Z beat $
+# $FreeBSD: head/audio/libbs2b/Makefile 301301 2012-07-22 08:24:40Z pawel $
 #
 
 PORTNAME=	libbs2b
