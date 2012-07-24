@@ -6,7 +6,7 @@
 #
 
 PORTNAME=	qmmp-plugin-pack
-PORTVERSION=	0.6.0
+PORTVERSION=	0.6.1
 CATEGORIES=	multimedia
 MASTER_SITES=	http://qmmp.ylsoftware.com/files/plugins/ \
 		http://qmmp.googlecode.com/files/
@@ -24,12 +24,16 @@ USE_CMAKE=	yes
 USE_QT4=	corelib gui qmake_build rcc_build moc_build linguist_build
 USE_LDCONFIG=	yes
 
-OPTIONS_MULTI=	PLUGINS
-OPTIONS_MULTI_PLUGINS=	FFAP MPG123 QSUI
+OPTIONS_DEFINE=	FFAP MPG123 QSUI
 OPTIONS_DEFAULT=	FFAP MPG123 QSUI
 FFAP_DESC=		Support APE sound file
 MPG123_DESC=	Support libmpg123 (MPEG v1/2 layer1/2/3)
 QSUI_DESC=		Simple UI based on standard widgets set
+OPTIONS_DEFINE_i386=	FFAPASM
+OPTIONS_DEFAULT_i386=	FFAPASM
+OPTIONS_DEFINE_x86_64=	FFAPASM
+OPTIONS_DEFAULT_x86_64=	FFAPASM
+FFAPASM_DESC=	Optimize FFap decoder using devel/yasm
 
 .include <bsd.port.options.mk>
 
@@ -55,8 +59,11 @@ PLUGIN_OPTIONS_CMAKE+=	-DUSE_MPG123:BOOL=FALSE
 
 .if ${PORT_OPTIONS:MFFAP}
 PLIST_SUB+=	FFAP=""
-. if ${ARCH} == i386 || ${ARCH} == x86_64
+. if (${ARCH} == i386 || ${ARCH} == x86_64) && ${PORT_OPTIONS:MFFAPASM}
 BUILD_DEPENDS+=	yasm:${PORTSDIR}/devel/yasm
+PLUGIN_OPTIONS_CMAKE+=	-DUSE_ASM:BOOL=TRUE
+. else
+PLUGIN_OPTIONS_CMAKE+=	-DUSE_ASM:BOOL=FALSE
 . endif
 LIB_DEPENDS+=	tag:${PORTSDIR}/audio/taglib
 PLUGIN_OPTIONS_CMAKE+=	-DUSE_FFAP:BOOL=TRUE

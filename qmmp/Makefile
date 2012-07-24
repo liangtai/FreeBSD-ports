@@ -6,8 +6,8 @@
 #
 
 PORTNAME=	qmmp
-PORTVERSION=	0.6.0
-PORTREVISION=	1
+PORTVERSION=	0.6.1
+PORTREVISION=	0
 CATEGORIES=	multimedia
 MASTER_SITES=	http://qmmp.ylsoftware.com/files/ \
 		${MASTER_SITE_GOOGLE_CODE}
@@ -492,7 +492,7 @@ LDFLAGS+=	-L${LOCALBASE}/lib
 post-patch:
 	${REINPLACE_CMD} -e 's|/usr/local/|${LOCALBASE}/|' \
 		${WRKSRC}/src/plugins/Output/oss4/CMakeLists.txt
-	${REINPLACE_CMD} -e '/pkgconfig/s/$${LIB_DIR}/libdata/' \
+	${REINPLACE_CMD} -e '/pkgconfig/s|$${LIB_DIR}|libdata|' \
 		${WRKSRC}/src/qmmp/CMakeLists.txt \
 		${WRKSRC}/src/qmmpui/CMakeLists.txt
 
