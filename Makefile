@@ -2,7 +2,7 @@
 # Date created:				22 May 2010
 # Whom:					SimaMoto,RyoTa <liangtai.s4@gmail.com>
 #
-# $FreeBSD: head/audio/libbs2b/Makefile 301301 2012-07-22 08:24:40Z pawel $
+# $FreeBSD: head/audio/libbs2b/Makefile 301539 2012-07-26 05:40:22Z bapt $
 #
 
 PORTNAME=	libbs2b
@@ -14,7 +14,6 @@ MASTER_SITES=	SF/bs2b/bs2b/${PORTVERSION}
 MAINTAINER=	liangtai.s4@gmail.com
 COMMENT=	Bauer Stereophonic-to-Binaural DSP
 
-BUILD_DEPENDS=	pkg-config:${PORTSDIR}/devel/pkg-config
 LIB_DEPENDS+=	sndfile:${PORTSDIR}/audio/libsndfile \
 		ogg:${PORTSDIR}/audio/libogg \
 		FLAC:${PORTSDIR}/audio/flac \
@@ -23,6 +22,7 @@ LIB_DEPENDS+=	sndfile:${PORTSDIR}/audio/libsndfile \
 USE_BZIP2=	yes
 USE_GMAKE=	yes
 USE_LDCONFIG=	yes
+USE_PKGCONFIG=	yes
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS+=	CFLAGS=`pkg-config --cflags sndfile` \
 	LDFLAGS=`pkg-config --libs-only-L sndfile`
