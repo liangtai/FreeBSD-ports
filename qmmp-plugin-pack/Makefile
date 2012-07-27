@@ -23,6 +23,7 @@ USE_BZIP2=	yes
 USE_CMAKE=	yes
 USE_QT4=	corelib gui qmake_build rcc_build moc_build linguist_build
 USE_LDCONFIG=	yes
+USE_PKGCONFIG=	build
 
 OPTIONS_DEFINE=	FFAP MPG123 QSUI
 OPTIONS_DEFAULT=	FFAP MPG123 QSUI

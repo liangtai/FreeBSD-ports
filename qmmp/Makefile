@@ -22,6 +22,7 @@ USE_CMAKE=	yes
 USE_QT4=	corelib gui network xml \
 		qmake_build rcc_build uic_build moc_build linguist_build
 USE_LDCONFIG=	yes
+USE_PKGCONFIG=	build
 
 OPTIONS_DEFINE=	SKINNEDUI DIR_ASSOC APIDOC PULSEAUDIO ALSA OSS OSS4 \
 		JACK NULLOUT FLAC MUSEPACK FFMPEG MODPLUG WILDMIDI GME MAD \
