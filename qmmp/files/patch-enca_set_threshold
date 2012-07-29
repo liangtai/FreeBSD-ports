@@ -1,0 +1,31 @@
+Index: src/plugins/Input/cue/cueparser.cpp
+===================================================================
+--- src/plugins/Input/cue/cueparser.cpp	(リビジョン 2830)
++++ src/plugins/Input/cue/cueparser.cpp	(リビジョン 2833)
+@@ -57,10 +57,10 @@
+     if(settings.value("use_enca", false).toBool())
+     {
+         analyser = enca_analyser_alloc(settings.value("enca_lang").toByteArray ().constData());
+-        enca_set_threshold(analyser, 1.38);
+-
++        
+         if(analyser)
+         {
++            enca_set_threshold(analyser, 1.38);
+             EncaEncoding encoding = enca_analyse(analyser,
+                                                  (uchar *)file.readAll().constData(),
+                                                  file.size());
+Index: src/plugins/Transports/http/httpstreamreader.cpp
+===================================================================
+--- src/plugins/Transports/http/httpstreamreader.cpp	(リビジョン 2830)
++++ src/plugins/Transports/http/httpstreamreader.cpp	(リビジョン 2833)
+@@ -129,7 +129,8 @@
+     m_analyser = 0;
+     if(settings.value("use_enca", false).toBool())
+         m_analyser = enca_analyser_alloc(settings.value("enca_lang").toByteArray ().constData());
+-    enca_set_threshold(m_analyser, 1.38);
++    if(m_analyser)
++        enca_set_threshold(m_analyser, 1.38);
+ #endif
+     settings.endGroup();
+ }
