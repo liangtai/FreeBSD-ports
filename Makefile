@@ -39,5 +39,7 @@ post-patch:
 		${REINPLACE_CMD} -e 's@/usr/local/share/wildmidi/@${DATADIR}/@' \
 			-e 's@default_timifityconf@default_wildmidiconf@' \
 			${WRKSRC}/configure
+		${REINPLACE_CMD} -e '/WM_MixerOptions/s/ \&\& / \& /' \
+			${WRKSRC}/src/wildmidi_lib.c
 
 .include <bsd.port.mk>
