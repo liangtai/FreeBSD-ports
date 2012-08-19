@@ -2,7 +2,7 @@
 # Date created:		Fri Jul 01 02:59:13 JST 2012
 # Whom:      SimaMoto,RyoTa <liangtai.s4@gmail.com>
 #
-# $FreeBSD: head/multimedia/qmmp-plugin-pack/Makefile 300896 2012-07-14 13:54:48Z beat $
+# $FreeBSD: head/multimedia/qmmp-plugin-pack/Makefile 302758 2012-08-19 12:47:12Z madpilot $
 #
 
 PORTNAME=	qmmp-plugin-pack
@@ -32,8 +32,8 @@ MPG123_DESC=	Support libmpg123 (MPEG v1/2 layer1/2/3)
 QSUI_DESC=		Simple UI based on standard widgets set
 OPTIONS_DEFINE_i386=	FFAPASM
 OPTIONS_DEFAULT_i386=	FFAPASM
-OPTIONS_DEFINE_x86_64=	FFAPASM
-OPTIONS_DEFAULT_x86_64=	FFAPASM
+OPTIONS_DEFINE_amd64=	FFAPASM
+OPTIONS_DEFAULT_amd64=	FFAPASM
 FFAPASM_DESC=	Optimize FFap decoder using devel/yasm
 
 .include <bsd.port.options.mk>
@@ -60,7 +60,7 @@ PLUGIN_OPTIONS_CMAKE+=	-DUSE_MPG123:BOOL=FALSE
 
 .if ${PORT_OPTIONS:MFFAP}
 PLIST_SUB+=	FFAP=""
-. if (${ARCH} == i386 || ${ARCH} == x86_64) && ${PORT_OPTIONS:MFFAPASM}
+. if (${ARCH} == i386 || ${ARCH} == amd64) && ${PORT_OPTIONS:MFFAPASM}
 BUILD_DEPENDS+=	yasm:${PORTSDIR}/devel/yasm
 PLUGIN_OPTIONS_CMAKE+=	-DUSE_ASM:BOOL=TRUE
 . else
