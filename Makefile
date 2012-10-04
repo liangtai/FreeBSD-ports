@@ -2,11 +2,12 @@
 # Date created:				02 Aug 2010
 # Whom:					SimaMoto,RyoTa <liangtai.s4@gmail.com>
 #
-# $FreeBSD: head/audio/wildmidi/Makefile 300895 2012-07-14 12:56:14Z beat $
+# $FreeBSD: head/audio/wildmidi/Makefile 301735 2012-07-30 18:40:23Z scheidell $
 #
 
 PORTNAME=	wildmidi
 PORTVERSION=	0.2.3.5
+PORTREVISION=	1
 CATEGORIES=	audio
 MASTER_SITES=	SF/${PORTNAME}/${PORTNAME}
 
@@ -14,8 +15,9 @@ MAINTAINER=	liangtai.s4@gmail.com
 COMMENT=	A simple software midi player and a core softsynth library
 
 # player: GPLv3, library: LGPL3
-LICENSE_COMB=	multi
 LICENSE=	GPLv3 LGPL3
+LICENSE_COMB=	multi
+
 MAKE_JOBS_UNSAFE=	yes
 
 USE_GZIP=	yes
@@ -31,6 +33,12 @@ MAN3=		WildMidi_GetString.3 WildMidi_Init.3 WildMidi_MasterVolume.3 \
 MAN5=		wildmidi.cfg.5
 PLIST_FILES=	bin/wildmidi include/wildmidi_lib.h \
 		lib/libWildMidi.la lib/libWildMidi.so.2 lib/libWildMidi.so
+
+# Suppress werror caused by these useless flags:
+# -frename-registers -finline-limit=32000 -fexpensive-optimizations
+.if ${CC} == "clang"
+CONFIGURE_ARGS+=	--disable-optimize
+.endif
 
 post-patch:
 		${REINPLACE_CMD} 's@/etc/@${DATADIR}/@' \
