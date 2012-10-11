@@ -42,7 +42,6 @@ OSS4_DESC=		Open Sound System (ver4) support
 NULLOUT_DESC=	Support a null output
 WILDMIDI_DESC=	Support to playback MIDI files
 GME_DESC=		Support video game music files
-CDIO_DESC=		Support to playback compact discs
 CROSSFADE_DESC=	Support cross-fade effect
 BS2B_DESC=		Support the Bauer stereophonic2binaural effect
 STEREO_DESC=	Support stereo effect
