@@ -32,13 +32,14 @@ USE_QT4=	corelib gui network xml dbus \
 		qmake_build rcc_build uic_build moc_build linguist_build
 USE_LDCONFIG=	yes
 
-OPTIONS_SINGLE=	FFMPEG
+OPTIONS_SINGLE=	FFMPEG MPLAYER
 OPTIONS_SINGLE_FFMPEG=	FFMPEG0_7 FFMPEG0_11 FFMPEG1_0 FFMPEGDEVEL
+OPTIONS_SINGLE_MPLAYER=	MPLAYER1 MPLAYER2
 OPTIONS_DEFINE=	ALSA APIDOC BS2B CDIO ENCA FAAD FFMPEG FLAC GME JACK \
 		LADSPA MODPLUG MPLAYER MUSEPACK OSS OSS4 PROJECTM PULSEAUDIO \
 		SKINNEDUI WILDMIDI
 OPTIONS_DEFAULT= ALSA BS2B CDIO ENCA FAAD FFMPEG FFMPEG1_0 FLAC GME \
-		JACK LADSPA MODPLUG MPLAYER MUSEPACK OSS4 PROJECTM \
+		JACK LADSPA MODPLUG MPLAYER MPLAYER1 MUSEPACK OSS4 PROJECTM \
 		PULSEAUDIO SKINNEDUI WILDMIDI
 APIDOC_DESC=	Doxygen generated doc (libqmmp libqmmpui)
 BS2B_DESC=	Support the Bauer stereophonic2binaural effect
@@ -53,6 +54,8 @@ FFMPEG0_7_DESC=	ffmpeg-0.7.x (multimedia/ffmpeg)
 FFMPEG0_11_DESC=	ffmpeg-0.11.x (multimedia/ffmpeg-011)
 FFMPEG1_0_DESC=	ffmpeg-1.0 (multimedia/ffmpeg1)
 FFMPEGDEVEL_DESC=	ffmpeg-devel (multimedia/ffmpeg-devel)
+MPLAYER1_DESC=	mplayer-1.1.x (multimedia/mplayer)
+MPLAYER2_DESC=	mplayer-2.0.x (multimedia/mplayer2)
 
 .include <bsd.port.options.mk>
 
@@ -181,8 +184,12 @@ PLIST_SUB+=	ENCA="@comment "
 .endif
 
 .if ${PORT_OPTIONS:MMPLAYER}
-PLIST_SUB+=	MPLAYER=""
+. if ${PORT_OPTIONS:MMPLAYER2}
+RUN_DEPENDS+=	mplayer:${PORTSDIR}/multimedia/mplayer2
+. else
 RUN_DEPENDS+=	mplayer:${PORTSDIR}/multimedia/mplayer
+. endif
+PLIST_SUB+=	MPLAYER=""
 PLUGIN_OPTIONS+=	MPLAYER_PLUGIN
 .else
 PLIST_SUB+=	MPLAYER="@comment "
