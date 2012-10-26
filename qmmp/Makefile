@@ -32,12 +32,14 @@ USE_QT4=	corelib gui network xml dbus \
 		qmake_build rcc_build uic_build moc_build linguist_build
 USE_LDCONFIG=	yes
 
-OPTONS_DEFINE=	ALSA APIDOC BS2B CDIO ENCA FAAD FFMPEG FLAC GME JACK \
+OPTIONS_SINGLE=	FFMPEG
+OPTIONS_SINGLE_FFMPEG=	FFMPEG0_7 FFMPEG0_11 FFMPEG1_0 FFMPEGDEVEL
+OPTIONS_DEFINE=	ALSA APIDOC BS2B CDIO ENCA FAAD FFMPEG FLAC GME JACK \
 		LADSPA MODPLUG MPLAYER MUSEPACK OSS OSS4 PROJECTM PULSEAUDIO \
 		SKINNEDUI WILDMIDI
-OPTIONS_DEFAULT= ALSA BS2B CDIO ENCA FAAD FFMPEG FLAC GME JACK \
-		LADSPA MODPLUG MPLAYER MUSEPACK OSS4 PROJECTM PULSEAUDIO \
-		SKINNEDUI WILDMIDI
+OPTIONS_DEFAULT= ALSA BS2B CDIO ENCA FAAD FFMPEG FFMPEG1_0 FLAC GME \
+		JACK LADSPA MODPLUG MPLAYER MUSEPACK OSS4 PROJECTM \
+		PULSEAUDIO SKINNEDUI WILDMIDI
 APIDOC_DESC=	Doxygen generated doc (libqmmp libqmmpui)
 BS2B_DESC=	Support the Bauer stereophonic2binaural effect
 CDIO_DESC=	Support to playback compact discs
@@ -47,6 +49,10 @@ OSS4_DESC=	Open Sound System (ver4) support
 PROJECTM_DESC=	Support the projectM music visualiser
 SKINNEDUI_DESC=	Skinned GUI
 WILDMIDI_DESC=	Support to playback MIDI files
+FFMPEG0_7_DESC=	ffmpeg-0.7.x (multimedia/ffmpeg)
+FFMPEG0_11_DESC=	ffmpeg-0.11.x (multimedia/ffmpeg-011)
+FFMPEG1_0_DESC=	ffmpeg-1.0 (multimedia/ffmpeg1)
+FFMPEGDEVEL_DESC=	ffmpeg-devel (multimedia/ffmpeg-devel)
 
 .include <bsd.port.options.mk>
 
@@ -119,12 +125,24 @@ PLIST_SUB+=	GME="@comment "
 .endif
 
 .if ${PORT_OPTIONS:MFFMPEG}
-PLIST_SUB+=	FFMPEG=""
-. if exists(${LOCALBASE}/include/libavcodec/vda.h)
+. if ${PORT_OPTIONS:MFFMPEGDEVEL}
 LIB_DEPENDS+=	avcodec:${PORTSDIR}/multimedia/ffmpeg-devel
+FFMPEG_SUFFIX=	-devel
 . else
+.  if ${PORT_OPTIONS:MFFMPEG1_0}
+LIB_DEPENDS+=	avcodec:${PORTSDIR}/multimedia/ffmpeg1
+FFMPEG_SUFFIX=	1
+.  else
+.   if ${PORT_OPTIONS:MFFMPEG0_11}
+LIB_DEPENDS+=	avcodec:${PORTSDIR}/multimedia/ffmpeg-011
+FFMPEG_SUFFIX=	-011
+.   else
 LIB_DEPENDS+=	avcodec:${PORTSDIR}/multimedia/ffmpeg
+FFMPEG_SUFFIX=
+.   endif
+.  endif
 . endif
+PLIST_SUB+=	FFMPEG=""
 PLUGIN_OPTIONS+=	FFMPEG_PLUGIN
 .else
 PLIST_SUB+=	FFMPEG="@comment "
@@ -225,8 +243,17 @@ post-patch:
 		${WRKSRC}/src/plugins/Input/mpc/mpc.pro \
 		${WRKSRC}/src/plugins/Output/oss4/oss4.pro
 
-do-configure:
+pre-configure:
+	${REINPLACE_CMD} -e '/PKGCONFIG/ { ; \
+	s|\(libavcodec\)[^ ]* |\1${FFMPEG_SUFFIX} |g; \
+	s|\(libavformat\)[^ ]* |\1${FFMPEG_SUFFIX} |g; \
+	s|\(libavutil\)[^ ]*$$|\1${FFMPEG_SUFFIX}|g; }' \
+		${WRKSRC}/src/plugins/Input/ffmpeg/ffmpeg.pro
+	${RM} -rf ${WRKSRC}/src/plugins/Input/ffmpeg/.build \
+		${WRKSRC}/lib/qmmp/Input/libffmpeg.so
 	${FIND} ${WRKSRC} -name Makefile -delete
+
+do-configure:
 	cd ${WRKSRC} && ${SETENV} ${MAKE_ENV} ${QMAKE} ${QMAKE_ARGS}
 
 post-build:
