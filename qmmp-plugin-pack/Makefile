@@ -1,9 +1,4 @@
-# New ports collection Makefile for:	qmmp-plugin-pack
-# Date created:		Fri Jul 01 02:59:13 JST 2012
-# Whom:      SimaMoto,RyoTa <liangtai.s4@gmail.com>
-#
 # $FreeBSD: head/multimedia/qmmp-plugin-pack/Makefile 302758 2012-08-19 12:47:12Z madpilot $
-#
 
 PORTNAME=	qmmp-plugin-pack
 PORTVERSION=	0.6.3
