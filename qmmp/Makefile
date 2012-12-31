@@ -1,9 +1,4 @@
-# New ports collection Makefile for:	qmmp
-# Date created:		Fri Jan 30 01:13:20 JST 2009
-# Whom:      SimaMoto,RyoTa <liangtai.s4@gmail.com>
-#
 # $FreeBSD$
-#
 
 PORTNAME=	qmmp
 PORTVERSION=	0.6.5
