@@ -517,10 +517,8 @@ post-patch:
 
 pre-configure:
 	${RM} -f ${BUILD_WRKSRC}/CMakeCache.txt
-	${REINPLACE_CMD} -e '/pkg_check_modules/ { \
-	s|\(libavcodec\)[^ ]*>=|\1${FFMPEG_SUFFIX}>=|g; \
-	s|\(libavformat\)[^ ]*>=|\1${FFMPEG_SUFFIX}>=|g; \
-	s|\(libavutil\)[^ ]*>=|\1${FFMPEG_SUFFIX}>=|g; }' \
+	${REINPLACE_CMD} -E -e '/pkg_check_modules/ { \
+	s/(libavcodec|libavformat|libavutil)[^ ]*>=/\1${FFMPEG_SUFFIX}>=/g; }' \
 		${WRKSRC}/src/plugins/Input/ffmpeg/CMakeLists.txt
 
 post-build:
