@@ -1,9 +1,4 @@
-# New ports collection makefile for:	wildmidi
-# Date created:				02 Aug 2010
-# Whom:					SimaMoto,RyoTa <liangtai.s4@gmail.com>
-#
 # $FreeBSD: head/audio/wildmidi/Makefile 301735 2012-07-30 18:40:23Z scheidell $
-#
 
 PORTNAME=	wildmidi
 PORTVERSION=	0.2.3.5
