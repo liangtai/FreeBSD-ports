@@ -34,9 +34,7 @@ MAN5=		wildmidi.cfg.5
 PLIST_FILES=	bin/wildmidi include/wildmidi_lib.h \
 		lib/libWildMidi.la lib/libWildMidi.so.2 lib/libWildMidi.so
 
-# Suppress werror caused by these useless flags:
-# -frename-registers -finline-limit=32000 -fexpensive-optimizations
-.if ${CC} == "clang"
+.ifndef(USE_GCC)
 CONFIGURE_ARGS+=	--disable-optimize
 .endif
 
