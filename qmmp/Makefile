@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	qmmp
-PORTVERSION=	0.6.6
+PORTVERSION=	0.6.7
 CATEGORIES=	multimedia
 MASTER_SITES=	http://qmmp.ylsoftware.com/files/ \
 		${MASTER_SITE_GOOGLE_CODE}
@@ -27,7 +27,7 @@ USE_QT4=	corelib gui network xml dbus \
 USE_LDCONFIG=	yes
 
 OPTIONS_SINGLE=	FFMPEG MPLAYER
-OPTIONS_SINGLE_FFMPEG=	FFMPEG0_7 FFMPEG0_11 FFMPEG1 FFMPEGDEVEL
+OPTIONS_SINGLE_FFMPEG=	FFMPEG0_7 FFMPEG1 FFMPEGDEVEL
 OPTIONS_SINGLE_MPLAYER=	MPLAYER1 MPLAYER2
 OPTIONS_DEFINE=	ALSA APIDOC BS2B CDIO ENCA FAAD FFMPEG FLAC GME JACK \
 		LADSPA MODPLUG MPLAYER MUSEPACK OSS OSS4 PROJECTM PULSEAUDIO \
@@ -45,7 +45,6 @@ PROJECTM_DESC=	Support the projectM music visualiser
 SKINNEDUI_DESC=	Skinned GUI
 WILDMIDI_DESC=	Support to playback MIDI files
 FFMPEG0_7_DESC=	ffmpeg-0.7.x (multimedia/ffmpeg)
-FFMPEG0_11_DESC=	ffmpeg-0.11.x (multimedia/ffmpeg-011)
 FFMPEG1_DESC=	ffmpeg-1.x (multimedia/ffmpeg1)
 FFMPEGDEVEL_DESC=	ffmpeg-devel (multimedia/ffmpeg-devel)
 MPLAYER1_DESC=	mplayer-1.1.x (multimedia/mplayer)
@@ -130,13 +129,8 @@ FFMPEG_SUFFIX=	-devel
 LIB_DEPENDS+=	avcodec:${PORTSDIR}/multimedia/ffmpeg1
 FFMPEG_SUFFIX=	1
 .  else
-.   if ${PORT_OPTIONS:MFFMPEG0_11}
-LIB_DEPENDS+=	avcodec:${PORTSDIR}/multimedia/ffmpeg-011
-FFMPEG_SUFFIX=	-011
-.   else
 LIB_DEPENDS+=	avcodec:${PORTSDIR}/multimedia/ffmpeg
 FFMPEG_SUFFIX=
-.   endif
 .  endif
 . endif
 PLIST_SUB+=	FFMPEG=""
