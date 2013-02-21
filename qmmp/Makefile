@@ -1,7 +1,7 @@
 # $FreeBSD: head/multimedia/qmmp/Makefile 302757 2012-08-19 11:59:27Z madpilot $
 
 PORTNAME=	qmmp
-PORTVERSION=	0.6.6
+PORTVERSION=	0.6.7
 CATEGORIES=	multimedia
 MASTER_SITES=	http://qmmp.ylsoftware.com/files/ \
 		${MASTER_SITE_GOOGLE_CODE}
@@ -19,7 +19,7 @@ USE_LDCONFIG=	yes
 USE_PKGCONFIG=	build
 
 OPTIONS_SINGLE=	FFMPEG MPLAYER
-OPTIONS_SINGLE_FFMPEG=	FFMPEG0_7 FFMPEG0_11 FFMPEG1 FFMPEGDEVEL
+OPTIONS_SINGLE_FFMPEG=	FFMPEG0_7 FFMPEG1 FFMPEGDEVEL
 OPTIONS_SINGLE_MPLAYER=	MPLAYER1 MPLAYER2
 OPTIONS_DEFINE=	SKINNEDUI DIR_ASSOC APIDOC PULSEAUDIO ALSA OSS OSS4 \
 		JACK NULLOUT FLAC MUSEPACK FFMPEG MODPLUG WILDMIDI GME MAD \
@@ -61,7 +61,6 @@ KDENOTIFY_DESC=	Support to popup notifier for KDE
 UDISKS_DESC=	Support removable disc detection using UDisks
 QMMP_DIALOG_DESC=	An original dialog
 FFMPEG0_7_DESC=	ffmpeg-0.7.x (multimedia/ffmpeg)
-FFMPEG0_11_DESC=	ffmpeg-0.11.x (multimedia/ffmpeg-011)
 FFMPEG1_DESC=	ffmpeg-1.x (multimedia/ffmpeg1)
 FFMPEGDEVEL_DESC=	ffmpeg-devel (multimedia/ffmpeg-devel)
 MPLAYER1_DESC=	mplayer-1.1.x (multimedia/mplayer)
@@ -162,13 +161,8 @@ FFMPEG_SUFFIX=	-devel
 LIB_DEPENDS+=	avcodec:${PORTSDIR}/multimedia/ffmpeg1
 FFMPEG_SUFFIX=	1
 .  else
-.   if ${PORT_OPTIONS:MFFMPEG0_11}
-LIB_DEPENDS+=	avcodec:${PORTSDIR}/multimedia/ffmpeg-011
-FFMPEG_SUFFIX=	-011
-.   else
 LIB_DEPENDS+=	avcodec:${PORTSDIR}/multimedia/ffmpeg
 FFMPEG_SUFFIX=
-.   endif
 .  endif
 . endif
 PLIST_SUB+=	FFMPEG=""
