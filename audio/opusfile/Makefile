@@ -8,7 +8,7 @@ MASTER_SITES=	http://downloads.xiph.org/releases/opus/ \
 MASTER_SITE_SUBDIR=	opus
 
 MAINTAINER=	liangtai.s4@gmail.com
-COMMENT=	 Opus playback library
+COMMENT=	Opus playback library
 
 LICENSE=	BSD
 
@@ -24,9 +24,8 @@ USE_AUTOTOOLS=	autoconf:env aclocal:env automake:env libtool
 PATCH_STRIP=	-p1
 MAKE_JOBS_UNSAFE=	yes
 
-OPTIONS_DEFINE=	APIDOC DOC
-OPTIONS_DEFAULT=	APIDOC DOC
-DOC_DESC=	Install README.txt and AUTHORS
+OPTIONS_DEFINE=	APIDOC DOCS
+OPTIONS_DEFAULT=	APIDOC DOCS
 APIDOC_DESC=	Install Doxygen generated doc (libopusfile)
 
 .include <bsd.port.options.mk>
@@ -38,7 +37,7 @@ BUILD_DEPENDS+=	doxygen:${PORTSDIR}/devel/doxygen
 CONFIGURE_ARGS+=	--disable-doc
 .endif
 
-.if ${PORT_OPTIONS:MDOC}
+.if ${PORT_OPTIONS:MDOCS}
 DIST_DOCS=	AUTHORS README.txt
 .endif
 
