@@ -1,19 +1,28 @@
-From 6348708bfff46996e4786aefd21d07926152dc2d Mon Sep 17 00:00:00 2001
+From b70517b768e8f546427a745c5e834bb0b0e98e0c Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?SimaMoto=2CRy=C5=8DTa?= <liangtai.s4@gmail.com>
-Date: Wed, 27 Feb 2013 12:44:53 +0900
+Date: Sun, 3 Mar 2013 12:42:23 +0900
 Subject: [PATCH] Detect openssl without using pkgconfig
 
 * Allow to run on FreeBSD that don't have openssl.pc while it has
   libssl.so
 * Detect libcompat.so to use ftime(3)
+* Allow to specify PACKAGE_VERSION out of GIT repository
 ---
- configure.ac | 6 +++++-
- 1 file changed, 5 insertions(+), 1 deletion(-)
+ configure.ac | 8 ++++++--
+ 1 file changed, 6 insertions(+), 2 deletions(-)
 
 diff --git a/configure.ac b/configure.ac
-index 3133b7f..4bcd973 100644
+index 3133b7f..dd508e3 100644
 --- a/configure.ac
 +++ b/configure.ac
+@@ -1,6 +1,6 @@
+ # autoconf source script for generating configure
+ 
+-AC_INIT([opusfile], m4_esyscmd([doc/git-version.sh]))
++AC_INIT([opusfile], %%PACKAGE_VERSION%%)
+ 
+ AC_USE_SYSTEM_EXTENSIONS
+ AC_SYS_LARGEFILE
 @@ -53,8 +53,12 @@ AS_IF([test "x$enable_http" != "xno"], [
     AC_DEFINE([OP_ENABLE_HTTP], [1], [Enable HTTP support])
  ])

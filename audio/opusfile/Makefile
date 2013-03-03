@@ -45,6 +45,8 @@ post-patch:
 	@${REINPLACE_CMD} -e 's|^\(dist_doc_DATA =\).*|\1 ${DIST_DOCS}|' \
 		-e 's|^\(pkgconfigdir =\).*|\1 ${PREFIX}/libdata/pkgconfig|' \
 		${WRKSRC}/Makefile.am
+	@${REINPLACE_CMD} -e 's|%%PACKAGE_VERSION%%|${PORTVERSION}|' \
+		${WRKSRC}/configure.ac
 
 pre-configure:
 	@(cd ${WRKSRC} && ${AUTORECONF} -fi)
