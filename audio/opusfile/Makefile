@@ -25,7 +25,7 @@ PATCH_STRIP=	-p1
 MAKE_JOBS_UNSAFE=	yes
 
 OPTIONS_DEFINE=	APIDOC DOCS
-OPTIONS_DEFAULT=	APIDOC DOCS
+OPTIONS_DEFAULT=
 APIDOC_DESC=	Install Doxygen generated doc (libopusfile)
 
 .include <bsd.port.options.mk>
