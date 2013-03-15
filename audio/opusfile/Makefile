@@ -42,23 +42,23 @@ DIST_DOCS=	AUTHORS README.txt
 .endif
 
 post-patch:
-	@${REINPLACE_CMD} -e 's|^\(dist_doc_DATA =\).*|\1 ${DIST_DOCS}|' \
-		-e 's|^\(pkgconfigdir =\).*|\1 ${PREFIX}/libdata/pkgconfig|' \
-		${WRKSRC}/Makefile.am
 	@${REINPLACE_CMD} -e 's|%%PACKAGE_VERSION%%|${PORTVERSION}|' \
 		${WRKSRC}/configure.ac
 
 pre-configure:
+	@${REINPLACE_CMD} -e 's|^\(dist_doc_DATA =\).*|\1 ${DIST_DOCS}|' \
+		-e 's|^\(pkgconfigdir =\).*|\1 ${PREFIX}/libdata/pkgconfig|' \
+		${WRKSRC}/Makefile.am
 	@(cd ${WRKSRC} && ${AUTORECONF} -fi)
 
 post-install:
 .if ${PORT_OPTIONS:MAPIDOC}
 	@${RM} -f ${WRKDIR}/PLIST.doc ; \
-	@${FIND} ${DOCSDIR}/html -type f | ${SED} 's|${PREFIX}/||' \
+	${FIND} ${DOCSDIR}/html -type f | ${SED} 's|${PREFIX}/||' \
 		>> ${WRKDIR}/PLIST.doc ; \
-	@${FIND} ${DOCSDIR}/html -type d | ${SED} 's|${PREFIX}/|@dirrm |' \
+	${FIND} ${DOCSDIR}/html -type d | ${SED} 's|${PREFIX}/|@dirrm |' \
 		| ${SORT} -r >> ${WRKDIR}/PLIST.doc ; \
-	@(cd ${WRKDIR} ; ${SED} -i -e '/PLIST.doc/ r PLIST.doc' ${TMPPLIST})
+	(cd ${WRKDIR} ; ${SED} -i -e '/PLIST.doc/ r PLIST.doc' ${TMPPLIST})
 .endif
 
 .include <bsd.port.mk>
