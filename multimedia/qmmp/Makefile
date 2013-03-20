@@ -11,8 +11,8 @@ COMMENT=	A Qt4-based multimedia player
 
 LICENSE=	GPLv2
 
+USES=	cmake:outsource
 USE_BZIP2=	yes
-USE_CMAKE=	yes
 USE_QT4=	corelib gui network xml \
 		qmake_build rcc_build uic_build moc_build linguist_build
 USE_LDCONFIG=	yes
@@ -498,7 +498,6 @@ INSTALLS_ICONS=	yes
 
 CMAKE_ARGS+=	${PLUGIN_OPTIONS_CMAKE} \
 	-DCMAKE_REQUIRED_INCLUDES:PATH=${LOCALBASE}/include
-CMAKE_OUTSOURCE=yes
 CFLAGS+=	-I${LOCALBASE}/include
 LDFLAGS+=	-L${LOCALBASE}/lib
 
