@@ -1,7 +1,7 @@
 # $FreeBSD: head/multimedia/qmmp/Makefile 302757 2012-08-19 11:59:27Z madpilot $
 
 PORTNAME=	qmmp
-PORTVERSION=	0.6.7
+PORTVERSION=	0.6.8
 CATEGORIES=	multimedia
 MASTER_SITES=	http://qmmp.ylsoftware.com/files/ \
 		${MASTER_SITE_GOOGLE_CODE}
