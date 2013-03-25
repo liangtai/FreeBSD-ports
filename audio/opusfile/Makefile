@@ -4,7 +4,7 @@ PORTNAME=	opusfile
 PORTVERSION=	0.2
 CATEGORIES=	audio
 MASTER_SITES=	http://downloads.xiph.org/releases/opus/ \
-	${MASTER_SITE_MOZILLA_EXTENDED}
+		${MASTER_SITE_MOZILLA_EXTENDED}
 MASTER_SITE_SUBDIR=	opus
 
 MAINTAINER=	liangtai.s4@gmail.com
@@ -13,7 +13,7 @@ COMMENT=	Opus playback library
 LICENSE=	BSD
 
 LIB_DEPENDS=	ogg:${PORTSDIR}/audio/libogg \
-			opus:${PORTSDIR}/audio/opus
+		opus:${PORTSDIR}/audio/opus
 
 USE_GZIP=	yes
 USE_GMAKE=	yes
