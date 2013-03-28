@@ -44,6 +44,8 @@ DIST_DOCS=	AUTHORS README.txt
 post-patch:
 	@${REINPLACE_CMD} -e 's|%%PACKAGE_VERSION%%|${PORTVERSION}|' \
 		${WRKSRC}/configure.ac
+	@${REINPLACE_CMD} -e 's| @openssl@||' \
+		${WRKSRC}/opusfile.pc.in  ${WRKSRC}/opusfile-uninstalled.pc.in
 
 pre-configure:
 	@${REINPLACE_CMD} -e 's|^\(dist_doc_DATA =\).*|\1 ${DIST_DOCS}|' \
