@@ -15,7 +15,7 @@ LIB_DEPENDS=	qmmpui:${PORTSDIR}/multimedia/qmmp
 BUILD_DEPENDS=	qmmp>=0.7.0:${PORTSDIR}/multimedia/qmmp
 
 USE_BZIP2=	yes
-USES=	cmake:outsource
+USES=		cmake:outsource
 USE_QT4=	corelib gui qmake_build rcc_build moc_build linguist_build
 USE_LDCONFIG=	yes
 USE_PKGCONFIG=	build
