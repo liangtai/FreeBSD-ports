@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	qmmp
-PORTVERSION=	0.6.8
+PORTVERSION=	0.7.0
 CATEGORIES=	multimedia
 MASTER_SITES=	http://qmmp.ylsoftware.com/files/ \
 		${MASTER_SITE_GOOGLE_CODE}
@@ -27,24 +27,29 @@ USE_QT4=	corelib gui network xml dbus \
 USE_LDCONFIG=	yes
 
 OPTIONS_SINGLE=	FFMPEG MPLAYER
-OPTIONS_SINGLE_FFMPEG=	FFMPEG0_7 FFMPEG1 FFMPEGDEVEL
+OPTIONS_SINGLE_FFMPEG=	FFMPEG1 FFMPEGDEVEL
 OPTIONS_SINGLE_MPLAYER=	MPLAYER1 MPLAYER2
-OPTIONS_DEFINE=	ALSA DOCS APIDOC BS2B CDIO ENCA FAAD FFMPEG FLAC GME \
-		JACK LADSPA MODPLUG MPLAYER MUSEPACK OSS OSS4 PROJECTM \
-		PULSEAUDIO SKINNEDUI WILDMIDI
-OPTIONS_DEFAULT= ALSA BS2B CDIO ENCA FAAD FFMPEG FFMPEG1 FLAC GME \
-		JACK LADSPA MODPLUG MPLAYER MPLAYER1 MUSEPACK OSS4 PROJECTM \
-		PULSEAUDIO SKINNEDUI WILDMIDI
+OPTIONS_DEFINE=	ALSA APIDOC BS2B CDIO DOCS ENCA FAAD FFMPEG \
+		FFMPEG_LEGACY FLAC GME HAL JACK LADSPA MODPLUG MPLAYER \
+		MUSEPACK OSS OSS4 PROJECTM PULSEAUDIO SKINNEDUI \
+		UDISKS UDISKS2 WILDMIDI
+OPTIONS_DEFAULT= ALSA BS2B CDIO ENCA FAAD FFMPEG FFMPEG1 \
+		FLAC GME JACK HAL LADSPA MODPLUG MPLAYER MPLAYER1 \
+		MUSEPACK OSS4 PROJECTM PULSEAUDIO SKINNEDUI \
+		UDISKS2 WILDMIDI
 APIDOC_DESC=	Doxygen generated doc (libqmmp libqmmpui)
 BS2B_DESC=	Support the Bauer stereophonic2binaural effect
 CDIO_DESC=	Support to playback compact discs
 ENCA_DESC=	Support automatic character set detection
+OPUS_DESC=	Enable reading opusfile tags
 GME_DESC=	Support video game music files
 OSS4_DESC=	Open Sound System (ver4) support
 PROJECTM_DESC=	Support the projectM music visualiser
 SKINNEDUI_DESC=	Skinned GUI
 WILDMIDI_DESC=	Support to playback MIDI files
-FFMPEG0_7_DESC=	ffmpeg-0.7.x (multimedia/ffmpeg)
+UDISKS_DESC=	Support removable disc detection using UDisks
+UDISKS2_DESC=	Support removable disc detection using UDisks
+FFMPEG_LEGACY_DESC=	FFmpeg (ver0.6 - ver0.8) support
 FFMPEG1_DESC=	ffmpeg-1.x (multimedia/ffmpeg1)
 FFMPEGDEVEL_DESC=	ffmpeg-devel (multimedia/ffmpeg-devel)
 MPLAYER1_DESC=	mplayer-1.1.x (multimedia/mplayer)
@@ -120,18 +125,29 @@ PLUGIN_OPTIONS+=	GME_PLUGIN
 PLIST_SUB+=	GME="@comment "
 .endif
 
+.if ${PORT_OPTIONS:MOPUS}
+PLIST_SUB+=	OPUS=""
+LIB_DEPENDS+=	opusfile:${PORTSDIR}/audio/opusfile
+PLUGIN_OPTIONS+=	OPUS_PLUGIN
+.else
+PLIST_SUB+=	OPUS="@comment "
+.endif
+
+.if ${PORT_OPTIONS:MFFMPEG_LEGACY}
+LIB_DEPENDS+=	avcodec:${PORTSDIR}/multimedia/ffmpeg
+PLIST_SUB+=	FFMPEG_LEGACY=""
+PLUGIN_OPTIONS+=	FFMPEG_LEGACY
+.else
+PLIST_SUB+=	FFMPEG_LEGACY="@comment "
+.endif
+
 .if ${PORT_OPTIONS:MFFMPEG}
 . if ${PORT_OPTIONS:MFFMPEGDEVEL}
-LIB_DEPENDS+=	avcodec:${PORTSDIR}/multimedia/ffmpeg-devel
+LIB_DEPENDS+=	avcodec-devel:${PORTSDIR}/multimedia/ffmpeg-devel
 FFMPEG_SUFFIX=	-devel
-. else
-.  if ${PORT_OPTIONS:MFFMPEG1}
-LIB_DEPENDS+=	avcodec:${PORTSDIR}/multimedia/ffmpeg1
+. else # ${PORT_OPTIONS:MFFMPEG1}
+LIB_DEPENDS+=	avcodec1:${PORTSDIR}/multimedia/ffmpeg1
 FFMPEG_SUFFIX=	1
-.  else
-LIB_DEPENDS+=	avcodec:${PORTSDIR}/multimedia/ffmpeg
-FFMPEG_SUFFIX=
-.  endif
 . endif
 PLIST_SUB+=	FFMPEG=""
 PLUGIN_OPTIONS+=	FFMPEG_PLUGIN
@@ -215,6 +231,28 @@ PLUGIN_OPTIONS+=	LADSPA_PLUGIN
 PLIST_SUB+=	LADSPA="@comment "
 .endif
 
+.if ${PORT_OPTIONS:MHAL}
+PLIST_SUB+=	HAL=""
+LIB_DEPENDS+=	hal:${PORTSDIR}/sysutils/hal
+PLUGIN_OPTIONS+=	HAL_PLUGIN
+.else
+PLIST_SUB+=	HAL="@comment "
+.endif
+
+.if ${PORT_OPTIONS:MUDISKS}
+PLIST_SUB+=	UDISKS=""
+PLUGIN_OPTIONS+=	UDISKS_PLUGIN
+.else
+PLIST_SUB+=	UDISKS="@comment "
+.endif
+
+.if ${PORT_OPTIONS:MUDISKS2}
+PLIST_SUB+=	UDISKS2=""
+PLUGIN_OPTIONS+=	UDISKS2_PLUGIN
+.else
+PLIST_SUB+=	UDISKS2="@comment "
+.endif
+
 .if ${PORT_OPTIONS:MWILDMIDI}
 PLIST_SUB+=	WILDMIDI=""
 LIB_DEPENDS+=	WildMidi:${PORTSDIR}/audio/wildmidi
@@ -232,26 +270,27 @@ QMAKE_ARGS+=	CONFIG+="${PLUGIN_OPTIONS}" PREFIX=${PREFIX}
 MAKE_ENV+=	INSTALL_ROOT=${PREFIX}
 
 post-patch:
-	${REINPLACE_CMD} -e 's|^CONFIG += |#CONFIG += |' \
+	@${REINPLACE_CMD} -e 's|^CONFIG += |#CONFIG += |' \
 		${WRKSRC}/qmmp.pri
-	${REINPLACE_CMD} -e 's|/usr/|${LOCALBASE}/|g' \
+	@${REINPLACE_CMD} -e 's|/usr/|${LOCALBASE}/|g' \
 		${WRKSRC}/src/plugins/Input/mpc/mpc.pro \
 		${WRKSRC}/src/plugins/Output/oss4/oss4.pro
 
 pre-configure:
-	${REINPLACE_CMD} -e '/PKGCONFIG/ { ; \
-	s|\(libavcodec\)[^ ]* |\1${FFMPEG_SUFFIX} |g; \
-	s|\(libavformat\)[^ ]* |\1${FFMPEG_SUFFIX} |g; \
-	s|\(libavutil\)[^ ]*$$|\1${FFMPEG_SUFFIX}|g; }' \
+	@${REINPLACE_CMD} -E -e '/PKGCONFIG/ { \
+	s/(libavcodec|libavformat|libavutil)[^[:space:]]*/\1${FFMPEG_SUFFIX} /g; }' \
 		${WRKSRC}/src/plugins/Input/ffmpeg/ffmpeg.pro
-	${RM} -rf ${WRKSRC}/src/plugins/Input/ffmpeg/.build \
+	@${RM} -rf ${WRKSRC}/src/plugins/Input/ffmpeg/.build \
 		${WRKSRC}/lib/qmmp/Input/libffmpeg.so
-	${FIND} ${WRKSRC} -name Makefile -delete
+	@${FIND} ${WRKSRC} -name Makefile -delete
 
 do-configure:
 	cd ${WRKSRC} && ${SETENV} ${MAKE_ENV} ${QMAKE} ${QMAKE_ARGS}
 
 post-build:
+	@${REINPLACE_CMD} -e \
+	's|\((INSTALL_ROOT)\)/lib/\(pkgconfig\)/|\1/libdata/\2/|' \
+		${WRKSRC}/src/qmmp/Makefile ${WRKSRC}/src/qmmpui/Makefile
 .if ${PORT_OPTIONS:MAPIDOC}
 	cd ${WRKSRC}/doc && doxygen Doxyfile
 .endif
