@@ -169,10 +169,10 @@ PLUGIN_OPTIONS_CMAKE+=	-DUSE_FFMPEG_LEGACY:BOOL=FALSE
 
 .if ${PORT_OPTIONS:MFFMPEG}
 . if ${PORT_OPTIONS:MFFMPEGDEVEL}
-LIB_DEPENDS+=	avcodec:${PORTSDIR}/multimedia/ffmpeg-devel
+LIB_DEPENDS+=	avcodec-devel:${PORTSDIR}/multimedia/ffmpeg-devel
 FFMPEG_SUFFIX=	-devel
 . else # ${PORT_OPTIONS:MFFMPEG1}
-LIB_DEPENDS+=	avcodec:${PORTSDIR}/multimedia/ffmpeg1
+LIB_DEPENDS+=	avcodec1:${PORTSDIR}/multimedia/ffmpeg1
 FFMPEG_SUFFIX=	1
 . endif
 PLIST_SUB+=	FFMPEG=""
