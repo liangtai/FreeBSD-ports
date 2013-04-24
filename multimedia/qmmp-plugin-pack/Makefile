@@ -11,6 +11,7 @@ COMMENT=	additional plug-ins for QMMP
 
 LICENSE=	GPLv2
 
+USES=		pkgconfig
 LIB_DEPENDS=	qmmpui:${PORTSDIR}/multimedia/qmmp
 BUILD_DEPENDS=	qmmp>=0.7.0:${PORTSDIR}/multimedia/qmmp
 

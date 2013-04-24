@@ -20,6 +20,7 @@ LIB_DEPENDS=	mad:${PORTSDIR}/audio/libmad \
 		curl:${PORTSDIR}/ftp/curl \
 		mms:${PORTSDIR}/net/libmms
 
+USES=		pkgconfig
 USE_BZIP2=	yes
 USE_GMAKE=	yes
 USE_QT4=	corelib gui network xml dbus \
