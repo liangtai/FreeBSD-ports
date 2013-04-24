@@ -1,4 +1,4 @@
-# $FreeBSD: head/multimedia/qmmp-plugin-pack/Makefile 302758 2012-08-19 12:47:12Z madpilot $
+# $FreeBSD$
 
 PORTNAME=	qmmp-plugin-pack
 PORTVERSION=	0.7.0
@@ -15,10 +15,9 @@ LIB_DEPENDS=	qmmpui:${PORTSDIR}/multimedia/qmmp
 BUILD_DEPENDS=	qmmp>=0.7.0:${PORTSDIR}/multimedia/qmmp
 
 USE_BZIP2=	yes
-USES=		cmake:outsource
+USES=		cmake:outsource pkgconfig
 USE_QT4=	corelib gui qmake_build rcc_build moc_build linguist_build
 USE_LDCONFIG=	yes
-USE_PKGCONFIG=	build
 
 OPTIONS_DEFINE=	FFAP MPG123 QSUI
 OPTIONS_DEFAULT=	FFAP MPG123 QSUI

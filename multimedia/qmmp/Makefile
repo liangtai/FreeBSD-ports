@@ -1,4 +1,4 @@
-# $FreeBSD: head/multimedia/qmmp/Makefile 302757 2012-08-19 11:59:27Z madpilot $
+# $FreeBSD$
 
 PORTNAME=	qmmp
 PORTVERSION=	0.7.0
@@ -11,12 +11,11 @@ COMMENT=	A Qt4-based multimedia player
 
 LICENSE=	GPLv2
 
-USES=	cmake:outsource
+USES=	cmake:outsource pkgconfig
 USE_BZIP2=	yes
 USE_QT4=	corelib gui network xml \
 		qmake_build rcc_build uic_build moc_build linguist_build
 USE_LDCONFIG=	yes
-USE_PKGCONFIG=	build
 
 OPTIONS_SINGLE=	FFMPEG MPLAYER
 OPTIONS_SINGLE_FFMPEG=	FFMPEG1 FFMPEGDEVEL
