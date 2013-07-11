@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	libsidplayfp
-PORTVERSION=	1.0.2
+PORTVERSION=	1.0.3
 CATEGORIES=	audio
 MASTER_SITES=	SF/sidplay-residfp/libsidplayfp/1.0
 
