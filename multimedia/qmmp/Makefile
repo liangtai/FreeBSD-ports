@@ -2,7 +2,7 @@
 
 PORTNAME=	qmmp
 PORTVERSION=	0.7.1
-PORTREVISION=	2
+PORTREVISION=	3
 CATEGORIES=	multimedia
 MASTER_SITES=	http://qmmp.ylsoftware.com/files/ \
 		${MASTER_SITE_GOOGLE_CODE}
