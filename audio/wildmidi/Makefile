@@ -6,7 +6,7 @@ PORTREVISION=	1
 CATEGORIES=	audio
 MASTER_SITES=	SF/${PORTNAME}/${PORTNAME}
 
-MAINTAINER=	liangtai.s4@gmail.com
+MAINTAINER=	liangtai.s16@gmail.com
 COMMENT=	A simple software midi player and a core softsynth library
 
 # player: GPLv3, library: LGPL3

@@ -8,7 +8,7 @@ MASTER_SITES=	http://downloads.xiph.org/releases/opus/ \
 		${MASTER_SITE_MOZILLA_EXTENDED}
 MASTER_SITE_SUBDIR=	opus
 
-MAINTAINER=	liangtai.s4@gmail.com
+MAINTAINER=	liangtai.s16@gmail.com
 COMMENT=	Opus playback library
 
 LICENSE=	BSD
