@@ -16,9 +16,9 @@ LICENSE=	BSD
 LIB_DEPENDS=	ogg:${PORTSDIR}/audio/libogg \
 		opus:${PORTSDIR}/audio/opus
 
-USES=		pkgconfig
+USES=		gmake pkgconfig
+NO_STAGE=	yes
 USE_GZIP=	yes
-USE_GMAKE=	yes
 USE_LDCONFIG=	yes
 GNU_CONFIGURE=	yes
 USE_AUTOTOOLS=	autoconf:env aclocal:env automake:env libtool
