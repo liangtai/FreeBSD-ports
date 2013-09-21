@@ -56,6 +56,7 @@ FFMPEGDEVEL_DESC=	ffmpeg-devel (multimedia/ffmpeg-devel)
 MPLAYER1_DESC=	mplayer-1.1.x (multimedia/mplayer)
 MPLAYER2_DESC=	mplayer-2.0.x (multimedia/mplayer2)
 
+NO_STAGE=	yes
 .include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MAPIDOC}
