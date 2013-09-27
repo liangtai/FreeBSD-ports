@@ -15,8 +15,7 @@ LICENSE_COMB=	multi
 
 MAKE_JOBS_UNSAFE=	yes
 
-USES=	gmake
-NO_STAGE=	yes
+USES=		gmake
 USE_LDCONFIG=	yes
 GNU_CONFIGURE=	yes
 

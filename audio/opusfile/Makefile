@@ -17,7 +17,6 @@ LIB_DEPENDS=	ogg:${PORTSDIR}/audio/libogg \
 		opus:${PORTSDIR}/audio/opus
 
 USES=		gmake pkgconfig
-NO_STAGE=	yes
 USE_GZIP=	yes
 USE_LDCONFIG=	yes
 GNU_CONFIGURE=	yes
@@ -57,9 +56,9 @@ pre-configure:
 post-install:
 .if ${PORT_OPTIONS:MAPIDOC}
 	@${RM} -f ${WRKDIR}/PLIST.doc ; \
-	${FIND} ${DOCSDIR}/html -type f | ${SED} 's|${PREFIX}/||' \
+	${FIND} ${STAGEDIR}/${DOCSDIR}/html -type f | ${SED} 's|${PREFIX}/||' \
 		>> ${WRKDIR}/PLIST.doc ; \
-	${FIND} ${DOCSDIR}/html -type d | ${SED} 's|${PREFIX}/|@dirrm |' \
+	${FIND} ${STAGEDIR}/${DOCSDIR}/html -type d | ${SED} 's|${PREFIX}/|@dirrm |' \
 		| ${SORT} -r >> ${WRKDIR}/PLIST.doc ; \
 	(cd ${WRKDIR} ; ${SED} -i -e '/PLIST.doc/ r PLIST.doc' ${TMPPLIST})
 .endif

@@ -56,7 +56,6 @@ FFMPEGDEVEL_DESC=	ffmpeg-devel (multimedia/ffmpeg-devel)
 MPLAYER1_DESC=	mplayer-1.1.x (multimedia/mplayer)
 MPLAYER2_DESC=	mplayer-2.0.x (multimedia/mplayer2)
 
-NO_STAGE=	yes
 .include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MAPIDOC}
@@ -304,19 +303,21 @@ pre-install:
 
 post-install:
 .if ${PORT_OPTIONS:MDOCS}
-	${MKDIR} ${DOCSDIR}; \
-	cd ${WRKSRC} && ${INSTALL_MAN} ${PORTDOCS} ${DOCSDIR}
+	${MKDIR} ${STAGEDIR}/${DOCSDIR}; \
+	cd ${WRKSRC} && ${INSTALL_MAN} ${PORTDOCS} ${STAGEDIR}/${DOCSDIR}
 .endif
 .if ${PORT_OPTIONS:MAPIDOC}
-	${MKDIR} ${DOCSDIR}/html/search ; \
+	${MKDIR} ${STAGEDIR}/${DOCSDIR}/html/search ; \
 	cd ${WRKSRC}/doc/html && \
-		${INSTALL_MAN} *.html *.png *.css ${DOCSDIR}/html ; \
+		${INSTALL_MAN} *.html *.png *.css ${STAGEDIR}/${DOCSDIR}/html ; \
 	cd ${WRKSRC}/doc/html/search && \
-		${INSTALL_MAN} *.html *.png *.css *.js ${DOCSDIR}/html/search ; \
+		${INSTALL_MAN} *.html *.png *.css *.js ${STAGEDIR}/${DOCSDIR}/html/search ; \
 	${RM} -f ${WRKDIR}/PLIST.doc ; \
-	${FIND} ${DOCSDIR}/html -type f | ${SED} 's|${PREFIX}/||' \
+	${FIND} ${STAGEDIR}/${DOCSDIR}/html -type f | \
+		${SED} 's|${STAGEDIR}/${PREFIX}/||' \
 		>> ${WRKDIR}/PLIST.doc ; \
-	${FIND} ${DOCSDIR}/html -type d | ${SED} 's|${PREFIX}/|@dirrm |' \
+	${FIND} ${STAGEDIR}/${DOCSDIR}/html -type d | \
+		${SED} 's|${STAGEDIR}/${PREFIX}/|@dirrm |' \
 		| ${SORT} -r >> ${WRKDIR}/PLIST.doc ; \
 	cd ${WRKDIR} ; ${SED} -i -e '/PLIST.doc/ r PLIST.doc' ${TMPPLIST}
 .endif

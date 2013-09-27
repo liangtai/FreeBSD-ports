@@ -26,7 +26,6 @@ FFAP_DESC=		Support APE sound file
 MPG123_DESC=	Support libmpg123 (MPEG v1/2 layer1/2/3)
 QSUI_DESC=		Simple UI based on standard widgets set
 
-NO_STAGE=	yes
 .include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MQSUI}
