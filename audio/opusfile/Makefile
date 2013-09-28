@@ -56,9 +56,11 @@ pre-configure:
 post-install:
 .if ${PORT_OPTIONS:MAPIDOC}
 	@${RM} -f ${WRKDIR}/PLIST.doc ; \
-	${FIND} ${STAGEDIR}/${DOCSDIR}/html -type f | ${SED} 's|${PREFIX}/||' \
+	${FIND} ${STAGEDIR}/${DOCSDIR}/html -type f | \
+		${SED} 's|${STAGEDIR}/${PREFIX}/||' \
 		>> ${WRKDIR}/PLIST.doc ; \
-	${FIND} ${STAGEDIR}/${DOCSDIR}/html -type d | ${SED} 's|${PREFIX}/|@dirrm |' \
+	${FIND} ${STAGEDIR}/${DOCSDIR}/html -type d | \
+		${SED} 's|${STAGEDIR}/${PREFIX}/|@dirrm |' \
 		| ${SORT} -r >> ${WRKDIR}/PLIST.doc ; \
 	(cd ${WRKDIR} ; ${SED} -i -e '/PLIST.doc/ r PLIST.doc' ${TMPPLIST})
 .endif
