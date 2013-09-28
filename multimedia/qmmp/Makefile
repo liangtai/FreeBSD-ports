@@ -11,14 +11,14 @@ COMMENT=	A Qt4-based multimedia player
 
 LICENSE=	GPLv2
 
-LIB_DEPENDS=	mad:${PORTSDIR}/audio/libmad \
-		sndfile:${PORTSDIR}/audio/libsndfile \
-		ogg:${PORTSDIR}/audio/libogg \
-		vorbis:${PORTSDIR}/audio/libvorbis \
-		wavpack:${PORTSDIR}/audio/wavpack \
-		tag:${PORTSDIR}/audio/taglib \
-		curl:${PORTSDIR}/ftp/curl \
-		mms:${PORTSDIR}/net/libmms
+LIB_DEPENDS=	libmad.so:${PORTSDIR}/audio/libmad \
+		libsndfile.so:${PORTSDIR}/audio/libsndfile \
+		libogg.so:${PORTSDIR}/audio/libogg \
+		libvorbis.so:${PORTSDIR}/audio/libvorbis \
+		libwavpack.so:${PORTSDIR}/audio/wavpack \
+		libtag.so:${PORTSDIR}/audio/taglib \
+		libcurl.so:${PORTSDIR}/ftp/curl \
+		libmms.so:${PORTSDIR}/net/libmms
 
 USES=		pkgconfig
 USE_BZIP2=	yes
@@ -72,7 +72,7 @@ PLIST_SUB+=	SKINNEDUI="@comment "
 .if ${PORT_OPTIONS:MJACK}
 PLIST_SUB+=	JACK=""
 BUILD_DEPENDS+=	jackit>=0.121.2:${PORTSDIR}/audio/jack
-LIB_DEPENDS+=	jack:${PORTSDIR}/audio/jack
+LIB_DEPENDS+=	libjack.so:${PORTSDIR}/audio/jack
 PLUGIN_OPTIONS+=	JACK_PLUGIN
 .else
 PLIST_SUB+=	JACK="@comment "
@@ -80,7 +80,7 @@ PLIST_SUB+=	JACK="@comment "
 
 .if ${PORT_OPTIONS:MALSA}
 PLIST_SUB+=	ALSA=""
-LIB_DEPENDS+=	asound:${PORTSDIR}/audio/alsa-lib
+LIB_DEPENDS+=	libasound.so:${PORTSDIR}/audio/alsa-lib
 PLUGIN_OPTIONS+=	ALSA_PLUGIN
 .else
 PLIST_SUB+=	ALSA="@comment "
@@ -88,7 +88,7 @@ PLIST_SUB+=	ALSA="@comment "
 
 .if ${PORT_OPTIONS:MBS2B}
 PLIST_SUB+=	BS2B=""
-LIB_DEPENDS+=	bs2b:${PORTSDIR}/audio/libbs2b
+LIB_DEPENDS+=	libbs2b.so:${PORTSDIR}/audio/libbs2b
 PLUGIN_OPTIONS+=	BS2B_PLUGIN
 .else
 PLIST_SUB+=	BS2B="@comment "
@@ -96,7 +96,7 @@ PLIST_SUB+=	BS2B="@comment "
 
 .if ${PORT_OPTIONS:MPULSEAUDIO}
 PLIST_SUB+=	PULSE_AUDIO=""
-LIB_DEPENDS+=	pulse:${PORTSDIR}/audio/pulseaudio
+LIB_DEPENDS+=	libpulse.so:${PORTSDIR}/audio/pulseaudio
 PLUGIN_OPTIONS+=	PULSE_AUDIO_PLUGIN
 .else
 PLIST_SUB+=	PULSE_AUDIO="@comment "
@@ -104,7 +104,7 @@ PLIST_SUB+=	PULSE_AUDIO="@comment "
 
 .if ${PORT_OPTIONS:MFLAC}
 PLIST_SUB+=	FLAC=""
-LIB_DEPENDS+=	FLAC:${PORTSDIR}/audio/flac
+LIB_DEPENDS+=	libFLAC.so:${PORTSDIR}/audio/flac
 PLUGIN_OPTIONS+=	FLAC_PLUGIN
 .else
 PLIST_SUB+=	FLAC="@comment "
@@ -112,7 +112,7 @@ PLIST_SUB+=	FLAC="@comment "
 
 .if ${PORT_OPTIONS:MMUSEPACK}
 PLIST_SUB+=	MUSEPACK=""
-LIB_DEPENDS+=	mpcdec:${PORTSDIR}/audio/musepack
+LIB_DEPENDS+=	libmpcdec.so:${PORTSDIR}/audio/musepack
 PLUGIN_OPTIONS+=	MUSEPACK_PLUGIN
 .else
 PLIST_SUB+=	MUSEPACK="@comment "
@@ -120,7 +120,7 @@ PLIST_SUB+=	MUSEPACK="@comment "
 
 .if ${PORT_OPTIONS:MGME}
 PLIST_SUB+=	GME=""
-LIB_DEPENDS+=	gme:${PORTSDIR}/audio/libgme
+LIB_DEPENDS+=	libgme.so:${PORTSDIR}/audio/libgme
 PLUGIN_OPTIONS+=	GME_PLUGIN
 .else
 PLIST_SUB+=	GME="@comment "
@@ -128,14 +128,14 @@ PLIST_SUB+=	GME="@comment "
 
 .if ${PORT_OPTIONS:MOPUS}
 PLIST_SUB+=	OPUS=""
-LIB_DEPENDS+=	opusfile:${PORTSDIR}/audio/opusfile
+LIB_DEPENDS+=	libopusfile.so:${PORTSDIR}/audio/opusfile
 PLUGIN_OPTIONS+=	OPUS_PLUGIN
 .else
 PLIST_SUB+=	OPUS="@comment "
 .endif
 
 .if ${PORT_OPTIONS:MFFMPEG_LEGACY}
-LIB_DEPENDS+=	avcodec:${PORTSDIR}/multimedia/ffmpeg
+LIB_DEPENDS+=	libavcodec.so:${PORTSDIR}/multimedia/ffmpeg
 PLIST_SUB+=	FFMPEG_LEGACY=""
 PLUGIN_OPTIONS+=	FFMPEG_LEGACY
 .else
@@ -144,10 +144,10 @@ PLIST_SUB+=	FFMPEG_LEGACY="@comment "
 
 .if ${PORT_OPTIONS:MFFMPEG}
 . if ${PORT_OPTIONS:MFFMPEGDEVEL}
-LIB_DEPENDS+=	avcodec-devel:${PORTSDIR}/multimedia/ffmpeg-devel
+LIB_DEPENDS+=	libavcodec-devel.so:${PORTSDIR}/multimedia/ffmpeg-devel
 FFMPEG_SUFFIX=	-devel
 . else # ${PORT_OPTIONS:MFFMPEG1}
-LIB_DEPENDS+=	avcodec1:${PORTSDIR}/multimedia/ffmpeg1
+LIB_DEPENDS+=	libavcodec1.so:${PORTSDIR}/multimedia/ffmpeg1
 FFMPEG_SUFFIX=	1
 . endif
 PLIST_SUB+=	FFMPEG=""
@@ -158,7 +158,7 @@ PLIST_SUB+=	FFMPEG="@comment "
 
 .if ${PORT_OPTIONS:MMODPLUG}
 PLIST_SUB+=	MODPLUG=""
-LIB_DEPENDS+=	modplug:${PORTSDIR}/audio/libmodplug
+LIB_DEPENDS+=	libmodplug.so:${PORTSDIR}/audio/libmodplug
 PLUGIN_OPTIONS+=	MODPLUG_PLUGIN
 .else
 PLIST_SUB+=	MODPLUG="@comment "
@@ -166,7 +166,7 @@ PLIST_SUB+=	MODPLUG="@comment "
 
 .if ${PORT_OPTIONS:MFAAD}
 PLIST_SUB+=	FAAD=""
-LIB_DEPENDS+=	faad:${PORTSDIR}/audio/faad
+LIB_DEPENDS+=	libfaad.so:${PORTSDIR}/audio/faad
 PLUGIN_OPTIONS+=	AAC_PLUGIN
 .else
 PLIST_SUB+=	FAAD="@comment "
@@ -174,7 +174,7 @@ PLIST_SUB+=	FAAD="@comment "
 
 .if ${PORT_OPTIONS:MCDIO}
 PLIST_SUB+=	CDIO=""
-LIB_DEPENDS+=	cdio:${PORTSDIR}/sysutils/libcdio
+LIB_DEPENDS+=	libcdio.so:${PORTSDIR}/sysutils/libcdio
 PLUGIN_OPTIONS+=	CDAUDIO_PLUGIN
 .else
 PLIST_SUB+=	CDIO="@comment "
@@ -182,7 +182,7 @@ PLIST_SUB+=	CDIO="@comment "
 
 .if exists(${LOCALBASE}/include/enca.h) || ${PORT_OPTIONS:MENCA}
 PLIST_SUB+=	ENCA=""
-LIB_DEPENDS+=	enca:${PORTSDIR}/converters/enca
+LIB_DEPENDS+=	libenca.so:${PORTSDIR}/converters/enca
 PLUGIN_OPTIONS+=	WITH_ENCA
 .else
 PLIST_SUB+=	ENCA="@comment "
@@ -203,7 +203,7 @@ PLIST_SUB+=	MPLAYER="@comment "
 .if ${PORT_OPTIONS:MPROJECTM}
 PLIST_SUB+=	PROJECTM=""
 USE_QT4+=	opengl
-LIB_DEPENDS+=	projectM.2:${PORTSDIR}/graphics/libprojectm
+LIB_DEPENDS+=	libprojectM.so.2:${PORTSDIR}/graphics/libprojectm
 PLUGIN_OPTIONS+=	PROJECTM_PLUGIN WITH_PROJECTM20
 .else
 PLIST_SUB+=	PROJECTM="@comment "
@@ -234,7 +234,7 @@ PLIST_SUB+=	LADSPA="@comment "
 
 .if ${PORT_OPTIONS:MHAL}
 PLIST_SUB+=	HAL=""
-LIB_DEPENDS+=	hal:${PORTSDIR}/sysutils/hal
+LIB_DEPENDS+=	libhal.so:${PORTSDIR}/sysutils/hal
 PLUGIN_OPTIONS+=	HAL_PLUGIN
 .else
 PLIST_SUB+=	HAL="@comment "
@@ -256,7 +256,7 @@ PLIST_SUB+=	UDISKS2="@comment "
 
 .if ${PORT_OPTIONS:MWILDMIDI}
 PLIST_SUB+=	WILDMIDI=""
-LIB_DEPENDS+=	WildMidi:${PORTSDIR}/audio/wildmidi
+LIB_DEPENDS+=	libWildMidi.so:${PORTSDIR}/audio/wildmidi
 PLUGIN_OPTIONS+=	WILDMIDI_PLUGIN
 .else
 PLIST_SUB+=	WILDMIDI="@comment "
