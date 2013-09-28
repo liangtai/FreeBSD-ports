@@ -13,8 +13,8 @@ COMMENT=	Opus playback library
 
 LICENSE=	BSD
 
-LIB_DEPENDS=	ogg:${PORTSDIR}/audio/libogg \
-		opus:${PORTSDIR}/audio/opus
+LIB_DEPENDS=	libogg.so:${PORTSDIR}/audio/libogg \
+		libopus.so:${PORTSDIR}/audio/opus
 
 USES=		gmake pkgconfig
 USE_GZIP=	yes

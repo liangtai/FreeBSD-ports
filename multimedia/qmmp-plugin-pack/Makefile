@@ -11,7 +11,7 @@ COMMENT=	Additional plug-ins for QMMP
 
 LICENSE=	GPLv2
 
-LIB_DEPENDS=	qmmpui:${PORTSDIR}/multimedia/qmmp
+LIB_DEPENDS=	libqmmpui.so:${PORTSDIR}/multimedia/qmmp
 BUILD_DEPENDS=	qmmp>=0.7.0:${PORTSDIR}/multimedia/qmmp
 
 USE_BZIP2=	yes
@@ -43,7 +43,7 @@ PLUGIN_OPTIONS_CMAKE+=	-DUSE_QSUI:BOOL=FALSE
 
 .if ${PORT_OPTIONS:MMPG123}
 PLIST_SUB+=	MPG123=""
-LIB_DEPENDS+=	mpg123:${PORTSDIR}/audio/mpg123
+LIB_DEPENDS+=	libmpg123.so:${PORTSDIR}/audio/mpg123
 PLUGIN_OPTIONS_CMAKE+=	-DUSE_MPG123:BOOL=TRUE
 .else
 PLIST_SUB+=	MPG123="@comment "
@@ -60,7 +60,7 @@ PLUGIN_OPTIONS_CMAKE+=	-DUSE_ASM:BOOL=TRUE
 . else
 PLUGIN_OPTIONS_CMAKE+=	-DUSE_ASM:BOOL=FALSE
 . endif
-LIB_DEPENDS+=	tag:${PORTSDIR}/audio/taglib
+LIB_DEPENDS+=	libtag.so:${PORTSDIR}/audio/taglib
 PLUGIN_OPTIONS_CMAKE+=	-DUSE_FFAP:BOOL=TRUE
 .else
 PLIST_SUB+=	FFAP="@comment "
