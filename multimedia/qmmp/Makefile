@@ -28,7 +28,7 @@ USE_QT4=	corelib gui network xml dbus \
 USE_LDCONFIG=	yes
 
 OPTIONS_SINGLE=	FFMPEG MPLAYER
-OPTIONS_SINGLE_FFMPEG=	FFMPEG1 FFMPEGDEVEL
+OPTIONS_SINGLE_FFMPEG=	FFMPEG1 FFMPEGDEVEL FFMPEG2
 OPTIONS_SINGLE_MPLAYER=	MPLAYER1 MPLAYER2
 OPTIONS_DEFINE=	ALSA APIDOC BS2B CDIO DOCS ENCA FAAD FFMPEG \
 		FFMPEG_LEGACY FLAC GME HAL JACK LADSPA MODPLUG MPLAYER \
@@ -51,6 +51,7 @@ WILDMIDI_DESC=	Support to playback MIDI files
 UDISKS_DESC=	Support removable disc detection using UDisks
 UDISKS2_DESC=	Support removable disc detection using UDisks
 FFMPEG_LEGACY_DESC=	FFmpeg (ver0.6 - ver0.8) support
+FFMPEG2_DESC=	ffmpeg-2.x (multimedia/ffmpeg2)
 FFMPEG1_DESC=	ffmpeg-1.x (multimedia/ffmpeg1)
 FFMPEGDEVEL_DESC=	ffmpeg-devel (multimedia/ffmpeg-devel)
 MPLAYER1_DESC=	mplayer-1.1.x (multimedia/mplayer)
@@ -144,12 +145,16 @@ PLIST_SUB+=	FFMPEG_LEGACY="@comment "
 
 .if ${PORT_OPTIONS:MFFMPEG}
 . if ${PORT_OPTIONS:MFFMPEGDEVEL}
-LIB_DEPENDS+=	libavcodec-devel.so:${PORTSDIR}/multimedia/ffmpeg-devel
 FFMPEG_SUFFIX=	-devel
-. else # ${PORT_OPTIONS:MFFMPEG1}
-LIB_DEPENDS+=	libavcodec1.so:${PORTSDIR}/multimedia/ffmpeg1
+. else
+.  if ${PORT_OPTIONS:MFFMPEG2}
+FFMPEG_SUFFIX=	2
+.  else # ${PORT_OPTIONS:MFFMPEG1}
 FFMPEG_SUFFIX=	1
+.  endif
 . endif
+LIB_DEPENDS+=	libavcodec${FFMPEG_SUFFIX}.so:${PORTSDIR}/multimedia/ffmpeg${FFMPEG_SUFFIX}
+ PLIST_SUB+=	FFMPEG=""
 PLIST_SUB+=	FFMPEG=""
 PLUGIN_OPTIONS+=	FFMPEG_PLUGIN
 .else
