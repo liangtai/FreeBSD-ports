@@ -66,7 +66,7 @@ UDISKS_DESC=	Support removable disc detection (obsolete)
 UDISKS2_DESC=	Support removable disc detection using UDisks
 QMMP_DIALOG_DESC=	An original dialog
 FFMPEG_LEGACY_DESC=	FFmpeg (ver0.6 - ver0.8) support
-FFMPEG2_DESC=	ffmpeg-2.x (multimedia/ffmpeg2)
+FFMPEG2_DESC=	ffmpeg-2.x (multimedia/ffmpeg)
 FFMPEG1_DESC=	ffmpeg-1.x (multimedia/ffmpeg1)
 FFMPEGDEVEL_DESC=	ffmpeg-devel (multimedia/ffmpeg-devel)
 MPLAYER1_DESC=	mplayer-1.1.x (multimedia/mplayer)
@@ -159,7 +159,8 @@ PLUGIN_OPTIONS_CMAKE+=	-DUSE_GME:BOOL=FALSE
 .endif
 
 .if ${PORT_OPTIONS:MFFMPEG_LEGACY}
-LIB_DEPENDS+=	libavcodec.so:${PORTSDIR}/multimedia/ffmpeg
+FFMPEG_SUFFIX=	0
+LIB_DEPENDS+=	libavcodec0.so:${PORTSDIR}/multimedia/ffmpeg0
 PLIST_SUB+=	FFMPEG_LEGACY=""
 PLUGIN_OPTIONS_CMAKE+=	-DUSE_FFMPEG_LEGACY:BOOL=TRUE
 .else
@@ -170,14 +171,16 @@ PLUGIN_OPTIONS_CMAKE+=	-DUSE_FFMPEG_LEGACY:BOOL=FALSE
 .if ${PORT_OPTIONS:MFFMPEG}
 . if ${PORT_OPTIONS:MFFMPEGDEVEL}
 FFMPEG_SUFFIX=	-devel
+LIB_DEPENDS+=	libavcodec-devel.so:${PORTSDIR}/multimedia/ffmpeg-devel
 . else
 .  if ${PORT_OPTIONS:MFFMPEG2}
-FFMPEG_SUFFIX=	2
+FFMPEG_SUFFIX=
+LIB_DEPENDS+=	libavcodec.so:${PORTSDIR}/multimedia/ffmpeg
 .  else # ${PORT_OPTIONS:MFFMPEG1}
 FFMPEG_SUFFIX=	1
+LIB_DEPENDS+=	libavcodec1.so:${PORTSDIR}/multimedia/ffmpeg1
 .  endif
 . endif
-LIB_DEPENDS+=	libavcodec${FFMPEG_SUFFIX}.so:${PORTSDIR}/multimedia/ffmpeg${FFMPEG_SUFFIX}
 PLIST_SUB+=	FFMPEG=""
 PLUGIN_OPTIONS_CMAKE+=	-DUSE_FFMPEG:BOOL=TRUE
 .else
