@@ -14,15 +14,11 @@ LIB_DEPENDS+=	libsndfile.so:${PORTSDIR}/audio/libsndfile \
 		libFLAC.so:${PORTSDIR}/audio/flac \
 		libvorbis.so:${PORTSDIR}/audio/libvorbis
 
-USES=		gmake pkgconfig
+USES=		gmake pkgconfig pathfix
 USE_BZIP2=	yes
 USE_LDCONFIG=	yes
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS+=	CFLAGS=`pkg-config --cflags sndfile` \
 	LDFLAGS=`pkg-config --libs-only-L sndfile`
-
-pre-configure:
-	${REINPLACE_CMD} -e 's@^\(pkgconfigdir = \).*@\1$${prefix}/libdata/pkgconfig@' \
-	${WRKSRC}/Makefile.am ${WRKSRC}/Makefile.in
 
 .include <bsd.port.mk>
