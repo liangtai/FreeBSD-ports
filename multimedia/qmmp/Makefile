@@ -27,14 +27,13 @@ USE_QT4=	corelib gui network xml dbus \
 		qmake_build rcc_build uic_build moc_build linguist_build
 USE_LDCONFIG=	yes
 
-OPTIONS_SINGLE=	FFMPEG MPLAYER
-OPTIONS_SINGLE_FFMPEG=	FFMPEG1 FFMPEGDEVEL FFMPEG2
+OPTIONS_SINGLE=	MPLAYER
 OPTIONS_SINGLE_MPLAYER=	MPLAYER1 MPLAYER2
 OPTIONS_DEFINE=	ALSA APIDOC BS2B CDIO DOCS ENCA FAAD FFMPEG \
-		FFMPEG_LEGACY FLAC GME HAL JACK LADSPA MODPLUG MPLAYER \
+		FLAC GME HAL JACK LADSPA MODPLUG MPLAYER \
 		MUSEPACK OSS OSS4 PROJECTM PULSEAUDIO SKINNEDUI \
 		UDISKS UDISKS2 WILDMIDI
-OPTIONS_DEFAULT= ALSA BS2B CDIO ENCA FAAD FFMPEG FFMPEG1 \
+OPTIONS_DEFAULT= ALSA BS2B CDIO ENCA FAAD FFMPEG \
 		FLAC GME JACK HAL LADSPA MODPLUG MPLAYER MPLAYER1 \
 		MUSEPACK OSS4 PROJECTM PULSEAUDIO SKINNEDUI \
 		UDISKS2 WILDMIDI
@@ -50,10 +49,6 @@ SKINNEDUI_DESC=	Skinned GUI
 WILDMIDI_DESC=	Support to playback MIDI files
 UDISKS_DESC=	Support removable disc detection using UDisks
 UDISKS2_DESC=	Support removable disc detection using UDisks
-FFMPEG_LEGACY_DESC=	FFmpeg (ver0.6 - ver0.8) support
-FFMPEG2_DESC=	ffmpeg-2.x (multimedia/ffmpeg)
-FFMPEG1_DESC=	ffmpeg-1.x (multimedia/ffmpeg1)
-FFMPEGDEVEL_DESC=	ffmpeg-devel (multimedia/ffmpeg-devel)
 MPLAYER1_DESC=	mplayer-1.1.x (multimedia/mplayer)
 MPLAYER2_DESC=	mplayer-2.0.x (multimedia/mplayer2)
 
@@ -135,29 +130,8 @@ PLUGIN_OPTIONS+=	OPUS_PLUGIN
 PLIST_SUB+=	OPUS="@comment "
 .endif
 
-.if ${PORT_OPTIONS:MFFMPEG_LEGACY}
-FFMPEG_SUFFIX=	0
-LIB_DEPENDS+=	libavcodec0.so:${PORTSDIR}/multimedia/ffmpeg0
-PLIST_SUB+=	FFMPEG_LEGACY=""
-PLUGIN_OPTIONS+=	FFMPEG_LEGACY
-.else
-PLIST_SUB+=	FFMPEG_LEGACY="@comment "
-.endif
-
 .if ${PORT_OPTIONS:MFFMPEG}
-. if ${PORT_OPTIONS:MFFMPEGDEVEL}
-FFMPEG_SUFFIX=	-devel
-LIB_DEPENDS+=	libavcodec-devel.so:${PORTSDIR}/multimedia/ffmpeg-devel
-. else
-.  if ${PORT_OPTIONS:MFFMPEG2}
-FFMPEG_SUFFIX=
 LIB_DEPENDS+=	libavcodec.so:${PORTSDIR}/multimedia/ffmpeg
-.  else # ${PORT_OPTIONS:MFFMPEG1}
-FFMPEG_SUFFIX=	1
-LIB_DEPENDS+=	libavcodec1.so:${PORTSDIR}/multimedia/ffmpeg1
-.  endif
-. endif
- PLIST_SUB+=	FFMPEG=""
 PLIST_SUB+=	FFMPEG=""
 PLUGIN_OPTIONS+=	FFMPEG_PLUGIN
 .else
@@ -286,9 +260,6 @@ post-patch:
 		${WRKSRC}/src/plugins/Output/oss4/oss4.pro
 
 pre-configure:
-	@${REINPLACE_CMD} -E -e '/PKGCONFIG/ { \
-	s/(libavcodec|libavformat|libavutil)[^[:space:]]*/\1${FFMPEG_SUFFIX} /g; }' \
-		${WRKSRC}/src/plugins/Input/ffmpeg/ffmpeg.pro
 	@${RM} -rf ${WRKSRC}/src/plugins/Input/ffmpeg/.build \
 		${WRKSRC}/lib/qmmp/Input/libffmpeg.so
 	@${FIND} ${WRKSRC} -name Makefile -delete
