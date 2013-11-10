@@ -287,11 +287,11 @@ post-build:
 
 post-install:
 .if ${PORT_OPTIONS:MDOCS}
-	${MKDIR} ${STAGEDIR}${DOCSDIR}; \
+	@${MKDIR} ${STAGEDIR}${DOCSDIR}; \
 	cd ${WRKSRC} && ${INSTALL_MAN} ${PORTDOCS} ${STAGEDIR}${DOCSDIR}
 .endif
 .if ${PORT_OPTIONS:MDOXYGEN}
-	${MKDIR} ${STAGEDIR}${DOCSDIR}/html/search ; \
+	@${MKDIR} ${STAGEDIR}${DOCSDIR}/html/search ; \
 	cd ${WRKSRC}/doc/html && \
 		${INSTALL_MAN} *.html *.png *.css ${STAGEDIR}${DOCSDIR}/html ; \
 	cd ${WRKSRC}/doc/html/search && \
