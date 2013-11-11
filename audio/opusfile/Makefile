@@ -23,18 +23,13 @@ USE_AUTOTOOLS=	autoconf:env aclocal:env automake:env libtool
 PATCH_STRIP=	-p1
 MAKE_JOBS_UNSAFE=	yes
 
-OPTIONS_DEFINE=	APIDOC DOCS
-OPTIONS_DEFAULT=
-APIDOC_DESC=	Install Doxygen generated doc (libopusfile)
+OPTIONS_DEFINE=	DOXYGEN DOCS
+OPTIONS_DEFAULT=	# empty
 
-.include <bsd.port.options.mk>
+DOXYGEN_CONFIGURE_ENABLE=	doc
+DOXYGEN_BUILD_DEPENDS=	doxygen:${PORTSDIR}/devel/doxygen
 
-.if ${PORT_OPTIONS:MAPIDOC}
-CONFIGURE_ARGS+=	--enable-doc
-BUILD_DEPENDS+=	doxygen:${PORTSDIR}/devel/doxygen
-.else
-CONFIGURE_ARGS+=	--disable-doc
-.endif
+.include <bsd.port.pre.mk>
 
 .if ${PORT_OPTIONS:MDOCS}
 DIST_DOCS=	AUTHORS README.txt
@@ -44,7 +39,6 @@ post-patch:
 	@${REINPLACE_CMD} -e 's| @openssl@||' \
 		${WRKSRC}/opusfile.pc.in  ${WRKSRC}/opusurl.pc.in
 	@${REINPLACE_CMD} -e '/libopusurl_la_SOURCES/s/http.c/& src\/ftime.c/' \
-		-e 's|^\(pkgconfigdir =\).*|\1 ${PREFIX}/libdata/pkgconfig|' \
 		${WRKSRC}/Makefile.am
 	@${CP} ${FILESDIR}/ftime.c ${WRKSRC}/src/
 
@@ -54,7 +48,7 @@ pre-configure:
 	@(cd ${WRKSRC} && ${AUTORECONF} -fi)
 
 post-install:
-.if ${PORT_OPTIONS:MAPIDOC}
+.if ${PORT_OPTIONS:MDOXYGEN}
 	@${RM} -f ${WRKDIR}/PLIST.doc ; \
 	${FIND} ${STAGEDIR}${DOCSDIR}/html -type f | \
 		${SED} 's|${STAGEDIR}${PREFIX}/||' \
@@ -65,4 +59,4 @@ post-install:
 	(cd ${WRKDIR} ; ${SED} -i -e '/PLIST.doc/ r PLIST.doc' ${TMPPLIST})
 .endif
 
-.include <bsd.port.mk>
+.include <bsd.port.post.mk>
