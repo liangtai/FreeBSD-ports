@@ -1,4 +1,3 @@
-# Created by: SimaMoto,RyoTa <liangtai.s4@gmail.com>
 # $FreeBSD$
 
 PORTNAME=	libbs2b
