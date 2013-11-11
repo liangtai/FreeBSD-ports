@@ -24,9 +24,9 @@ PATCH_STRIP=	-p1
 MAKE_JOBS_UNSAFE=	yes
 
 OPTIONS_DEFINE=	DOXYGEN DOCS
-OPTIONS_DEFAULT=
+OPTIONS_DEFAULT=	# empty
 
-DOXYGEN_CONFIGURE_ENABLE=doc
+DOXYGEN_CONFIGURE_ENABLE=	doc
 DOXYGEN_BUILD_DEPENDS=	doxygen:${PORTSDIR}/devel/doxygen
 
 .include <bsd.port.pre.mk>
@@ -39,7 +39,6 @@ post-patch:
 	@${REINPLACE_CMD} -e 's| @openssl@||' \
 		${WRKSRC}/opusfile.pc.in  ${WRKSRC}/opusurl.pc.in
 	@${REINPLACE_CMD} -e '/libopusurl_la_SOURCES/s/http.c/& src\/ftime.c/' \
-		-e 's|^\(pkgconfigdir =\).*|\1 ${PREFIX}/libdata/pkgconfig|' \
 		${WRKSRC}/Makefile.am
 	@${CP} ${FILESDIR}/ftime.c ${WRKSRC}/src/
 
