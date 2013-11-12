@@ -20,7 +20,7 @@ LIB_DEPENDS=	libmad.so:${PORTSDIR}/audio/libmad \
 		libcurl.so:${PORTSDIR}/ftp/curl \
 		libmms.so:${PORTSDIR}/net/libmms
 
-USES=		pkgconfig qmake
+USES=		pkgconfig
 USE_BZIP2=	yes
 USE_GMAKE=	yes
 USE_QT4=	corelib gui network xml dbus \
@@ -130,7 +130,7 @@ PLIST_SUB+=	SHLIB_VER=${PORTVERSION:C/-.*//}
 PORTDOCS=	README README.RUS AUTHORS
 INSTALLS_ICONS=	yes
 
-MAKE_ENV+=	INSTALL_ROOT=${PREFIX}
+MAKE_ENV+=	INSTALL_ROOT=${STAGEDIR}${PREFIX}
 
 post-patch:
 	@${REINPLACE_CMD} -e 's|^CONFIG += |#CONFIG += |' \
@@ -139,8 +139,9 @@ post-patch:
 		${WRKSRC}/src/plugins/Input/mpc/mpc.pro \
 		${WRKSRC}/src/plugins/Output/oss4/oss4.pro
 
-pre-configure:
+do-configure:
 	${FIND} ${WRKSRC} -name Makefile -delete
+	cd ${WRKSRC} && ${SETENV} ${MAKE_ENV} ${QMAKE} ${QMAKE_ARGS}
 
 post-build:
 	@${REINPLACE_CMD} -e \
