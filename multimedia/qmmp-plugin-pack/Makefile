@@ -43,7 +43,7 @@ MPG123_USE=	QT4=uic_build
 MPG123_QMAKE_CONFIG=	MPG123_PLUGIN
 
 QSUI_DESC=		Simple UI based on standard widgets set
-QSUI_USE=	QT4=uic_build QT4=network
+QSUI_USE=	QT4=uic_build,network
 QSUI_QMAKE_CONFIG=	SIMPLE_UI_PLUGIN
 
 .include <bsd.port.pre.mk>
@@ -55,10 +55,8 @@ post-patch:
 	${REINPLACE_CMD} -e 's|^CONFIG += |#CONFIG += |' \
 		${WRKSRC}/qmmp-plugin-pack.pri
 
-pre-configure:
-	${FIND} ${WRKSRC} -name Makefile -delete
-
 do-configure:
+	${FIND} ${WRKSRC} -name Makefile -delete
 	cd ${WRKSRC} && ${SETENV} ${MAKE_ENV} ${QMAKE} ${QMAKE_ARGS}
 
 .include <bsd.port.mk>
