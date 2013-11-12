@@ -22,6 +22,7 @@ GNU_CONFIGURE=	yes
 USE_AUTOTOOLS=	autoconf:env aclocal:env automake:env libtool
 PATCH_STRIP=	-p1
 MAKE_JOBS_UNSAFE=	yes
+PATHFIX_MAKEFILEIN=	Makefile.am
 
 OPTIONS_DEFINE=	DOXYGEN DOCS
 OPTIONS_DEFAULT=	# empty
