@@ -7,7 +7,7 @@ MASTER_SITES=	http://qmmp.ylsoftware.com/files/ \
 		${MASTER_SITE_GOOGLE_CODE}
 
 MAINTAINER=	liangtai.s16@gmail.com
-COMMENT=	A Qt4-based multimedia player
+COMMENT=	Qt4-based multimedia player
 
 LICENSE=	GPLv2
 
