@@ -11,7 +11,7 @@ COMMENT=	Additional plug-ins for QMMP
 
 LICENSE=	GPLv2
 
-USES=		pkgconfig
+USES=		pkgconfig qmake
 LIB_DEPENDS=	libqmmpui.so:${PORTSDIR}/multimedia/qmmp
 BUILD_DEPENDS=	qmmp>=0.7.0:${PORTSDIR}/multimedia/qmmp
 
@@ -49,14 +49,11 @@ QSUI_QMAKE_CONFIG=	SIMPLE_UI_PLUGIN
 .include <bsd.port.pre.mk>
 .include "../qmmp/options.qmake.mk"
 
-MAKE_ENV+=      INSTALL_ROOT=${STAGEDIR}${PREFIX}
+MAKE_ENV+=	INSTALL_ROOT=${STAGEDIR}${PREFIX}
+DESTDIRNAME=	_NO_USE_
 
 post-patch:
 	${REINPLACE_CMD} -e 's|^CONFIG += |#CONFIG += |' \
 		${WRKSRC}/qmmp-plugin-pack.pri
-
-do-configure:
-	${FIND} ${WRKSRC} -name Makefile -delete
-	cd ${WRKSRC} && ${SETENV} ${MAKE_ENV} ${QMAKE} ${QMAKE_ARGS}
 
 .include <bsd.port.mk>
