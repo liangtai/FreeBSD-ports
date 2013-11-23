@@ -56,4 +56,7 @@ post-patch:
 	${REINPLACE_CMD} -e 's|^CONFIG += |#CONFIG += |' \
 		${WRKSRC}/qmmp-plugin-pack.pri
 
+pre-install:
+	@${FIND} ${WRKSRC}/lib/ -type f -exec ${STRIP_CMD} {} +
+
 .include <bsd.port.mk>

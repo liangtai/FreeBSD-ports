@@ -149,6 +149,7 @@ post-build:
 .endif
 
 pre-install:
+	@${FIND} ${WRKSRC}/lib/ -type f -name 'lib*' -exec ${STRIP_CMD} {} +
 .if ${PORT_OPTIONS:MSKINNEDUI}
 	${STRIP_CMD} ${WRKSRC}/bin/qmmp
 .endif
