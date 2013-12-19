@@ -2,6 +2,7 @@
 
 PORTNAME=	opusfile
 PORTVERSION=	0.4
+PORTREVISION=	1
 CATEGORIES=	audio
 MASTER_SITES=	http://downloads.xiph.org/releases/opus/ \
 		${MASTER_SITE_MOZILLA_EXTENDED}
