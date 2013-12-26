@@ -1,4 +1,4 @@
-# $FreeBSD: head/audio/wildmidi/Makefile 301735 2012-07-30 18:40:23Z scheidell $
+# $FreeBSD$
 
 PORTNAME=	wildmidi
 PORTVERSION=	0.2.3.5
@@ -6,8 +6,8 @@ PORTREVISION=	1
 CATEGORIES=	audio
 MASTER_SITES=	SF/${PORTNAME}/${PORTNAME}
 
-MAINTAINER=	liangtai.s4@gmail.com
-COMMENT=	A simple software midi player and a core softsynth library
+MAINTAINER=	liangtai.s16@gmail.com
+COMMENT=	Simple software midi player and core softsynth library
 
 # player: GPLv3, library: LGPL3
 LICENSE=	GPLv3 LGPL3
@@ -15,19 +15,9 @@ LICENSE_COMB=	multi
 
 MAKE_JOBS_UNSAFE=	yes
 
-USE_GZIP=	yes
-USE_GMAKE=	yes
+USES=		gmake
 USE_LDCONFIG=	yes
 GNU_CONFIGURE=	yes
-
-MAN1=		wildmidi.1
-MAN3=		WildMidi_GetString.3 WildMidi_Init.3 WildMidi_MasterVolume.3 \
-		WildMidi_Open.3 WildMidi_OpenBuffer.3 WildMidi_GetOutput.3 \
-		WildMidi_SetOption.3 WildMidi_GetInfo.3 WildMidi_FastSeek.3 \
-		WildMidi_Close.3 WildMidi_Shutdown.3
-MAN5=		wildmidi.cfg.5
-PLIST_FILES=	bin/wildmidi include/wildmidi_lib.h \
-		lib/libWildMidi.la lib/libWildMidi.so.2 lib/libWildMidi.so
 
 .ifndef(USE_GCC)
 CONFIGURE_ARGS+=	--disable-optimize
