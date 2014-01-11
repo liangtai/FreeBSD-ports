@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	qmmp-plugin-pack
-PORTVERSION=	0.7.4
+PORTVERSION=	0.8.0
 CATEGORIES=	multimedia
 MASTER_SITES=	http://qmmp.ylsoftware.com/files/plugins/ \
 		http://qmmp.googlecode.com/files/
@@ -12,7 +12,7 @@ COMMENT=	Additional plug-ins for QMMP
 LICENSE=	GPLv2
 
 LIB_DEPENDS=	libqmmpui.so:${PORTSDIR}/multimedia/qmmp
-BUILD_DEPENDS=	qmmp>=0.7.0:${PORTSDIR}/multimedia/qmmp
+BUILD_DEPENDS=	qmmp>=0.8.0:${PORTSDIR}/multimedia/qmmp
 
 USE_BZIP2=	yes
 USES=		cmake:outsource pkgconfig

@@ -35,10 +35,12 @@ include/qmmpui/mediaplayer.h
 include/qmmpui/metadataformatter.h
 include/qmmpui/playlistdownloader.h
 include/qmmpui/playlistformat.h
+include/qmmpui/playlistgroup.h
 include/qmmpui/playlistitem.h
 include/qmmpui/playlistmanager.h
 include/qmmpui/playlistmodel.h
 include/qmmpui/playlistparser.h
+include/qmmpui/playlisttrack.h
 include/qmmpui/qmmpuisettings.h
 include/qmmpui/templateeditor.h
 include/qmmpui/uifactory.h
@@ -71,6 +73,7 @@ lib/qmmp/CommandLineOptions/libstatusoption.so
 %%LYRICS%%lib/qmmp/General/liblyrics.so
 %%MPRIS%%lib/qmmp/General/libmpris.so
 %%NOTIFIER%%lib/qmmp/General/libnotifier.so
+%%RGSCAN%%lib/qmmp/General/librgscan.so
 %%SCROBBLER%%lib/qmmp/General/libscrobbler.so
 %%STATICON%%lib/qmmp/General/libstatusicon.so
 %%SB%%lib/qmmp/General/libstreambrowser.so
@@ -87,6 +90,7 @@ lib/qmmp/CommandLineOptions/libstatusoption.so
 %%GME%%lib/qmmp/Input/libgme.so
 %%MUSEPACK%%lib/qmmp/Input/libmpc.so
 %%OPUS%%lib/qmmp/Input/libopus.so
+%%SID%%lib/qmmp/Input/libsid.so
 %%SNDFILE%%lib/qmmp/Input/libsndfile.so
 %%VORBIS%%lib/qmmp/Input/libvorbis.so
 %%WAVPACK%%lib/qmmp/Input/libwavpack.so
