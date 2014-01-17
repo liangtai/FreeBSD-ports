@@ -45,7 +45,7 @@ QSUI_DESC=		Simple UI based on standard widgets set
 QSUI_USE=	QT4=uic_build,network
 QSUI_QMAKE_CONFIG=	SIMPLE_UI_PLUGIN
 
-.include <bsd.port.pre.mk>
+.include <bsd.port.options.mk>
 .include "../qmmp/options.qmake.mk"
 
 MAKE_ENV+=	INSTALL_ROOT=${STAGEDIR}${PREFIX}
@@ -58,4 +58,4 @@ post-patch:
 pre-install:
 	@${FIND} ${WRKSRC}/lib/ -type f -exec ${STRIP_CMD} {} +
 
-.include <bsd.port.post.mk>
+.include <bsd.port.mk>
