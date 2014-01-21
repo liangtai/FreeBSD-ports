@@ -24,14 +24,15 @@ CONFIGURE_ARGS+=	--disable-optimize
 .endif
 
 post-patch:
-		@${REINPLACE_CMD} 's@/etc/@${DATADIR}/@' \
-			${WRKSRC}/docs/man/man1/wildmidi.1 \
-			${WRKSRC}/docs/man/man5/wildmidi.cfg.5
-		@${REINPLACE_CMD} '/INSTALL/s@share/man@man@' \
-			${WRKSRC}/src/CMakeLists.txt
+	@${REINPLACE_CMD} 's@/etc/@${DATADIR}/@' \
+		${WRKSRC}/docs/man/man1/wildmidi.1 \
+		${WRKSRC}/docs/man/man5/wildmidi.cfg.5 \
+		${WRKSRC}/CMakeLists.txt
+	@${REINPLACE_CMD} '/INSTALL/s@share/man@man@' \
+		${WRKSRC}/src/CMakeLists.txt
 
 pre-install:
-		@${RM} ${WRKSRC}/docs/man/man1/wildmidi.1${REINPLACE_ARGS:S/-i//} \
-			${WRKSRC}/docs/man/man5/wildmidi.cfg.5${REINPLACE_ARGS:S/-i//}
+	@${RM} -f ${WRKSRC}/docs/man/man1/wildmidi.1${REINPLACE_ARGS:S/-i//} \
+		${WRKSRC}/docs/man/man5/wildmidi.cfg.5${REINPLACE_ARGS:S/-i//}
 
 .include <bsd.port.mk>
