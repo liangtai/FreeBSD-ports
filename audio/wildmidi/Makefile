@@ -19,6 +19,8 @@ GH_COMMIT=	483335e
 USES=		gmake cmake:outsource
 USE_LDCONFIG=	yes
 
+LIB_DEPENDS=	libasound.so:${PORTSDIR}/audio/alsa-lib
+
 .ifndef(USE_GCC)
 CONFIGURE_ARGS+=	--disable-optimize
 .endif
