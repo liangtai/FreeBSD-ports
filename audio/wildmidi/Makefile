@@ -21,10 +21,6 @@ USE_LDCONFIG=	yes
 
 LIB_DEPENDS=	libasound.so:${PORTSDIR}/audio/alsa-lib
 
-.ifndef(USE_GCC)
-CONFIGURE_ARGS+=	--disable-optimize
-.endif
-
 post-patch:
 	@${REINPLACE_CMD} 's@/etc/@${DATADIR}/@' \
 		${WRKSRC}/docs/man/man1/wildmidi.1 \
