@@ -7,7 +7,7 @@ Fix configuration failure on !WANT_PLAYER.
 
 Do not install twice dynamic libray and header on UNIX && !APPLE.
 
-Do not generate static library on !(WANT_STATIC || WANT_PLAYER).
+Do not generate static library on !WANT_STATIC.
 ---
  CMakeLists.txt     | 18 ++++++++++--------
  src/CMakeLists.txt | 18 ++++++++++++++----
