@@ -47,18 +47,18 @@ LICENSE_COMB=	multi
 .endif
 
 post-patch:
-	@${REINPLACE_CMD} -e "/${LOCALBASE:S/\//\\\//g}/t" \
-		-e "1{; s|/usr/share/midi/freepats|${LOCALBASE}/share/freepats|;" \
+	@${GREP} -L ${LOCALBASE} ${WRKSRC}/cfg/wildmidi.cfg | xargs \
+		${REINPLACE_CMD} -e "/^dir \/usr\/share\//{" \
+		-e "s|/usr/share/midi/freepats|${LOCALBASE}/share/freepats|;" \
 		-e "h; x; s|^|# |; s|freepats|guspat|; H; s|guspat|eawpats|; H;" \
-		-e "s|eawpats|eawplus|; H; x;}" \
-		${WRKSRC}/cfg/wildmidi.cfg
-	@${REINPLACE_CMD} -e 's@/etc/wildmidi/@${DATADIR}/@' \
-		-e 's@/etc/@${DATADIR}/@' \
-		${WRKSRC}/docs/man/man1/wildmidi.1 \
+		-e "s|eawpats|eawplus|; H; x;}"
+	@${GREP} -L ${LOCALBASE} ${WRKSRC}/docs/man/man1/wildmidi.1 \
 		${WRKSRC}/docs/man/man5/wildmidi.cfg.5 \
-		${WRKSRC}/CMakeLists.txt
-	@${REINPLACE_CMD} '/INSTALL/s@share/man@man@' \
-		${WRKSRC}/src/CMakeLists.txt
+		${WRKSRC}/CMakeLists.txt | xargs \
+		${REINPLACE_CMD} -e 's@/etc/wildmidi/@${DATADIR}/@' \
+		-e 's@/etc/@${DATADIR}/@'
+	@${GREP} -l share/man ${WRKSRC}/src/CMakeLists.txt | xargs \
+		${REINPLACE_CMD} '/INSTALL/s@share/man@man@'
 
 pre-install:
 	@${RM} -f ${WRKSRC}/docs/man/man1/wildmidi.1${REINPLACE_ARGS:S/-i//} \
