@@ -138,16 +138,18 @@ MAKE_ENV+=	INSTALL_ROOT=${STAGEDIR}${PREFIX}
 DESTDIRNAME=	_NO_USE_
 
 post-patch:
-	@${REINPLACE_CMD} -e 's|^CONFIG += |#CONFIG += |' \
-		${WRKSRC}/qmmp.pri
-	@${REINPLACE_CMD} -e 's|/usr/|${LOCALBASE}/|g' \
+	@${GREP} -l '^CONFIG' ${WRKSRC}/qmmp.pri | ${XARGS} \
+		${REINPLACE_CMD} -e 's|^CONFIG += |#CONFIG += |'
+	@${GREP} -EL '${LOCALBASE}/lib/oss/include|${LOCALBASE}/include' \
 		${WRKSRC}/src/plugins/Input/mpc/mpc.pro \
-		${WRKSRC}/src/plugins/Output/oss4/oss4.pro
+		${WRKSRC}/src/plugins/Output/oss4/oss4.pro | ${XARGS} \
+		${REINPLACE_CMD} -e 's|/usr/|${LOCALBASE}/|g'
 
 post-build:
-	@${REINPLACE_CMD} -e \
-	's|\((INSTALL_ROOT)\)/lib/\(pkgconfig\)|\1/libdata/\2|g' \
-		${WRKSRC}/src/qmmp/Makefile ${WRKSRC}/src/qmmpui/Makefile
+	@${GREP} -L 'libdata/pkgconfig' 
+		${WRKSRC}/src/qmmp/Makefile \
+		${WRKSRC}/src/qmmpui/Makefile | ${XARGS} ${REINPLACE_CMD} -e \
+		's|\((INSTALL_ROOT)\)/lib/\(pkgconfig\)|\1/libdata/\2|g'
 .if ${PORT_OPTIONS:MDOXYGEN}
 	cd ${WRKSRC}/doc && doxygen Doxyfile
 .endif
