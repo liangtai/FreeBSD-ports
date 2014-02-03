@@ -281,11 +281,13 @@ CFLAGS+=	-I${LOCALBASE}/include
 LDFLAGS+=	-L${LOCALBASE}/lib
 
 post-patch:
-	@${REINPLACE_CMD} -e 's|/usr/local/|${LOCALBASE}/|' \
-		${WRKSRC}/src/plugins/Output/oss4/CMakeLists.txt
-	@${REINPLACE_CMD} -e '/pkgconfig/s|$${LIB_DIR}|libdata|' \
+	@${GREP} -L '${LOCALBASE}/lib/oss' \
+		${WRKSRC}/src/plugins/Output/oss4/CMakeLists.txt | ${XARGS} \
+		${REINPLACE_CMD} -e 's|/usr/local/|${LOCALBASE}/|'
+	@${GREP} -L 'libdata/pkgconfig' \
 		${WRKSRC}/src/qmmp/CMakeLists.txt \
-		${WRKSRC}/src/qmmpui/CMakeLists.txt
+		${WRKSRC}/src/qmmpui/CMakeLists.txt | ${XARGS} \
+		${REINPLACE_CMD} -e '/pkgconfig/s|$${LIB_DIR}|libdata|'
 
 pre-configure:
 	@${RM} -f ${BUILD_WRKSRC}/CMakeCache.txt
