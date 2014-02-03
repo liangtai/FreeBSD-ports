@@ -146,7 +146,7 @@ post-patch:
 		${REINPLACE_CMD} -e 's|/usr/|${LOCALBASE}/|g'
 
 post-build:
-	@${GREP} -L 'libdata/pkgconfig' 
+	@${GREP} -L 'libdata/pkgconfig'
 		${WRKSRC}/src/qmmp/Makefile \
 		${WRKSRC}/src/qmmpui/Makefile | ${XARGS} ${REINPLACE_CMD} -e \
 		's|\((INSTALL_ROOT)\)/lib/\(pkgconfig\)|\1/libdata/\2|g'
