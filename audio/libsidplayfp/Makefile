@@ -1,9 +1,9 @@
 # $FreeBSD$
 
 PORTNAME=	libsidplayfp
-PORTVERSION=	1.2.2
+PORTVERSION=	1.3.0
 CATEGORIES=	audio
-MASTER_SITES=	SF/sidplay-residfp/libsidplayfp/1.2
+MASTER_SITES=	SF/sidplay-residfp/libsidplayfp/1.3
 
 MAINTAINER=	liangtai.s16@gmail.com
 COMMENT=	Library to play Commodore 64 music derived from libsidplay2
