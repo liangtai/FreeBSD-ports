@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	wildmidi
-PORTVERSION=	0.3.2
+PORTVERSION=	0.3.3
 CATEGORIES=	audio
 
 MAINTAINER=	liangtai.s16@gmail.com
@@ -14,7 +14,7 @@ USE_GITHUB=	yes
 GH_ACCOUNT=	psi29a
 GH_PROJECT=	wildmidi
 GH_TAGNAME=	${PORTNAME}-${PORTVERSION}
-GH_COMMIT=	1525eab
+GH_COMMIT=	ee0c788
 USES=		gmake cmake:outsource
 USE_LDCONFIG=	yes
 
