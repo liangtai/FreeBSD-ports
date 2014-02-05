@@ -47,17 +47,17 @@ LICENSE_COMB=	multi
 .endif
 
 post-patch:
-	@${GREP} -L ${LOCALBASE} ${WRKSRC}/cfg/wildmidi.cfg | xargs \
+	@${GREP} -L ${LOCALBASE} ${WRKSRC}/cfg/wildmidi.cfg | ${XARGS} \
 		${REINPLACE_CMD} -e "/^dir \/usr\/share\//{" \
 		-e "s|/usr/share/midi/freepats|${LOCALBASE}/share/freepats|;" \
 		-e "h; x; s|^|# |; s|freepats|guspat|; H; s|guspat|eawpats|; H;" \
 		-e "s|eawpats|eawplus|; H; x;}"
 	@${GREP} -L ${LOCALBASE} ${WRKSRC}/docs/man/man1/wildmidi.1 \
 		${WRKSRC}/docs/man/man5/wildmidi.cfg.5 \
-		${WRKSRC}/CMakeLists.txt | xargs \
+		${WRKSRC}/CMakeLists.txt | ${XARGS} \
 		${REINPLACE_CMD} -e 's@/etc/wildmidi/@${DATADIR}/@' \
 		-e 's@/etc/@${DATADIR}/@'
-	@${GREP} -l share/man ${WRKSRC}/src/CMakeLists.txt | xargs \
+	@${GREP} -l share/man ${WRKSRC}/src/CMakeLists.txt | ${XARGS} \
 		${REINPLACE_CMD} '/INSTALL/s@share/man@man@'
 
 pre-install:
