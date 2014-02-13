@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	qmmp-plugin-pack
-PORTVERSION=	0.7.4
+PORTVERSION=	0.7.5
 CATEGORIES=	multimedia
 MASTER_SITES=	http://qmmp.ylsoftware.com/files/plugins/ \
 		http://qmmp.googlecode.com/files/
@@ -51,10 +51,6 @@ QSUI_CMAKE_OFF=	-DUSE_QSUI:BOOL=FALSE
 CMAKE_ARGS+=	-DCMAKE_REQUIRED_INCLUDES:PATH=${LOCALBASE}/include
 CFLAGS+=	-I${LOCALBASE}/include
 LDFLAGS+=	-L${LOCALBASE}/lib
-
-post-patch:
-	${REINPLACE_CMD} -e 's/IF[(]/&USE_QSUI AND /' \
-	${WRKSRC}/src/Ui/CMakeLists.txt
 
 pre-configure:
 	@${RM} -f ${BUILD_WRKSRC}/CMakeCache.txt
