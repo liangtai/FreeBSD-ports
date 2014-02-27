@@ -44,10 +44,9 @@ OPENAL_CMAKE_OFF=	-DWANT_OPENAL:BOOL=OFF
 LICENSE+=	GPLv3
 LICENSE_COMB=	multi
 .  if ${PORT_OPTIONS:MALSA}
-LIB_DEPENDS=	libasound.so:${PORTSDIR}/audio/alsa-lib
-.  endif
-.  if ${PORT_OPTIONS:MOPENAL}
-LIB_DEPENDS=	libopenal.so:${PORTSDIR}/audio/openal
+LIB_DEPENDS+=	libasound.so:${PORTSDIR}/audio/alsa-lib
+.  elif ${PORT_OPTIONS:MOPENAL}
+LIB_DEPENDS+=	libopenal.so:${PORTSDIR}/audio/openal
 .  endif
 .endif
 
