@@ -69,6 +69,7 @@ lib/qmmp/General/libconverter.so
 lib/qmmp/General/libcopypaste.so
 lib/qmmp/General/libcovermanager.so
 lib/qmmp/General/libfileops.so
+lib/qmmp/General/libgnomehotkey.so
 %%HAL%%lib/qmmp/General/libhal.so
 lib/qmmp/General/libhotkey.so
 lib/qmmp/General/libkdenotify.so
