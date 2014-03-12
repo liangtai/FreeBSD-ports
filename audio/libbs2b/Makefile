@@ -14,8 +14,7 @@ LIB_DEPENDS+=	libsndfile.so:${PORTSDIR}/audio/libsndfile \
 		libFLAC.so:${PORTSDIR}/audio/flac \
 		libvorbis.so:${PORTSDIR}/audio/libvorbis
 
-USES=		gmake pkgconfig pathfix
-USE_BZIP2=	yes
+USES=		gmake pkgconfig pathfix tar:bzip2
 USE_LDCONFIG=	yes
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS+=	CFLAGS=`pkg-config --cflags sndfile` \
