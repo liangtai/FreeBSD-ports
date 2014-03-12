@@ -20,9 +20,7 @@ LIB_DEPENDS=	libmad.so:${PORTSDIR}/audio/libmad \
 		libcurl.so:${PORTSDIR}/ftp/curl \
 		libmms.so:${PORTSDIR}/net/libmms
 
-USES=		pkgconfig qmake
-USE_BZIP2=	yes
-USE_GMAKE=	yes
+USES=		pkgconfig qmake gmake tar:bzip2
 USE_QT4=	corelib gui network xml dbus \
 		qmake_build rcc_build uic_build moc_build linguist_build
 USE_LDCONFIG=	yes
