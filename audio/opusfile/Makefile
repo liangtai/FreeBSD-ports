@@ -16,7 +16,6 @@ LIB_DEPENDS=	libogg.so:${PORTSDIR}/audio/libogg \
 		libopus.so:${PORTSDIR}/audio/opus
 
 USES=		gmake pkgconfig pathfix
-USE_GZIP=	yes
 USE_LDCONFIG=	yes
 GNU_CONFIGURE=	yes
 USE_AUTOTOOLS=	autoconf:env aclocal:env automake:env libtool
