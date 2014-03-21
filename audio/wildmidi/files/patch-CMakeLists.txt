@@ -1,0 +1,22 @@
+--- CMakeLists.txt.orig	2014-03-18 19:01:26.000000000 +0900
++++ CMakeLists.txt	2014-03-21 10:37:26.000000000 +0900
+@@ -45,13 +45,17 @@
+ # Platform specific defines
+ IF(UNIX)
+     ADD_DEFINITIONS(
+-        -D_POSIX_C_SOURCE=200809L
+         -D_BSD_SOURCE=1
+-        -D_XOPEN_SOURCE=600
+         -D_LARGEFILE_SOURCE
+         -D_FILE_OFFSET_BITS=64
+         -D_LARGE_FILES
+         )
++    IF(NOT CMAKE_SYSTEM_NAME MATCHES "FreeBSD" AND NOT CMAKE_SYSTEM_NAME MATCHES "DragonFly")
++        ADD_DEFINITIONS(
++            -D_POSIX_C_SOURCE=200809L
++            -D_XOPEN_SOURCE=600
++        )
++    ENDIF(NOT CMAKE_SYSTEM_NAME MATCHES "FreeBSD" AND NOT CMAKE_SYSTEM_NAME MATCHES "DragonFly")
+ ENDIF()
+ 
+ IF(WIN32)
