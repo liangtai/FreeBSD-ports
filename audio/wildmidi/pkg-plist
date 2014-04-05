@@ -3,7 +3,7 @@ include/wildmidi_lib.h
 %%STATIC%%lib/libWildMidi.a
 lib/libWildMidi.so
 lib/libWildMidi.so.1
-lib/libWildMidi.so.1.0.2
+lib/libWildMidi.so.1.1.2
 man/man1/wildmidi.1.gz
 man/man3/WildMidi_Close.3.gz
 man/man3/WildMidi_FastSeek.3.gz
@@ -11,7 +11,6 @@ man/man3/WildMidi_GetInfo.3.gz
 man/man3/WildMidi_GetOutput.3.gz
 man/man3/WildMidi_GetString.3.gz
 man/man3/WildMidi_Init.3.gz
-man/man3/WildMidi_Live.3.gz
 man/man3/WildMidi_MasterVolume.3.gz
 man/man3/WildMidi_Open.3.gz
 man/man3/WildMidi_OpenBuffer.3.gz
