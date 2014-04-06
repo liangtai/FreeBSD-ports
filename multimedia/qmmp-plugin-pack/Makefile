@@ -41,7 +41,6 @@ QSUI_DESC=		Simple UI based on standard widgets set
 QSUI_USE=	QT4=uic_build,network
 QSUI_QMAKE_CONFIG=	SIMPLE_UI_PLUGIN
 
-.include <bsd.port.options.mk>
 .include "../qmmp/options.qmake.mk"
 
 MAKE_ENV+=	INSTALL_ROOT=${STAGEDIR}${PREFIX}
