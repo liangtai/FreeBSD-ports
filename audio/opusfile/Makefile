@@ -10,7 +10,7 @@ MASTER_SITE_SUBDIR=	opus
 MAINTAINER=	liangtai.s16@gmail.com
 COMMENT=	Opus playback library
 
-LICENSE=	BSD
+LICENSE=	BSD3CLAUSE
 
 LIB_DEPENDS=	libogg.so:${PORTSDIR}/audio/libogg \
 		libopus.so:${PORTSDIR}/audio/opus
@@ -19,9 +19,10 @@ USES=		gmake libtool pathfix pkgconfig
 USE_LDCONFIG=	yes
 GNU_CONFIGURE=	yes
 USE_AUTOTOOLS=	autoconf:env aclocal:env automake:env libtool
-PATCH_STRIP=	-p1
 MAKE_JOBS_UNSAFE=	yes
 PATHFIX_MAKEFILEIN=	Makefile.am
+
+PORTDOCS=	AUTHORS README.txt
 
 OPTIONS_DEFINE=	DOXYGEN DOCS
 OPTIONS_DEFAULT=	# empty
@@ -29,11 +30,7 @@ OPTIONS_DEFAULT=	# empty
 DOXYGEN_CONFIGURE_ENABLE=	doc
 DOXYGEN_BUILD_DEPENDS=	doxygen:${PORTSDIR}/devel/doxygen
 
-.include <bsd.port.pre.mk>
-
-.if ${PORT_OPTIONS:MDOCS}
-DIST_DOCS=	AUTHORS README.txt
-.endif
+.include <bsd.port.options.mk>
 
 post-patch:
 	@${REINPLACE_CMD} -e 's| @openssl@||' \
@@ -43,8 +40,6 @@ post-patch:
 	@${CP} ${FILESDIR}/ftime.c ${WRKSRC}/src/
 
 pre-configure:
-	@${REINPLACE_CMD} -e 's|^\(dist_doc_DATA =\).*|\1 ${DIST_DOCS}|' \
-		${WRKSRC}/Makefile.am
 	@(cd ${WRKSRC} && ${AUTORECONF} -fi)
 
 post-install:
@@ -59,4 +54,4 @@ post-install:
 	(cd ${WRKDIR} ; ${SED} -i -e '/PLIST.doc/ r PLIST.doc' ${TMPPLIST})
 .endif
 
-.include <bsd.port.post.mk>
+.include <bsd.port.mk>
