@@ -29,7 +29,7 @@
  */
 
 #ifndef lint
-static char rcsid[] = "$FreeBSD: head/lib/libcompat/4.1/ftime.c 211061 2010-08-08 08:19:23Z ed $";
+static char rcsid[] = "$FreeBSD: head/audio/opusfile/files/ftime.c 341456 2014-01-27 21:21:51Z makc $";
 #endif /* not lint */
 
 #include <sys/types.h>
