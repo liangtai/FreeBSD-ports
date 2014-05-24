@@ -18,7 +18,7 @@ LIB_DEPENDS=	libogg.so:${PORTSDIR}/audio/libogg \
 USES=		gmake libtool pathfix pkgconfig
 USE_LDCONFIG=	yes
 GNU_CONFIGURE=	yes
-USE_AUTOTOOLS=	autoconf:env aclocal:env automake:env libtool
+USE_AUTOTOOLS=	autoconf:env aclocal:env automake:env
 MAKE_JOBS_UNSAFE=	yes
 PATHFIX_MAKEFILEIN=	Makefile.am
 
