@@ -1,10 +1,9 @@
 # $FreeBSD$
 
 PORTNAME=	qmmp-plugin-pack
-PORTVERSION=	0.7.6
+PORTVERSION=	0.7.7
 CATEGORIES=	multimedia
-MASTER_SITES=	http://qmmp.ylsoftware.com/files/plugins/ \
-		http://qmmp.googlecode.com/files/
+MASTER_SITES=	http://qmmp.ylsoftware.com/files/plugins/
 
 MAINTAINER=	liangtai.s16@gmail.com
 COMMENT=	Additional plug-ins for QMMP
