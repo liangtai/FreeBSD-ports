@@ -1,4 +1,5 @@
 %%PLAYER%%bin/wildmidi
+%%PLAYERSTATIC%%bin/wildmidi-static
 include/wildmidi_lib.h
 %%STATIC%%lib/libWildMidi.a
 lib/libWildMidi.so
