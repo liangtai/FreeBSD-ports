@@ -14,7 +14,7 @@ USE_GITHUB=	yes
 GH_ACCOUNT=	Mindwerks
 GH_PROJECT=	wildmidi
 GH_TAGNAME=	${PORTNAME}-${PORTVERSION:R}
-GH_COMMIT=	f084126
+GH_COMMIT=	d008350
 USES=		gmake cmake:outsource
 USE_LDCONFIG=	yes
 
