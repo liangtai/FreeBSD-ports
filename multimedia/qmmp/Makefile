@@ -1,10 +1,9 @@
 # $FreeBSD$
 
 PORTNAME=	qmmp
-PORTVERSION=	0.8.0
+PORTVERSION=	0.9.0
 CATEGORIES=	multimedia
-MASTER_SITES=	http://qmmp.ylsoftware.com/files/ \
-		${MASTER_SITE_GOOGLE_CODE}
+MASTER_SITES=	http://qmmp.ylsoftware.com/files/
 
 MAINTAINER=	liangtai.s16@gmail.com
 COMMENT=	Qt4-based multimedia player
