@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	qmmp-plugin-pack
-PORTVERSION=	0.8.0
+PORTVERSION=	0.8.1
 CATEGORIES=	multimedia
 MASTER_SITES=	http://qmmp.ylsoftware.com/files/plugins/
 
@@ -40,7 +40,8 @@ QSUI_DESC=		Simple UI based on standard widgets set
 QSUI_USE=	QT4=uic_build,network
 QSUI_QMAKE_CONFIG=	SIMPLE_UI_PLUGIN
 
-.include "../qmmp/options.qmake.mk"
+.include <bsd.port.options.mk>
+.include "${.CURDIR}/../qmmp/options.qmake.mk"
 
 MAKE_ENV+=	INSTALL_ROOT=${STAGEDIR}${PREFIX}
 DESTDIRNAME=	_NO_USE_
