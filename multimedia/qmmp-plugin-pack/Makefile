@@ -18,7 +18,10 @@ USE_QT4=	corelib gui qmake_build rcc_build moc_build linguist_build
 USE_LDCONFIG=	yes
 
 OPTIONS_SUB=	yes
-OPTIONS_DEFINE=	FFAP MPG123 QSUI
+
+OPTIONS_MULTI=	PLUGINS
+OPTIONS_MULTI_PLUGINS=	FFAP MPG123 QSUI
+
 OPTIONS_DEFAULT=	FFAP MPG123 QSUI
 
 FFAP_DESC=		Support APE sound file
@@ -47,6 +50,14 @@ QSUI_CMAKE_OFF=	-DUSE_QSUI:BOOL=FALSE
 CMAKE_ARGS+=	-DCMAKE_REQUIRED_INCLUDES:PATH=${LOCALBASE}/include
 CFLAGS+=	-I${LOCALBASE}/include
 LDFLAGS+=	-L${LOCALBASE}/lib
+
+.include <bsd.port.options.mk>
+
+.if ${PORT_OPTIONS:MFFAP} || ${PORT_OPTIONS:MMPG123}
+PLIST_SUB+=	INPUT=""
+.else
+PLIST_SUB+=	INPUT="@comment "
+.endif
 
 pre-configure:
 	@${RM} -f ${BUILD_WRKSRC}/CMakeCache.txt

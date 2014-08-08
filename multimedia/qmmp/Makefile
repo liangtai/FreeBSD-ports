@@ -10,7 +10,7 @@ COMMENT=	Qt4-based multimedia player
 
 LICENSE=	GPLv2
 
-USES=		cmake:outsource pkgconfig tar:bzip2
+USES=		cmake:outsource desktop-file-utils pkgconfig tar:bzip2
 USE_QT4=	corelib gui network xml \
 		qmake_build rcc_build uic_build moc_build linguist_build
 USE_LDCONFIG=	yes
@@ -317,8 +317,11 @@ post-install:
 		>> ${WRKDIR}/PLIST.doc ; \
 	${FIND} ${STAGEDIR}${DOCSDIR}/html -type d | \
 		${SED} 's|${STAGEDIR}${PREFIX}/|@dirrm |' \
+		| ${SORT} -r >> ${WRKDIR}/PLIST.doc
+.endif
+	${FIND} ${STAGEDIR}${PREFIX}/lib/qmmp -type d | \
+		${SED} 's|${STAGEDIR}${PREFIX}/|@dirrmtry |' \
 		| ${SORT} -r >> ${WRKDIR}/PLIST.doc ; \
 	cd ${WRKDIR} ; ${SED} -i -e '/PLIST.doc/ r PLIST.doc' ${TMPPLIST}
-.endif
 
 .include <bsd.port.mk>
