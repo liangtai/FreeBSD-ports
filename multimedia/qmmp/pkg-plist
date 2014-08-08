@@ -135,18 +135,6 @@ share/icons/hicolor/scalable/apps/qmmp-simple.svgz
 @dirrmtry share/icons/hicolor/32x32
 @dirrmtry share/icons/hicolor/16x16/apps
 @dirrmtry share/icons/hicolor/16x16
-@comment Insert PLIST.doc here
 @dirrm include/qmmp
 @dirrm include/qmmpui
-@dirrmtry lib/qmmp/CommandLineOptions
-@dirrmtry lib/qmmp/Effect
-@dirrmtry lib/qmmp/Engines
-@dirrmtry lib/qmmp/FileDialogs
-@dirrmtry lib/qmmp/General
-@dirrmtry lib/qmmp/Input
-@dirrmtry lib/qmmp/Output
-@dirrmtry lib/qmmp/PlayListFormats
-@dirrmtry lib/qmmp/Transports
-@dirrmtry lib/qmmp/Ui
-@dirrmtry lib/qmmp/Visual
-@dirrmtry lib/qmmp
+@comment Insert PLIST.doc here
