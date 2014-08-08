@@ -19,7 +19,7 @@ LIB_DEPENDS=	libmad.so:${PORTSDIR}/audio/libmad \
 		libcurl.so:${PORTSDIR}/ftp/curl \
 		libmms.so:${PORTSDIR}/net/libmms
 
-USES=		pkgconfig qmake gmake tar:bzip2
+USES=		desktop-file-utils gmake pkgconfig qmake tar:bzip2
 USE_QT4=	corelib gui network xml dbus \
 		qmake_build rcc_build uic_build moc_build linguist_build
 USE_LDCONFIG=	yes
@@ -173,8 +173,11 @@ post-install:
 		>> ${WRKDIR}/PLIST.doc ; \
 	${FIND} ${STAGEDIR}${DOCSDIR}/html -type d | \
 		${SED} 's|${STAGEDIR}${PREFIX}/|@dirrm |' \
+		| ${SORT} -r >> ${WRKDIR}/PLIST.doc
+.endif
+	${FIND} ${STAGEDIR}${PREFIX}/lib/qmmp -type d | \
+		${SED} 's|${STAGEDIR}${PREFIX}/|@dirrmtry |' \
 		| ${SORT} -r >> ${WRKDIR}/PLIST.doc ; \
 	cd ${WRKDIR} ; ${SED} -i -e '/PLIST.doc/ r PLIST.doc' ${TMPPLIST}
-.endif
 
 .include <bsd.port.mk>

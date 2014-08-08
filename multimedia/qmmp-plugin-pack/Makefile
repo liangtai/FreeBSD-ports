@@ -13,7 +13,7 @@ LICENSE=	GPLv2
 LIB_DEPENDS=	libqmmpui.so:${PORTSDIR}/multimedia/qmmp
 BUILD_DEPENDS=	qmmp>=0.8.0:${PORTSDIR}/multimedia/qmmp
 
-USES=		pkgconfig qmake gmake tar:bzip2
+USES=		gmake desktop-file-utils pkgconfig qmake tar:bzip2
 USE_QT4=	corelib gui qmake_build rcc_build moc_build linguist_build
 USE_LDCONFIG=	yes
 
@@ -45,6 +45,12 @@ QSUI_QMAKE_CONFIG=	SIMPLE_UI_PLUGIN
 
 MAKE_ENV+=	INSTALL_ROOT=${STAGEDIR}${PREFIX}
 DESTDIRNAME=	_NO_USE_
+
+.if ${PORT_OPTIONS:MFFAP} || ${PORT_OPTIONS:MMPG123}
+PLIST_SUB+=	INPUT=""
+.else
+PLIST_SUB+=	INPUT="@comment "
+.endif
 
 post-patch:
 	@${REINPLACE_CMD} -e 's|^CONFIG += |#CONFIG += |' \
