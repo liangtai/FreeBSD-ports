@@ -108,7 +108,8 @@ FAAD_LIB_DEPENDS=	libfaad.so:${PORTSDIR}/audio/faad
 FAAD_QMAKE_CONFIG=	AAC_PLUGIN
 
 CDIO_DESC=	Support to playback compact discs
-CDIO_LIB_DEPENDS=	libcdio.so:${PORTSDIR}/sysutils/libcdio
+CDIO_LIB_DEPENDS=	libcdio.so:${PORTSDIR}/sysutils/libcdio \
+	libcdio_cdda.so:${PORTSDIR}/sysutils/libcdio-paranoia
 CDIO_QMAKE_CONFIG=	CDAUDIO_PLUGIN
 
 ENCA_DESC=	Support automatic character set detection
