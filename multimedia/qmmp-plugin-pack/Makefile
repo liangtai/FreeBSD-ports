@@ -53,12 +53,6 @@ LDFLAGS+=	-L${LOCALBASE}/lib
 
 .include <bsd.port.options.mk>
 
-.if ${PORT_OPTIONS:MFFAP} || ${PORT_OPTIONS:MMPG123}
-PLIST_SUB+=	INPUT=""
-.else
-PLIST_SUB+=	INPUT="@comment "
-.endif
-
 pre-configure:
 	@${RM} -f ${BUILD_WRKSRC}/CMakeCache.txt
 
