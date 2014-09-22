@@ -46,12 +46,6 @@ QSUI_QMAKE_CONFIG=	SIMPLE_UI_PLUGIN
 MAKE_ENV+=	INSTALL_ROOT=${STAGEDIR}${PREFIX}
 DESTDIRNAME=	_NO_USE_
 
-.if ${PORT_OPTIONS:MFFAP} || ${PORT_OPTIONS:MMPG123}
-PLIST_SUB+=	INPUT=""
-.else
-PLIST_SUB+=	INPUT="@comment "
-.endif
-
 post-patch:
 	@${REINPLACE_CMD} -e 's|^CONFIG += |#CONFIG += |' \
 		${WRKSRC}/qmmp-plugin-pack.pri
