@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	qmmp
-PORTVERSION=	0.8.1
+PORTVERSION=	0.8.2
 CATEGORIES=	multimedia
 MASTER_SITES=	http://qmmp.ylsoftware.com/files/
 
@@ -315,7 +315,7 @@ post-install:
 	${RM} -f ${WRKDIR}/PLIST.doc ; \
 	${FIND} ${STAGEDIR}${DOCSDIR}/html -type f | \
 		${SED} 's|${STAGEDIR}${PREFIX}/||' \
-		>> ${WRKDIR}/PLIST.doc ; \
+		>> ${WRKDIR}/PLIST.doc
 .endif
 	cd ${WRKDIR} ; ${SED} -i -e '/PLIST.doc/ r PLIST.doc' ${TMPPLIST}
 
