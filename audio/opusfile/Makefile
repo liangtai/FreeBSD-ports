@@ -15,10 +15,9 @@ LICENSE=	BSD3CLAUSE
 LIB_DEPENDS=	libogg.so:${PORTSDIR}/audio/libogg \
 		libopus.so:${PORTSDIR}/audio/opus
 
-USES=		gmake libtool pathfix pkgconfig
+USES=		autoreconf gmake libtool pathfix pkgconfig
 USE_LDCONFIG=	yes
 GNU_CONFIGURE=	yes
-USE_AUTOTOOLS=	aclocal autoconf autoheader automake
 MAKE_JOBS_UNSAFE=	yes
 PATHFIX_MAKEFILEIN=	Makefile.am
 
