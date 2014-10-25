@@ -22,3 +22,4 @@ lib/libstilview.so.%%STILVIEW_SHLIB_VER%%
 lib/libstilview.so.%%STILVIEW_SHLIB_VERSION%%
 libdata/pkgconfig/libsidplayfp.pc
 libdata/pkgconfig/libstilview.pc
+@comment Insert PLIST.doc here
