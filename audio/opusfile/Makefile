@@ -11,6 +11,7 @@ MAINTAINER=	liangtai.s16@gmail.com
 COMMENT=	Opus playback library
 
 LICENSE=	BSD3CLAUSE
+LICENSE_FILE=	${WRKSRC}/COPYING
 
 LIB_DEPENDS=	libogg.so:${PORTSDIR}/audio/libogg \
 		libopus.so:${PORTSDIR}/audio/opus
@@ -29,12 +30,15 @@ OPTIONS_DEFAULT=	# empty
 DOXYGEN_CONFIGURE_ENABLE=	doc
 DOXYGEN_BUILD_DEPENDS=	doxygen:${PORTSDIR}/devel/doxygen
 
+INSTALL_TARGET=	install-strip
+
 .include <bsd.port.options.mk>
 
 post-patch:
 	@${REINPLACE_CMD} -e 's| @openssl@||' \
 		${WRKSRC}/opusfile.pc.in  ${WRKSRC}/opusurl.pc.in
 	@${REINPLACE_CMD} -e '/libopusurl_la_SOURCES/s/http.c/& src\/ftime.c/' \
+		-e '/dist_doc_DATA/s/COPYING//' \
 		${WRKSRC}/Makefile.am
 	@${CP} ${FILESDIR}/ftime.c ${WRKSRC}/src/
 
