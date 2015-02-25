@@ -12,7 +12,7 @@ LICENSE=	GPLv2
 
 USES=		cmake:outsource desktop-file-utils pkgconfig tar:bzip2
 USE_QT4=	corelib gui network xml \
-		qmake_build rcc_build uic_build moc_build linguist_build
+		qmake_build rcc_build uic_build moc_build linguisttools
 USE_LDCONFIG=	yes
 
 OPTIONS_SUB=	yes
