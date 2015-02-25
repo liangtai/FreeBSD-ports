@@ -21,7 +21,7 @@ LIB_DEPENDS=	libmad.so:${PORTSDIR}/audio/libmad \
 
 USES=		desktop-file-utils gmake pkgconfig qmake tar:bzip2
 USE_QT4=	corelib gui network xml dbus \
-		qmake_build rcc_build uic_build moc_build linguist_build
+		qmake_build rcc_build uic_build moc_build linguisttools
 USE_LDCONFIG=	yes
 
 OPTIONS_SUB=	yes
