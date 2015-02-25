@@ -14,7 +14,7 @@ LIB_DEPENDS=	libqmmpui.so:${PORTSDIR}/multimedia/qmmp
 BUILD_DEPENDS=	qmmp>=0.9.0:${PORTSDIR}/multimedia/qmmp
 
 USES=		gmake desktop-file-utils pkgconfig qmake tar:bzip2
-USE_QT4=	corelib gui qmake_build rcc_build moc_build linguist_build
+USE_QT4=	corelib gui qmake_build rcc_build moc_build linguisttools
 USE_LDCONFIG=	yes
 
 OPTIONS_SUB=	yes
