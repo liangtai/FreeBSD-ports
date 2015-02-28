@@ -20,8 +20,8 @@ LIB_DEPENDS=	libmad.so:${PORTSDIR}/audio/libmad \
 		libmms.so:${PORTSDIR}/net/libmms
 
 USES=		desktop-file-utils gmake pkgconfig qmake tar:bzip2
-USE_QT4=	corelib gui network xml dbus \
-		qmake_build rcc_build uic_build moc_build linguisttools
+USE_QT4=	corelib dbus gui network xml \
+		linguisttools_build moc_build qmake_build rcc_build uic_build
 USE_LDCONFIG=	yes
 
 OPTIONS_SUB=	yes
