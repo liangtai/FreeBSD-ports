@@ -2,6 +2,7 @@ bin/qmmp
 include/qmmp/abstractengine.h
 include/qmmp/audioparameters.h
 include/qmmp/buffer.h
+include/qmmp/channelmap.h
 include/qmmp/decoder.h
 include/qmmp/decoderfactory.h
 include/qmmp/effect.h
@@ -25,6 +26,7 @@ include/qmmp/visualfactory.h
 include/qmmp/volume.h
 include/qmmpui/commandlinemanager.h
 include/qmmpui/commandlineoption.h
+include/qmmpui/columnmanager.h
 include/qmmpui/configdialog.h
 include/qmmpui/detailsdialog.h
 include/qmmpui/filedialog.h
@@ -115,7 +117,6 @@ libdata/pkgconfig/qmmpui.pc
 %%DIR_ASSOC%%share/applications/qmmp.desktop
 %%DIR_ASSOC%%share/applications/qmmp_enqueue.desktop
 %%DIR_ASSOC%%share/applications/qmmp_dir.desktop
-%%DIR_ASSOC%%%%CUE%%share/applications/qmmp_cue.desktop
 share/icons/hicolor/16x16/apps/qmmp.png
 share/icons/hicolor/32x32/apps/qmmp.png
 share/icons/hicolor/48x48/apps/qmmp.png
