@@ -10,11 +10,11 @@ COMMENT=	Simple software midi player and core softsynth library
 # player: GPLv3, library: LGPL3
 LICENSE=	LGPL3
 
-USE_GITHUB=	yes
 GH_ACCOUNT=	Mindwerks
 GH_PROJECT=	wildmidi
-GH_TAGNAME=	${PORTNAME}-${PORTVERSION:R}
-GH_COMMIT=	de35d7f
+GH_TAGNAME=	${PORTNAME}-${PORTVERSION}
+USE_GITHUB=	yes
+
 USES=		gmake cmake:outsource
 USE_LDCONFIG=	yes
 
