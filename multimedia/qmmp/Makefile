@@ -3,7 +3,8 @@
 PORTNAME=	qmmp
 PORTVERSION=	0.8.3
 CATEGORIES=	multimedia
-MASTER_SITES=	http://qmmp.ylsoftware.com/files/
+MASTER_SITES=	http://qmmp.ylsoftware.com/files/ \
+	SF/qmmp-dev/${PORTNAME}/
 
 MAINTAINER=	liangtai.s16@gmail.com
 COMMENT=	Qt4-based multimedia player
