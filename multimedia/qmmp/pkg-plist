@@ -26,7 +26,6 @@ include/qmmp/visualfactory.h
 include/qmmp/volume.h
 include/qmmpui/commandlinemanager.h
 include/qmmpui/commandlineoption.h
-include/qmmpui/columnmanager.h
 include/qmmpui/configdialog.h
 include/qmmpui/detailsdialog.h
 include/qmmpui/filedialog.h
@@ -38,6 +37,7 @@ include/qmmpui/metadataformatter.h
 include/qmmpui/playlistdownloader.h
 include/qmmpui/playlistformat.h
 include/qmmpui/playlistgroup.h
+include/qmmpui/playlistheadermodel.h
 include/qmmpui/playlistitem.h
 include/qmmpui/playlistmanager.h
 include/qmmpui/playlistmodel.h
@@ -84,7 +84,7 @@ lib/qmmp/CommandLineOptions/libstatusoption.so
 %%UDISKS%%lib/qmmp/General/libudisks.so
 %%UDISKS2%%lib/qmmp/General/libudisks2.so
 %%FAAD%%lib/qmmp/Input/libaac.so
-%%CDIO%%lib/qmmp/Input/libcdaudio.so
+%%CDDA%%lib/qmmp/Input/libcdaudio.so
 %%CUE%%lib/qmmp/Input/libcue.so
 %%FFMPEG%%lib/qmmp/Input/libffmpeg.so
 %%FLAC%%lib/qmmp/Input/libflac.so
