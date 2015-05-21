@@ -1,6 +1,6 @@
 # $FreeBSD$
 
-PORTNAME=	qmmp-libui
+PORTNAME=	qmmp-uilib
 CATEGORIES=	multimedia
 
 COMMENT=	UI library of the QMMP Qt4-based multimedia player
