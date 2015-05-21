@@ -1,0 +1,6 @@
+Media Player Remote Interfacing Specification plug-in of QMMP
+
+- MPRIS:   Connect to DBus for allowing remote control and access of
+           track metadata.
+
+WWW: http://qmmp.ylsoftware.com/

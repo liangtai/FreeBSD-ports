@@ -1,0 +1,5 @@
+musepack file format plug-in of QMMP
+
+- mpc:    Decodes musepack audio.
+
+WWW: http://qmmp.ylsoftware.com/

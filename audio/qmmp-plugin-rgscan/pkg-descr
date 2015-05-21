@@ -1,0 +1,6 @@
+ReplayGain scanner plug-in of QMMP
+
+- ReplayGain scanner:         Scans audio files and gives information
+                              for volume normalization.
+
+WWW: http://qmmp.ylsoftware.com/

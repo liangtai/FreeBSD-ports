@@ -1,0 +1,16 @@
+bin/qmmp
+lib/qmmp/CommandLineOptions/libincdecvolumeoption.so
+lib/qmmp/CommandLineOptions/libplaylistoption.so
+lib/qmmp/CommandLineOptions/libseekoption.so
+lib/qmmp/CommandLineOptions/libstatusoption.so
+lib/qmmp/PlayListFormats/libm3uplaylistformat.so
+lib/qmmp/PlayListFormats/libplsplaylistformat.so
+lib/qmmp/PlayListFormats/libxspfplaylistformat.so
+%%DIR_ASSOC%%share/applications/qmmp.desktop
+%%DIR_ASSOC%%share/applications/qmmp_enqueue.desktop
+%%DIR_ASSOC%%share/applications/qmmp_dir.desktop
+share/icons/hicolor/16x16/apps/qmmp.png
+share/icons/hicolor/32x32/apps/qmmp.png
+share/icons/hicolor/48x48/apps/qmmp.png
+share/icons/hicolor/scalable/apps/qmmp.svgz
+share/icons/hicolor/scalable/apps/qmmp-simple.svgz

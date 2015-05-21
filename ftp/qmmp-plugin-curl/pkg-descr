@@ -1,0 +1,6 @@
+curl plug-in of QMMP
+
+- CURL:     Supports to receive and read contents of streaming
+            broadcast via HTTP: icy, shoutcast.
+
+WWW: http://qmmp.ylsoftware.com/

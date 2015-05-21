@@ -1,0 +1,5 @@
+oss output plug-in of QMMP
+
+- OSS:    Outputs sound via FreeBSD kernel module.
+
+WWW: http://qmmp.ylsoftware.com/

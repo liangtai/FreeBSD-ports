@@ -1,0 +1,6 @@
+sid plug-in of QMMP
+
+- SID:         Emulates cycle-based SID (Sound Interface Device)
+               using libresidfp.
+
+WWW: http://qmmp.ylsoftware.com/
