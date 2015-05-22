@@ -16,6 +16,8 @@ BUILD_DEPENDS=	doxygen:${PORTSDIR}/devel/doxygen
 
 DISTINFO_FILE=	${.CURDIR}/../qmmp/distinfo
 
+DOCSDIR=	${LOCALBASE}/share/doc/${PORTNAME:C/-reference//}
+
 do-build:
 	cd ${WRKSRC}/doc && doxygen Doxyfile
 

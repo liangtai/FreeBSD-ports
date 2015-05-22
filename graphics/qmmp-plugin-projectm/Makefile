@@ -1,6 +1,6 @@
 # $FreeBSD$
 
-PORTNAME=	qmmp-plugin-gme
+PORTNAME=	qmmp-plugin-projectm
 CATEGORIES=	graphics multimedia
 
 COMMENT=	projectM music visualiser plug-in of QMMP

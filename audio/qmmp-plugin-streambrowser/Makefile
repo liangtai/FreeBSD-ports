@@ -1,6 +1,6 @@
 # $FreeBSD$
 
-PORTNAME=	qmmp-plugin-fileops
+PORTNAME=	qmmp-plugin-streambrowser
 CATEGORIES=	audio multimedia
 
 COMMENT=	IceCast stream directory browser plug-in of QMMP

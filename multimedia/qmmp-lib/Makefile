@@ -7,6 +7,7 @@ COMMENT=	core library of the QMMP Qt4-based multimedia player
 
 OPTIONS_DEFINE=	DOCS
 PORTDOCS=	README README.RUS AUTHORS
+DOCSDIR=	${LOCALBASE}/share/doc/${PORTNAME:C/-lib//}
 
 .include <bsd.port.options.mk>
 

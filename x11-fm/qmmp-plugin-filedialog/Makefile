@@ -8,7 +8,7 @@ COMMENT=	special made filedialog plug-in of QMMP
 USE_QT4+=	network
 LIB_DEPENDS+=	libqmmpui.so:${PORTSDIR}/multimedia/qmmp-uilib
 
-QMMPPLUGIN_TARGET=	FileDialogs/qmmpfiledialog
+QMMPPLUGIN_TARGET=	FileDialogs/QmmpFileDialog
 QMMPPLUGIN_TAG=	QMMP_DIALOG
 
 DISTINFO_FILE=	${.CURDIR}/../../multimedia/qmmp/distinfo

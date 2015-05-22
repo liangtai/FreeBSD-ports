@@ -11,8 +11,8 @@ COMMENT=	Additional plug-ins for QMMP
 
 LICENSE=	GPLv2
 
-LIB_DEPENDS=	libqmmpui.so:${PORTSDIR}/multimedia/qmmp
-BUILD_DEPENDS=	qmmp>=0.8.0:${PORTSDIR}/multimedia/qmmp
+LIB_DEPENDS=	libqmmpui.so:${PORTSDIR}/multimedia/qmmp-uilib
+BUILD_DEPENDS=	qmmp-lib>=0.8.0:${PORTSDIR}/multimedia/qmmp-lib
 
 USES=		cmake:outsource pkgconfig tar:bzip2
 USE_QT4=	corelib gui linguisttools_build moc_build qmake_build rcc_build

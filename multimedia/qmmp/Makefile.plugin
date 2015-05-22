@@ -10,7 +10,7 @@ MAINTAINER=	liangtai.s16@gmail.com
 LICENSE=	GPLv2
 
 LIB_DEPENDS+=	libqmmp.so:${PORTSDIR}/multimedia/qmmp-lib
-BUILD_DEPENDS+=	qmmp>=0.8.0:${PORTSDIR}/multimedia/qmmp-lib
+BUILD_DEPENDS+=	qmmp-lib>=0.8.0:${PORTSDIR}/multimedia/qmmp-lib
 
 USES=		cmake:outsource pkgconfig tar:bzip2
 USE_QT4+=	corelib gui linguisttools_build moc_build qmake_build rcc_build
@@ -66,13 +66,20 @@ CMAKE_ARGS+=	-DUSE_${pitag}:BOOL=FALSE
 .endfor
 
 pre-configure:
-	${REINPLACE_CMD} -e '/CMAKE_CURRENT_.*\/\.\.\/\.\.\/\.\.\//d' \
-		${WRKSRC}/src/plugins/${QMMPPLUGIN_TARGET}/CMakeLists.txt
-	${REINPLACE_CMD} -Ee '/add_subdirectory[(]src\/(qmmp|qmmpui|app)[)]/d' \
-		${WRKSRC}/CMakeLists.txt
+	@${GREP} -El 'PlayListFormats|CommandLineOptions' \
+		${WRKSRC}/src/plugins/CMakeLists.txt | ${XARGS} \
+		${REINPLACE_CMD} -e '/PlayListFormats/,/CommandLineOptions/d'
+	@${GREP} -El 'target_link_libraries.*libqmmp|add_dependencies' \
+		${WRKSRC}/src/plugins/${QMMPPLUGIN_TARGET}/CMakeLists.txt | ${XARGS} \
+		${REINPLACE_CMD} -e '/CMAKE_CURRENT_.*\/\.\.\/\.\.\/\.\.\//d' \
+		-e '/^add_dependencies/d' \
+		-e '/target_link_libraries/s/libqmmp/-lqmmp/'
+	@${GREP} -H 'add_subdirectory' ${WRKSRC}/CMakeLists.txt | \
+		${GREP} -v 'src/plugins' | cut -d: -f1 | uniq | ${XARGS} \
+		${REINPLACE_CMD} -Ee '/add_subdirectory[(]src\/(qmmp|qmmpui|app)[)]/d'
 	@${RM} -f ${BUILD_WRKSRC}/CMakeCache.txt
 
-# Category/pluginmodule ==> lib/qmmp/Category/libpluginmodule.so
-PLIST_FILES=	lib/qmmp/${QMMPPLUGIN_TARGET:S@/@/lib@:S@$@.so@}
+# Category/PluginModule ==> lib/qmmp/Category/libpluginmodule.so
+PLIST_FILES=	lib/qmmp/${QMMPPLUGIN_TARGET:C@/.*$@/@}${QMMPPLUGIN_TARGET:tl:C@.*/@lib@:S@$@.so@}
 
 .include <bsd.port.mk>
