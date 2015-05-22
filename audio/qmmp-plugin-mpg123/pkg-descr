@@ -1,0 +1,5 @@
+mpg123 file format plug-in of QMMP
+
+- MPG123:     Decodes MPG123 audio.  Supports MPEG v1/2 layer1/2/3.
+
+WWW: http://qmmp.ylsoftware.com/
