@@ -6,9 +6,8 @@ CATEGORIES=	multimedia
 COMMENT=	UI library of the QMMP Qt4-based multimedia player
 
 LIB_DEPENDS+=	libqmmp.so:${PORTSDIR}/multimedia/qmmp-lib
-BUILD_DEPENDS+=	qmmp-lib>=0.8.0:${PORTSDIR}/multimedia/qmmp-lib
+BUILD_DEPENDS+=	qmmp-lib>=0.9.0:${PORTSDIR}/multimedia/qmmp-lib
 
-CMAKE_ARGS+=	-DUSE_RPATH:BOOL=TRUE -DUSE_FFMPEG_LEGACY:BOOL=FALSE
 EXTRACT_AFTER_ARGS+=	--exclude '${DISTNAME}/src/plugins' \
 	--exclude '${DISTNAME}/src/app'
 

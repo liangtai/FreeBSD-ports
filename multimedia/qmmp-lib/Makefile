@@ -11,7 +11,6 @@ DOCSDIR=	${LOCALBASE}/share/doc/${PORTNAME:C/-lib//}
 
 .include <bsd.port.options.mk>
 
-CMAKE_ARGS+=	-DUSE_RPATH:BOOL=TRUE -DUSE_FFMPEG_LEGACY:BOOL=FALSE
 EXTRACT_AFTER_ARGS+=	--exclude '${DISTNAME}/src/plugins' \
 	--exclude '${DISTNAME}/src/qmmpui' --exclude '${DISTNAME}/src/app'
 
