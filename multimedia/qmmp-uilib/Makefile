@@ -1,0 +1,26 @@
+# $FreeBSD$
+
+PORTNAME=	qmmp-uilib
+CATEGORIES=	multimedia
+
+COMMENT=	UI library of the QMMP Qt4-based multimedia player
+
+LIB_DEPENDS+=	libqmmp.so:${PORTSDIR}/multimedia/qmmp-lib
+BUILD_DEPENDS+=	qmmp-lib>=0.8.0:${PORTSDIR}/multimedia/qmmp-lib
+
+EXTRACT_AFTER_ARGS+=	--exclude '${DISTNAME}/src/plugins' \
+	--exclude '${DISTNAME}/src/app'
+
+post-patch:
+	@${GREP} -H '^SUBDIRS' ${WRKSRC}/qmmp.pro \
+		| ${SED} -e 's/= src\// src-/' | ${GREP} 'src/' \
+		| ${CUT} -d: -f1 | uniq | ${XARGS} \
+		${REINPLACE_CMD} -e '/^SUBDIRS/s/=.*$$/=	src\/qmmpui/'
+
+post-build:
+	@${GREP} -L 'libdata/pkgconfig' ${WRKSRC}/src/qmmpui/Makefile \
+		| ${XARGS} ${REINPLACE_CMD} \
+		-e 's|\((INSTALL_ROOT)\)/lib/\(pkgconfig\)|\1/libdata/\2|g'
+
+DISTINFO_FILE=	${.CURDIR}/../../multimedia/qmmp/distinfo
+.include "${.CURDIR}/../../multimedia/qmmp/Makefile.core"

@@ -1,0 +1,5 @@
+opus file format plug-in of QMMP
+
+- Opus:    Reads opus header tag information.
+
+WWW: http://qmmp.ylsoftware.com/

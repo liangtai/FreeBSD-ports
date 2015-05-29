@@ -1,0 +1,8 @@
+external command launcher plug-in of QMMP at each track switching
+
+- Track Change:    Allows to set external command to be invoked at certain
+                   occation each: when another track starts, when the
+                   current track ends, when the current playlist ends,
+                   and when track information changes.
+
+WWW: http://qmmp.ylsoftware.com/

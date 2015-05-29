@@ -1,0 +1,6 @@
+HAL (hardware abstraction layer) supporting plug-in of QMMP
+
+- HAL:    Detects removable storage and compact disc audio then you can
+          add its multimedia contents to the playlist.
+
+WWW: http://qmmp.ylsoftware.com/

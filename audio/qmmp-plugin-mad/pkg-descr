@@ -1,0 +1,6 @@
+mad mpeg tag information extractor plug-in of QMMP
+
+- MAD:   Reads tag information of mpeg movie file.  Allow to specify priority
+         order of ID3v1, ID3v2, and/or APE tags, and to choose text codec.
+
+WWW: http://qmmp.ylsoftware.com/

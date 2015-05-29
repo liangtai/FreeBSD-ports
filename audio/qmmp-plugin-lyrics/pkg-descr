@@ -1,0 +1,6 @@
+show lyrics plug-in of QMMP using lyrics.wikia.com
+
+- Lyrics:     Asks LyricWiki about the current running track and opens
+              a window to show the lyric text.
+
+WWW: http://qmmp.ylsoftware.com/

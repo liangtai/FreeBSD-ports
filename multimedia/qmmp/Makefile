@@ -3,177 +3,152 @@
 PORTNAME=	qmmp
 PORTVERSION=	0.8.4
 CATEGORIES=	multimedia
-MASTER_SITES=	http://qmmp.ylsoftware.com/files/ \
-	SF/qmmp-dev/${PORTNAME}/
+MASTER_SITES=	# empty
+DISTFILES=	#empty
+EXTRACT_ONLY=	# empty
 
 MAINTAINER=	liangtai.s16@gmail.com
-COMMENT=	Qt4-based multimedia player
+COMMENT=	Meta-port of QMMP plugins
 
-LICENSE=	GPLv2
-
-LIB_DEPENDS=	libmad.so:${PORTSDIR}/audio/libmad \
-		libsndfile.so:${PORTSDIR}/audio/libsndfile \
-		libogg.so:${PORTSDIR}/audio/libogg \
-		libvorbis.so:${PORTSDIR}/audio/libvorbis \
-		libwavpack.so:${PORTSDIR}/audio/wavpack \
-		libtag.so:${PORTSDIR}/audio/taglib \
-		libcurl.so:${PORTSDIR}/ftp/curl \
-		libmms.so:${PORTSDIR}/net/libmms
-
-USES=		desktop-file-utils gmake pkgconfig qmake tar:bzip2
-USE_QT4=	corelib dbus gui network xml \
-		linguisttools_build moc_build qmake_build rcc_build uic_build
-USE_LDCONFIG=	yes
+USES=		metaport
 
 OPTIONS_SUB=	yes
-OPTIONS_SINGLE=	MPLAYER
-OPTIONS_SINGLE_MPLAYER=	MPLAYER1 MPLAYER2
-OPTIONS_DEFINE=	ALSA DOXYGEN BS2B CDIO DOCS ENCA FAAD FFMPEG \
-		FLAC GME HAL JACK LADSPA MODPLUG MPLAYER \
-		MUSEPACK OPUS OSS OSS4 PROJECTM PULSEAUDIO SID SKINNEDUI \
-		UDISKS UDISKS2 WILDMIDI
-OPTIONS_DEFAULT=	ALSA BS2B CDIO ENCA FAAD FFMPEG \
-		FLAC GME JACK HAL LADSPA MODPLUG MPLAYER MPLAYER1 \
-		MUSEPACK OPUS OSS4 PROJECTM PULSEAUDIO SID SKINNEDUI \
-		UDISKS2 WILDMIDI
+OPTIONS_MULTI=	DOCUMENTS PLUGIN_APPLICATION PLUGIN_FORMATS \
+		PLUGIN_DSP_EFFECTS PLUGIN_VISUAL_EFFECTS PLUGIN_OUTPUT \
+		PLUGIN_PLAYLIST PLUGIN_NETWORKING MISC
 
-DOXYGEN_BUILD_DEPENDS=	doxygen:${PORTSDIR}/devel/doxygen
+PLUGIN_APPLICATION_DESC=	Main program view
+OPTIONS_MULTI_PLUGIN_APPLICATION=	APP GNOMEHOTKEY HOTKEY KDENOTIFY \
+		NOTIFIER QMMP_DIALOG SKINNEDUI STATICON
 
+DOCUMENTS_DESC=	Documentation and API Reference
+OPTIONS_MULTI_DOCUMENTS=	DOXYGEN
+
+PLUGIN_FORMATS_DESC=	Support various media formats
+OPTIONS_MULTI_PLUGIN_FORMATS=	CDDA FAAD FFMPEG FLAC GME MAD MODPLUG \
+		MUSEPACK OPUS SNDFILE VORBIS WAVPACK WILDMIDI
+
+PLUGIN_DSP_EFFECTS_DESC=	DSP effects
+OPTIONS_MULTI_PLUGIN_DSP_EFFECTS=	BS2B CROSSFADE LADSPA SRCONV STEREO
+
+PLUGIN_VISUAL_EFFECTS_DESC=	Visual effects
+OPTIONS_MULTI_PLUGIN_VISUAL_EFFECTS=	ANALYZER PROJECTM
+
+PLUGIN_OUTPUT_DESC=	Output sound systems
+OPTIONS_MULTI_PLUGIN_OUTPUT=	ALSA JACK NULLOUT OSS OSS4 PULSEAUDIO
+
+PLUGIN_PLAYLIST_DESC=	Playlist operation
+OPTIONS_MULTI_PLUGIN_PLAYLIST=	COPYPASTE FILEOPS HAL \
+		TRACKCHANGE UDISKS UDISKS2
+
+PLUGIN_NETWORKING_DESC=	Features via the Net
+OPTIONS_MULTI_PLUGIN_NETWORKING=	COVER CURL LYRICS MMS SB SCROBBLER
+
+MISC_DESC=	Other features
+OPTIONS_MULTI_MISC= CONVERTER CUE MPLAYER MPRIS RGSCAN SID
+
+OPTIONS_DEFAULT=	ALSA ANALYZER BS2B CDDA CONVERTER COPYPASTE COVER \
+		CROSSFADE CUE CURL FAAD FFMPEG FILEOPS FLAC \
+		GNOMEHOTKEY GME HAL HOTKEY JACK KDENOTIFY LADSPA LYRICS MAD \
+		MMS MODPLUG MPRIS MPLAYER MUSEPACK NOTIFIER NULLOUT \
+		OPUS OSS4 PROJECTM PULSEAUDIO QMMP_DIALOG RGSCAN SB SCROBBLER \
+		SID SKINNEDUI SNDFILE SRCONV STATICON STEREO \
+		TRACKCHANGE UDISKS2 VORBIS WAVPACK WILDMIDI
+
+QMMPLIBDIR=	${LOCALBASE}/lib/qmmp
+
+APP_DESC=	QMMP Main window
+APP_RUN_DEPENDS=	${LOCALBASE}/bin/qmmp
+GNOMEHOTKEY_DESC=	Support GNOME/Cinnamon shortcut keys
+GNOMEHOTKEY_RUN_DEPENDS=	${QMMPLIBDIR}/General/libgnomehotkey.so:${PORTSDIR}/accessibility/qmmp-plugin-gnomehotkey
+HOTKEY_DESC=	Support global shortcut keys
+HOTKEY_RUN_DEPENDS=	${QMMPLIBDIR}/General/libhotkey.so:${PORTSDIR}/accessibility/qmmp-plugin-hotkey
+NOTIFIER_DESC=	Support to popup notifier
+NOTIFIER_RUN_DEPENDS=	${QMMPLIBDIR}/General/libnotifier.so:${PORTSDIR}/deskutils/qmmp-plugin-notifier
+KDENOTIFY_DESC=	Support to popup notifier for KDE
+KDENOTIFY_RUN_DEPENDS=	${QMMPLIBDIR}/General/libkdenotify.so:${PORTSDIR}/deskutils/qmmp-plugin-kdenotify
+QMMP_DIALOG_DESC=	An original filedialog
+QMMP_DIALOG_RUN_DEPENDS=	${QMMPLIBDIR}/FileDialogs/libqmmpfiledialog.so:${PORTSDIR}/x11-fm/qmmp-plugin-filedialog
 SKINNEDUI_DESC=	Skinned GUI
-SKINNEDUI_QMAKE_CONFIG=	WITH_SKINNED
+SKINNEDUI_RUN_DEPENDS=	${QMMPLIBDIR}/Ui/libskinned.so:${PORTSDIR}/multimedia/qmmp-plugin-skinned
+STATICON_DESC=	Show status icon
+STATICON_RUN_DEPENDS=	${QMMPLIBDIR}/General/libstatusicon.so:${PORTSDIR}/multimedia/qmmp-plugin-staticon
 
-JACK_BUILD_DEPENDS=	jackit>=0.121.2:${PORTSDIR}/audio/jack
-JACK_LIB_DEPENDS=	libjack.so:${PORTSDIR}/audio/jack
-JACK_QMAKE_CONFIG=	JACK_PLUGIN
+DOXYGEN_RUN_DEPENDS=	${DOCSDIR}/html/index.html:${PORTSDIR}/multimedia/qmmp-reference
 
-ALSA_LIB_DEPENDS=	libasound.so:${PORTSDIR}/audio/alsa-lib
-ALSA_QMAKE_CONFIG=	ALSA_PLUGIN
-
-BS2B_DESC=	Support the Bauer stereophonic2binaural effect
-BS2B_LIB_DEPENDS=	libbs2b.so:${PORTSDIR}/audio/libbs2b
-BS2B_QMAKE_CONFIG=	BS2B_PLUGIN
-
-PULSEAUDIO_LIB_DEPENDS=	libpulse.so:${PORTSDIR}/audio/pulseaudio
-PULSEAUDIO_QMAKE_CONFIG=	PULSE_AUDIO_PLUGIN
-
-FLAC_LIB_DEPENDS=	libFLAC.so:${PORTSDIR}/audio/flac
-FLAC_QMAKE_CONFIG=	FLAC_PLUGIN
-
-MUSEPACK_LIB_DEPENDS=	libmpcdec.so:${PORTSDIR}/audio/musepack
-MUSEPACK_QMAKE_CONFIG=	MUSEPACK_PLUGIN
-
-GME_DESC=	Support video game music files
-GME_LIB_DEPENDS=	libgme.so:${PORTSDIR}/audio/libgme
-GME_QMAKE_CONFIG=	GME_PLUGIN
-
-OPUS_DESC=	Enable reading opusfile tags
-OPUS_LIB_DEPENDS=	libopusfile.so:${PORTSDIR}/audio/opusfile
-OPUS_QMAKE_CONFIG=	OPUS_PLUGIN
-
-SID_DESC=	Support sid
-SID_LIB_DEPENDS=	libsidplayfp.so:${PORTSDIR}/audio/libsidplayfp
-SID_QMAKE_CONFIG=	SID_PLUGIN
-
-FFMPEG_LIB_DEPENDS=	libavcodec.so:${PORTSDIR}/multimedia/ffmpeg
-FFMPEG_QMAKE_CONFIG=	FFMPEG_PLUGIN
-
-MODPLUG_LIB_DEPENDS=	libmodplug.so:${PORTSDIR}/audio/libmodplug
-MODPLUG_QMAKE_CONFIG=	MODPLUG_PLUGIN
-
-FAAD_LIB_DEPENDS=	libfaad.so:${PORTSDIR}/audio/faad
-FAAD_QMAKE_CONFIG=	AAC_PLUGIN
-
-CDIO_DESC=	Support to playback compact discs
-CDIO_LIB_DEPENDS=	libcdio.so:${PORTSDIR}/sysutils/libcdio \
-	libcdio_cdda.so:${PORTSDIR}/sysutils/libcdio-paranoia
-CDIO_QMAKE_CONFIG=	CDAUDIO_PLUGIN
-
-ENCA_DESC=	Support automatic character set detection
-ENCA_LIB_DEPENDS=	libenca.so:${PORTSDIR}/converters/enca
-ENCA_QMAKE_CONFIG=	WITH_ENCA
-
-MPLAYER1_DESC=	mplayer-1.1.x (multimedia/mplayer)
-MPLAYER2_DESC=	mplayer-2.0.x (multimedia/mplayer2)
-MPLAYER1_RUN_DEPENDS=	mplayer:${PORTSDIR}/multimedia/mplayer
-MPLAYER2_RUN_DEPENDS=	mplayer:${PORTSDIR}/multimedia/mplayer2
-MPLAYER1_QMAKE_CONFIG=	MPLAYER_PLUGIN
-MPLAYER2_QMAKE_CONFIG=	MPLAYER_PLUGIN
-
-PROJECTM_DESC=	Support the projectM music visualiser
-PROJECTM_LIB_DEPENDS=	libprojectM.so.2:${PORTSDIR}/graphics/libprojectm
-PROJECTM_USE=	QT4=opengl
-PROJECTM_QMAKE_CONFIG=	PROJECTM_PLUGIN WITH_PROJECTM20
-
-OSS_QMAKE_CONFIG=	OSS_PLUGIN
-
-OSS4_DESC=	Open Sound System (ver4) support
-OSS4_BUILD_DEPENDS=	${LOCALBASE}/lib/oss/include/sys/soundcard.h:${PORTSDIR}/audio/oss
-OSS4_QMAKE_CONFIG=	OSS4_PLUGIN
-
-LADSPA_RUN_DEPENDS=	analyseplugin:${PORTSDIR}/audio/ladspa
-LADSPA_QMAKE_CONFIG=	LADSPA_PLUGIN
-
-HAL_LIB_DEPENDS=	libhal.so:${PORTSDIR}/sysutils/hal
-HAL_QMAKE_CONFIG=	HAL_PLUGIN
-
-UDISKS_DESC=	Support removable disc detection (obsolete)
-UDISKS2_DESC=	Support removable disc detection using UDisks
-UDISKS_QMAKE_CONFIG=	UDISKS_PLUGIN
-UDISKS2_QMAKE_CONFIG=	UDISKS2_PLUGIN
-
+CDDA_RUN_DEPENDS=	${QMMPLIBDIR}/Input/libcdaudio.so:${PORTSDIR}/audio/qmmp-plugin-cdda
+FAAD_RUN_DEPENDS=	${QMMPLIBDIR}/Input/libaac.so:${PORTSDIR}/audio/qmmp-plugin-faad
+FFMPEG_RUN_DEPENDS=	${QMMPLIBDIR}/Input/libffmpeg.so:${PORTSDIR}/multimedia/qmmp-plugin-ffmpeg
+FLAC_RUN_DEPENDS=	${QMMPLIBDIR}/Input/libflac.so:${PORTSDIR}/audio/qmmp-plugin-flac
+GME_DESC=		Support video game music files
+GME_RUN_DEPENDS=	${QMMPLIBDIR}/Input/libgme.so:${PORTSDIR}/games/qmmp-plugin-gme
+MAD_RUN_DEPENDS=	${QMMPLIBDIR}/Input/libmad.so:${PORTSDIR}/audio/qmmp-plugin-mad
+MODPLUG_RUN_DEPENDS=	${QMMPLIBDIR}/Input/libmodplug.so:${PORTSDIR}/audio/qmmp-plugin-modplug
+MUSEPACK_RUN_DEPENDS=	${QMMPLIBDIR}/Input/libmpc.so:${PORTSDIR}/audio/qmmp-plugin-musepack
+OPUS_DESC=		Enable reading opusfile tags
+OPUS_RUN_DEPENDS=	${QMMPLIBDIR}/Input/libopus.so:${PORTSDIR}/audio/qmmp-plugin-opus
+SNDFILE_RUN_DEPENDS=	${QMMPLIBDIR}/Input/libsndfile.so:${PORTSDIR}/audio/qmmp-plugin-sndfile
+VORBIS_RUN_DEPENDS=	${QMMPLIBDIR}/Input/libvorbis.so:${PORTSDIR}/audio/qmmp-plugin-vorbis
+WAVPACK_RUN_DEPENDS=	${QMMPLIBDIR}/Input/libwavpack.so:${PORTSDIR}/audio/qmmp-plugin-wavpack
 WILDMIDI_DESC=	Support to playback MIDI files
-WILDMIDI_LIB_DEPENDS=	libWildMidi.so:${PORTSDIR}/audio/wildmidi
-WILDMIDI_QMAKE_CONFIG=	WILDMIDI_PLUGIN
+WILDMIDI_RUN_DEPENDS=	${QMMPLIBDIR}/Input/libwildmidi.so:${PORTSDIR}/audio/qmmp-plugin-wildmidi
 
-.include <bsd.port.options.mk>
-.include "options.qmake.mk"
+BS2B_DESC=		Support the Bauer stereophonic2binaural effect
+BS2B_RUN_DEPENDS=	${QMMPLIBDIR}/Effect/libbs2b.so:${PORTSDIR}/audio/qmmp-plugin-bs2b
+CROSSFADE_DESC=	Support cross-fade effect
+CROSSFADE_RUN_DEPENDS=	${QMMPLIBDIR}/Effect/libcrossfade.so:${PORTSDIR}/audio/qmmp-plugin-crossfade
+LADSPA_RUN_DEPENDS=	${QMMPLIBDIR}/Effect/libladspa.so:${PORTSDIR}/audio/qmmp-plugin-ladspa
+SRCONV_DESC=	Support the sample rate converter
+SRCONV_RUN_DEPENDS=	${QMMPLIBDIR}/Effect/libsrconverter.so:${PORTSDIR}/audio/qmmp-plugin-srconv
+STEREO_DESC=	Support stereo effect
+STEREO_RUN_DEPENDS=	${QMMPLIBDIR}/Effect/libstereo.so:${PORTSDIR}/audio/qmmp-plugin-stereo
 
-PLIST_SUB+=	SHLIB_VER=${PORTVERSION:C/-.*//}
+ANALYZER_DESC=	Supoort spectrum analyzer visualization
+ANALYZER_RUN_DEPENDS=	${QMMPLIBDIR}/Visual/libanalyzer.so:${PORTSDIR}/multimedia/qmmp-plugin-analyzer
+PROJECTM_DESC=	Support the projectM music visualiser
+PROJECTM_RUN_DEPENDS=	${QMMPLIBDIR}/Visual/libprojectm.so:${PORTSDIR}/graphics/qmmp-plugin-projectm
 
-PORTDOCS=	README README.RUS AUTHORS
-INSTALLS_ICONS=	yes
+ALSA_RUN_DEPENDS=	${QMMPLIBDIR}/Output/libalsa.so:${PORTSDIR}/audio/qmmp-plugin-alsa
+JACK_RUN_DEPENDS=	${QMMPLIBDIR}/Output/libjack.so:${PORTSDIR}/audio/qmmp-plugin-jack
+NULLOUT_DESC=	Support null output
+NULLOUT_RUN_DEPENDS=	${QMMPLIBDIR}/Output/libnull.so:${PORTSDIR}/audio/qmmp-plugin-nullout
+OSS_RUN_DEPENDS=	${QMMPLIBDIR}/Output/liboss.so:${PORTSDIR}/audio/qmmp-plugin-oss
+OSS4_DESC=		Open Sound System (ver4) support
+OSS4_RUN_DEPENDS=	${QMMPLIBDIR}/Output/liboss4.so:${PORTSDIR}/audio/qmmp-plugin-oss4
+PULSEAUDIO_RUN_DEPENDS=	${QMMPLIBDIR}/Output/libpulseaudio.so:${PORTSDIR}/audio/qmmp-plugin-pulseaudio
 
-_DESTDIR_VIA_ENV=	no
-MAKE_ARGS+=	INSTALL_ROOT=${STAGEDIR}${PREFIX}
+COPYPASTE_DESC=	Enable copy/paste track infos between playlists
+COPYPASTE_RUN_DEPENDS=	${QMMPLIBDIR}/General/libcopypaste.so:${PORTSDIR}/misc/qmmp-plugin-copypaste
+FILEOPS_DESC=	Support file operation
+FILEOPS_RUN_DEPENDS=	${QMMPLIBDIR}/General/libfileops.so:${PORTSDIR}/sysutils/qmmp-plugin-fileops
+HAL_RUN_DEPENDS=	${QMMPLIBDIR}/General/libhal.so:${PORTSDIR}/sysutils/qmmp-plugin-hal
+TRACKCHANGE_DESC=	Enable to run external command each track switching
+TRACKCHANGE_RUN_DEPENDS=	${QMMPLIBDIR}/General/libtrackchange.so:${PORTSDIR}/misc/qmmp-plugin-trackchange
+UDISKS_DESC=	Support removable disc detection (obsolete)
+UDISKS_RUN_DEPENDS=	${QMMPLIBDIR}/General/libudisks.so:${PORTSDIR}/sysutils/qmmp-plugin-udisks
+UDISKS2_DESC=	Support removable disc detection using UDisks
+UDISKS2_RUN_DEPENDS=	${QMMPLIBDIR}/General/libudisks2.so:${PORTSDIR}/sysutils/qmmp-plugin-udisks2
 
-post-patch:
-	@${GREP} -l '^CONFIG' ${WRKSRC}/qmmp.pri | ${XARGS} \
-		${REINPLACE_CMD} -e 's|^CONFIG += |#CONFIG += |'
-	@${GREP} -EL '${LOCALBASE}/lib/oss/include|${LOCALBASE}/include' \
-		${WRKSRC}/src/plugins/Input/mpc/mpc.pro \
-		${WRKSRC}/src/plugins/Output/oss4/oss4.pro | ${XARGS} \
-		${REINPLACE_CMD} -e 's|/usr/|${LOCALBASE}/|g'
+COVER_DESC=	Support to show cover images
+COVER_RUN_DEPENDS=	${QMMPLIBDIR}/General/libcovermanager.so:${PORTSDIR}/graphics/qmmp-plugin-coverart
+CURL_RUN_DEPENDS=	${QMMPLIBDIR}/Transports/libhttp.so:${PORTSDIR}/ftp/qmmp-plugin-curl
+LYRICS_DESC=	Support to show lyrics using lyrics.wikia.com
+LYRICS_RUN_DEPENDS=	${QMMPLIBDIR}/General/liblyrics.so:${PORTSDIR}/audio/qmmp-plugin-lyrics
+MMS_RUN_DEPENDS=	${QMMPLIBDIR}/Transports/libmms.so:${PORTSDIR}/net/qmmp-plugin-mms
+SB_DESC=	Browser for IceCast stream directory
+SB_RUN_DEPENDS=	${QMMPLIBDIR}/General/libstreambrowser.so:${PORTSDIR}/audio/qmmp-plugin-streambrowser
+SCROBBLER_DESC=	Support Libre.fm/Last.fm scrobbler feature
+SCROBBLER_RUN_DEPENDS=	${QMMPLIBDIR}/General/libscrobbler.so:${PORTSDIR}/audio/qmmp-plugin-scrobbler
 
-post-build:
-	@${GREP} -L 'libdata/pkgconfig' ${WRKSRC}/src/qmmp/Makefile \
-		${WRKSRC}/src/qmmpui/Makefile | ${XARGS} ${REINPLACE_CMD} -e \
-		's|\((INSTALL_ROOT)\)/lib/\(pkgconfig\)|\1/libdata/\2|g'
-.if ${PORT_OPTIONS:MDOXYGEN}
-	cd ${WRKSRC}/doc && doxygen Doxyfile
-.endif
-
-pre-install:
-	@${FIND} ${WRKSRC}/lib/ -type f -name 'lib*' -exec ${STRIP_CMD} {} +
-.if ${PORT_OPTIONS:MSKINNEDUI}
-	${STRIP_CMD} ${WRKSRC}/bin/qmmp
-.endif
-
-post-install:
-.if ${PORT_OPTIONS:MDOCS}
-	@${MKDIR} ${STAGEDIR}${DOCSDIR}; \
-	cd ${WRKSRC} && ${INSTALL_MAN} ${PORTDOCS} ${STAGEDIR}${DOCSDIR}
-.endif
-.if ${PORT_OPTIONS:MDOXYGEN}
-	@${MKDIR} ${STAGEDIR}${DOCSDIR}/html/search ; \
-	cd ${WRKSRC}/doc/html && \
-		${INSTALL_MAN} *.html *.png *.css ${STAGEDIR}${DOCSDIR}/html ; \
-	cd ${WRKSRC}/doc/html/search && \
-		${INSTALL_MAN} *.html *.png *.css *.js ${STAGEDIR}${DOCSDIR}/html/search ; \
-	${RM} -f ${WRKDIR}/PLIST.doc ; \
-	${FIND} ${STAGEDIR}${DOCSDIR}/html -type f | \
-		${SED} 's|${STAGEDIR}${PREFIX}/||' \
-		>> ${WRKDIR}/PLIST.doc
-	cd ${WRKDIR} ; ${SED} -i -e '/PLIST.doc/ r PLIST.doc' ${TMPPLIST}
-.endif
+MPLAYER_RUN_DEPENDS=	${QMMPLIBDIR}/Engines/libmplayer.so:${PORTSDIR}/multimedia/qmmp-plugin-mplayer
+CONVERTER_DESC=	Support file type converter
+CONVERTER_RUN_DEPENDS=	${QMMPLIBDIR}/General/libconverter.so:${PORTSDIR}/audio/qmmp-plugin-converter
+CUE_RUN_DEPENDS=	${QMMPLIBDIR}/Input/libcue.so:${PORTSDIR}/audio/qmmp-plugin-cue
+MPRIS_DESC=	Support the Media Player Remote
+MPRIS_RUN_DEPENDS=	${QMMPLIBDIR}/General/libmpris.so:${PORTSDIR}/audio/qmmp-plugin-mpris
+RGSCAN_DESC=	ReplayGain scanner
+RGSCAN_RUN_DEPENDS=	${QMMPLIBDIR}/General/librgscan.so:${PORTSDIR}/audio/qmmp-plugin-rgscan
+SID_DESC=	Support sid
+SID_RUN_DEPENDS=	${QMMPLIBDIR}/Input/libsid.so:${PORTSDIR}/audio/qmmp-plugin-sid
 
 .include <bsd.port.mk>

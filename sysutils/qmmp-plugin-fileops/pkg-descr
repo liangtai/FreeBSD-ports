@@ -1,0 +1,6 @@
+playlist operation plug-in of QMMP to operate files
+
+- FILEOPS:     Customize copy/remove/rename commands of media files that you
+               can invoke through the item operation menu on the playlist.
+
+WWW: http://qmmp.ylsoftware.com/

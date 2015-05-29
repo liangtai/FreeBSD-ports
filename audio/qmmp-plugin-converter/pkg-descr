@@ -1,0 +1,6 @@
+file type converter plug-in of QMMP
+
+- Converter:         Converts supported audio files to other file
+                     formats using external command-line encoders.
+
+WWW: http://qmmp.ylsoftware.com/
