@@ -14,7 +14,7 @@ DOCSDIR=	${LOCALBASE}/share/doc/${PORTNAME:C/-lib//}
 EXTRACT_AFTER_ARGS+=	--exclude '${DISTNAME}/src/plugins' \
 	--exclude '${DISTNAME}/src/qmmpui' --exclude '${DISTNAME}/src/app'
 
-post-patch:
+pre-configure:
 	@${GREP} -H '^SUBDIRS' ${WRKSRC}/qmmp.pro \
 		| ${SED} -e 's/= src\// src-/' | ${GREP} 'src/' \
 		| ${CUT} -d: -f1 | uniq | ${XARGS} ${REINPLACE_CMD} \
@@ -24,6 +24,12 @@ post-build:
 	@${GREP} -L 'libdata/pkgconfig' ${WRKSRC}/src/qmmp/Makefile \
 		| ${XARGS} ${REINPLACE_CMD} \
 		-e 's|\((INSTALL_ROOT)\)/lib/\(pkgconfig\)|\1/libdata/\2|g'
+
+pre-install:
+.if ${PORT_OPTIONS:MDOCS}
+	@${MKDIR} ${STAGEDIR}${DOCSDIR}; \
+	cd ${WRKSRC} && ${INSTALL_MAN} ${PORTDOCS} ${STAGEDIR}${DOCSDIR}
+.endif
 
 DISTINFO_FILE=	${.CURDIR}/../../multimedia/qmmp/distinfo
 .include "${.CURDIR}/../../multimedia/qmmp/Makefile.core"

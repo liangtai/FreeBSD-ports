@@ -11,7 +11,7 @@ BUILD_DEPENDS+=	qmmp-lib>=0.8.0:${PORTSDIR}/multimedia/qmmp-lib
 EXTRACT_AFTER_ARGS+=	--exclude '${DISTNAME}/src/plugins' \
 	--exclude '${DISTNAME}/src/app'
 
-post-patch:
+pre-configure:
 	@${GREP} -H '^SUBDIRS' ${WRKSRC}/qmmp.pro \
 		| ${SED} -e 's/= src\// src-/' | ${GREP} 'src/' \
 		| ${CUT} -d: -f1 | uniq | ${XARGS} \

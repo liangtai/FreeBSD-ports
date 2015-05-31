@@ -12,10 +12,9 @@ LICENSE=	GPLv2
 LIB_DEPENDS+=	libqmmp.so:${PORTSDIR}/multimedia/qmmp-lib
 BUILD_DEPENDS+=	qmmp-lib>=0.8.0:${PORTSDIR}/multimedia/qmmp-lib
 
-USES=		gmake pkgconfig qmake tar:bzip2
+USES+=		gmake pkgconfig qmake tar:bzip2
 USE_QT4+=	corelib gui linguisttools_build moc_build qmake_build rcc_build
 USE_LDCONFIG=	yes
-INSTALL_TARGET=	install-strip
 
 PLUGIN_TARGETS=	CommandLineOptions PlayListFormats \
 	\
@@ -66,6 +65,9 @@ pre-configure:
 		${SED} -e 's/= src\// src-/' | ${GREP} 'src/' | \
 		${CUT} -d: -f1 | uniq | ${XARGS} \
 		${REINPLACE_CMD} -e '/^SUBDIRS/s/=.*$$/=	src\/plugins/'
+
+post-install:
+	@${FIND} ${STAGEDIR}${PREFIX}/lib -type f -exec ${STRIP_CMD} {} +
 
 # Category/PluginModule ==> lib/qmmp/Category/libpluginmodule.so
 PLIST_FILES=	lib/qmmp/${QMMPPLUGIN_TARGET:C@/.*$@/@}${QMMPPLUGIN_TARGET:tl:C@.*/@lib@:S@$@.so@}

@@ -5,7 +5,7 @@ CATEGORIES=	audio multimedia
 
 COMMENT=	CUE plug-in of QMMP
 
-USES=	desktop-file-utils
+USES+=	desktop-file-utils
 
 OPTIONS_SUB=	yes
 OPTIONS_DEFINE=	ENCA
