@@ -9,7 +9,7 @@ MAINTAINER=	liangtai.s16@gmail.com
 
 LICENSE=	GPLv2
 
-USES=		cmake:outsource pkgconfig tar:bzip2
+USES+=		cmake:outsource pkgconfig tar:bzip2
 USE_QT4+=	corelib gui linguisttools_build moc_build qmake_build rcc_build
 USE_LDCONFIG=	yes
 
