@@ -5,8 +5,6 @@ CATEGORIES=	audio multimedia
 
 COMMENT=	CUE plug-in of QMMP
 
-USES+=	desktop-file-utils
-
 OPTIONS_SUB=	yes
 OPTIONS_DEFINE=	ENCA
 OPTIONS_DEFAULT=	ENCA
@@ -16,8 +14,6 @@ ENCA_QMAKE_CONFIG=	WITH_ENCA
 
 QMMPPLUGIN_TARGET=	Input/cue
 QMMPPLUGIN_OPTIONS=
-
-PLIST_FILES+=	share/applications/qmmp_cue.desktop
 
 DISTINFO_FILE=	${.CURDIR}/../../multimedia/qmmp/distinfo
 .include "${.CURDIR}/../../multimedia/qmmp/options.qmake.mk"
