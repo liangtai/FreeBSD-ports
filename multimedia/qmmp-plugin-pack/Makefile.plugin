@@ -30,6 +30,10 @@ EXTRACT_AFTER_ARGS+=	--exclude '${DISTNAME}/src/${pidir}'
 
 QMAKE_ARGS+=	CONFIG+="${QMMPPLUGIN_OPTIONS}"
 
+post-patch:
+	@${REINPLACE_CMD} -e 's|^CONFIG += |#CONFIG += |' \
+		${WRKSRC}/qmmp-plugin-pack.pri
+
 post-install:
 	@${FIND} ${STAGEDIR}${PREFIX}/lib -type f -exec ${STRIP_CMD} {} +
 
