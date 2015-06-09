@@ -138,7 +138,7 @@ MMS_RUN_DEPENDS=	${QMMPLIBDIR}/Transports/libmms.so:${PORTSDIR}/net/qmmp-plugin-
 SB_DESC=	Browser for IceCast stream directory
 SB_RUN_DEPENDS=	${QMMPLIBDIR}/General/libstreambrowser.so:${PORTSDIR}/audio/qmmp-plugin-streambrowser
 SCROBBLER_DESC=	Support Libre.fm/Last.fm scrobbler feature
-SCROBBLER_RUN_DEPENDS=	${QMMPLIBDIR}/General/libscrobbler.so:${PORTSDIR}/audio/qmmp-plugin-scrobbler
+SCROBBLER_RUN_DEPENDS=	${QMMPLIBDIR}/General/libscrobbler.so:${PORTSDIR}/net/qmmp-plugin-scrobbler
 
 MPLAYER_RUN_DEPENDS=	${QMMPLIBDIR}/Engines/libmplayer.so:${PORTSDIR}/multimedia/qmmp-plugin-mplayer
 CONVERTER_DESC=	Support file type converter
