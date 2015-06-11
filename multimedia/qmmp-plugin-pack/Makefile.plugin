@@ -15,7 +15,6 @@ BUILD_DEPENDS+=	qmmp-lib>=0.9.0:${PORTSDIR}/multimedia/qmmp-lib
 USES+=		gmake pkgconfig qmake tar:bzip2
 USE_QT4+=	corelib gui linguisttools_build moc_build qmake_build rcc_build
 USE_LDCONFIG=	yes
-INSTALL_TARGET=	install-strip
 
 CFLAGS+=	-I${LOCALBASE}/include
 LDFLAGS+=	-L${LOCALBASE}/lib
@@ -28,7 +27,13 @@ EXTRACT_AFTER_ARGS+=	--exclude '${DISTNAME}/src/${pidir}'
 . endif
 .endfor
 
+_DESTDIR_VIA_ENV=	no
+MAKE_ARGS+=	INSTALL_ROOT=${STAGEDIR}${PREFIX}
 QMAKE_ARGS+=	CONFIG+="${QMMPPLUGIN_OPTIONS}"
+
+post-patch:
+	@${REINPLACE_CMD} -e 's|^CONFIG += |#CONFIG += |' \
+		${WRKSRC}/qmmp-plugin-pack.pri
 
 post-install:
 	@${FIND} ${STAGEDIR}${PREFIX}/lib -type f -exec ${STRIP_CMD} {} +
