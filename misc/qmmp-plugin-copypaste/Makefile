@@ -1,15 +1,20 @@
 # $FreeBSD$
 
 PORTNAME=	qmmp-plugin-copypaste
+PORTVERSION=	${QMMP_VERSION}
 CATEGORIES=	misc multimedia
 
-COMMENT=	playlist operation plug-in of QMMP to copy/paste track infos
+MAINTAINER=	liangtai.s16@gmail.com
+COMMENT=	Playlist operation plug-in of QMMP to copy/paste track infos
+
+LICENSE=	GPLv2
+
+LIB_DEPENDS+=	libqmmpui.so:${PORTSDIR}/multimedia/qmmp-uilib
 
 USE_QT4+=	network
-LIB_DEPENDS+=	libqmmpui.so:${PORTSDIR}/multimedia/qmmp-uilib
 
 QMMPPLUGIN_TARGET=	General/copypaste
 QMMPPLUGIN_TAG=	COPYPASTE
 
-DISTINFO_FILE=	${.CURDIR}/../../multimedia/qmmp/distinfo
 .include "${.CURDIR}/../../multimedia/qmmp/Makefile.plugin"
+.include <bsd.port.mk>

@@ -1,15 +1,20 @@
 # $FreeBSD$
 
 PORTNAME=	qmmp-plugin-qsui
+PORTVERSION=	${QMMP_PP_VERSION}
 CATEGORIES=	multimedia
 
-COMMENT=	non-skinned UI plug-in of QMMP
+MAINTAINER=	liangtai.s16@gmail.com
+COMMENT=	Non-skinned UI plug-in of QMMP
+
+LICENSE=	GPLv2
+
+LIB_DEPENDS+=	libqmmpui.so:${PORTSDIR}/multimedia/qmmp-uilib
 
 USE_QT4+=	network uic_build
-LIB_DEPENDS+=	libqmmpui.so:${PORTSDIR}/multimedia/qmmp-uilib
 
 QMMPPLUGIN_TARGET=	Ui/qsui
 QMMPPLUGIN_TAG=	QSUI
 
-DISTINFO_FILE=	${.CURDIR}/../../multimedia/qmmp-plugin-pack/distinfo
 .include "${.CURDIR}/../../multimedia/qmmp-plugin-pack/Makefile.plugin"
+.include <bsd.port.mk>

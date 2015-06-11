@@ -1,9 +1,13 @@
 # $FreeBSD$
 
 PORTNAME=	qmmp-plugin-vorbis
+PORTVERSION=	${QMMP_VERSION}
 CATEGORIES=	audio multimedia
 
-COMMENT=	vorbis file format plug-in of QMMP
+MAINTAINER=	liangtai.s16@gmail.com
+COMMENT=	Vorbis file format plug-in of QMMP
+
+LICENSE=	GPLv2
 
 LIB_DEPENDS+=	libvorbis.so:${PORTSDIR}/audio/libvorbis \
 	libtag.so:${PORTSDIR}/audio/taglib
@@ -11,5 +15,5 @@ LIB_DEPENDS+=	libvorbis.so:${PORTSDIR}/audio/libvorbis \
 QMMPPLUGIN_TARGET=	Input/vorbis
 QMMPPLUGIN_TAG=	VORBIS
 
-DISTINFO_FILE=	${.CURDIR}/../../multimedia/qmmp/distinfo
 .include "${.CURDIR}/../../multimedia/qmmp/Makefile.plugin"
+.include <bsd.port.mk>

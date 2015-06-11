@@ -1,9 +1,13 @@
 # $FreeBSD$
 
 PORTNAME=	qmmp-plugin-mplayer
+PORTVERSION=	${QMMP_VERSION}
 CATEGORIES=	multimedia
 
-COMMENT=	mplayer plug-in of QMMP
+MAINTAINER=	liangtai.s16@gmail.com
+COMMENT=	MPlayer plug-in of QMMP
+
+LICENSE=	GPLv2
 
 OPTIONS_SINGLE=	MPLAYER
 OPTIONS_SINGLE_MPLAYER=	MPLAYER1 MPLAYER2
@@ -17,5 +21,5 @@ MPLAYER2_RUN_DEPENDS+=	mplayer:${PORTSDIR}/multimedia/mplayer2
 QMMPPLUGIN_TARGET=	Engines/mplayer
 QMMPPLUGIN_TAG=	MPLAYER
 
-DISTINFO_FILE=	${.CURDIR}/../../multimedia/qmmp/distinfo
 .include "${.CURDIR}/../../multimedia/qmmp/Makefile.plugin"
+.include <bsd.port.mk>

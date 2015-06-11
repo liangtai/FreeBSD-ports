@@ -1,9 +1,13 @@
 # $FreeBSD$
 
 PORTNAME=	qmmp-plugin-musepack
+PORTVERSION=	${QMMP_VERSION}
 CATEGORIES=	audio multimedia
 
-COMMENT=	musepack file format plug-in of QMMP
+MAINTAINER=	liangtai.s16@gmail.com
+COMMENT=	Musepack file format plug-in of QMMP
+
+LICENSE=	GPLv2
 
 LIB_DEPENDS+=	libmpcdec.so:${PORTSDIR}/audio/musepack \
 	libtag.so:${PORTSDIR}/audio/taglib
@@ -11,5 +15,5 @@ LIB_DEPENDS+=	libmpcdec.so:${PORTSDIR}/audio/musepack \
 QMMPPLUGIN_TARGET=	Input/mpc
 QMMPPLUGIN_TAG=	MPC
 
-DISTINFO_FILE=	${.CURDIR}/../../multimedia/qmmp/distinfo
 .include "${.CURDIR}/../../multimedia/qmmp/Makefile.plugin"
+.include <bsd.port.mk>

@@ -1,9 +1,13 @@
 # $FreeBSD$
 
 PORTNAME=	qmmp-plugin-cdda
+PORTVERSION=	${QMMP_VERSION}
 CATEGORIES=	audio multimedia sysutils
 
-COMMENT=	cdda media plug-in of QMMP
+MAINTAINER=	liangtai.s16@gmail.com
+COMMENT=	CDDA media plug-in of QMMP
+
+LICENSE=	GPLv2
 
 LIB_DEPENDS+=	libcdio.so:${PORTSDIR}/sysutils/libcdio \
 	libcdio_cdda.so:${PORTSDIR}/sysutils/libcdio-paranoia
@@ -11,5 +15,5 @@ LIB_DEPENDS+=	libcdio.so:${PORTSDIR}/sysutils/libcdio \
 QMMPPLUGIN_TARGET=	Input/cdaudio
 QMMPPLUGIN_TAG=	CDA
 
-DISTINFO_FILE=	${.CURDIR}/../../multimedia/qmmp/distinfo
 .include "${.CURDIR}/../../multimedia/qmmp/Makefile.plugin"
+.include <bsd.port.mk>

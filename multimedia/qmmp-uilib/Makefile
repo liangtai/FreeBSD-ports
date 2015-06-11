@@ -1,9 +1,13 @@
 # $FreeBSD$
 
 PORTNAME=	qmmp-uilib
+PORTVERSION=	${QMMP_VERSION}
 CATEGORIES=	multimedia
 
+MAINTAINER=	liangtai.s16@gmail.com
 COMMENT=	UI library of the QMMP Qt4-based multimedia player
+
+LICENSE=	GPLv2
 
 LIB_DEPENDS+=	libqmmp.so:${PORTSDIR}/multimedia/qmmp-lib
 BUILD_DEPENDS+=	qmmp-lib>=0.9.0:${PORTSDIR}/multimedia/qmmp-lib
@@ -20,5 +24,5 @@ post-patch:
 		${GREP} -v 'src/qmmpui' | cut -d: -f1 | ${XARGS} \
 		${REINPLACE_CMD} -Ee '/add_subdirectory[(]src\/(app|qmmp|plugins)[)]/d'
 
-DISTINFO_FILE=	${.CURDIR}/../../multimedia/qmmp/distinfo
-.include "${.CURDIR}/../../multimedia/qmmp/Makefile.core"
+.include "${.CURDIR}/../../multimedia/qmmp/Makefile.coresys"
+.include <bsd.port.mk>
