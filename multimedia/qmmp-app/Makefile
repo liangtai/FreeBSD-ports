@@ -1,18 +1,25 @@
 # $FreeBSD$
 
 PORTNAME=	qmmp-app
+PORTVERSION=	${QMMP_VERSION}
 CATEGORIES=	multimedia
 
-COMMENT=	main application of the QMMP Qt4-based multimedia player
+MAINTAINER=	liangtai.s16@gmail.com
+COMMENT=	Main application of the QMMP Qt4-based multimedia player
 
-USES+=	desktop-file-utils
+LICENSE=	GPLv2
+
 LIB_DEPENDS+=	libqmmp.so:${PORTSDIR}/multimedia/qmmp-lib \
 	libqmmpui.so:${PORTSDIR}/multimedia/qmmp-uilib
 BUILD_DEPENDS+=	qmmp-lib>=0.8.0:${PORTSDIR}/multimedia/qmmp-lib
 
+USES+=	desktop-file-utils
+
 .for p in Effect Engines FileDialogs General Input Output Transports Ui Visual
 EXTRACT_AFTER_ARGS+=	--exclude '${DISTNAME}/src/plugins/${p}'
 .endfor
+
+INSTALLS_ICONS=	yes
 
 pre-configure:
 	@${GREP} -l 'SUBDIRS.*\\$$' ${WRKSRC}/src/plugins/plugins.pro \
@@ -22,5 +29,5 @@ pre-configure:
 	@${GREP} -l '^SUBDIRS.*/qmmp' ${WRKSRC}/qmmp.pro | ${XARGS} \
 		${REINPLACE_CMD} -e '/^SUBDIRS/s/=.*$$/=	src\/plugins src\/app/'
 
-DISTINFO_FILE=	${.CURDIR}/../../multimedia/qmmp/distinfo
-.include "${.CURDIR}/../../multimedia/qmmp/Makefile.core"
+.include "${.CURDIR}/../../multimedia/qmmp/Makefile.coresys"
+.include <bsd.port.mk>

@@ -1,9 +1,13 @@
 # $FreeBSD$
 
 PORTNAME=	qmmp-plugin-cue
+PORTVERSION=	${QMMP_VERSION}
 CATEGORIES=	audio multimedia
 
+MAINTAINER=	liangtai.s16@gmail.com
 COMMENT=	CUE plug-in of QMMP
+
+LICENSE=	GPLv2
 
 USES+=	desktop-file-utils
 
@@ -19,6 +23,6 @@ QMMPPLUGIN_OPTIONS=
 
 PLIST_FILES+=	share/applications/qmmp_cue.desktop
 
-DISTINFO_FILE=	${.CURDIR}/../../multimedia/qmmp/distinfo
 .include "${.CURDIR}/../../multimedia/qmmp/options.qmake.mk"
 .include "${.CURDIR}/../../multimedia/qmmp/Makefile.plugin"
+.include <bsd.port.mk>

@@ -1,15 +1,20 @@
 # $FreeBSD$
 
 PORTNAME=	qmmp-plugin-projectm
+PORTVERSION=	${QMMP_VERSION}
 CATEGORIES=	graphics multimedia
 
-COMMENT=	projectM music visualiser plug-in of QMMP
+MAINTAINER=	liangtai.s16@gmail.com
+COMMENT=	ProjectM music visualiser plug-in of QMMP
 
-LIB_DEPENDS+=	libprojectM.so.2:${PORTSDIR}/graphics/libprojectm
+LICENSE=	GPLv2
+
+LIB_DEPENDS+=	libprojectM.so:${PORTSDIR}/graphics/libprojectm
+
 USE_QT4+=	opengl
 
 QMMPPLUGIN_TARGET=	Visual/projectm
 QMMPPLUGIN_OPTIONS=	PROJECTM_PLUGIN PROJECTM_20
 
-DISTINFO_FILE=	${.CURDIR}/../../multimedia/qmmp/distinfo
 .include "${.CURDIR}/../../multimedia/qmmp/Makefile.plugin"
+.include <bsd.port.mk>

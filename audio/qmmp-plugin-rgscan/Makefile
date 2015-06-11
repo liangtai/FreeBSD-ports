@@ -1,9 +1,13 @@
 # $FreeBSD$
 
 PORTNAME=	qmmp-plugin-rgscan
+PORTVERSION=	${QMMP_VERSION}
 CATEGORIES=	audio multimedia
 
+MAINTAINER=	liangtai.s16@gmail.com
 COMMENT=	ReplayGain scanner plug-in of QMMP
+
+LICENSE=	GPLv2
 
 LIB_DEPENDS+=	libqmmpui.so:${PORTSDIR}/multimdia/qmmp-uilib \
 	libtag.so:${PORTSDIR}/audio/taglib
@@ -11,5 +15,5 @@ LIB_DEPENDS+=	libqmmpui.so:${PORTSDIR}/multimdia/qmmp-uilib \
 QMMPPLUGIN_TARGET=	General/rgscan
 QMMPPLUGIN_OPTIONS=
 
-DISTINFO_FILE=	${.CURDIR}/../../multimedia/qmmp/distinfo
 .include "${.CURDIR}/../../multimedia/qmmp/Makefile.plugin"
+.include <bsd.port.mk>

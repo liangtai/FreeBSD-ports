@@ -1,14 +1,18 @@
 # $FreeBSD$
 
 PORTNAME=	qmmp-plugin-wavpack
+PORTVERSION=	${QMMP_VERSION}
 CATEGORIES=	audio multimedia
 
-COMMENT=	wavpack file format plug-in of QMMP
+MAINTAINER=	liangtai.s16@gmail.com
+COMMENT=	Wavpack file format plug-in of QMMP
+
+LICENSE=	GPLv2
 
 LIB_DEPENDS+=	libwavpack.so:${PORTSDIR}/audio/wavpack
 
 QMMPPLUGIN_TARGET=	Input/wavpack
 QMMPPLUGIN_OPTIONS=
 
-DISTINFO_FILE=	${.CURDIR}/../../multimedia/qmmp/distinfo
 .include "${.CURDIR}/../../multimedia/qmmp/Makefile.plugin"
+.include <bsd.port.mk>

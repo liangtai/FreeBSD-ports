@@ -1,13 +1,13 @@
 # $FreeBSD$
 
-PORTVERSION=	0.8.5
+QMMP_VERSION=	0.8.5
 MASTER_SITES=	http://qmmp.ylsoftware.com/files/plugins/ \
 	SF/qmmp-dev/qmmp/
 DISTNAME=	qmmp-${PORTVERSION}
+DISTINFO_FILE=	${.CURDIR}/../../multimedia/qmmp/distinfo
 
-MAINTAINER=	liangtai.s16@gmail.com
-
-LICENSE=	GPLv2
+MAINTAINER?=	liangtai.s16@gmail.com
+LICENSE?=	GPLv2
 
 USES+=		gmake pkgconfig qmake tar:bzip2
 USE_QT4+=	corelib gui linguisttools_build moc_build qmake_build rcc_build
@@ -25,5 +25,3 @@ post-patch:
 post-install:
 	@${FIND} ${STAGEDIR}${PREFIX}/bin ${STAGEDIR}${PREFIX}/lib -type f \
 		-exec ${STRIP_CMD} {} +
-
-.include <bsd.port.mk>

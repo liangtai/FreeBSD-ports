@@ -1,15 +1,20 @@
 # $FreeBSD$
 
 PORTNAME=	qmmp-plugin-skinned
+PORTVERSION=	${QMMP_VERSION}
 CATEGORIES=	multimedia
 
-COMMENT=	skinned UI plug-in of QMMP
+MAINTAINER=	liangtai.s16@gmail.com
+COMMENT=	Skinned UI plug-in of QMMP
+
+LICENSE=	GPLv2
+
+LIB_DEPENDS+=	libqmmpui.so:${PORTSDIR}/multimedia/qmmp-uilib
 
 USE_QT4+=	network
-LIB_DEPENDS+=	libqmmpui.so:${PORTSDIR}/multimedia/qmmp-uilib
 
 QMMPPLUGIN_TARGET=	Ui/skinned
 QMMPPLUGIN_OPTIONS=	WITH_SKINNED
 
-DISTINFO_FILE=	${.CURDIR}/../../multimedia/qmmp/distinfo
 .include "${.CURDIR}/../../multimedia/qmmp/Makefile.plugin"
+.include <bsd.port.mk>

@@ -1,14 +1,18 @@
 # $FreeBSD$
 
 PORTNAME=	qmmp-plugin-mms
+PORTVERSION=	${QMMP_VERSION}
 CATEGORIES=	net multimedia
 
+MAINTAINER=	liangtai.s16@gmail.com
 COMMENT=	MMS streaming plug-in of QMMP
+
+LICENSE=	GPLv2
 
 LIB_DEPENDS+=	libmms.so:${PORTSDIR}/net/libmms
 
 QMMPPLUGIN_TARGET=	Transports/mms
 QMMPPLUGIN_OPTIONS=
 
-DISTINFO_FILE=	${.CURDIR}/../../multimedia/qmmp/distinfo
 .include "${.CURDIR}/../../multimedia/qmmp/Makefile.plugin"
+.include <bsd.port.mk>

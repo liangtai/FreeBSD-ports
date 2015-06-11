@@ -1,9 +1,13 @@
 # $FreeBSD$
 
 PORTNAME=	qmmp-plugin-ffap
+PORTVERSION=	${QMMP_PP_VERSION}
 CATEGORIES=	audio multimedia
 
+MAINTAINER=	liangtai.s16@gmail.com
 COMMENT=	APE file format plug-in of QMMP
+
+LICENSE=	GPLv2
 
 OPTIONS_DEFINE_i386=	FFAPASM
 OPTIONS_DEFAULT_i386=	FFAPASM
@@ -18,5 +22,5 @@ LIB_DEPENDS+=	libtag.so:${PORTSDIR}/audio/taglib
 QMMPPLUGIN_TARGET=	Input/ffap
 QMMPPLUGIN_OPTIONS=	FFAP_PLUGIN
 
-DISTINFO_FILE=	${.CURDIR}/../../multimedia/qmmp-plugin-pack/distinfo
 .include "${.CURDIR}/../../multimedia/qmmp-plugin-pack/Makefile.plugin"
+.include <bsd.port.mk>
