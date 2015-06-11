@@ -1,9 +1,13 @@
 # $FreeBSD$
 
 PORTNAME=	qmmp-app
+PORTVERSION=	${QMMP_VERSION}
 CATEGORIES=	multimedia
 
-COMMENT=	main application of the QMMP Qt4-based multimedia player
+MAINTAINER=	liangtai.s16@gmail.com
+COMMENT=	Main application of the QMMP Qt4-based multimedia player
+
+LICENSE=	GPLv2
 
 OPTIONS_SUB=	yes
 OPTIONS_DEFINE=	DIR_ASSOC
@@ -21,6 +25,7 @@ EXTRACT_AFTER_ARGS+=	--exclude '${DISTNAME}/src/plugins/${p}'
 .endfor
 
 CMAKE_ARGS+=	-DUSE_RPATH:BOOL=TRUE
+INSTALLS_ICONS=	yes
 
 post-patch:
 	@${GREP} -H 'add_subdirectory' ${WRKSRC}/CMakeLists.txt | \
@@ -34,5 +39,5 @@ post-patch:
 		${WRKSRC}/src/plugins/CMakeLists.txt | ${XARGS} \
 		${REINPLACE_CMD} -ne '/PlayListFormats/,/CommandLineOptions/p'
 
-DISTINFO_FILE=	${.CURDIR}/../../multimedia/qmmp/distinfo
-.include "${.CURDIR}/../../multimedia/qmmp/Makefile.core"
+.include "${.CURDIR}/../../multimedia/qmmp/Makefile.coresys"
+.include <bsd.port.mk>

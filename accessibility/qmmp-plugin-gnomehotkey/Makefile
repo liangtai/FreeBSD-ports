@@ -1,15 +1,20 @@
 # $FreeBSD$
 
 PORTNAME=	qmmp-plugin-gnomehotkey
+PORTVERSION=	${QMMP_VERSION}
 CATEGORIES=	accessibility multimedia
 
+MAINTAINER=	liangtai.s16@gmail.com
 COMMENT=	GNOME/Cinnamon shortcut key plug-in of QMMP
 
-USE_QT4+=	dbus network xml
+LICENSE=	GPLv2
+
 LIB_DEPENDS+=	libqmmpui.so:${PORTSDIR}/multimedia/qmmp-uilib
+
+USE_QT4+=	dbus network xml
 
 QMMPPLUGIN_TARGET=	General/gnomehotkey
 QMMPPLUGIN_TAG=	GNOMEHOTKEY
 
-DISTINFO_FILE=	${.CURDIR}/../../multimedia/qmmp/distinfo
 .include "${.CURDIR}/../../multimedia/qmmp/Makefile.plugin"
+.include <bsd.port.mk>

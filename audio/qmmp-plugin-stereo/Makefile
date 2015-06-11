@@ -1,12 +1,16 @@
 # $FreeBSD$
 
 PORTNAME=	qmmp-plugin-stereo
+PORTVERSION=	${QMMP_VERSION}
 CATEGORIES=	audio multimedia
 
-COMMENT=	stereo effect plug-in of QMMP
+MAINTAINER=	liangtai.s16@gmail.com
+COMMENT=	Stereo effect plug-in of QMMP
+
+LICENSE=	GPLv2
 
 QMMPPLUGIN_TARGET=	Effect/stereo
 QMMPPLUGIN_TAG=	STEREO
 
-DISTINFO_FILE=	${.CURDIR}/../../multimedia/qmmp/distinfo
 .include "${.CURDIR}/../../multimedia/qmmp/Makefile.plugin"
+.include <bsd.port.mk>

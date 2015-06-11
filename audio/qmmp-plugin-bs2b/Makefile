@@ -1,14 +1,18 @@
 # $FreeBSD$
 
 PORTNAME=	qmmp-plugin-bs2b
+PORTVERSION=	${QMMP_VERSION}
 CATEGORIES=	audio multimedia
 
-COMMENT=	bs2b dsp-effect plug-in of QMMP
+MAINTAINER=	liangtai.s16@gmail.com
+COMMENT=	Bauer stereophonic-to-binaural dsp-effect plug-in of QMMP
+
+LICENSE=	GPLv2
 
 LIB_DEPENDS+=	libbs2b.so:${PORTSDIR}/audio/libbs2b
 
 QMMPPLUGIN_TARGET=	Effect/bs2b
 QMMPPLUGIN_TAG=	BS2B
 
-DISTINFO_FILE=	${.CURDIR}/../../multimedia/qmmp/distinfo
 .include "${.CURDIR}/../../multimedia/qmmp/Makefile.plugin"
+.include <bsd.port.mk>

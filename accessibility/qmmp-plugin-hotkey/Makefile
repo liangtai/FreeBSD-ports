@@ -1,15 +1,20 @@
 # $FreeBSD$
 
 PORTNAME=	qmmp-plugin-hotkey
+PORTVERSION=	${QMMP_VERSION}
 CATEGORIES=	accessibility multimedia
 
-COMMENT=	global shortcut keys plug-in of QMMP
+MAINTAINER=	liangtai.s16@gmail.com
+COMMENT=	Global shortcut keys plug-in of QMMP
+
+LICENSE=	GPLv2
+
+LIB_DEPENDS+=	libqmmpui.so:${PORTSDIR}/multimedia/qmmp-uilib
 
 USE_QT4+=	network
-LIB_DEPENDS+=	libqmmpui.so:${PORTSDIR}/multimedia/qmmp-uilib
 
 QMMPPLUGIN_TARGET=	General/hotkey
 QMMPPLUGIN_TAG=	HOTKEY
 
-DISTINFO_FILE=	${.CURDIR}/../../multimedia/qmmp/distinfo
 .include "${.CURDIR}/../../multimedia/qmmp/Makefile.plugin"
+.include <bsd.port.mk>

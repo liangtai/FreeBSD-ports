@@ -1,15 +1,20 @@
 # $FreeBSD$
 
 PORTNAME=	qmmp-plugin-filedialog
+PORTVERSION=	${QMMP_VERSION}
 CATEGORIES=	x11-fm multimedia
 
-COMMENT=	special made filedialog plug-in of QMMP
+MAINTAINER=	liangtai.s16@gmail.com
+COMMENT=	Special made filedialog plug-in of QMMP
+
+LICENSE=	GPLv2
+
+LIB_DEPENDS+=	libqmmpui.so:${PORTSDIR}/multimedia/qmmp-uilib
 
 USE_QT4+=	network
-LIB_DEPENDS+=	libqmmpui.so:${PORTSDIR}/multimedia/qmmp-uilib
 
 QMMPPLUGIN_TARGET=	FileDialogs/QmmpFileDialog
 QMMPPLUGIN_TAG=	QMMP_DIALOG
 
-DISTINFO_FILE=	${.CURDIR}/../../multimedia/qmmp/distinfo
 .include "${.CURDIR}/../../multimedia/qmmp/Makefile.plugin"
+.include <bsd.port.mk>

@@ -1,9 +1,13 @@
 # $FreeBSD$
 
 PORTNAME=	qmmp-plugin-flac
+PORTVERSION=	${QMMP_VERSION}
 CATEGORIES=	audio multimedia
 
-COMMENT=	flac file format plug-in of QMMP
+MAINTAINER=	liangtai.s16@gmail.com
+COMMENT=	FLAC file format plug-in of QMMP
+
+LICENSE=	GPLv2
 
 LIB_DEPENDS+=	libFLAC.so:${PORTSDIR}/audio/flac \
 	libtag.so:${PORTSDIR}/audio/taglib
@@ -11,5 +15,5 @@ LIB_DEPENDS+=	libFLAC.so:${PORTSDIR}/audio/flac \
 QMMPPLUGIN_TARGET=	Input/flac
 QMMPPLUGIN_TAG=	FLAC
 
-DISTINFO_FILE=	${.CURDIR}/../../multimedia/qmmp/distinfo
 .include "${.CURDIR}/../../multimedia/qmmp/Makefile.plugin"
+.include <bsd.port.mk>
