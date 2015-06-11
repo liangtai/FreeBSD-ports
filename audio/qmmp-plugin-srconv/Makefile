@@ -1,12 +1,16 @@
 # $FreeBSD$
 
 PORTNAME=	qmmp-plugin-srconv
+PORTVERSION=	${QMMP_VERSION}
 CATEGORIES=	audio multimedia
 
-COMMENT=	sample rate converter dsp-effect plug-in of QMMP
+MAINTAINER=	liangtai.s16@gmail.com
+COMMENT=	Sample rate converter dsp-effect plug-in of QMMP
+
+LICENSE=	GPLv2
 
 QMMPPLUGIN_TARGET=	Effect/srconverter
 QMMPPLUGIN_OPTIONS=
 
-DISTINFO_FILE=	${.CURDIR}/../../multimedia/qmmp/distinfo
 .include "${.CURDIR}/../../multimedia/qmmp/Makefile.plugin"
+.include <bsd.port.mk>

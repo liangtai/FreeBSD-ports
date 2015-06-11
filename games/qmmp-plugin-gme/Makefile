@@ -1,14 +1,18 @@
 # $FreeBSD$
 
 PORTNAME=	qmmp-plugin-gme
+PORTVERSION=	${QMMP_VERSION}
 CATEGORIES=	games audio multimedia
 
-COMMENT=	video game music file format plug-in of QMMP
+MAINTAINER=	liangtai.s16@gmail.com
+COMMENT=	Video game music file format plug-in of QMMP
+
+LICENSE=	GPLv2
 
 LIB_DEPENDS+=	libgme.so:${PORTSDIR}/audio/libgme
 
 QMMPPLUGIN_TARGET=	Input/gme
 QMMPPLUGIN_OPTIONS=	GME_PLUGIN
 
-DISTINFO_FILE=	${.CURDIR}/../../multimedia/qmmp/distinfo
 .include "${.CURDIR}/../../multimedia/qmmp/Makefile.plugin"
+.include <bsd.port.mk>

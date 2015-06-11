@@ -1,15 +1,20 @@
 # $FreeBSD$
 
 PORTNAME=	qmmp-plugin-scrobbler
+PORTVERSION=	${QMMP_VERSION}
 CATEGORIES=	net multimedia
 
+MAINTAINER=	liangtai.s16@gmail.com
 COMMENT=	Libre.fm/Last.fm scrobbler plug-in of QMMP
 
-USE_QT4+=	network
+LICENSE=	GPLv2
+
 LIB_DEPENDS+=	libqmmpui.so:${PORTSDIR}/multimedia/qmmp-uilib
+
+USE_QT4+=	network
 
 QMMPPLUGIN_TARGET=	General/scrobbler
 QMMPPLUGIN_OPTIONS=
 
-DISTINFO_FILE=	${.CURDIR}/../../multimedia/qmmp/distinfo
 .include "${.CURDIR}/../../multimedia/qmmp/Makefile.plugin"
+.include <bsd.port.mk>

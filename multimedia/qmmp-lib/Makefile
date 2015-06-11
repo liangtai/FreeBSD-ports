@@ -1,9 +1,13 @@
 # $FreeBSD$
 
 PORTNAME=	qmmp-lib
+PORTVERSION=	${QMMP_VERSION}
 CATEGORIES=	multimedia
 
-COMMENT=	core library of the QMMP Qt4-based multimedia player
+MAINTAINER=	liangtai.s16@gmail.com
+COMMENT=	Core library of the QMMP Qt4-based multimedia player
+
+LICENSE=	GPLv2
 
 OPTIONS_DEFINE=	DOCS
 PORTDOCS=	README README.RUS AUTHORS
@@ -31,5 +35,5 @@ pre-install:
 	cd ${WRKSRC} && ${INSTALL_MAN} ${PORTDOCS} ${STAGEDIR}${DOCSDIR}
 .endif
 
-DISTINFO_FILE=	${.CURDIR}/../../multimedia/qmmp/distinfo
-.include "${.CURDIR}/../../multimedia/qmmp/Makefile.core"
+.include "${.CURDIR}/../../multimedia/qmmp/Makefile.coresys"
+.include <bsd.port.mk>

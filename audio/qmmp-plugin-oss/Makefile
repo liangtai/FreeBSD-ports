@@ -1,12 +1,16 @@
 # $FreeBSD$
 
 PORTNAME=	qmmp-plugin-oss
+PORTVERSION=	${QMMP_VERSION}
 CATEGORIES=	audio multimedia
 
-COMMENT=	oss output plug-in of QMMP
+MAINTAINER=	liangtai.s16@gmail.com
+COMMENT=	OSS output plug-in of QMMP
+
+LICENSE=	GPLv2
 
 QMMPPLUGIN_TARGET=	Output/oss
 QMMPPLUGIN_OPTIONS=	OSS_PLUGIN
 
-DISTINFO_FILE=	${.CURDIR}/../../multimedia/qmmp/distinfo
 .include "${.CURDIR}/../../multimedia/qmmp/Makefile.plugin"
+.include <bsd.port.mk>

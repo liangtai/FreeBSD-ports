@@ -1,15 +1,20 @@
 # $FreeBSD$
 
 PORTNAME=	qmmp-plugin-trackchange
+PORTVERSION=	${QMMP_VERSION}
 CATEGORIES=	misc multimedia
 
-COMMENT=	external command launcher plug-in of QMMP at each track switching
+MAINTAINER=	liangtai.s16@gmail.com
+COMMENT=	External command launcher plug-in of QMMP at each track switching
+
+LICENSE=	GPLv2
+
+LIB_DEPENDS+=	libqmmpui.so:${PORTSDIR}/multimedia/qmmp-uilib
 
 USE_QT4+=	network
-LIB_DEPENDS+=	libqmmpui.so:${PORTSDIR}/multimedia/qmmp-uilib
 
 QMMPPLUGIN_TARGET=	General/trackchange
 QMMPPLUGIN_OPTIONS=
 
-DISTINFO_FILE=	${.CURDIR}/../../multimedia/qmmp/distinfo
 .include "${.CURDIR}/../../multimedia/qmmp/Makefile.plugin"
+.include <bsd.port.mk>

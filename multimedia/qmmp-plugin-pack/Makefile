@@ -4,11 +4,12 @@ PORTNAME=	qmmp-plugin-pack
 PORTVERSION=	0.9.0
 CATEGORIES=	multimedia
 MASTER_SITES=	# empty
-DISTFILES=	#empty
 EXTRACT_ONLY=	# empty
 
 MAINTAINER=	liangtai.s16@gmail.com
 COMMENT=	Meta-port of additional QMMP plugins
+
+LICENSE=	GPLv2
 
 USES=		metaport
 

@@ -1,9 +1,13 @@
 # $FreeBSD$
 
 PORTNAME=	qmmp-plugin-opus
+PORTVERSION=	${QMMP_VERSION}
 CATEGORIES=	audio multimedia
 
-COMMENT=	opus file format plug-in of QMMP
+MAINTAINER=	liangtai.s16@gmail.com
+COMMENT=	Opus file format plug-in of QMMP
+
+LICENSE=	GPLv2
 
 LIB_DEPENDS+=	libopusfile.so:${PORTSDIR}/audio/opusfile \
 	libtag.so:${PORTSDIR}/audio/taglib
@@ -11,5 +15,5 @@ LIB_DEPENDS+=	libopusfile.so:${PORTSDIR}/audio/opusfile \
 QMMPPLUGIN_TARGET=	Input/opus
 QMMPPLUGIN_OPTIONS=	OPUS_PLUGIN
 
-DISTINFO_FILE=	${.CURDIR}/../../multimedia/qmmp/distinfo
 .include "${.CURDIR}/../../multimedia/qmmp/Makefile.plugin"
+.include <bsd.port.mk>

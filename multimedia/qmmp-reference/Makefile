@@ -8,11 +8,13 @@ MASTER_SITES=	http://qmmp.ylsoftware.com/files/plugins/ \
 DISTNAME=	qmmp-${PORTVERSION}
 
 MAINTAINER=	liangtai.s16@gmail.com
+COMMENT=	API document of QMMP libraries
 
 LICENSE=	GPLv2
 
-USES=		tar:bzip2
 BUILD_DEPENDS=	doxygen:${PORTSDIR}/devel/doxygen
+
+USES=		tar:bzip2
 
 DISTINFO_FILE=	${.CURDIR}/../qmmp/distinfo
 

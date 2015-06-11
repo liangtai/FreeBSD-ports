@@ -1,15 +1,20 @@
 # $FreeBSD$
 
 PORTNAME=	qmmp-plugin-notifier
+PORTVERSION=	${QMMP_VERSION}
 CATEGORIES=	deskutils multimedia
 
-COMMENT=	popup notifier plug-in of QMMP
+MAINTAINER=	liangtai.s16@gmail.com
+COMMENT=	Popup notifier plug-in of QMMP
+
+LICENSE=	GPLv2
+
+LIB_DEPENDS+=	libqmmpui.so:${PORTSDIR}/multimedia/qmmp-uilib
 
 USE_QT4+=	network
-LIB_DEPENDS+=	libqmmpui.so:${PORTSDIR}/multimedia/qmmp-uilib
 
 QMMPPLUGIN_TARGET=	General/notifier
 QMMPPLUGIN_OPTIONS=
 
-DISTINFO_FILE=	${.CURDIR}/../../multimedia/qmmp/distinfo
 .include "${.CURDIR}/../../multimedia/qmmp/Makefile.plugin"
+.include <bsd.port.mk>
