@@ -21,7 +21,7 @@ post-patch:
 		${WRKSRC}/src/qmmpui/CMakeLists.txt | ${XARGS} \
 		${REINPLACE_CMD} -e '/pkgconfig/s|$${LIB_DIR}|libdata|' \
 		-e '/^add_dependencies/d'
-	@${GREP} 'add_subdirectory' ${WRKSRC}/CMakeLists.txt | \
+	@${GREP} -H 'add_subdirectory' ${WRKSRC}/CMakeLists.txt | \
 		${GREP} -v 'src/qmmpui' | cut -d: -f1 | ${XARGS} \
 		${REINPLACE_CMD} -Ee '/add_subdirectory[(]src\/(app|qmmp|plugins)[)]/d'
 
