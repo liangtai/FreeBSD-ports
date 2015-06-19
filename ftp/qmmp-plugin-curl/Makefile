@@ -9,6 +9,15 @@ COMMENT=	CURL plug-in of QMMP
 
 LICENSE=	GPLv2
 
+OPTIONS_SUB=	yes
+OPTIONS_DEFINE=	ENCA
+OPTIONS_DEFAULT=	ENCA
+
+ENCA_DESC=		Support automatic character set detection
+ENCA_LIB_DEPENDS=	libenca.so:${PORTSDIR}/converters/enca
+ENCA_CMAKE_ON=	-DUSE_ENCA:BOOL=TRUE
+ENCA_CMAKE_OFF=	-DUSE_ENCA:BOOL=FALSE
+
 LIB_DEPENDS+=	libcurl.so:${PORTSDIR}/ftp/curl
 
 QMMPPLUGIN_TARGET=	Transports/http
