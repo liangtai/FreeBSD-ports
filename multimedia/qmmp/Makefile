@@ -57,7 +57,7 @@ OPTIONS_DEFAULT=	ALSA ANALYZER BS2B CDDA CONVERTER COPYPASTE COVER \
 QMMPLIBDIR=	${LOCALBASE}/lib/qmmp
 
 APP_DESC=	QMMP Main window
-APP_RUN_DEPENDS=	${LOCALBASE}/bin/qmmp
+APP_RUN_DEPENDS=	${LOCALBASE}/bin/qmmp:${PORTSDIR}/multimedia/qmmp-app
 GNOMEHOTKEY_DESC=	Support GNOME/Cinnamon shortcut keys
 GNOMEHOTKEY_RUN_DEPENDS=	${QMMPLIBDIR}/General/libgnomehotkey.so:${PORTSDIR}/accessibility/qmmp-plugin-gnomehotkey
 HOTKEY_DESC=	Support global shortcut keys
