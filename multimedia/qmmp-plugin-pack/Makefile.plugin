@@ -39,4 +39,4 @@ post-install:
 	@${FIND} ${STAGEDIR}${PREFIX}/lib -type f -exec ${STRIP_CMD} {} +
 
 # Category/PluginModule ==> lib/qmmp/Category/libpluginmodule.so
-PLIST_FILES=	lib/qmmp/${QMMPPLUGIN_TARGET:C@/.*$@/@}${QMMPPLUGIN_TARGET:tl:C@.*/@lib@:S@$@.so@}
+PLIST_FILES+=	lib/qmmp/${QMMPPLUGIN_TARGET:C@/.*$@/@}${QMMPPLUGIN_TARGET:tl:C@.*/@lib@:S@$@.so@}
