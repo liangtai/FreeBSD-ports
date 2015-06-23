@@ -15,8 +15,8 @@ USE_QT4+=	dbus network xml
 
 QMMPPLUGIN_TARGET=	General/kdenotify
 QMMPPLUGIN_OPTIONS=
-PLIST_FILES+=	%%DATADIR%%/images/empty_cover.png \
-	%%DATADIR%%/images/app_icon.png
+PLIST_FILES+=	share/qmmp/images/empty_cover.png \
+	share/qmmp/images/app_icon.png
 
 .include "${.CURDIR}/../../multimedia/qmmp/Makefile.plugin"
 .include <bsd.port.mk>
