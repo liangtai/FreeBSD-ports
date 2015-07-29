@@ -3,5 +3,18 @@ FreeBSD-ports
 
 FreeBSD's port for qmmp, and its depending ports
 
-Latest released version of QMMP.
-QMMP splitted version that allow to build component and plugin each.
+separated/cmake:    Latest released version of QMMP, in splitted ports
+
+
+=BRANCHES information=
+master             the latest released version with Qt qmake build
+cmake              the latest released version with CMake build
+devel-qmake        the current (trunk) version in develop with Qt qmake build
+devel-cmake        the current (trunk) version in develop with CMake build
+separated/qmake    same as 'master', but consists of many splitted ports
+                   in each plugins, core libraries, main application, and doc
+separated/cmake    same as 'cmake', but consists of many splitted ports
+                   in each plugins, core libraries, main application, and doc
+separated/devel-qmake   same as 'devel-qmake' but in splitted ports (see above)
+separated/devel-cmake   same as 'devel-cmake' but in splitted ports (see above)
+qmmp-0.4.x, qmmp-0.5.x, qmmp-0.6.x, and qmmp-0.7.x   deprecated versions
