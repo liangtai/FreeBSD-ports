@@ -44,17 +44,14 @@ PLIST_SUB+=	\
 	STILVIEW_SHLIB_VER=${STILVIEW_SHLIB_VERSION:C/\.[[:digit:].]+//} \
 	STILVIEW_SHLIB_VERSION=${STILVIEW_SHLIB_VERSION}
 
-post-build:
-.if ${PORT_OPTIONS:MDOXYGEN}
+post-build-DOXYGEN-on:
 	cd ${WRKSRC} && ${MAKE} doc
-.endif
 
-post-install:
-.if ${PORT_OPTIONS:MDOCS}
+post-install-DOCS-on:
 	@${MKDIR} ${STAGEDIR}${DOCSDIR} ; \
 	cd ${WRKSRC} && ${INSTALL_MAN} ${PORTDOCS} ${STAGEDIR}${DOCSDIR}
-.endif
-.if ${PORT_OPTIONS:MDOXYGEN}
+
+post-install-DOXYGEN-on:
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}/html ; \
 	${INSTALL_MAN} ${WRKSRC}/docs/html/* ${STAGEDIR}${DOCSDIR}/html ; \
 	${RM} -f ${WRKDIR}/PLIST.doc ; \
@@ -62,6 +59,5 @@ post-install:
 		${SED} 's|${STAGEDIR}${PREFIX}/||' \
 		>> ${WRKDIR}/PLIST.doc
 	cd ${WRKDIR} ; ${SED} -i -e '/PLIST.doc/ r PLIST.doc' ${TMPPLIST}
-.endif
 
 .include <bsd.port.mk>
