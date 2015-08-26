@@ -26,11 +26,9 @@ post-patch:
 	@${REINPLACE_CMD} -Ee '/add_subdirectory[(]src\/(app|qmmpui|plugins)[)]/d' \
 		${WRKSRC}/CMakeLists.txt
 
-post-install:
-.if ${PORT_OPTIONS:MDOCS}
+post-install-DOCS-on:
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}; \
 	cd ${WRKSRC} && ${INSTALL_MAN} ${PORTDOCS} ${STAGEDIR}${DOCSDIR}
-.endif
 
 .include "${.CURDIR}/../../multimedia/qmmp/Makefile.coresys"
 .include <bsd.port.mk>
