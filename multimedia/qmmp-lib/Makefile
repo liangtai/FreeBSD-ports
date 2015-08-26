@@ -29,11 +29,9 @@ post-build:
 		| ${XARGS} ${REINPLACE_CMD} \
 		-e 's|\((INSTALL_ROOT)\)/lib/\(pkgconfig\)|\1/libdata/\2|g'
 
-pre-install:
-.if ${PORT_OPTIONS:MDOCS}
+pre-install-DOCS-on:
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}; \
 	cd ${WRKSRC} && ${INSTALL_MAN} ${PORTDOCS} ${STAGEDIR}${DOCSDIR}
-.endif
 
 .include "${.CURDIR}/../../multimedia/qmmp/Makefile.coresys"
 .include <bsd.port.mk>
