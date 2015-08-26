@@ -148,22 +148,21 @@ post-build:
 	@${GREP} -L 'libdata/pkgconfig' ${WRKSRC}/src/qmmp/Makefile \
 		${WRKSRC}/src/qmmpui/Makefile | ${XARGS} ${REINPLACE_CMD} -e \
 		's|\((INSTALL_ROOT)\)/lib/\(pkgconfig\)|\1/libdata/\2|g'
-.if ${PORT_OPTIONS:MDOXYGEN}
+
+post-build-DOXYGEN-on:
 	cd ${WRKSRC}/doc && doxygen Doxyfile
-.endif
 
 pre-install:
 	@${FIND} ${WRKSRC}/lib/ -type f -name 'lib*' -exec ${STRIP_CMD} {} +
-.if ${PORT_OPTIONS:MSKINNEDUI}
-	${STRIP_CMD} ${WRKSRC}/bin/qmmp
-.endif
 
-post-install:
-.if ${PORT_OPTIONS:MDOCS}
+pre-install-SKINNEDUI-on:
+	${STRIP_CMD} ${WRKSRC}/bin/qmmp
+
+post-install-DOCS-on:
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}; \
 	cd ${WRKSRC} && ${INSTALL_MAN} ${PORTDOCS} ${STAGEDIR}${DOCSDIR}
-.endif
-.if ${PORT_OPTIONS:MDOXYGEN}
+
+post-install-DOXYGEN-on:
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}/html/search ; \
 	cd ${WRKSRC}/doc/html && \
 		${INSTALL_MAN} *.html *.png *.css ${STAGEDIR}${DOCSDIR}/html ; \
@@ -174,6 +173,5 @@ post-install:
 		${SED} 's|${STAGEDIR}${PREFIX}/||' \
 		>> ${WRKDIR}/PLIST.doc
 	cd ${WRKDIR} ; ${SED} -i -e '/PLIST.doc/ r PLIST.doc' ${TMPPLIST}
-.endif
 
 .include <bsd.port.mk>
