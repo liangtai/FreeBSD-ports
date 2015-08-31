@@ -1,13 +1,13 @@
 # $FreeBSD$
 
 PORTNAME=	qmmp
-PORTVERSION=	0.9.0
+PORTVERSION=	1.0.0
 CATEGORIES=	multimedia
 MASTER_SITES=	http://qmmp.ylsoftware.com/files/ \
 	SF/qmmp-dev/${PORTNAME}/
 
 MAINTAINER=	liangtai.s16@gmail.com
-COMMENT=	Qt4-based multimedia player
+COMMENT=	Qt5-based multimedia player
 
 LICENSE=	GPLv2
 
@@ -21,8 +21,8 @@ LIB_DEPENDS=	libmad.so:${PORTSDIR}/audio/libmad \
 		libmms.so:${PORTSDIR}/net/libmms
 
 USES=		desktop-file-utils gmake pkgconfig qmake tar:bzip2
-USE_QT4=	corelib dbus gui network xml \
-		linguisttools_build moc_build qmake_build rcc_build uic_build
+USE_QT5=	core dbus gui network xml \
+		buildtools_build linguisttools_build qmake_build
 USE_LDCONFIG=	yes
 
 OPTIONS_SUB=	yes
@@ -31,7 +31,7 @@ OPTIONS_MULTI=	DOCUMENTS PLUGIN_APPLICATION PLUGIN_FORMATS \
 		PLUGIN_PLAYLIST MISC
 
 PLUGIN_APPLICATION_DESC=	Main program view
-OPTIONS_MULTI_PLUGIN_APPLICATION=	SKINNEDUI
+OPTIONS_MULTI_PLUGIN_APPLICATION=	SKINNEDUI QSUI
 
 DOCUMENTS_DESC=	Documentation and API Reference
 OPTIONS_MULTI_DOCUMENTS=	DOCS DOXYGEN
@@ -50,7 +50,7 @@ PLUGIN_OUTPUT_DESC=	Output sound systems
 OPTIONS_MULTI_PLUGIN_OUTPUT=	ALSA JACK OSS OSS4 PULSEAUDIO
 
 PLUGIN_PLAYLIST_DESC=	Playlist operation
-OPTIONS_MULTI_PLUGIN_PLAYLIST=	HAL UDISKS UDISKS2
+OPTIONS_MULTI_PLUGIN_PLAYLIST=	HAL UDISKS2
 
 MISC_DESC=	Other features
 OPTIONS_SINGLE=	MPLAYER
@@ -66,6 +66,9 @@ DOXYGEN_BUILD_DEPENDS=	doxygen:${PORTSDIR}/devel/doxygen
 
 SKINNEDUI_DESC=	Skinned GUI
 SKINNEDUI_QMAKE_CONFIG=	WITH_SKINNED
+
+QSUI_DESC=		Simple UI based on standard widgets set
+QSUI_QMAKE_CONFIG=	SIMPLE_UI_PLUGIN
 
 JACK_BUILD_DEPENDS=	jackit>=0.121.2:${PORTSDIR}/audio/jack
 JACK_LIB_DEPENDS=	libjack.so:${PORTSDIR}/audio/jack
@@ -126,7 +129,7 @@ MPLAYER2_QMAKE_CONFIG=	MPLAYER_PLUGIN
 
 PROJECTM_DESC=	Support the projectM music visualiser
 PROJECTM_LIB_DEPENDS=	libprojectM.so.2:${PORTSDIR}/graphics/libprojectm
-PROJECTM_USE=	QT4=opengl
+PROJECTM_USE=	QT5=opengl
 PROJECTM_QMAKE_CONFIG=	PROJECTM_PLUGIN WITH_PROJECTM20
 
 OSS_QMAKE_CONFIG=	OSS_PLUGIN
@@ -141,9 +144,7 @@ LADSPA_QMAKE_CONFIG=	LADSPA_PLUGIN
 HAL_LIB_DEPENDS=	libhal.so:${PORTSDIR}/sysutils/hal
 HAL_QMAKE_CONFIG=	HAL_PLUGIN
 
-UDISKS_DESC=	Support removable disc detection (obsolete)
 UDISKS2_DESC=	Support removable disc detection using UDisks
-UDISKS_QMAKE_CONFIG=	UDISKS_PLUGIN
 UDISKS2_QMAKE_CONFIG=	UDISKS2_PLUGIN
 
 WILDMIDI_DESC=	Support to playback MIDI files
@@ -162,16 +163,22 @@ _DESTDIR_VIA_ENV=	no
 MAKE_ARGS+=	INSTALL_ROOT=${STAGEDIR}${PREFIX}
 
 post-patch:
-	@${GREP} -l '^CONFIG' ${WRKSRC}/qmmp.pri | ${XARGS} \
-		${REINPLACE_CMD} -e 's|^CONFIG += |#CONFIG += |'
 	@${GREP} -EL '${LOCALBASE}/lib/oss/include|${LOCALBASE}/include' \
 		${WRKSRC}/src/plugins/Input/mpc/mpc.pro \
 		${WRKSRC}/src/plugins/Output/oss4/oss4.pro | ${XARGS} \
 		${REINPLACE_CMD} -e 's|/usr/|${LOCALBASE}/|g'
+	@${GREP} -l 'Q_WS_X11' ${WRKSRC}/src/plugins/General/statusicon/*.cpp \
+		${WRKSRC}/src/plugins/General/statusicon/qmmptrayicon.h \
+		${WRKSRC}/src/plugins/General/hotkey/hotkeymanager_x11.cpp \
+		${WRKSRC}/src/plugins/General/hotkey/hotkeymanager.h \
+		${WRKSRC}/src/plugins/Ui/skinned/skinned.pro \
+		${WRKSRC}/src/plugins/Ui/skinned/*.cpp \
+		${WRKSRC}/src/plugins/Ui/skinned/*.h \
+		${WRKSRC}/src/qmmpui/detailsdialog.cpp ${WRKSRC}/qmmp.pri | ${XARGS} \
+		${REINPLACE_CMD} -e 's/Q_WS_X11/X11PLATFORM/'
 
 post-build:
-	@${GREP} -L 'libdata/pkgconfig'
-		${WRKSRC}/src/qmmp/Makefile \
+	@${GREP} -L 'libdata/pkgconfig' ${WRKSRC}/src/qmmp/Makefile \
 		${WRKSRC}/src/qmmpui/Makefile | ${XARGS} ${REINPLACE_CMD} -e \
 		's|\((INSTALL_ROOT)\)/lib/\(pkgconfig\)|\1/libdata/\2|g'
 
