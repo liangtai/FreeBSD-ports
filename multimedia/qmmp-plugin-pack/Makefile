@@ -45,10 +45,6 @@ XMP_QMAKE_CONFIG=	XMP_PLUGIN
 _DESTDIR_VIA_ENV=	no
 MAKE_ARGS+=	INSTALL_ROOT=${STAGEDIR}${PREFIX}
 
-post-patch:
-	@${GREP} -l 'Q_WS_X11' ${WRKSRC}/qmmp-plugin-pack.pri | ${XARGS} \
-		${REINPLACE_CMD} -e 's/Q_WS_X11/X11PLATFORM/'
-
 pre-install:
 	@${FIND} ${WRKSRC}/lib/ -type f -exec ${STRIP_CMD} {} +
 

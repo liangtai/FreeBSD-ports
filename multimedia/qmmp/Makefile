@@ -167,15 +167,6 @@ post-patch:
 		${WRKSRC}/src/plugins/Input/mpc/mpc.pro \
 		${WRKSRC}/src/plugins/Output/oss4/oss4.pro | ${XARGS} \
 		${REINPLACE_CMD} -e 's|/usr/|${LOCALBASE}/|g'
-	@${GREP} -l 'Q_WS_X11' ${WRKSRC}/src/plugins/General/statusicon/*.cpp \
-		${WRKSRC}/src/plugins/General/statusicon/qmmptrayicon.h \
-		${WRKSRC}/src/plugins/General/hotkey/hotkeymanager_x11.cpp \
-		${WRKSRC}/src/plugins/General/hotkey/hotkeymanager.h \
-		${WRKSRC}/src/plugins/Ui/skinned/skinned.pro \
-		${WRKSRC}/src/plugins/Ui/skinned/*.cpp \
-		${WRKSRC}/src/plugins/Ui/skinned/*.h \
-		${WRKSRC}/src/qmmpui/detailsdialog.cpp ${WRKSRC}/qmmp.pri | ${XARGS} \
-		${REINPLACE_CMD} -e 's/Q_WS_X11/X11PLATFORM/'
 
 post-build:
 	@${GREP} -L 'libdata/pkgconfig' ${WRKSRC}/src/qmmp/Makefile \
