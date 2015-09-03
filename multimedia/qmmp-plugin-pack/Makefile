@@ -54,10 +54,6 @@ LDFLAGS+=	-L${LOCALBASE}/lib
 
 .include <bsd.port.options.mk>
 
-post-patch:
-	@${GREP} -l 'Q_WS_X11' ${WRKSRC}/CMakeLists.txt | ${XARGS} \
-		${REINPLACE_CMD} -e 's/Q_WS_X11/X11PLATFORM/'
-
 pre-configure:
 	@${RM} -f ${BUILD_WRKSRC}/CMakeCache.txt
 

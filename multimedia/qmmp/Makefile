@@ -319,16 +319,6 @@ post-patch:
 		${WRKSRC}/src/qmmp/CMakeLists.txt \
 		${WRKSRC}/src/qmmpui/CMakeLists.txt | ${XARGS} \
 		${REINPLACE_CMD} -e '/pkgconfig/s|$${LIB_DIR}|libdata|'
-	@${GREP} -l 'Q_WS_X11' ${WRKSRC}/src/plugins/General/statusicon/*.cpp \
-		${WRKSRC}/src/plugins/General/statusicon/qmmptrayicon.h \
-		${WRKSRC}/src/plugins/General/hotkey/hotkeymanager_x11.cpp \
-		${WRKSRC}/src/plugins/General/hotkey/hotkeymanager.h \
-		${WRKSRC}/src/plugins/Ui/skinned/*.cpp \
-		${WRKSRC}/src/plugins/Ui/skinned/*.h \
-		${WRKSRC}/src/qmmpui/detailsdialog.cpp \
-		${WRKSRC}/CMakeLists.txt | ${XARGS} \
-		${REINPLACE_CMD} -e 's/Q_WS_X11/X11PLATFORM/'
-
 
 pre-configure:
 	@${RM} -f ${BUILD_WRKSRC}/CMakeCache.txt
