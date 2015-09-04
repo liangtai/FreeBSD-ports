@@ -19,8 +19,10 @@ USE_QT4=	corelib gui linguisttools_build moc_build qmake_build rcc_build
 USE_LDCONFIG=	yes
 
 OPTIONS_SUB=	yes
-OPTIONS_DEFINE=	FFAP MPG123 QSUI XMP
-OPTIONS_DEFAULT=	FFAP MPG123 QSUI XMP
+
+OPTIONS_MULTI=	PLUGINS
+OPTIONS_MULTI_PLUGINS=	FFAP MPG123 XMP
+OPTIONS_DEFAULT=	FFAP MPG123 XMP
 
 FFAP_DESC=		Support APE sound file
 FFAP_LIB_DEPENDS=	libtag.so:${PORTSDIR}/audio/taglib
@@ -36,10 +38,6 @@ FFAPASM_QMAKE_CONFIG=	FFAP_YASM
 MPG123_LIB_DEPENDS=	libmpg123.so:${PORTSDIR}/audio/mpg123
 MPG123_USE=	QT4=uic_build
 MPG123_QMAKE_CONFIG=	MPG123_PLUGIN
-
-QSUI_DESC=		Simple UI based on standard widgets set
-QSUI_USE=	QT4=uic_build,network
-QSUI_QMAKE_CONFIG=	SIMPLE_UI_PLUGIN
 
 XMP_DESC=	Support various module formats using libxmp
 XMP_LIB_DEPENDS=	libxmp.so:${PORTSDIR}/audio/libxmp
