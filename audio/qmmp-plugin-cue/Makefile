@@ -10,14 +10,8 @@ COMMENT=	CUE plug-in of QMMP
 LICENSE=	GPLv2
 
 OPTIONS_SUB=	yes
-OPTIONS_DEFINE=	DIR_ASSOC ENCA
-OPTIONS_DEFAULT=	DIR_ASSOC ENCA
-
-DIR_ASSOC_DESC=	inode/directory mime type association
-DIR_ASSOC_CMAKE_ON=	-DUSE_DIR_ASSOC:BOOL=TRUE
-DIR_ASSOC_CMAKE_OFF=	-DUSE_DIR_ASSOC:BOOL=FALSE
-DIR_ASSOC_USES=	desktop-file-utils
-PLIST_FILES+=	%%DIR_ASSOC%%share/applications/qmmp_cue.desktop
+OPTIONS_DEFINE=	ENCA
+OPTIONS_DEFAULT=	ENCA
 
 ENCA_DESC=		Support automatic character set detection
 ENCA_LIB_DEPENDS=	libenca.so:${PORTSDIR}/converters/enca

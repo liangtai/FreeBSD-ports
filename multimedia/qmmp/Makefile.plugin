@@ -1,6 +1,6 @@
 # $FreeBSD$
 
-QMMP_VERSION=	0.8.8
+QMMP_VERSION=	0.9.0
 MASTER_SITES=	http://qmmp.ylsoftware.com/files/plugins/ \
 	SF/qmmp-dev/qmmp/
 DISTNAME=	qmmp-${PORTVERSION}
@@ -10,7 +10,7 @@ MAINTAINER?=	liangtai.s16@gmail.com
 LICENSE?=	GPLv2
 
 LIB_DEPENDS+=	libqmmp.so:${PORTSDIR}/multimedia/qmmp-lib
-BUILD_DEPENDS+=	qmmp-lib>=0.8.0:${PORTSDIR}/multimedia/qmmp-lib
+BUILD_DEPENDS+=	qmmp-lib>=0.9.0:${PORTSDIR}/multimedia/qmmp-lib
 
 USES+=		cmake:outsource pkgconfig tar:bzip2
 USE_QT4+=	corelib gui linguisttools_build moc_build qmake_build rcc_build
@@ -38,14 +38,14 @@ PLUGIN_TARGETS=	CommandLineOptions PlayListFormats \
 	Output/alsa Output/directsound Output/jack Output/null \
 	Output/oss Output/oss4 Output/pulseaudio Output/waveout \
 	Transports/http Transports/mms \
-	Ui/skinned \
+	Ui/qsui Ui/skinned \
 	Visual/analyzer Visual/projectm
 
 PLUGIN_TAGS=	AAC ALSA ANALYZER BS2B CDA CONVERTER COPYPASTE COVER \
 	CROSSFADE CUE CURL DIR_ASSOC DSOUND ENCA FFMPEG FFMPEG_LEGACY \
 	FILEOPS FLAC GME GNOMEHOTKEY HAL HOTKEY JACK KDENOTIFY LADSPA \
 	LYRICS MAD MIDI MMS MODPLUG MPC MPLAYER MPRIS NOTIFIER NULL OPUS \
-	OSS OSS4 PROJECTM PULSE QMMP_DIALOG RGSCAN SB SCROBBLER SID \
+	OSS OSS4 PROJECTM PULSE QMMP_DIALOG QSUI RGSCAN SB SCROBBLER SID \
 	SKINNED SNDFILE SRC STATICON STEREO TRACKCHANGE UDISKS UDISKS2 \
 	VORBIS WAVEOUT WAVPACK
 
