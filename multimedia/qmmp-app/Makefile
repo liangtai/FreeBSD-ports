@@ -11,7 +11,7 @@ LICENSE=	GPLv2
 
 LIB_DEPENDS+=	libqmmp.so:${PORTSDIR}/multimedia/qmmp-lib \
 	libqmmpui.so:${PORTSDIR}/multimedia/qmmp-uilib
-BUILD_DEPENDS+=	qmmp-lib>=0.9.0:${PORTSDIR}/multimedia/qmmp-lib
+BUILD_DEPENDS+=	qmmp-lib>=0.10.0:${PORTSDIR}/multimedia/qmmp-lib
 
 USES+=	desktop-file-utils
 
