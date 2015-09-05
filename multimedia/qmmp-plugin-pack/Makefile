@@ -45,8 +45,8 @@ XMP_QMAKE_CONFIG=	XMP_PLUGIN
 
 .include "../qmmp/options.qmake.mk"
 
-MAKE_ENV+=	INSTALL_ROOT=${STAGEDIR}${PREFIX}
-DESTDIRNAME=	_NO_USE_
+_DESTDIR_VIA_ENV=	no
+MAKE_ARGS+=	INSTALL_ROOT=${STAGEDIR}${PREFIX}
 
 post-patch:
 	@${REINPLACE_CMD} -e 's|^CONFIG += |#CONFIG += |' \
