@@ -11,7 +11,7 @@ LICENSE=	GPLv2
 
 LIB_DEPENDS+=	libqmmpui.so:${PORTSDIR}/multimedia/qmmp-uilib
 
-USE_QT4+=	dbus network xml
+USE_QT5+=	dbus network xml
 
 QMMPPLUGIN_TARGET=	General/hal
 QMMPPLUGIN_OPTIONS=	HAL_PLUGIN

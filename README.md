@@ -3,7 +3,7 @@ FreeBSD-ports
 
 FreeBSD's port for qmmp, and its depending ports
 
-separated/devel-qmake:    Developing version of QMMP, in splitted ports
+separated/qt5/qmake:    Developing version of QMMP, in splitted ports
 
 
 =BRANCHES information=

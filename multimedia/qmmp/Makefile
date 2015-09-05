@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	qmmp
-PORTVERSION=	0.9.0
+PORTVERSION=	1.0.0
 CATEGORIES=	multimedia
 MASTER_SITES=	# empty
 EXTRACT_ONLY=	# empty
@@ -40,7 +40,7 @@ OPTIONS_MULTI_PLUGIN_OUTPUT=	ALSA JACK NULLOUT OSS OSS4 PULSEAUDIO
 
 PLUGIN_PLAYLIST_DESC=	Playlist operation
 OPTIONS_MULTI_PLUGIN_PLAYLIST=	COPYPASTE FILEOPS HAL \
-		TRACKCHANGE UDISKS UDISKS2
+		TRACKCHANGE UDISKS2
 
 PLUGIN_NETWORKING_DESC=	Features via the Net
 OPTIONS_MULTI_PLUGIN_NETWORKING=	COVER CURL LYRICS MMS SB SCROBBLER
@@ -127,8 +127,6 @@ FILEOPS_RUN_DEPENDS=	${QMMPLIBDIR}/General/libfileops.so:${PORTSDIR}/sysutils/qm
 HAL_RUN_DEPENDS=	${QMMPLIBDIR}/General/libhal.so:${PORTSDIR}/sysutils/qmmp-plugin-hal
 TRACKCHANGE_DESC=	Enable to run external command each track switching
 TRACKCHANGE_RUN_DEPENDS=	${QMMPLIBDIR}/General/libtrackchange.so:${PORTSDIR}/misc/qmmp-plugin-trackchange
-UDISKS_DESC=	Support removable disc detection (obsolete)
-UDISKS_RUN_DEPENDS=	${QMMPLIBDIR}/General/libudisks.so:${PORTSDIR}/sysutils/qmmp-plugin-udisks
 UDISKS2_DESC=	Support removable disc detection using UDisks
 UDISKS2_RUN_DEPENDS=	${QMMPLIBDIR}/General/libudisks2.so:${PORTSDIR}/sysutils/qmmp-plugin-udisks2
 

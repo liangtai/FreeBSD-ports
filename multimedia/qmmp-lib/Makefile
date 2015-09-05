@@ -5,7 +5,7 @@ PORTVERSION=	${QMMP_VERSION}
 CATEGORIES=	multimedia
 
 MAINTAINER=	liangtai.s16@gmail.com
-COMMENT=	Core library of the QMMP Qt4-based multimedia player
+COMMENT=	Core library of the QMMP Qt5-based multimedia player
 
 LICENSE=	GPLv2
 
@@ -29,7 +29,7 @@ post-build:
 		| ${XARGS} ${REINPLACE_CMD} \
 		-e 's|\((INSTALL_ROOT)\)/lib/\(pkgconfig\)|\1/libdata/\2|g'
 
-pre-install-DOCS-on:
+post-install-DOCS-on:
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}; \
 	cd ${WRKSRC} && ${INSTALL_MAN} ${PORTDOCS} ${STAGEDIR}${DOCSDIR}
 

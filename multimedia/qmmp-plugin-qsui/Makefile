@@ -11,7 +11,7 @@ LICENSE=	GPLv2
 
 LIB_DEPENDS+=	libqmmpui.so:${PORTSDIR}/multimedia/qmmp-uilib
 
-USE_QT4+=	network uic_build
+USE_QT5+=	network
 
 QMMPPLUGIN_TARGET=	Ui/qsui
 QMMPPLUGIN_OPTIONS=	SIMPLE_UI_PLUGIN
