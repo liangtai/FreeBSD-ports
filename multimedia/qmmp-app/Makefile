@@ -18,7 +18,7 @@ DIR_ASSOC_USES=	desktop-file-utils
 
 LIB_DEPENDS+=	libqmmp.so:${PORTSDIR}/multimedia/qmmp-lib \
 	libqmmpui.so:${PORTSDIR}/multimedia/qmmp-uilib
-BUILD_DEPENDS+=	qmmp-lib>=0.9.0:${PORTSDIR}/multimedia/qmmp-lib
+BUILD_DEPENDS+=	qmmp-lib>=0.10.0:${PORTSDIR}/multimedia/qmmp-lib
 
 .for p in Effect Engines FileDialogs General Input Output Transports Ui Visual
 EXTRACT_AFTER_ARGS+=	--exclude '${DISTNAME}/src/plugins/${p}'
