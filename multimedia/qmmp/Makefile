@@ -66,8 +66,7 @@ DOXYGEN_BUILD_DEPENDS=	doxygen:${PORTSDIR}/devel/doxygen
 
 QSUI_DESC=		Simple UI based on standard widgets set
 QSUI_USE=	QT4=network,uic_build
-QSUI_CMAKE_ON=	-DUSE_QSUI:BOOL=TRUE
-QSUI_CMAKE_OFF=	-DUSE_QSUI:BOOL=FALSE
+QSUI_QMAKE_CONFIG=	SIMPLE_UI_PLUGIN
 
 SKINNEDUI_DESC=	Skinned GUI
 SKINNEDUI_QMAKE_CONFIG=	WITH_SKINNED
@@ -175,8 +174,7 @@ post-patch:
 		${REINPLACE_CMD} -e 's|/usr/|${LOCALBASE}/|g'
 
 post-build:
-	@${GREP} -L 'libdata/pkgconfig'
-		${WRKSRC}/src/qmmp/Makefile \
+	@${GREP} -L 'libdata/pkgconfig' ${WRKSRC}/src/qmmp/Makefile \
 		${WRKSRC}/src/qmmpui/Makefile | ${XARGS} ${REINPLACE_CMD} -e \
 		's|\((INSTALL_ROOT)\)/lib/\(pkgconfig\)|\1/libdata/\2|g'
 
