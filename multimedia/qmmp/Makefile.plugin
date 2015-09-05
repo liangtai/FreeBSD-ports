@@ -34,7 +34,7 @@ PLUGIN_TARGETS=	CommandLineOptions PlayListFormats \
 	Output/alsa Output/directsound Output/jack Output/null \
 	Output/oss Output/oss4 Output/pulseaudio Output/waveout \
 	Transports/http Transports/mms \
-	Ui/skinned \
+	Ui/qsui Ui/skinned \
 	Visual/analyzer Visual/projectm
 
 PLUGINGROUPDIR=	${QMMPPLUGIN_TARGET:C|/.*$||}

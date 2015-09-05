@@ -19,7 +19,7 @@ USE_LDCONFIG=	yes
 CFLAGS+=	-I${LOCALBASE}/include
 LDFLAGS+=	-L${LOCALBASE}/lib
 
-PLUGIN_TARGETS=	Input/ffap Input/mpg123 Input/xmp Ui/qsui
+PLUGIN_TARGETS=	Input/ffap Input/mpg123 Input/xmp
 
 .for pidir in ${PLUGIN_TARGETS}
 . if ${QMMPPLUGIN_TARGET} != ${pidir}
