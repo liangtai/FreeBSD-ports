@@ -12,8 +12,6 @@ LICENSE=	GPLv2
 LIB_DEPENDS+=	libmpg123.so:${PORTSDIR}/audio/mpg123 \
 	libtag.so:${PORTSDIR}/audio/taglib
 
-USE_QT4=	uic_build
-
 QMMPPLUGIN_TARGET=	Input/mpg123
 QMMPPLUGIN_TAG=	MPG123
 

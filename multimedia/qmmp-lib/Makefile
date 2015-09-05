@@ -5,7 +5,7 @@ PORTVERSION=	${QMMP_VERSION}
 CATEGORIES=	multimedia
 
 MAINTAINER=	liangtai.s16@gmail.com
-COMMENT=	Core library of the QMMP Qt4-based multimedia player
+COMMENT=	Core library of the QMMP Qt5-based multimedia player
 
 LICENSE=	GPLv2
 

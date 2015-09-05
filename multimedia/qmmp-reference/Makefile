@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	qmmp-reference
-PORTVERSION=	0.9.0
+PORTVERSION=	1.0.0
 CATEGORIES=	multimedia
 MASTER_SITES=	http://qmmp.ylsoftware.com/files/plugins/ \
 	SF/qmmp-dev/qmmp/

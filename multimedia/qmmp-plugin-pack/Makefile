@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	qmmp-plugin-pack
-PORTVERSION=	0.9.0
+PORTVERSION=	1.0.0
 CATEGORIES=	multimedia
 MASTER_SITES=	# empty
 DISTFILES=	#empty

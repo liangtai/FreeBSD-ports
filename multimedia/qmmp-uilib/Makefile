@@ -5,12 +5,12 @@ PORTVERSION=	${QMMP_VERSION}
 CATEGORIES=	multimedia
 
 MAINTAINER=	liangtai.s16@gmail.com
-COMMENT=	UI library of the QMMP Qt4-based multimedia player
+COMMENT=	UI library of the QMMP Qt5-based multimedia player
 
 LICENSE=	GPLv2
 
 LIB_DEPENDS+=	libqmmp.so:${PORTSDIR}/multimedia/qmmp-lib
-BUILD_DEPENDS+=	qmmp-lib>=0.9.0:${PORTSDIR}/multimedia/qmmp-lib
+BUILD_DEPENDS+=	qmmp-lib>=1.0.0:${PORTSDIR}/multimedia/qmmp-lib
 
 EXTRACT_AFTER_ARGS+=	--exclude '${DISTNAME}/src/plugins' \
 	--exclude '${DISTNAME}/src/app'
