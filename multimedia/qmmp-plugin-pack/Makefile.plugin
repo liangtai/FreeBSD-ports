@@ -1,6 +1,6 @@
 # $FreeBSD$
 
-QMMP_PP_VERSION=	0.8.6
+QMMP_PP_VERSION=	0.9.0
 MASTER_SITES=	http://qmmp.ylsoftware.com/files/plugins/ \
 	SF/qmmp-dev/qmmp-plugin-pack/
 DISTNAME=	qmmp-plugin-pack-${PORTVERSION}
@@ -10,7 +10,7 @@ MAINTAINER?=	liangtai.s16@gmail.com
 LICENSE?=	GPLv2
 
 LIB_DEPENDS+=	libqmmp.so:${PORTSDIR}/multimedia/qmmp-lib
-BUILD_DEPENDS+=	qmmp-lib>=0.8.0:${PORTSDIR}/multimedia/qmmp-lib
+BUILD_DEPENDS+=	qmmp-lib>=0.9.0:${PORTSDIR}/multimedia/qmmp-lib
 
 USES+=		gmake pkgconfig qmake tar:bzip2
 USE_QT4+=	corelib gui linguisttools_build moc_build qmake_build rcc_build
@@ -19,7 +19,7 @@ USE_LDCONFIG=	yes
 CFLAGS+=	-I${LOCALBASE}/include
 LDFLAGS+=	-L${LOCALBASE}/lib
 
-PLUGIN_TARGETS=	Input/ffap Input/mpg123 Ui/qsui
+PLUGIN_TARGETS=	Input/ffap Input/mpg123 Input/xmp
 
 .for pidir in ${PLUGIN_TARGETS}
 . if ${QMMPPLUGIN_TARGET} != ${pidir}

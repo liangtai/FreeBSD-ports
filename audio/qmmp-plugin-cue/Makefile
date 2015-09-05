@@ -9,8 +9,6 @@ COMMENT=	CUE plug-in of QMMP
 
 LICENSE=	GPLv2
 
-USES+=	desktop-file-utils
-
 OPTIONS_SUB=	yes
 OPTIONS_DEFINE=	ENCA
 OPTIONS_DEFAULT=	ENCA
@@ -20,8 +18,6 @@ ENCA_QMAKE_CONFIG=	WITH_ENCA
 
 QMMPPLUGIN_TARGET=	Input/cue
 QMMPPLUGIN_OPTIONS=
-
-PLIST_FILES+=	share/applications/qmmp_cue.desktop
 
 .include "${.CURDIR}/../../multimedia/qmmp/options.qmake.mk"
 .include "${.CURDIR}/../../multimedia/qmmp/Makefile.plugin"

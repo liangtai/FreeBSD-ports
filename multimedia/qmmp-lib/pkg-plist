@@ -1,6 +1,7 @@
 include/qmmp/abstractengine.h
 include/qmmp/audioparameters.h
 include/qmmp/buffer.h
+include/qmmp/channelmap.h
 include/qmmp/decoder.h
 include/qmmp/decoderfactory.h
 include/qmmp/effect.h

@@ -11,6 +11,7 @@ include/qmmpui/metadataformatter.h
 include/qmmpui/playlistdownloader.h
 include/qmmpui/playlistformat.h
 include/qmmpui/playlistgroup.h
+include/qmmpui/playlistheadermodel.h
 include/qmmpui/playlistitem.h
 include/qmmpui/playlistmanager.h
 include/qmmpui/playlistmodel.h
