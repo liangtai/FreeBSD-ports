@@ -20,6 +20,8 @@ LIB_DEPENDS+=	libqmmp.so:${PORTSDIR}/multimedia/qmmp-lib \
 	libqmmpui.so:${PORTSDIR}/multimedia/qmmp-uilib
 BUILD_DEPENDS+=	qmmp-lib>=1.0.0:${PORTSDIR}/multimedia/qmmp-lib
 
+USE_QT5+=	network linguisttools_build
+
 .for p in Effect Engines FileDialogs General Input Output Transports Ui Visual
 EXTRACT_AFTER_ARGS+=	--exclude '${DISTNAME}/src/plugins/${p}'
 .endfor
@@ -30,10 +32,10 @@ post-patch:
 	@${GREP} -H 'add_subdirectory' ${WRKSRC}/CMakeLists.txt | \
 		${GREP} -v 'src/app' | cut -d: -f1 | uniq | ${XARGS} \
 		${REINPLACE_CMD} -Ee '/add_subdirectory[(]src\/(qmmp|qmmpui)[)]/d'
-	@${GREP} -El 'target_link_libraries.*libqmmp|add_dependencies' \
+	@${GREP} -El 'target_link_libraries.*::Widgets libqmmp|add_dependencies' \
 		${WRKSRC}/src/app/CMakeLists.txt | ${XARGS} \
 		${REINPLACE_CMD} -e '/^add_dependencies/d' \
-		-e '/target_link_libraries/s/libqmmp/-lqmmp/'
+		-e '/target_link_libraries/s/::Widgets libqmmp/::Widgets Qt5::Network -lqmmp/'
 	@${GREP} -El 'Effect|Engines|FileDialogs|General|Input|Output|Transports|Ui|Visual' \
 		${WRKSRC}/src/plugins/CMakeLists.txt | ${XARGS} \
 		${REINPLACE_CMD} -ne '/PlayListFormats/,/CommandLineOptions/p'
