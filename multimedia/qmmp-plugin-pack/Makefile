@@ -15,7 +15,7 @@ LIB_DEPENDS=	libqmmpui.so:${PORTSDIR}/multimedia/qmmp
 BUILD_DEPENDS=	qmmp>=1.0.0:${PORTSDIR}/multimedia/qmmp
 
 USES=		cmake:outsource pkgconfig tar:bzip2
-USE_QT5=	core gui linguisttools_build buildtools_build qmake_build
+USE_QT5=	core gui buildtools_build linguisttools_build qmake_build
 USE_LDCONFIG=	yes
 
 OPTIONS_SUB=	yes
@@ -45,12 +45,6 @@ XMP_DESC=	Support various module formats using libxmp
 XMP_LIB_DEPENDS=	libxmp.so:${PORTSDIR}/audio/libxmp
 XMP_CMAKE_ON=	-DUSE_XMP:BOOL=TRUE
 XMP_CMAKE_OFF=	-DUSE_XMP:BOOL=FALSE
-
-CMAKE_ARGS+=	-DCMAKE_REQUIRED_INCLUDES:PATH=${LOCALBASE}/include
-CFLAGS+=	-I${LOCALBASE}/include
-LDFLAGS+=	-L${LOCALBASE}/lib
-
-.include <bsd.port.options.mk>
 
 pre-configure:
 	@${RM} -f ${BUILD_WRKSRC}/CMakeCache.txt

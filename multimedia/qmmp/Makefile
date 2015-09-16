@@ -307,10 +307,6 @@ PLIST_SUB+=	SHLIB_VER=${PORTVERSION:C/-.*//}
 PORTDOCS=	README README.RUS AUTHORS
 INSTALLS_ICONS=	yes
 
-CMAKE_ARGS+=	-DCMAKE_REQUIRED_INCLUDES:PATH=${LOCALBASE}/include
-CFLAGS+=	-I${LOCALBASE}/include
-LDFLAGS+=	-L${LOCALBASE}/lib
-
 post-patch:
 	@${GREP} -L '${LOCALBASE}/lib/oss' \
 		${WRKSRC}/src/plugins/Output/oss4/CMakeLists.txt | ${XARGS} \
@@ -339,7 +335,7 @@ post-install-DOXYGEN-on:
 	${RM} -f ${WRKDIR}/PLIST.doc ; \
 	${FIND} ${STAGEDIR}${DOCSDIR}/html -type f | \
 		${SED} 's|${STAGEDIR}${PREFIX}/||' \
-		>> ${WRKDIR}/PLIST.doc
+		>> ${WRKDIR}/PLIST.doc ; \
 	cd ${WRKDIR} ; ${SED} -i -e '/PLIST.doc/ r PLIST.doc' ${TMPPLIST}
 
 .include <bsd.port.mk>
