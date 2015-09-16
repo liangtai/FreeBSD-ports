@@ -16,9 +16,6 @@ USES+=		gmake pkgconfig qmake tar:bzip2
 USE_QT5+=	core gui buildtools_build linguisttools_build qmake_build
 USE_LDCONFIG=	yes
 
-CFLAGS+=	-I${LOCALBASE}/include
-LDFLAGS+=	-L${LOCALBASE}/lib
-
 PLUGIN_TARGETS=	Input/ffap Input/mpg123 Input/xmp
 
 .for pidir in ${PLUGIN_TARGETS}
