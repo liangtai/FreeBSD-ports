@@ -15,9 +15,5 @@ USE_LDCONFIG=	yes
 
 PLIST_SUB+=	SHLIB_VER=${PORTVERSION:C/-.*//}
 
-CMAKE_ARGS+=	-DCMAKE_REQUIRED_INCLUDES:PATH=${LOCALBASE}/include
-CFLAGS+=	-I${LOCALBASE}/include
-LDFLAGS+=	-L${LOCALBASE}/lib
-
 pre-configure:
 	@${RM} -f ${BUILD_WRKSRC}/CMakeCache.txt
