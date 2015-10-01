@@ -53,6 +53,10 @@ LDFLAGS+=	-L${LOCALBASE}/lib
 
 .include <bsd.port.options.mk>
 
+post-patch:
+	@${REINPLACE_CMD} '/settingsdialog/s/[><]/"/g' \
+		${WRKSRC}/src/Input/xmp/decoderxmpfactory.cpp
+
 pre-configure:
 	@${RM} -f ${BUILD_WRKSRC}/CMakeCache.txt
 
