@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	qmmp
-PORTVERSION=	0.9.1
+PORTVERSION=	0.9.2
 CATEGORIES=	multimedia
 MASTER_SITES=	http://qmmp.ylsoftware.com/files/ \
 	SF/qmmp-dev/${PORTNAME}/
@@ -66,7 +66,7 @@ DOXYGEN_BUILD_DEPENDS=	doxygen:${PORTSDIR}/devel/doxygen
 
 QSUI_DESC=		Simple UI based on standard widgets set
 QSUI_USE=	QT4=network,uic_build
-QSUI_QMAKE_CONFIG=	SIMPLE_UI_PLUGIN
+QSUI_QMAKE_CONFIG=	WITH_QSUI
 
 SKINNEDUI_DESC=	Skinned GUI
 SKINNEDUI_QMAKE_CONFIG=	WITH_SKINNED

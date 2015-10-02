@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	qmmp-plugin-pack
-PORTVERSION=	0.9.0
+PORTVERSION=	0.9.1
 CATEGORIES=	multimedia
 MASTER_SITES=	http://qmmp.ylsoftware.com/files/plugins/ \
 	SF/qmmp-dev/${PORTNAME}/
@@ -14,7 +14,7 @@ LICENSE=	GPLv2
 LIB_DEPENDS=	libqmmpui.so:${PORTSDIR}/multimedia/qmmp
 BUILD_DEPENDS=	qmmp>=0.9.0:${PORTSDIR}/multimedia/qmmp
 
-USES=		desktop-file-utils gmake pkgconfig qmake tar:bzip2
+USES=		gmake pkgconfig qmake tar:bzip2
 USE_QT4=	corelib gui linguisttools_build moc_build qmake_build rcc_build
 USE_LDCONFIG=	yes
 
@@ -46,8 +46,8 @@ XMP_QMAKE_CONFIG=	XMP_PLUGIN
 .include <bsd.port.options.mk>
 .include "${.CURDIR}/../qmmp/options.qmake.mk"
 
-MAKE_ENV+=	INSTALL_ROOT=${STAGEDIR}${PREFIX}
-DESTDIRNAME=	_NO_USE_
+_DESTDIR_VIA_ENV=	no
+MAKE_ARGS+=	INSTALL_ROOT=${STAGEDIR}${PREFIX}
 
 post-patch:
 	@${REINPLACE_CMD} -e 's|^CONFIG += |#CONFIG += |' \
