@@ -12,7 +12,7 @@ LICENSE=	GPLv2
 LIB_DEPENDS+=	libxmp.so:${PORTSDIR}/audio/libxmp
 
 QMMPPLUGIN_TARGET=	Input/xmp
-QMMPPLUGIN_OPTIONS=	XMP
+QMMPPLUGIN_OPTIONS=	XMP_PLUGIN
 
 .include "${.CURDIR}/../../multimedia/qmmp-plugin-pack/Makefile.plugin"
 .include <bsd.port.mk>
