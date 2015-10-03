@@ -26,4 +26,4 @@ separated/devel-qmake:   same as 'devel-qmake' but in splitted ports (see above)
 
 separated/devel-cmake:   same as 'devel-cmake' but in splitted ports (see above)
 
-qmmp-0.4.x, qmmp-0.5.x, qmmp-0.6.x, and qmmp-0.7.x:   deprecated versions
+qmmp-0.6.x, qmmp-0.7.x, and qmmp-0.8.x:   deprecated versions
