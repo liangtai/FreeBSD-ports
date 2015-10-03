@@ -10,7 +10,7 @@ COMMENT=	UI library of the QMMP Qt5-based multimedia player
 LICENSE=	GPLv2
 
 LIB_DEPENDS+=	libqmmp.so:${PORTSDIR}/multimedia/qmmp-lib
-BUILD_DEPENDS+=	qmmp-lib>=1.0.0:${PORTSDIR}/multimedia/qmmp-lib
+BUILD_DEPENDS+=	qmmp-lib>=1.1.0:${PORTSDIR}/multimedia/qmmp-lib
 
 USE_QT5+=	linguisttools_build
 
