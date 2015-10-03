@@ -18,7 +18,7 @@ DIR_ASSOC_USES=	desktop-file-utils
 
 LIB_DEPENDS+=	libqmmp.so:${PORTSDIR}/multimedia/qmmp-lib \
 	libqmmpui.so:${PORTSDIR}/multimedia/qmmp-uilib
-BUILD_DEPENDS+=	qmmp-lib>=1.0.0:${PORTSDIR}/multimedia/qmmp-lib
+BUILD_DEPENDS+=	qmmp-lib>=1.1.0:${PORTSDIR}/multimedia/qmmp-lib
 
 USE_QT5+=	network linguisttools_build
 
