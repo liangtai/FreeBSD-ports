@@ -5,6 +5,7 @@ PORTVERSION=	0.9.1
 CATEGORIES=	multimedia
 MASTER_SITES=	http://qmmp.ylsoftware.com/files/plugins/ \
 	SF/qmmp-dev/${PORTNAME}/
+PKGNAMESUFFIX=	-qt4
 
 MAINTAINER=	liangtai.s16@gmail.com
 COMMENT=	Additional plug-ins for QMMP
@@ -44,7 +45,10 @@ XMP_LIB_DEPENDS=	libxmp.so:${PORTSDIR}/audio/libxmp
 XMP_QMAKE_CONFIG=	XMP_PLUGIN
 
 .include <bsd.port.options.mk>
-.include "${.CURDIR}/../qmmp/options.qmake.mk"
+.include "${.CURDIR}/../qmmp-qt4/options.qmake.mk"
+
+QTVER=	${PKGNAMESUFFIX}
+PLIST_SUB+=	QTVER=${PKGNAMESUFFIX}
 
 _DESTDIR_VIA_ENV=	no
 MAKE_ARGS+=	INSTALL_ROOT=${STAGEDIR}${PREFIX}
@@ -52,6 +56,13 @@ MAKE_ARGS+=	INSTALL_ROOT=${STAGEDIR}${PREFIX}
 post-patch:
 	@${REINPLACE_CMD} -e 's|^CONFIG += |#CONFIG += |' \
 		${WRKSRC}/qmmp-plugin-pack.pri
+	# Append ${QTVER} at every file or path to avoid conflict with Qt5 qmmp
+	@${FIND} ${WRKSRC} -type f -name '*.cpp' -o -type f -name '*.h' | \
+		${XARGS} ${GREP} -l 'qmmp/' | ${XARGS} \
+		${REINPLACE_CMD} -e '/#include/s/qmmp\//qmmp${QTVER}\//'
+	@${FIND} ${WRKSRC} -type f -name '*.pro' | ${XARGS} \
+		${GREP} -l '/qmmp/' | ${XARGS} \
+		${REINPLACE_CMD} -e '/target\.path/s/\/qmmp\//\/qmmp${QTVER}\//'
 
 pre-install:
 	@${FIND} ${WRKSRC}/lib/ -type f -exec ${STRIP_CMD} {} +

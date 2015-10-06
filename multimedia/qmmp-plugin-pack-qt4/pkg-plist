@@ -1,0 +1,3 @@
+%%FFAP%%lib/qmmp%%QTVER%%/Input/libffap.so
+%%MPG123%%lib/qmmp%%QTVER%%/Input/libmpg123.so
+%%XMP%%lib/qmmp%%QTVER%%/Input/libxmp.so
