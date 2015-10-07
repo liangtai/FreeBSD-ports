@@ -5,9 +5,10 @@ PORTVERSION=	0.9.1
 CATEGORIES=	multimedia
 MASTER_SITES=	http://qmmp.ylsoftware.com/files/plugins/ \
 	SF/qmmp-dev/${PORTNAME}/
+PKGNAMESUFFIX=	-qt4
 
 MAINTAINER=	liangtai.s16@gmail.com
-COMMENT=	Additional plug-ins for QMMP
+COMMENT=	Additional plug-ins for QMMP (Qt4)
 
 LICENSE=	GPLv2
 
@@ -53,9 +54,21 @@ LDFLAGS+=	-L${LOCALBASE}/lib
 
 .include <bsd.port.options.mk>
 
+QTVER=	${PKGNAMESUFFIX}
+PLIST_SUB+=	QTVER=${PKGNAMESUFFIX}
+
 post-patch:
 	@${REINPLACE_CMD} '/settingsdialog/s/[><]/"/g' \
 		${WRKSRC}/src/Input/xmp/decoderxmpfactory.cpp
+	# Append ${QTVER} at every file or path to avoid conflict with Qt5 qmmp
+	@${FIND} ${WRKSRC} -type f -name '*.cpp' -o -type f -name '*.h' \
+		-exec ${GREP} -l 'qmmp/' {} + | ${XARGS} \
+		${REINPLACE_CMD} -e '/#include/s/qmmp\//qmmp${QTVER}\//'
+	@${FIND} ${WRKSRC} -type f -name CMakeLists.txt \
+		-exec ${GREP} -l '/qmmp/' {} + | ${XARGS} \
+		${REINPLACE_CMD} -e '/LIB_DIR/s/qmmp\//qmmp${QTVER}\//'
+	@${GREP} -LEe 'qmmp(ui)?${QTVER}' ${WRKSRC}/CMakeLists.txt | ${XARGS} \
+		${REINPLACE_CMD} -Ee '/^pkg_check_modules/s/qmmp(ui)?>/qmmp\1${QTVER}>/'
 
 pre-configure:
 	@${RM} -f ${BUILD_WRKSRC}/CMakeCache.txt
