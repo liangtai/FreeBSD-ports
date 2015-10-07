@@ -8,7 +8,7 @@ MASTER_SITES=	http://qmmp.ylsoftware.com/files/plugins/ \
 PKGNAMESUFFIX=	-qt4
 
 MAINTAINER=	liangtai.s16@gmail.com
-COMMENT=	Additional plug-ins for QMMP
+COMMENT=	Additional plug-ins for QMMP (Qt4)
 
 LICENSE=	GPLv2
 

@@ -221,8 +221,8 @@ post-patch:
 		| ${XARGS} ${REINPLACE_CMD} -e 's/: qmmp /: qmmp${QTVER} /'
 	@${GREP} -l '\"/qmmp\"' ${WRKSRC}/src/qmmp/qmmp.cpp | ${XARGS} \
 		${REINPLACE_CMD} -e '/LIB_DIR/s/\/qmmp/\/qmmp${QTVER}/'
-	@${GREP} -l 'qmmp/' ${WRKSRC}/src/qmmpui/*.h | ${XARGS} \
-		${REINPLACE_CMD} -e '/#include/s|qmmp/|qmmp${QTVER}/|'
+	@${GREP} -lE 'qmmp(ui)?/' ${WRKSRC}/src/qmmpui/*.h | ${XARGS} \
+		${REINPLACE_CMD} -Ee '/#include/s|qmmp(ui)?/|qmmp\1${QTVER}/|'
 	@${GREP} -l '/lib/qmmp$$' ${WRKSRC}/src/plugins/plugins.pri | ${XARGS} \
 		${REINPLACE_CMD} -e '/^unix:/s/qmmp$$/&${QTVER}/'
 	@${SED} 's|/qmmp|/qmmp${QTVER}|' ${WRKSRC}/src/app/images/images.qrc \
