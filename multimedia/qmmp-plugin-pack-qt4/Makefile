@@ -12,7 +12,7 @@ COMMENT=	Additional plug-ins for QMMP (Qt4)
 
 LICENSE=	GPLv2
 
-LIB_DEPENDS=	libqmmpui.so:${PORTSDIR}/multimedia/qmmp-qt4
+LIB_DEPENDS=	libqmmpui${QTVER}.so:${PORTSDIR}/multimedia/qmmp-qt4
 BUILD_DEPENDS=	qmmp-qt4>=0.9.0:${PORTSDIR}/multimedia/qmmp-qt4
 
 USES=		cmake:outsource pkgconfig tar:bzip2
@@ -58,15 +58,14 @@ QTVER=	${PKGNAMESUFFIX}
 PLIST_SUB+=	QTVER=${PKGNAMESUFFIX}
 
 post-patch:
-	@${REINPLACE_CMD} '/settingsdialog/s/[><]/"/g' \
-		${WRKSRC}/src/Input/xmp/decoderxmpfactory.cpp
 	# Append ${QTVER} at every file or path to avoid conflict with Qt5 qmmp
-	@${FIND} ${WRKSRC} -type f -name '*.cpp' -o -type f -name '*.h' \
+	@${FIND} ${WRKSRC} \( -type f -name '*.cpp' -o -type f -name '*.h' \) \
 		-exec ${GREP} -l 'qmmp/' {} + | ${XARGS} \
 		${REINPLACE_CMD} -e '/#include/s/qmmp\//qmmp${QTVER}\//'
 	@${FIND} ${WRKSRC} -type f -name CMakeLists.txt \
-		-exec ${GREP} -l '/qmmp/' {} + | ${XARGS} \
-		${REINPLACE_CMD} -e '/LIB_DIR/s/qmmp\//qmmp${QTVER}\//'
+		-exec ${GREP} -lE '/qmmp/|lqmmp(ui)?( |[)])' {} + | ${XARGS} \
+		${REINPLACE_CMD} -e '/LIB_DIR/s/qmmp\//qmmp${QTVER}\//' \
+		-Ee '/^target_link_libraries/s/lqmmp(ui)?( |[)])/lqmmp\1${QTVER}\2/g'
 	@${GREP} -LEe 'qmmp(ui)?${QTVER}' ${WRKSRC}/CMakeLists.txt | ${XARGS} \
 		${REINPLACE_CMD} -Ee '/^pkg_check_modules/s/qmmp(ui)?>/qmmp\1${QTVER}>/'
 
