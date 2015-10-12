@@ -9,9 +9,10 @@ DISTINFO_FILE=	${.CURDIR}/../../multimedia/qmmp-plugin-pack-qt4/distinfo
 MAINTAINER?=	liangtai.s16@gmail.com
 LICENSE?=	GPLv2
 
-CONFLICTS=	${PORTNAME:S/-qt4//}-1.*
+QTVER=	-qt4
+PLIST_SUB+=	QTVER=${QTVER}
 
-LIB_DEPENDS+=	libqmmp.so:${PORTSDIR}/multimedia/qmmp-qt4-lib
+LIB_DEPENDS+=	libqmmp${QTVER}.so:${PORTSDIR}/multimedia/qmmp-qt4-lib
 BUILD_DEPENDS+=	qmmp-qt4-lib>=0.9.0:${PORTSDIR}/multimedia/qmmp-qt4-lib
 
 USES+=		cmake:outsource pkgconfig tar:bzip2
@@ -44,6 +45,17 @@ pre-configure:
 		${WRKSRC}/src/${QMMPPLUGIN_TARGET}/CMakeLists.txt | ${XARGS} \
 		${REINPLACE_CMD} -e '/^add_dependencies/d'
 	@${RM} -f ${BUILD_WRKSRC}/CMakeCache.txt
+	# Append ${QTVER} at every file or path to avoid conflict with Qt5 qmmp
+	@${FIND} ${WRKSRC}/src/${QMMPPLUGIN_TARGET}/ \
+	\( -type f -name '*.cpp' -o -type f -name '*.h' \) \
+		-exec ${GREP} -l 'qmmp/' {} + | ${XARGS} \
+		${REINPLACE_CMD} -e '/#include/s/qmmp\//qmmp${QTVER}\//'
+	@${GREP} -lE '/qmmp/|lqmmp(ui)?( |[)])' \
+		${WRKSRC}/src/${QMMPPLUGIN_TARGET}/CMakeLists.txt | ${XARGS} \
+		${REINPLACE_CMD} -e '/LIB_DIR/s/qmmp\//qmmp${QTVER}\//' \
+		-Ee '/^target_link_libraries/s/lqmmp(ui)?( |[)])/lqmmp\1${QTVER}\2/g'
+	@${GREP} -LEe 'qmmp(ui)?${QTVER}' ${WRKSRC}/CMakeLists.txt | ${XARGS} \
+		${REINPLACE_CMD} -Ee '/^pkg_check_modules/s/qmmp(ui)?>/qmmp\1${QTVER}>/'
 
-# Category/PluginModule ==> lib/qmmp/Category/libpluginmodule.so
-PLIST_FILES+=	lib/qmmp/${QMMPPLUGIN_TARGET:C@/.*$@/@}${QMMPPLUGIN_TARGET:tl:C@.*/@lib@:S@$@.so@}
+# Category/PluginModule ==> lib/qmmp${QTVER}/Category/libpluginmodule.so
+PLIST_FILES+=	lib/qmmp${QTVER}/${QMMPPLUGIN_TARGET:C@/.*$@/@}${QMMPPLUGIN_TARGET:tl:C@.*/@lib@:S@$@.so@}

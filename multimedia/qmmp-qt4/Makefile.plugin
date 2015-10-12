@@ -9,14 +9,15 @@ DISTINFO_FILE=	${.CURDIR}/../../multimedia/qmmp-qt4/distinfo
 MAINTAINER?=	liangtai.s16@gmail.com
 LICENSE?=	GPLv2
 
-CONFLICTS=	${PORTNAME:S/-qt4//}-1.*
-
-LIB_DEPENDS+=	libqmmp.so:${PORTSDIR}/multimedia/qmmp-qt4-lib
+QTVER=	-qt4
+LIB_DEPENDS+=	libqmmp${QTVER}.so:${PORTSDIR}/multimedia/qmmp-qt4-lib
 BUILD_DEPENDS+=	qmmp-qt4-lib>=0.9.0:${PORTSDIR}/multimedia/qmmp-qt4-lib
 
 USES+=		cmake:outsource pkgconfig tar:bzip2
 USE_QT4+=	corelib gui linguisttools_build moc_build qmake_build rcc_build
 USE_LDCONFIG=	yes
+
+PLIST_SUB+=	SHLIB_VER=${PORTVERSION:C/-.*//} QTVER=-qt4
 
 CMAKE_ARGS+=	-DCMAKE_REQUIRED_INCLUDES:PATH=${LOCALBASE}/include
 CFLAGS+=	-I${LOCALBASE}/include
@@ -67,19 +68,28 @@ CMAKE_ARGS+=	-DUSE_${pitag}:BOOL=FALSE
 . endif
 .endfor
 
+post-extract:
+	@cd ${WRKSRC}/src && ${LN} -sf qmmp/ qmmp${QTVER}
+
 pre-configure:
 	@${GREP} -El 'PlayListFormats|CommandLineOptions' \
 		${WRKSRC}/src/plugins/CMakeLists.txt | ${XARGS} \
 		${REINPLACE_CMD} -e '/PlayListFormats/,/CommandLineOptions/d'
-	@${GREP} -El 'target_link_libraries.*libqmmp|add_dependencies' \
+	@${GREP} -El 'target_link_libraries.*libqmmp|add_dependencies|/qmmp(ui)?/' \
 		${WRKSRC}/src/plugins/${QMMPPLUGIN_TARGET}/CMakeLists.txt | ${XARGS} \
 		${REINPLACE_CMD} -e '/CMAKE_CURRENT_.*\/\.\.\/\.\.\/\.\.\//d' \
 		-e '/^add_dependencies/d' \
-		-e '/target_link_libraries/s/libqmmp/-lqmmp/'
+		-Ee '/target_link_libraries/{; s/libqmmp/-lqmmp/; \
+			s/qmmp(ui)?( |[)])/qmmp\1${QTVER}\2/g; }' \
+		-e '/LIB_DIR/s/\/qmmp\//\/qmmp${QTVER}\//'
 	@${GREP} -H 'add_subdirectory' ${WRKSRC}/CMakeLists.txt | \
 		${GREP} -v 'src/plugins' | cut -d: -f1 | uniq | ${XARGS} \
 		${REINPLACE_CMD} -Ee '/add_subdirectory[(]src\/(qmmp|qmmpui|app)[)]/d'
+	@${FIND} ${WRKSRC}/src/plugins/${QMMPPLUGIN_TARGET}/ \
+		\( -type f -name '*.cpp' -o -type f -name '*.h' \) \
+		-exec ${GREP} -lE 'qmmp(ui)?/' {} + | ${XARGS} \
+		${REINPLACE_CMD} -Ee '/#include/s/qmmp(ui)?\//qmmp\1${QTVER}\//'
 	@${RM} -f ${BUILD_WRKSRC}/CMakeCache.txt
 
-# Category/PluginModule ==> lib/qmmp/Category/libpluginmodule.so
-PLIST_FILES+=	lib/qmmp/${QMMPPLUGIN_TARGET:C@/.*$@/@}${QMMPPLUGIN_TARGET:tl:C@.*/@lib@:S@$@.so@}
+# Category/PluginModule ==> lib/qmmp${QTVER}/Category/libpluginmodule.so
+PLIST_FILES+=	lib/qmmp${QTVER}/${QMMPPLUGIN_TARGET:C@/.*$@/@}${QMMPPLUGIN_TARGET:tl:C@.*/@lib@:S@$@.so@}

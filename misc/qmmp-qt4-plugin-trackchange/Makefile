@@ -9,7 +9,7 @@ COMMENT=	External command launcher plug-in of QMMP (qt4) at each track switching
 
 LICENSE=	GPLv2
 
-LIB_DEPENDS+=	libqmmpui.so:${PORTSDIR}/multimedia/qmmp-qt4-uilib
+LIB_DEPENDS+=	libqmmpui${QTVER}.so:${PORTSDIR}/multimedia/qmmp-qt4-uilib
 
 USE_QT4+=	network
 
