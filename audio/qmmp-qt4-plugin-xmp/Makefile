@@ -14,9 +14,5 @@ LIB_DEPENDS+=	libxmp.so:${PORTSDIR}/audio/libxmp
 QMMPPLUGIN_TARGET=	Input/xmp
 QMMPPLUGIN_TAG=	XMP
 
-post-patch:
-	@${REINPLACE_CMD} '/settingsdialog/s/[><]/"/g' \
-		${WRKSRC}/src/Input/xmp/decoderxmpfactory.cpp
-
 .include "${.CURDIR}/../../multimedia/qmmp-plugin-pack-qt4/Makefile.plugin"
 .include <bsd.port.mk>
