@@ -9,7 +9,7 @@ COMMENT=	ReplayGain scanner plug-in of QMMP (Qt4)
 
 LICENSE=	GPLv2
 
-LIB_DEPENDS+=	libqmmpui.so:${PORTSDIR}/multimedia/qmmp-qt4-uilib \
+LIB_DEPENDS+=	libqmmpui${QTVER}.so:${PORTSDIR}/multimedia/qmmp-qt4-uilib \
 	libtag.so:${PORTSDIR}/audio/taglib
 
 QMMPPLUGIN_TARGET=	General/rgscan

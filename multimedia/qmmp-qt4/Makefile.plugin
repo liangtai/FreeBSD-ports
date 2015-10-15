@@ -9,9 +9,9 @@ DISTINFO_FILE=	${.CURDIR}/../../multimedia/qmmp-qt4/distinfo
 MAINTAINER?=	liangtai.s16@gmail.com
 LICENSE?=	GPLv2
 
-CONFLICTS=	${PORTNAME:S/-qt4//}-1.*
+QTVER=	-qt4
 
-LIB_DEPENDS+=	libqmmp.so:${PORTSDIR}/multimedia/qmmp-qt4-lib
+LIB_DEPENDS+=	libqmmp${QTVER}.so:${PORTSDIR}/multimedia/qmmp-qt4-lib
 BUILD_DEPENDS+=	qmmp-qt4-lib>=0.9.0:${PORTSDIR}/multimedia/qmmp-qt4-lib
 
 USES+=		gmake pkgconfig qmake tar:bzip2
@@ -53,6 +53,7 @@ EXTRACT_AFTER_ARGS+=	--exclude '${DISTNAME}/src/qmmpui' \
 _DESTDIR_VIA_ENV=	no
 MAKE_ARGS+=	INSTALL_ROOT=${STAGEDIR}${PREFIX}
 QMAKE_ARGS+=	CONFIG+="${QMMPPLUGIN_OPTIONS}"
+PLIST_SUB+=	QTVER=${QTVER}
 
 pre-configure:
 	@${GREP} -l 'SUBDIRS.*\\$$' ${WRKSRC}/src/plugins/plugins.pro \
@@ -67,9 +68,20 @@ pre-configure:
 		${SED} -e 's/= src\// src-/' | ${GREP} 'src/' | \
 		${CUT} -d: -f1 | uniq | ${XARGS} \
 		${REINPLACE_CMD} -e '/^SUBDIRS/s/=.*$$/=	src\/plugins/'
+	@${GREP} -l '/lib/qmmp$$' ${WRKSRC}/src/plugins/plugins.pri | ${XARGS} \
+		${REINPLACE_CMD} -e '/^unix:/s/qmmp$$/&${QTVER}/'
+	@${GREP} -lE 'lqmmp[^-0]|lqmmp$$|/qmmp(ui)?/' \
+		${WRKSRC}/src/plugins/${QMMPPLUGIN_TARGET}/${PLUGINSUBTARGETDIR}.pro \
+		| ${XARGS} ${REINPLACE_CMD} \
+		-e '/target\.path/s|/qmmp/|/qmmp${QTVER}/|' \
+		-Ee 's/-lqmmp(ui)?($$| )/-lqmmp\1${QTVER}\2/g'
+	@${FIND} ${WRKSRC}/src/plugins/${QMMPPLUGIN_TARGET}/ \
+		\( -type f -name '*.cpp' -o -type f -name '*.h' \) \
+		-exec ${GREP} -lE 'qmmp(ui)?/' {} + | ${XARGS} \
+		${REINPLACE_CMD} -Ee '/#include/s/qmmp(ui)?\//qmmp\1${QTVER}\//'
 
-post-install:
-	@${FIND} ${STAGEDIR}${PREFIX}/lib -type f -exec ${STRIP_CMD} {} +
+pre-install:
+	@${FIND} ${WRKSRC}/lib -type f -name 'lib*.so' -exec ${STRIP_CMD} {} +
 
-# Category/PluginModule ==> lib/qmmp/Category/libpluginmodule.so
-PLIST_FILES+=	lib/qmmp/${QMMPPLUGIN_TARGET:C@/.*$@/@}${QMMPPLUGIN_TARGET:tl:C@.*/@lib@:S@$@.so@}
+# Category/PluginModule ==> lib/qmmp${QTVER}/Category/libpluginmodule.so
+PLIST_FILES+=	lib/qmmp${QTVER}/${QMMPPLUGIN_TARGET:C@/.*$@/@}${QMMPPLUGIN_TARGET:tl:C@.*/@lib@:S@$@.so@}
