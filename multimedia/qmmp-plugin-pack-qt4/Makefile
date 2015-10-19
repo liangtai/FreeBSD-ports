@@ -12,8 +12,9 @@ COMMENT=	Additional plug-ins for QMMP (Qt4)
 
 LICENSE=	GPLv2
 
-LIB_DEPENDS=	libqmmpui.so:${PORTSDIR}/multimedia/qmmp
-BUILD_DEPENDS=	qmmp>=0.9.0:${PORTSDIR}/multimedia/qmmp
+LIB_DEPENDS=	libqmmpui${QTFOUR}.so:${PORTSDIR}/multimedia/qmmp-qt4
+PKG_DEPENDS=	qmmp-qt4>=0.9.0:${PORTSDIR}/multimedia/qmmp-qt4
+BUILD_DEPENDS=	qmmp-qt4>=0.9.0:${PORTSDIR}/multimedia/qmmp-qt4
 
 USES=		gmake pkgconfig qmake tar:bzip2
 USE_QT4=	corelib gui linguisttools_build moc_build qmake_build rcc_build
@@ -47,8 +48,12 @@ XMP_QMAKE_CONFIG=	XMP_PLUGIN
 .include <bsd.port.options.mk>
 .include "${.CURDIR}/../qmmp-qt4/options.qmake.mk"
 
-QTVER=	${PKGNAMESUFFIX}
-PLIST_SUB+=	QTVER=${PKGNAMESUFFIX}
+QTFOUR!=	pkg info -l qmmp-qt4-lib | \
+	sed -n 's|^[    ]*/usr/local/lib/libqmmp\(.*\)\.so$$|\1|p'
+.if !defined(QTFOUR) || "x" == "x${QTFOUR}"
+CONFLICTS=	${PORTNAME:C/-qt4//}-1.*
+.endif
+PLIST_SUB+=	QTFOUR="${QTFOUR}"
 
 _DESTDIR_VIA_ENV=	no
 MAKE_ARGS+=	INSTALL_ROOT=${STAGEDIR}${PREFIX}
@@ -56,13 +61,16 @@ MAKE_ARGS+=	INSTALL_ROOT=${STAGEDIR}${PREFIX}
 post-patch:
 	@${REINPLACE_CMD} -e 's|^CONFIG += |#CONFIG += |' \
 		${WRKSRC}/qmmp-plugin-pack.pri
-	# Append ${QTVER} at every file or path to avoid conflict with Qt5 qmmp
-	@${FIND} ${WRKSRC} -type f -name '*.cpp' -o -type f -name '*.h' | \
-		${XARGS} ${GREP} -l 'qmmp/' | ${XARGS} \
-		${REINPLACE_CMD} -e '/#include/s/qmmp\//qmmp${QTVER}\//'
+.if defined(QTFOUR)
+	# Append ${QTFOUR} at every file or path to avoid conflict with Qt5 qmmp
+	@${FIND} ${WRKSRC}/src \
+		\( -type f -name '*.cpp' -o -type f -name '*.h' \) \
+		-exec ${GREP} -l 'qmmp/' {} + | ${XARGS} \
+		${REINPLACE_CMD} -e '/#include/s/qmmp\//qmmp${QTFOUR}\//'
 	@${FIND} ${WRKSRC} -type f -name '*.pro' | ${XARGS} \
 		${GREP} -l '/qmmp/' | ${XARGS} \
-		${REINPLACE_CMD} -e '/target\.path/s/\/qmmp\//\/qmmp${QTVER}\//'
+		${REINPLACE_CMD} -e '/target\.path/s/\/qmmp\//\/qmmp${QTFOUR}\//'
+.endif
 
 pre-install:
 	@${FIND} ${WRKSRC}/lib/ -type f -exec ${STRIP_CMD} {} +

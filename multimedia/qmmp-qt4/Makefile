@@ -157,8 +157,11 @@ WILDMIDI_QMAKE_CONFIG=	WILDMIDI_PLUGIN
 .include <bsd.port.options.mk>
 .include "options.qmake.mk"
 
-QTVER=	${PKGNAMESUFFIX}
-PLIST_SUB+=	SHLIB_VER=${PORTVERSION:C/-.*//} QTVER=${PKGNAMESUFFIX}
+QTFOUR?=	-qt4
+.if !defined(QTFOUR) || "x" == "x${QTFOUR}"
+CONFLICTS=	${PORTNAME:C/-qt4//}-1.*
+.endif
+PLIST_SUB+=	SHLIB_VER=${PORTVERSION:C/-.*//} QTFOUR="${QTFOUR}"
 
 PORTDOCS=	README README.RUS AUTHORS
 INSTALLS_ICONS=	yes
@@ -169,19 +172,21 @@ _DESTDIR_VIA_ENV=	no
 MAKE_ARGS+=	INSTALL_ROOT=${STAGEDIR}${PREFIX}
 
 post-extract:
+.if defined(QTFOUR)
 .for I in 16x16 32x32 48x48 56x56
 	@${MV} ${WRKSRC}/src/app/images/${I}/qmmp.png \
-		${WRKSRC}/src/app/images/${I}/qmmp${QTVER}.png
+		${WRKSRC}/src/app/images/${I}/qmmp${QTFOUR}.png
 .endfor
 .for I in qmmp-simple qmmp
 	@${MV} ${WRKSRC}/src/app/images/scalable/${I}.svgz \
-		${WRKSRC}/src/app/images/scalable/${I}${QTVER}.svgz
+		${WRKSRC}/src/app/images/scalable/${I}${QTFOUR}.svgz
 .endfor
 .for I in app_icon empty_cover
 	@${MV} ${WRKSRC}/src/plugins/General/kdenotify/images/${I}.png \
-		${WRKSRC}/src/plugins/General/kdenotify/images/${I}${QTVER}.png
+		${WRKSRC}/src/plugins/General/kdenotify/images/${I}${QTFOUR}.png
 .endfor
-	@cd ${WRKSRC}/src && ${LN} -sf qmmp/ qmmp${QTVER}
+	@cd ${WRKSRC}/src && ${LN} -sf qmmp/ qmmp${QTFOUR}
+.endif
 
 post-patch:
 	@${GREP} -l '^CONFIG' ${WRKSRC}/qmmp.pri | ${XARGS} \
@@ -190,47 +195,50 @@ post-patch:
 		${WRKSRC}/src/plugins/Input/mpc/mpc.pro \
 		${WRKSRC}/src/plugins/Output/oss4/oss4.pro | ${XARGS} \
 		${REINPLACE_CMD} -e 's|/usr/|${LOCALBASE}/|g'
-	# Append ${QTVER} at every file or path to avoid conflict with Qt5 qmmp
+.if defined(QTFOUR)
+	# Append ${QTFOUR} at every file or path to avoid conflict with Qt5 qmmp
 	@${GREP} -l 'qmmp ' ${WRKSRC}/src/app/translations/qmmp_*.ts \
 		${WRKSRC}/src/plugins/CommandLineOptions/StatusOption/translations/status_plugin_*.ts \
 		| ${XARGS} ${REINPLACE_CMD} -E \
-		-e '/(Usage|example):/,+1s/qmmp/&${QTVER}/'
+		-e '/(Usage|example):/,+1s/qmmp/&${QTFOUR}/'
 	@${GREP} -l 'qmmp$$' \
 		${WRKSRC}/src/app/desktop-translations/qmmp_*.desktop.in | \
-		${XARGS} ${REINPLACE_CMD} -E -e '/^(Exec|Icon)=/s/qmmp/&${QTVER}/'
-	@${GREP} -l 'app_icon\.png' ${WRKSRC}/src/plugins/General/kdenotify/kdenotify.pro | \
-		${XARGS} ${REINPLACE_CMD} -e '/ images\//s/\.png/${QTVER}&/' \
-		-e '/target\.path/s/\/qmmp\//\/qmmp${QTVER}\//' \
-		-E -e 's/-lqmmp(ui)?($$| )/-lqmmp\1${QTVER}\2/g'
+		${XARGS} ${REINPLACE_CMD} -Ee '/^(Exec|Icon)=/s/qmmp/&${QTFOUR}/'
+	@${GREP} -l 'app_icon\.png' \
+		${WRKSRC}/src/plugins/General/kdenotify/kdenotify.pro | ${XARGS} \
+		${REINPLACE_CMD} -e '/ images\//s/\.png/${QTFOUR}&/' \
+		-e '/target\.path/s/\/qmmp\//\/qmmp${QTFOUR}\//' \
+		-Ee 's/-lqmmp(ui)?($$| )/-lqmmp\1${QTFOUR}\2/g'
 	@${GREP} -lE 'include/qmmp(ui)?$$' ${WRKSRC}/src/qmmp/qmmp.pro \
 		${WRKSRC}/src/qmmpui/qmmpui.pro | ${XARGS} ${REINPLACE_CMD} \
 		-e '/QMAKE_PKGCONFIG_DESCRIPTION/s/$$/ (Qt4)/' \
-		-E -e 's/QMAKE_PKGCONFIG_NAME = qmmp(ui)?$$/&${QTVER}/' \
-		-E -e '/(TARGET|devel\.path) =/s/qmmp(ui)?$$/&${QTVER}/'
+		-Ee 's/QMAKE_PKGCONFIG_NAME = qmmp(ui)?$$/&${QTFOUR}/' \
+		-Ee '/(TARGET|devel\.path) =/s/qmmp(ui)?$$/&${QTFOUR}/'
 	@${FIND} ${WRKSRC} -type f -name '*.pro' | ${XARGS} \
-		${GREP} -lE 'lqmmp[^-0]|lqmmp$$' | ${XARGS} \
-		${REINPLACE_CMD} -e '/target\.path/s/\/qmmp\//\/qmmp${QTVER}\//' \
-		-E -e 's/-lqmmp(ui)?($$| )/-lqmmp\1${QTVER}\2/g'
+		${GREP} -lE 'lqmmp[^-0]|lqmmp$$' | ${XARGS} ${REINPLACE_CMD} \
+		-e '/target\.path/s/\/qmmp\//\/qmmp${QTFOUR}\//' \
+		-Ee 's/-lqmmp(ui)?($$| )/-lqmmp\1${QTFOUR}\2/g'
 	@${GREP} -l 'images.qrc' ${WRKSRC}/src/app/app.pro | ${XARGS} \
-		${REINPLACE_CMD} -e '/^unix:TARGET/s/qmmp$$/&${QTVER}/' \
-		-e 's/images\.qrc/images${QTVER}.qrc/' \
-		-E -e 's/\.(desktop|png|svg)/${QTVER}.\1/'
+		${REINPLACE_CMD} -e '/^unix:TARGET/s/qmmp$$/&${QTFOUR}/' \
+		-e 's/images\.qrc/images${QTFOUR}.qrc/' \
+		-Ee 's/\.(desktop|png|svg)/${QTFOUR}.\1/'
 	@${GREP} -l ': qmmp ' ${WRKSRC}/src/app/qmmpstarter.cpp \
 		${WRKSRC}/src/app/builtincommandlineoption.cpp \
 		${WRKSRC}/src/plugins/CommandLineOptions/StatusOption/statusoption.cpp \
-		| ${XARGS} ${REINPLACE_CMD} -e 's/: qmmp /: qmmp${QTVER} /'
+		| ${XARGS} ${REINPLACE_CMD} -e 's/: qmmp /: qmmp${QTFOUR} /'
 	@${GREP} -l '\"/qmmp\"' ${WRKSRC}/src/qmmp/qmmp.cpp | ${XARGS} \
-		${REINPLACE_CMD} -e '/LIB_DIR/s/\/qmmp/\/qmmp${QTVER}/'
+		${REINPLACE_CMD} -e '/LIB_DIR/s/\/qmmp/\/qmmp${QTFOUR}/'
 	@${GREP} -lE 'qmmp(ui)?/' ${WRKSRC}/src/qmmpui/*.h | ${XARGS} \
-		${REINPLACE_CMD} -Ee '/#include/s|qmmp(ui)?/|qmmp\1${QTVER}/|'
+		${REINPLACE_CMD} -Ee '/#include/s|qmmp(ui)?/|qmmp\1${QTFOUR}/|'
 	@${GREP} -l '/lib/qmmp$$' ${WRKSRC}/src/plugins/plugins.pri | ${XARGS} \
-		${REINPLACE_CMD} -e '/^unix:/s/qmmp$$/&${QTVER}/'
-	@${SED} 's|/qmmp|/qmmp${QTVER}|' ${WRKSRC}/src/app/images/images.qrc \
-		> ${WRKSRC}/src/app/images/images${QTVER}.qrc
+		${REINPLACE_CMD} -e '/^unix:/s/qmmp$$/&${QTFOUR}/'
+	@${SED} 's|/qmmp|/qmmp${QTFOUR}|' ${WRKSRC}/src/app/images/images.qrc \
+		> ${WRKSRC}/src/app/images/images${QTFOUR}.qrc
 .for D in qmmp qmmp_enqueue qmmp_dir
-	@${SED} -E 's/^(Exec|Icon)=qmmp/&${QTVER}/' \
-		${WRKSRC}/src/app/${D}.desktop > ${WRKSRC}/src/app/${D}${QTVER}.desktop
+	@${SED} -E 's/^(Exec|Icon)=qmmp/&${QTFOUR}/' \
+		${WRKSRC}/src/app/${D}.desktop > ${WRKSRC}/src/app/${D}${QTFOUR}.desktop
 .endfor
+.endif
 
 post-build:
 	@${GREP} -L 'libdata/pkgconfig' ${WRKSRC}/src/qmmp/Makefile \
@@ -244,7 +252,7 @@ pre-install:
 	@${FIND} ${WRKSRC}/lib/ -type f -name 'lib*' -exec ${STRIP_CMD} {} +
 
 pre-install-SKINNEDUI-on:
-	${STRIP_CMD} ${WRKSRC}/bin/qmmp${QTVER}
+	${STRIP_CMD} ${WRKSRC}/bin/qmmp${QTFOUR}
 
 post-install-DOCS-on:
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}; \
