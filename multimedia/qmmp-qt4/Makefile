@@ -309,6 +309,10 @@ QMMP_DIALOG_CMAKE_OFF=	-DUSE_QMMP_DIALOG:BOOL=FALSE
 
 QTFOUR?=	-qt4
 .if !defined(QTFOUR) || "x" == "x${QTFOUR}"
+buildanyway-message:
+	@${ECHO_CMD} "> Consider setting filename suffix using QTFOUR string <"
+	@${ECHO_CMD} "> value to avoid conflict with qmmp-1.* when you run   <"
+	@${ECHO_CMD} "> 'make' or defining it on the /etc/make.conf.         <"
 CONFLICTS=	${PORTNAME:C/-qt4//}-1.*
 .endif
 

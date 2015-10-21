@@ -55,8 +55,9 @@ LDFLAGS+=	-L${LOCALBASE}/lib
 
 .include <bsd.port.options.mk>
 
-QTFOUR!=	pkg info -l qmmp-qt4-lib | \
-	sed -n 's|^[    ]*/usr/local/lib/libqmmp\(.*\)\.so$$|\1|p'
+QTFOUR?=	-qt4
+QTFOUR!=	pkg info -l qmmp-qt4 | \
+	sed -n 's|^[    ]*/usr/local/lib/libqmmpui\(.*\)\.so$$|\1|p'
 .if !defined(QTFOUR) || "x" == "x${QTFOUR}"
 CONFLICTS=	${PORTNAME:C/-qt4//}-1.*
 .endif
