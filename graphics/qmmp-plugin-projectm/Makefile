@@ -14,7 +14,7 @@ LIB_DEPENDS+=	libprojectM.so:${PORTSDIR}/graphics/libprojectm
 USE_QT5+=	opengl
 
 QMMPPLUGIN_TARGET=	Visual/projectm
-QMMPPLUGIN_OPTIONS=	PROJECTM_PLUGIN PROJECTM_20
+QMMPPLUGIN_OPTIONS=	PROJECTM_PLUGIN
 
 .include "${.CURDIR}/../../multimedia/qmmp/Makefile.plugin"
 .include <bsd.port.mk>
