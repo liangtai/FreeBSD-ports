@@ -154,6 +154,8 @@ WILDMIDI_QMAKE_CONFIG=	WILDMIDI_PLUGIN
 .include <bsd.port.options.mk>
 .include "options.qmake.mk"
 
+CONFLICTS=	${PORTNAME}-qt4-0.*
+
 PLIST_SUB+=	SHLIB_VER=${PORTVERSION:C/-.*//}
 
 PORTDOCS=	README README.RUS AUTHORS
