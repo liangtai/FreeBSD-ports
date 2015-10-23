@@ -46,6 +46,8 @@ XMP_QMAKE_CONFIG=	XMP_PLUGIN
 _DESTDIR_VIA_ENV=	no
 MAKE_ARGS+=	INSTALL_ROOT=${STAGEDIR}${PREFIX}
 
+CONFLICTS=	${PORTNAME}-qt4-0.*
+
 pre-install:
 	@${FIND} ${WRKSRC}/lib/ -type f -exec ${STRIP_CMD} {} +
 
