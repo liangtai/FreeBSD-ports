@@ -46,6 +46,8 @@ XMP_LIB_DEPENDS=	libxmp.so:${PORTSDIR}/audio/libxmp
 XMP_CMAKE_ON=	-DUSE_XMP:BOOL=TRUE
 XMP_CMAKE_OFF=	-DUSE_XMP:BOOL=FALSE
 
+CONFLICTS=	${PORTNAME}-qt4-0.*
+
 pre-configure:
 	@${RM} -f ${BUILD_WRKSRC}/CMakeCache.txt
 
