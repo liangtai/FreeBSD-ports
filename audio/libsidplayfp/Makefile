@@ -24,6 +24,7 @@ DOXYGEN_BUILD_DEPENDS=	doxygen:${PORTSDIR}/devel/doxygen
 OPTIONS_MULTI=	OPTIMIZATION
 OPTIONS_MULTI_OPTIMIZATION=	BHINTS INLINE MMX
 OPTIONS_DEFAULT=	BHINTS INLINE
+
 OPTIMIZATION_DESC=	Increase performance by optimization
 BHINTS_DESC=	Enable branch hints in reSID engine
 BHINTS_CONFIGURE_ENABLE=	branch-hints
@@ -43,19 +44,17 @@ PLIST_SUB+=	\
 	STILVIEW_SHLIB_VERSION=${STILVIEW_SHLIB_VERSION}
 
 post-build-DOXYGEN-on:
-	cd ${WRKSRC} && ${MAKE} doc
+	${MAKE_CMD} doc -C ${WRKSRC}
 
 post-install-DOCS-on:
-	@${MKDIR} ${STAGEDIR}${DOCSDIR} ; \
-	cd ${WRKSRC} && ${INSTALL_MAN} ${PORTDOCS} ${STAGEDIR}${DOCSDIR}
+	@${MKDIR} ${STAGEDIR}${DOCSDIR}
+	${INSTALL_DATA} ${PORTDOCS:S,^,${WRKSRC}/,} ${STAGEDIR}${DOCSDIR}
 
 post-install-DOXYGEN-on:
-	@${MKDIR} ${STAGEDIR}${DOCSDIR}/html ; \
-	${INSTALL_MAN} ${WRKSRC}/docs/html/* ${STAGEDIR}${DOCSDIR}/html ; \
-	${RM} -f ${WRKDIR}/PLIST.doc ; \
-	${FIND} ${STAGEDIR}${DOCSDIR}/html -type f | \
-		${SED} 's|${STAGEDIR}${PREFIX}/||' \
-		>> ${WRKDIR}/PLIST.doc
-	cd ${WRKDIR} ; ${SED} -i -e '/PLIST.doc/ r PLIST.doc' ${TMPPLIST}
+	@${MKDIR} ${STAGEDIR}${DOCSDIR}/html
+	${INSTALL_DATA} ${WRKSRC}/docs/html/* ${STAGEDIR}${DOCSDIR}/html
+	@${FIND} ${STAGEDIR}${DOCSDIR}/html -type f | \
+		${SED} 's|${STAGEDIR}${PREFIX}/||' > ${WRKDIR}/PLIST.doc
+	@${SED} -i -e '/PLIST.doc/ r ${WRKDIR}/PLIST.doc' ${TMPPLIST}
 
 .include <bsd.port.mk>
