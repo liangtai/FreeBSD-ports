@@ -14,7 +14,7 @@ LIB_DEPENDS+=	libqmmpui.so:${PORTSDIR}/multimedia/qmmp-uilib
 USE_QT4+=	network uic_build
 
 QMMPPLUGIN_TARGET=	Ui/qsui
-QMMPPLUGIN_OPTIONS=	SIMPLE_UI_PLUGIN
+QMMPPLUGIN_OPTIONS=	WITH_QSUI
 
 .include "${.CURDIR}/../../multimedia/qmmp/Makefile.plugin"
 .include <bsd.port.mk>
