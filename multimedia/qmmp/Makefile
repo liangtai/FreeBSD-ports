@@ -36,7 +36,8 @@ PLUGIN_VISUAL_EFFECTS_DESC=	Visual effects
 OPTIONS_MULTI_PLUGIN_VISUAL_EFFECTS=	ANALYZER PROJECTM
 
 PLUGIN_OUTPUT_DESC=	Output sound systems
-OPTIONS_MULTI_PLUGIN_OUTPUT=	ALSA JACK NULLOUT OSS OSS4 PULSEAUDIO
+OPTIONS_MULTI_PLUGIN_OUTPUT=	ALSA JACK NULLOUT OSS OSS4 \
+		PULSEAUDIO QTMULTIMEDIA
 
 PLUGIN_PLAYLIST_DESC=	Playlist operation
 OPTIONS_MULTI_PLUGIN_PLAYLIST=	COPYPASTE FILEOPS HAL \
@@ -119,6 +120,8 @@ OSS_RUN_DEPENDS=	${QMMPLIBDIR}/Output/liboss.so:${PORTSDIR}/audio/qmmp-plugin-os
 OSS4_DESC=		Open Sound System (ver4) support
 OSS4_RUN_DEPENDS=	${QMMPLIBDIR}/Output/liboss4.so:${PORTSDIR}/audio/qmmp-plugin-oss4
 PULSEAUDIO_RUN_DEPENDS=	${QMMPLIBDIR}/Output/libpulseaudio.so:${PORTSDIR}/audio/qmmp-plugin-pulseaudio
+QTMULTIMEDIA_DESC=	Support to use Qt low-level multimedia API
+QTMULTIMEDIA_RUN_DEPENDS=	${QMMPLIBDIR}/Output/libqtmultimedia.so:${PORTSDIR}/multimedia/qmmp-plugin-qtmultimedia
 
 COPYPASTE_DESC=	Enable copy/paste track infos between playlists
 COPYPASTE_RUN_DEPENDS=	${QMMPLIBDIR}/General/libcopypaste.so:${PORTSDIR}/misc/qmmp-plugin-copypaste

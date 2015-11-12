@@ -1,0 +1,5 @@
+QtMultimedia output plug-in of QMMP
+
+- QTMULTIMEDIA:    Outputs sound using Qt low-level multimedia API.
+
+WWW: http://qmmp.ylsoftware.com/
