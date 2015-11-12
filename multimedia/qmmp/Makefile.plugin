@@ -36,7 +36,8 @@ PLUGIN_TARGETS=	CommandLineOptions PlayListFormats \
 	Input/flac Input/gme Input/mad Input/modplug Input/mpc Input/opus \
 	Input/sid Input/sndfile Input/vorbis Input/wavpack Input/wildmidi \
 	Output/alsa Output/directsound Output/jack Output/null \
-	Output/oss Output/oss4 Output/pulseaudio Output/waveout \
+	Output/oss Output/oss4 Output/pulseaudio Output/qtmultimedia \
+	Output/waveout \
 	Transports/http Transports/mms \
 	Ui/qsui Ui/skinned \
 	Visual/analyzer Visual/projectm
