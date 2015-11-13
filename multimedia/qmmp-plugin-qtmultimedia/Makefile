@@ -9,7 +9,7 @@ COMMENT=	QtMultimedia output plug-in of QMMP
 
 LICENSE=	GPLv2
 
-USE_QT4+=	multimedia
+USE_QT5+=	multimedia
 
 QMMPPLUGIN_TARGET=	Output/qtmultimedia
 QMMPPLUGIN_OPTIONS=	QTMULTIMEDIA_PLUGIN
