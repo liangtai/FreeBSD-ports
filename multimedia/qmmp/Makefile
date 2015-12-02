@@ -12,8 +12,8 @@ COMMENT=	Qt5-based multimedia player
 LICENSE=	GPLv2
 
 USES=		cmake:outsource desktop-file-utils pkgconfig tar:bzip2
-USE_QT5=	core gui network widgets xml \
-		linguisttools_build buildtools_build qmake_build
+USE_QT5=	core gui network widgets x11extras xml \
+		buildtools_build linguisttools_build qmake_build
 USE_LDCONFIG=	yes
 
 OPTIONS_SUB=	yes
