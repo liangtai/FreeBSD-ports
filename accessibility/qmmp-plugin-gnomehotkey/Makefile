@@ -11,7 +11,7 @@ LICENSE=	GPLv2
 
 LIB_DEPENDS+=	libqmmpui.so:${PORTSDIR}/multimedia/qmmp-uilib
 
-USE_QT5+=	dbus network xml
+USE_QT5+=	dbus xml
 
 QMMPPLUGIN_TARGET=	General/gnomehotkey
 QMMPPLUGIN_TAG=	GNOMEHOTKEY
