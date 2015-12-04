@@ -12,7 +12,7 @@ COMMENT=	Qt5-based multimedia player
 LICENSE=	GPLv2
 
 USES=		cmake:outsource desktop-file-utils pkgconfig tar:bzip2
-USE_QT5=	core gui network widgets x11extras xml \
+USE_QT5=	core gui network widgets xml \
 		buildtools_build linguisttools_build qmake_build
 USE_LDCONFIG=	yes
 
@@ -65,11 +65,11 @@ OPTIONS_DEFAULT=	ALSA ANALYZER BS2B CDDA CONVERTER COPYPASTE COVER \
 DOXYGEN_BUILD_DEPENDS=	doxygen:${PORTSDIR}/devel/doxygen
 
 QSUI_DESC=		Simple UI based on standard widgets set
-QSUI_USE=		QT5=network
 QSUI_CMAKE_ON=	-DUSE_QSUI:BOOL=TRUE
 QSUI_CMAKE_OFF=	-DUSE_QSUI:BOOL=FALSE
 
 SKINNEDUI_DESC=	Skinned GUI
+SKINNEDUI_USE=	QT5=x11extras
 SKINNEDUI_CMAKE_ON=	-DUSE_SKINNED:BOOL=TRUE
 SKINNEDUI_CMAKE_OFF=	-DUSE_SKINNED:BOOL=FALSE
 
@@ -272,6 +272,7 @@ HAL_CMAKE_ON=	-DUSE_HAL:BOOL=TRUE
 HAL_CMAKE_OFF=	-DUSE_HAL:BOOL=FALSE
 
 HOTKEY_DESC=	Support global shortcut keys
+HOTKEY_USE=	QT5=x11extras
 HOTKEY_CMAKE_ON=	-DUSE_HOTKEY:BOOL=TRUE
 HOTKEY_CMAKE_OFF=	-DUSE_HOTKEY:BOOL=FALSE
 
@@ -323,6 +324,10 @@ post-patch:
 		${WRKSRC}/src/qmmp/CMakeLists.txt \
 		${WRKSRC}/src/qmmpui/CMakeLists.txt | ${XARGS} \
 		${REINPLACE_CMD} -e '/pkgconfig/s|$${LIB_DIR}|libdata|'
+	# backported upstream patch r5805
+	@${GREP} -l 'Qt5X11Extras .* REQUIRED' \
+		${WRKSRC}/CMakeLists.txt | ${XARGS} \
+		${REINPLACE_CMD} -e '/find_package[(]Qt5X11Extras/s/ REQUIRED//'
 
 pre-configure:
 	@${RM} -f ${BUILD_WRKSRC}/CMakeCache.txt
