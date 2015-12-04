@@ -11,7 +11,7 @@ LICENSE=	GPLv2
 
 LIB_DEPENDS+=	libqmmpui.so:${PORTSDIR}/multimedia/qmmp-uilib
 
-USE_QT5+=	network
+USE_QT5+=	x11extras
 
 QMMPPLUGIN_TARGET=	Ui/skinned
 QMMPPLUGIN_TAG=	SKINNED

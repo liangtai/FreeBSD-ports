@@ -20,8 +20,6 @@ LIB_DEPENDS+=	libqmmp.so:${PORTSDIR}/multimedia/qmmp-lib \
 	libqmmpui.so:${PORTSDIR}/multimedia/qmmp-uilib
 BUILD_DEPENDS+=	qmmp-lib>=1.0.0:${PORTSDIR}/multimedia/qmmp-lib
 
-USE_QT5+=	network linguisttools_build
-
 .for p in Effect Engines FileDialogs General Input Output Transports Ui Visual
 EXTRACT_AFTER_ARGS+=	--exclude '${DISTNAME}/src/plugins/${p}'
 .endfor
@@ -29,9 +27,10 @@ EXTRACT_AFTER_ARGS+=	--exclude '${DISTNAME}/src/plugins/${p}'
 INSTALLS_ICONS=	yes
 
 post-patch:
-	@${GREP} -H 'add_subdirectory' ${WRKSRC}/CMakeLists.txt | \
-		${GREP} -v 'src/app' | cut -d: -f1 | uniq | ${XARGS} \
-		${REINPLACE_CMD} -Ee '/add_subdirectory[(]src\/(qmmp|qmmpui)[)]/d'
+	@${GREP} -El 'add_subd.*src/qmmp|find_package.* REQUIRED' \
+		${WRKSRC}/CMakeLists.txt | ${XARGS} ${REINPLACE_CMD} \
+		-Ee '/add_subdirectory[(]src\/(qmmp|qmmpui)[)]/d' \
+		-e '/find_package[(]Qt5/s/ REQUIRED//'
 	@${GREP} -El 'target_link_libraries.*::Widgets libqmmp|add_dependencies' \
 		${WRKSRC}/src/app/CMakeLists.txt | ${XARGS} \
 		${REINPLACE_CMD} -e '/^add_dependencies/d' \
