@@ -12,8 +12,7 @@ COMMENT=	Additional plug-ins for QMMP (Qt4)
 
 LICENSE=	GPLv2
 
-LIB_DEPENDS=	libqmmpui${QTFOUR}.so:${PORTSDIR}/multimedia/qmmp-qt4
-PKG_DEPENDS=	qmmp-qt4>=0.9.0:${PORTSDIR}/multimedia/qmmp-qt4
+LIB_DEPENDS=	libqmmpui.so:${PORTSDIR}/multimedia/qmmp-qt4
 BUILD_DEPENDS=	qmmp-qt4>=0.9.0:${PORTSDIR}/multimedia/qmmp-qt4
 
 USES=		cmake:outsource pkgconfig tar:bzip2
@@ -55,28 +54,7 @@ LDFLAGS+=	-L${LOCALBASE}/lib
 
 .include <bsd.port.options.mk>
 
-QTFOUR?=	-qt4
-QTFOUR!=	pkg info -l qmmp-qt4 | \
-	sed -n 's|^[    ]*/usr/local/lib/libqmmpui\(.*\)\.so$$|\1|p'
-.if !defined(QTFOUR) || "x" == "x${QTFOUR}"
 CONFLICTS=	${PORTNAME:C/-qt4//}-1.*
-.endif
-
-PLIST_SUB+=	QTFOUR="${QTFOUR}"
-
-post-patch:
-.if defined(QTFOUR)
-	# Append ${QTFOUR} at every file or path to avoid conflict with Qt5 qmmp
-	@${FIND} ${WRKSRC} \( -type f -name '*.cpp' -o -type f -name '*.h' \) \
-		-exec ${GREP} -l 'qmmp/' {} + | ${XARGS} \
-		${REINPLACE_CMD} -e '/#include/s/qmmp\//qmmp${QTFOUR}\//'
-	@${FIND} ${WRKSRC} -type f -name CMakeLists.txt \
-		-exec ${GREP} -lE '/qmmp/|lqmmp(ui)?( |[)])' {} + | ${XARGS} \
-		${REINPLACE_CMD} -e '/LIB_DIR/s/qmmp\//qmmp${QTFOUR}\//' \
-		-Ee '/^target_link_libraries/s/lqmmp(ui)?( |[)])/lqmmp\1${QTFOUR}\2/g'
-	@${GREP} -LEe 'qmmp(ui)?${QTFOUR}' ${WRKSRC}/CMakeLists.txt | ${XARGS} \
-		${REINPLACE_CMD} -Ee '/^pkg_check_modules/s/qmmp(ui)?>/qmmp\1${QTFOUR}>/'
-.endif
 
 pre-configure:
 	@${RM} -f ${BUILD_WRKSRC}/CMakeCache.txt

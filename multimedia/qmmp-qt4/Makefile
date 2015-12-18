@@ -307,16 +307,9 @@ QMMP_DIALOG_CMAKE_OFF=	-DUSE_QMMP_DIALOG:BOOL=FALSE
 
 .include <bsd.port.options.mk>
 
-QTFOUR?=	-qt4
-.if !defined(QTFOUR) || "x" == "x${QTFOUR}"
-buildanyway-message:
-	@${ECHO_CMD} "> Consider setting filename suffix using QTFOUR string <"
-	@${ECHO_CMD} "> value to avoid conflict with qmmp-1.* when you run   <"
-	@${ECHO_CMD} "> 'make' or defining it on the /etc/make.conf.         <"
 CONFLICTS=	${PORTNAME:C/-qt4//}-1.*
-.endif
 
-PLIST_SUB+=	SHLIB_VER=${PORTVERSION:C/-.*//} QTFOUR="${QFOUR}"
+PLIST_SUB+=	SHLIB_VER=${PORTVERSION:C/-.*//}
 
 PORTDOCS=	README README.RUS AUTHORS
 INSTALLS_ICONS=	yes
@@ -327,28 +320,6 @@ CMAKE_ARGS+=	-DUSE_FFMPEG_LEGACY:BOOL=FALSE \
 CFLAGS+=	-I${LOCALBASE}/include
 LDFLAGS+=	-L${LOCALBASE}/lib
 
-post-extract:
-.if defined(QTFOUR)
-.for I in 16x16 32x32 48x48 56x56
-	@${MV} ${WRKSRC}/src/app/images/${I}/qmmp.png \
-		${WRKSRC}/src/app/images/${I}/qmmp${QTFOUR}.png
-.endfor
-.for I in qmmp-simple qmmp
-	@${MV} ${WRKSRC}/src/app/images/scalable/${I}.svgz \
-		${WRKSRC}/src/app/images/scalable/${I}${QTFOUR}.svgz
-.endfor
-.for I in app_icon empty_cover
-	@${MV} ${WRKSRC}/src/plugins/General/kdenotify/images/${I}.png \
-		${WRKSRC}/src/plugins/General/kdenotify/images/${I}${QTFOUR}.png
-.endfor
-	@cd ${WRKSRC}/src && \
-		${LN} -sf qmmp/ qmmp${QTFOUR} ; ${LN} -sf qmmpui/ qmmpui${QTFOUR}
-.for D in qmmp qmmp_enqueue qmmp_dir
-	@${SED} -E 's/^(Exec|Icon)=qmmp/&${QTFOUR}/' \
-		${WRKSRC}/src/app/${D}.desktop > ${WRKSRC}/src/app/${D}${QTFOUR}.desktop
-.endfor
-.endif
-
 post-patch:
 	@${GREP} -L '${LOCALBASE}/lib/oss' \
 		${WRKSRC}/src/plugins/Output/oss4/CMakeLists.txt | ${XARGS} \
@@ -356,40 +327,7 @@ post-patch:
 	@${GREP} -L 'libdata/pkgconfig' \
 		${WRKSRC}/src/qmmp/CMakeLists.txt \
 		${WRKSRC}/src/qmmpui/CMakeLists.txt | ${XARGS} \
-		${REINPLACE_CMD} -e '/pkgconfig/s|\$${LIB_DIR}|libdata|' \
-		-Ee 's/qmmp(ui)?\.pc /qmmp\1${QTFOUR}.pc /' \
-		-Ee '/(^target_link_libraries|^add_dependencies|^ADD_LIBRARY|TARGET)/s/qmmp(ui)?( |[)])/qmmp\1${QTFOUR}\2/g' \
-		-e 's/include\/qmmp(ui)?[)]/include\/qmmp\1${QTFOUR})/'
-.if defined(QTFOUR)
-	@${GREP} -l 'qmmp ' ${WRKSRC}/src/app/translations/qmmp_*.ts \
-		${WRKSRC}/src/plugins/CommandLineOptions/StatusOption/translations/status_plugin_*.ts \
-		| ${XARGS} ${REINPLACE_CMD} -E \
-		-e '/(Usage|example):/,+1s/qmmp/&${QTFOUR}/'
-	@${GREP} -L -e '${QTFOUR}' ${WRKSRC}/src/qmmpui/qmmpui.pc.in \
-		${WRKSRC}/src/qmmp/qmmp.pc.in | ${XARGS} \
-		${REINPLACE_CMD} -e '/Description/s/$$/ (Qt4)/' \
-		-Ee '/(Name|Requires|Libs):/s/qmmp(ui)?$$/qmmp\1${QTFOUR}/'
-	@${GREP} -lE 'qmmp(ui)?/' ${WRKSRC}/src/qmmpui/*.h | ${XARGS} \
-		${REINPLACE_CMD} -Ee '/include/s/qmmp(ui)?\//qmmp\1${QTFOUR}\//'
-	@${GREP} -l 'qmmp$$' \
-		${WRKSRC}/src/app/desktop-translations/qmmp_*.desktop.in | \
-		${XARGS} ${REINPLACE_CMD} -E -e '/^(Exec|Icon)=/s/qmmp/&${QTFOUR}/'
-	@${GREP} -L -e '${QTFOUR}' ${WRKSRC}/src/app/images/images.qrc | ${XARGS} \
-		${REINPLACE_CMD} -e 's/qmmp\.png/qmmp${QTFOUR}.png/'
-	@${GREP} -l '/qmmp/' \
-		${WRKSRC}/src/plugins/General/kdenotify/CMakeLists.txt | ${XARGS} \
-		${REINPLACE_CMD} -e '/LIB_DIR/s/\/qmmp\//\/qmmp${QTFOUR}\//' \
-		-Ee '/^(target_link_libraries|add_dependencies)/s/qmmp(ui)?( |[)])/qmmp\1${QTFOUR}\2/g' \
-		-e '/FILES/s/\.png/${QTFOUR}&/'
-	@${FIND} ${WRKSRC}/src/plugins/ -type f -name CMakeLists.txt \
-		-exec ${GREP} -l '/qmmp/' {} + | ${XARGS} \
-		${REINPLACE_CMD} -e '/LIB_DIR/s/\/qmmp\//\/qmmp${QTFOUR}\//' \
-		-Ee '/^(target_link_libraries|add_dependencies)/s/qmmp(ui)?( |[)])/qmmp\1${QTFOUR}\2/g'
-	@${GREP} -l 'qmmp ' ${WRKSRC}/src/app/CMakeLists.txt | ${XARGS} \
-		${REINPLACE_CMD} -e 's/qmmp /qmmp${QTFOUR} /' \
-		-Ee '/^(target_link_libraries|add_dependencies)/s/qmmp(ui)?( |[)])/qmmp\1${QTFOUR}\2/g' \
-		-Ee '/FILES/s/\.(desktop|png|svgz)/${QTFOUR}.\1/g'
-.endif
+		${REINPLACE_CMD} -e '/pkgconfig/s|\$${LIB_DIR}|libdata|'
 
 pre-configure:
 	@${RM} -f ${BUILD_WRKSRC}/CMakeCache.txt
