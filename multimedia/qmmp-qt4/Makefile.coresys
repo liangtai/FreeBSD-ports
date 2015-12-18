@@ -9,16 +9,16 @@ DISTINFO_FILE=	${.CURDIR}/../../multimedia/qmmp-qt4/distinfo
 MAINTAINER?=	liangtai.s16@gmail.com
 LICENSE?=	GPLv2
 
+CONFLICTS=	${PORTNAME:C/-qt4//}-1.*
+
 USES+=		gmake pkgconfig qmake tar:bzip2
 USE_QT4+=	corelib gui linguisttools_build moc_build qmake_build rcc_build
 USE_LDCONFIG=	yes
 
-QTVER=	-qt4
-PLIST_SUB+=	SHLIB_VER=${PORTVERSION:C/-.*//} QTVER=${QTVER}
+PLIST_SUB+=	SHLIB_VER=${PORTVERSION:C/-.*//}
 
 _DESTDIR_VIA_ENV=	no
 MAKE_ARGS+=	INSTALL_ROOT=${STAGEDIR}${PREFIX}
-DOCSDIR=	${PREFIX}/share/doc/${PORTNAME}${PKGNAMESUFFIX}
 
 post-patch:
 	@${GREP} -l '^CONFIG' ${WRKSRC}/qmmp.pri | ${XARGS} \
