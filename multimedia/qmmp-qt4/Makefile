@@ -57,19 +57,10 @@ OPTIONS_DEFAULT=	ALSA ANALYZER BS2B CDDA CONVERTER COPYPASTE COVER \
 		SB SCROBBLER SID SKINNEDUI SNDFILE SRCONV STATICON STEREO \
 		TRACKCHANGE UDISKS2 VORBIS WAVPACK WILDMIDI
 
-QTFOUR!=	pkg info -l qmmp-qt4-lib | \
-	sed -n 's|^[[:space:]]*/usr/local/lib/libqmmp\(.*\)\.so$$|\1|p'
-.if !defined(QTFOUR) || "x" == "x${QTFOUR}"
-buildanyway-message:
-	@${ECHO_MSG} "> Consider setting filename suffix using QTFOUR string <"
-	@${ECHO_MSG} "> value to avoid conflict with qmmp-1.* when you run   <"
-	@${ECHO_MSG} "> 'make' or defining it on the /etc/make.conf.         <"
-CONFLICTS=	${PORTNAME}-1.*
-.endif
-QMMPLIBDIR=	${LOCALBASE}/lib/qmmp${QTFOUR}
+QMMPLIBDIR=	${LOCALBASE}/lib/qmmp
 
 APP_DESC=	QMMP Main window
-APP_RUN_DEPENDS=	${LOCALBASE}/bin/qmmp${QTFOUR}:${PORTSDIR}/multimedia/qmmp-qt4-app
+APP_RUN_DEPENDS=	${LOCALBASE}/bin/qmmp:${PORTSDIR}/multimedia/qmmp-qt4-app
 GNOMEHOTKEY_DESC=	Support GNOME/Cinnamon shortcut keys
 GNOMEHOTKEY_RUN_DEPENDS=	${QMMPLIBDIR}/General/libgnomehotkey.so:${PORTSDIR}/accessibility/qmmp-qt4-plugin-gnomehotkey
 HOTKEY_DESC=	Support global shortcut keys
@@ -87,7 +78,7 @@ SKINNEDUI_RUN_DEPENDS=	${QMMPLIBDIR}/Ui/libskinned.so:${PORTSDIR}/multimedia/qmm
 STATICON_DESC=	Show status icon
 STATICON_RUN_DEPENDS=	${QMMPLIBDIR}/General/libstatusicon.so:${PORTSDIR}/multimedia/qmmp-qt4-plugin-staticon
 
-DOXYGEN_RUN_DEPENDS=	${DOCSDIR}${QTFOUR}/html/index.html:${PORTSDIR}/multimedia/qmmp-qt4-reference
+DOXYGEN_RUN_DEPENDS=	${DOCSDIR}/html/index.html:${PORTSDIR}/multimedia/qmmp-qt4-reference
 
 CDDA_RUN_DEPENDS=	${QMMPLIBDIR}/Input/libcdaudio.so:${PORTSDIR}/audio/qmmp-qt4-plugin-cdda
 FAAD_RUN_DEPENDS=	${QMMPLIBDIR}/Input/libaac.so:${PORTSDIR}/audio/qmmp-qt4-plugin-faad

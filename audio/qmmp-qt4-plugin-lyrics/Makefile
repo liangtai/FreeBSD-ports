@@ -9,7 +9,7 @@ COMMENT=	Show lyrics plug-in of QMMP (Qt4) using lyrics.wikia.com
 
 LICENSE=	GPLv2
 
-LIB_DEPENDS+=	libqmmpui${QTFOUR}.so:${PORTSDIR}/multimedia/qmmp-qt4-uilib
+LIB_DEPENDS+=	libqmmpui.so:${PORTSDIR}/multimedia/qmmp-qt4-uilib
 
 USE_QT4+=	network
 
