@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	qmmp
-PORTVERSION=	1.0.2
+PORTVERSION=	1.0.3
 CATEGORIES=	multimedia
 MASTER_SITES=	http://qmmp.ylsoftware.com/files/ \
 	SF/qmmp-dev/${PORTNAME}/
@@ -318,10 +318,6 @@ post-patch:
 		${WRKSRC}/src/qmmp/CMakeLists.txt \
 		${WRKSRC}/src/qmmpui/CMakeLists.txt | ${XARGS} \
 		${REINPLACE_CMD} -e '/pkgconfig/s|$${LIB_DIR}|libdata|'
-	# backported upstream patch r5806
-	@${GREP} -l 'Qt5X11Extras .* REQUIRED' \
-		${WRKSRC}/CMakeLists.txt | ${XARGS} \
-		${REINPLACE_CMD} -e '/find_package[(]Qt5X11Extras/s/ REQUIRED//'
 
 pre-configure:
 	@${RM} -f ${BUILD_WRKSRC}/CMakeCache.txt
