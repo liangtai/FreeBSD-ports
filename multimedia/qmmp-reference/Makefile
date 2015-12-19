@@ -16,6 +16,8 @@ BUILD_DEPENDS=	doxygen:${PORTSDIR}/devel/doxygen
 
 USES=		tar:bzip2
 
+CONFLICTS=	qmmp-qt4-reference-0.*
+
 DISTINFO_FILE=	${.CURDIR}/../qmmp/distinfo
 
 DOCSDIR=	${LOCALBASE}/share/doc/${PORTNAME:C/-reference//}

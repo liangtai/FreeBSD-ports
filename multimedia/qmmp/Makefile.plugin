@@ -16,6 +16,8 @@ USES+=		cmake:outsource pkgconfig tar:bzip2
 USE_QT5+=	core gui buildtools_build linguisttools_build
 USE_LDCONFIG=	yes
 
+CONFLICTS=	${PORTNAME:C/qmmp-plugin/qmmp-qt4-plugin/}-0.*
+
 PLUGIN_TARGETS=	CommandLineOptions PlayListFormats \
 	\
 	Effect/bs2b Effect/crossfade Effect/ladspa Effect/srconverter \
