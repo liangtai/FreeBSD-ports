@@ -20,6 +20,8 @@ DISTINFO_FILE=	${.CURDIR}/../qmmp/distinfo
 
 DOCSDIR=	${LOCALBASE}/share/doc/${PORTNAME:C/-reference//}
 
+CONFLICTS=	${PORTNAME:C/qmmp-/qmmp-qt4-/}-0.*
+
 do-build:
 	cd ${WRKSRC}/doc && doxygen Doxyfile
 

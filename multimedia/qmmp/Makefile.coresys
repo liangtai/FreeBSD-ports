@@ -13,6 +13,8 @@ USES+=		gmake pkgconfig qmake tar:bzip2
 USE_QT5+=	core gui widgets buildtools_build qmake_build
 USE_LDCONFIG=	yes
 
+CONFLICTS=	${PORTNAME:C/qmmp-/qmmp-qt4-/}-0.*
+
 PLIST_SUB+=	SHLIB_VER=${PORTVERSION:C/-.*//}
 
 _DESTDIR_VIA_ENV=	no
