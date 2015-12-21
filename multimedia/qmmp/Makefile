@@ -318,6 +318,10 @@ post-patch:
 		${WRKSRC}/src/qmmp/CMakeLists.txt \
 		${WRKSRC}/src/qmmpui/CMakeLists.txt | ${XARGS} \
 		${REINPLACE_CMD} -e '/pkgconfig/s|$${LIB_DIR}|libdata|'
+	# quick hack for v1.0.3
+	@${GREP} -l 'Qt5X11Extras[)]' \
+		${WRKSRC}/src/plugins/Ui/CMakeCache.txt | ${XARGS} \
+		${REINPLACE_CMD} -e '/Extras[)]/s/QtX11Extras/&_FOUND/'
 
 pre-configure:
 	@${RM} -f ${BUILD_WRKSRC}/CMakeCache.txt
