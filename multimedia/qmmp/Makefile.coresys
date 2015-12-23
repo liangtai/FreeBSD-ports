@@ -1,0 +1,29 @@
+# $FreeBSD$
+
+QMMP_VERSION=	0.9.5
+MASTER_SITES=	http://qmmp.ylsoftware.com/files/plugins/ \
+	SF/qmmp-dev/qmmp/
+DISTNAME=	qmmp-${PORTVERSION}
+DISTINFO_FILE=	${.CURDIR}/../../multimedia/qmmp/distinfo
+
+MAINTAINER?=	liangtai.s16@gmail.com
+LICENSE?=	GPLv2
+
+CONFLICTS=	${PORTNAME}-qt5-1.*
+
+USES+=		gmake pkgconfig qmake tar:bzip2
+USE_QT4+=	corelib gui linguisttools_build moc_build qmake_build rcc_build
+USE_LDCONFIG=	yes
+
+PLIST_SUB+=	SHLIB_VER=${PORTVERSION:C/-.*//}
+
+_DESTDIR_VIA_ENV=	no
+MAKE_ARGS+=	INSTALL_ROOT=${STAGEDIR}${PREFIX}
+
+post-patch:
+	@${GREP} -l '^CONFIG' ${WRKSRC}/qmmp.pri | ${XARGS} \
+		${REINPLACE_CMD} -e 's|^CONFIG += |#CONFIG += |'
+
+post-install:
+	@${FIND} ${STAGEDIR}${PREFIX}/bin ${STAGEDIR}${PREFIX}/lib -type f \
+		-exec ${STRIP_CMD} {} +
