@@ -5,6 +5,7 @@ PORTVERSION=	1.0.4
 CATEGORIES=	multimedia
 MASTER_SITES=	http://qmmp.ylsoftware.com/files/ \
 	SF/qmmp-dev/${PORTNAME}/
+PKGNAMESUFFIX=	-qt5
 
 MAINTAINER=	liangtai.s16@gmail.com
 COMMENT=	Qt5-based multimedia player
@@ -154,7 +155,7 @@ WILDMIDI_QMAKE_CONFIG=	WILDMIDI_PLUGIN
 .include <bsd.port.options.mk>
 .include "options.qmake.mk"
 
-CONFLICTS=	${PORTNAME}-qt4-0.*
+CONFLICTS=	${PORTNAME:C/${PKGNAMESUFFIX}//}-0.*
 
 PLIST_SUB+=	SHLIB_VER=${PORTVERSION:C/-.*//}
 

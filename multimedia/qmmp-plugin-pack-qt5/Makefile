@@ -5,14 +5,15 @@ PORTVERSION=	1.0.2
 CATEGORIES=	multimedia
 MASTER_SITES=	http://qmmp.ylsoftware.com/files/plugins/ \
 	SF/qmmp-dev/${PORTNAME}/
+PKGNAMESUFFIX=	-qt5
 
 MAINTAINER=	liangtai.s16@gmail.com
-COMMENT=	Additional plug-ins for QMMP
+COMMENT=	Additional plug-ins for QMMP (Qt5)
 
 LICENSE=	GPLv2
 
-LIB_DEPENDS=	libqmmpui.so:${PORTSDIR}/multimedia/qmmp
-BUILD_DEPENDS=	qmmp>=1.0.0:${PORTSDIR}/multimedia/qmmp
+LIB_DEPENDS=	libqmmpui.so:${PORTSDIR}/multimedia/qmmp-qt5
+BUILD_DEPENDS=	qmmp-qt5>=1.0.0:${PORTSDIR}/multimedia/qmmp-qt5
 
 USES=		gmake pkgconfig qmake tar:bzip2
 USE_QT5=	core gui buildtools_build linguisttools_build qmake_build
@@ -41,12 +42,12 @@ XMP_DESC=	Support various module formats using libxmp
 XMP_LIB_DEPENDS=	libxmp.so:${PORTSDIR}/audio/libxmp
 XMP_QMAKE_CONFIG=	XMP_PLUGIN
 
-.include "../qmmp/options.qmake.mk"
+.include "../qmmp-qt5/options.qmake.mk"
 
 _DESTDIR_VIA_ENV=	no
 MAKE_ARGS+=	INSTALL_ROOT=${STAGEDIR}${PREFIX}
 
-CONFLICTS=	${PORTNAME}-qt4-0.*
+CONFLICTS=	${PORTNAME:C/${PKGNAMESUFFIX}//}-0.*
 
 pre-install:
 	@${FIND} ${WRKSRC}/lib/ -type f -exec ${STRIP_CMD} {} +
