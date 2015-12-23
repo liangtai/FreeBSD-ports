@@ -9,7 +9,8 @@ COMMENT=	File type converter plug-in of QMMP
 
 LICENSE=	GPLv2
 
-LIB_DEPENDS+=	libtag.so:${PORTSDIR}/audio/taglib
+LIB_DEPENDS+=	libqmmpui.so:${PORTSDIR}/multimedia/qmmp-uilib \
+	libtag.so:${PORTSDIR}/audio/taglib
 
 QMMPPLUGIN_TARGET=	General/converter
 QMMPPLUGIN_OPTIONS=
