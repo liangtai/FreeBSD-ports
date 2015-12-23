@@ -5,15 +5,14 @@ PORTVERSION=	0.9.3
 CATEGORIES=	multimedia
 MASTER_SITES=	http://qmmp.ylsoftware.com/files/plugins/ \
 	SF/qmmp-dev/${PORTNAME}/
-PKGNAMESUFFIX=	-qt4
 
 MAINTAINER=	liangtai.s16@gmail.com
 COMMENT=	Additional plug-ins for QMMP (Qt4)
 
 LICENSE=	GPLv2
 
-LIB_DEPENDS=	libqmmpui.so:${PORTSDIR}/multimedia/qmmp-qt4
-BUILD_DEPENDS=	qmmp-qt4>=0.9.0:${PORTSDIR}/multimedia/qmmp-qt4
+LIB_DEPENDS=	libqmmpui.so:${PORTSDIR}/multimedia/qmmp
+BUILD_DEPENDS=	qmmp>=0.9.0:${PORTSDIR}/multimedia/qmmp
 
 USES=		cmake:outsource pkgconfig tar:bzip2
 USE_QT4=	corelib gui linguisttools_build moc_build qmake_build rcc_build
@@ -54,7 +53,7 @@ LDFLAGS+=	-L${LOCALBASE}/lib
 
 .include <bsd.port.options.mk>
 
-CONFLICTS=	${PORTNAME:C/-qt4//}-1.*
+CONFLICTS=	${PORTNAME}-qt5-1.*
 
 pre-configure:
 	@${RM} -f ${BUILD_WRKSRC}/CMakeCache.txt
