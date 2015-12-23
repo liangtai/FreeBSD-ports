@@ -10,7 +10,7 @@ MAINTAINER?=	liangtai.s16@gmail.com
 LICENSE?=	GPLv2
 
 USES+=		cmake:outsource pkgconfig tar:bzip2
-USE_QT5+=	core gui widgets buildtools_build
+USE_QT5+=	core gui widgets buildtools_build qmake_build
 USE_LDCONFIG=	yes
 
 CONFLICTS=	${PORTNAME:C/qmmp-/qmmp-qt4-/}-0.*
