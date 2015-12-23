@@ -5,6 +5,7 @@ PORTVERSION=	1.0.4
 CATEGORIES=	multimedia
 MASTER_SITES=	http://qmmp.ylsoftware.com/files/ \
 	SF/qmmp-dev/${PORTNAME}/
+PKGNAMESUFFIX=	-qt5
 
 MAINTAINER=	liangtai.s16@gmail.com
 COMMENT=	Qt5-based multimedia player
@@ -303,7 +304,7 @@ QMMP_DIALOG_CMAKE_OFF=	-DUSE_QMMP_DIALOG:BOOL=FALSE
 
 .include <bsd.port.options.mk>
 
-CONFLICTS=	${PORTNAME}-qt4-0.*
+CONFLICTS=	${PORTNAME:C/${PKGNAMESUFFIX}//}-0.*
 
 PLIST_SUB+=	SHLIB_VER=${PORTVERSION:C/-.*//}
 
