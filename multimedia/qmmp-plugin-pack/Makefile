@@ -7,7 +7,7 @@ MASTER_SITES=	# empty
 EXTRACT_ONLY=	# empty
 
 MAINTAINER=	liangtai.s16@gmail.com
-COMMENT=	Meta-port of additional QMMP plugins
+COMMENT=	Meta-port of additional QMMP (Qt4) plugins
 
 LICENSE=	GPLv2
 

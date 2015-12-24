@@ -5,7 +5,7 @@ PORTVERSION=	${QMMP_VERSION}
 CATEGORIES=	audio multimedia
 
 MAINTAINER=	liangtai.s16@gmail.com
-COMMENT=	ALSA output plug-in of QMMP
+COMMENT=	ALSA output plug-in of QMMP (Qt4)
 
 LICENSE=	GPLv2
 

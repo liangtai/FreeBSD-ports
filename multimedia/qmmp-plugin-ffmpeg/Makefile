@@ -5,7 +5,7 @@ PORTVERSION=	${QMMP_VERSION}
 CATEGORIES=	multimedia
 
 MAINTAINER=	liangtai.s16@gmail.com
-COMMENT=	FFmpeg plug-in of QMMP
+COMMENT=	FFmpeg plug-in of QMMP (Qt4)
 
 LICENSE=	GPLv2
 

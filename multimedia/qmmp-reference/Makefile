@@ -8,7 +8,7 @@ MASTER_SITES=	http://qmmp.ylsoftware.com/files/plugins/ \
 DISTNAME=	qmmp-${PORTVERSION}
 
 MAINTAINER=	liangtai.s16@gmail.com
-COMMENT=	API document of QMMP libraries
+COMMENT=	API document of QMMP (Qt4) libraries
 
 LICENSE=	GPLv2
 
@@ -32,7 +32,7 @@ do-install:
 	${RM} -f ${WRKDIR}/PLIST.doc ; \
 	${FIND} ${STAGEDIR}${DOCSDIR}/html -type f | \
 		${SED} 's|${STAGEDIR}${PREFIX}/||' \
-		>> ${WRKDIR}/PLIST.doc
+		>> ${WRKDIR}/PLIST.doc ; \
 	${CP} ${WRKDIR}/PLIST.doc ${TMPPLIST}
 
 .include <bsd.port.mk>

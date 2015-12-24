@@ -5,7 +5,7 @@ PORTVERSION=	${QMMP_VERSION}
 CATEGORIES=	audio multimedia
 
 MAINTAINER=	liangtai.s16@gmail.com
-COMMENT=	Musepack file format plug-in of QMMP
+COMMENT=	Musepack file format plug-in of QMMP (Qt4)
 
 LICENSE=	GPLv2
 

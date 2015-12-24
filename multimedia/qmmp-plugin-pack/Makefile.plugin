@@ -9,6 +9,8 @@ DISTINFO_FILE=	${.CURDIR}/../../multimedia/qmmp-plugin-pack/distinfo
 MAINTAINER?=	liangtai.s16@gmail.com
 LICENSE?=	GPLv2
 
+CONFLICTS=	${PORTNAME}-qt5-1.*
+
 LIB_DEPENDS+=	libqmmp.so:${PORTSDIR}/multimedia/qmmp-lib
 BUILD_DEPENDS+=	qmmp-lib>=0.10.0:${PORTSDIR}/multimedia/qmmp-lib
 

@@ -5,7 +5,7 @@ PORTVERSION=	${QMMP_VERSION}
 CATEGORIES=	audio multimedia sysutils
 
 MAINTAINER=	liangtai.s16@gmail.com
-COMMENT=	CDDA media plug-in of QMMP
+COMMENT=	CDDA media plug-in of QMMP (Qt4)
 
 LICENSE=	GPLv2
 

@@ -12,13 +12,13 @@ LICENSE=	GPLv2
 LIB_DEPENDS+=	libqmmp.so:${PORTSDIR}/multimedia/qmmp-lib
 BUILD_DEPENDS+=	qmmp-lib>=0.10.0:${PORTSDIR}/multimedia/qmmp-lib
 
+USE_QT4+=	network
+
 EXTRACT_AFTER_ARGS+=	--exclude '${DISTNAME}/src/plugins' \
 	--exclude '${DISTNAME}/src/app'
 
 pre-configure:
-	@${GREP} -H '^SUBDIRS' ${WRKSRC}/qmmp.pro \
-		| ${SED} -e 's/= src\// src-/' | ${GREP} 'src/' \
-		| ${CUT} -d: -f1 | uniq | ${XARGS} \
+	@${GREP} -l '^SUBDIRS= src/qmmp src/' ${WRKSRC}/qmmp.pro | ${XARGS} \
 		${REINPLACE_CMD} -e '/^SUBDIRS/s/=.*$$/=	src\/qmmpui/'
 
 post-build:

@@ -5,7 +5,7 @@ PORTVERSION=	${QMMP_VERSION}
 CATEGORIES=	audio multimedia
 
 MAINTAINER=	liangtai.s16@gmail.com
-COMMENT=	Opus file format plug-in of QMMP
+COMMENT=	Opus file format plug-in of QMMP (Qt4)
 
 LICENSE=	GPLv2
 

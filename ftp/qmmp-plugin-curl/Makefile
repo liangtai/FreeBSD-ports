@@ -5,7 +5,7 @@ PORTVERSION=	${QMMP_VERSION}
 CATEGORIES=	ftp multimedia
 
 MAINTAINER=	liangtai.s16@gmail.com
-COMMENT=	CURL plug-in of QMMP
+COMMENT=	CURL plug-in of QMMP (Qt4)
 
 LICENSE=	GPLv2
 
