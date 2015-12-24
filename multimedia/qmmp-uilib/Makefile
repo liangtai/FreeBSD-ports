@@ -22,7 +22,7 @@ post-patch:
 		${WRKSRC}/src/qmmpui/CMakeLists.txt | ${XARGS} \
 		${REINPLACE_CMD} -e '/pkgconfig/s|$${LIB_DIR}|libdata|' \
 		-e '/^add_dependencies/d'
-	@${GREP} -El 'add_subd.*src/(qmmp|app)[)]|find_package.* REQUIRED' \
+	@${GREP} -El 'add_subd.*src/(qmmp|app|plugins)[)]|find_package.* REQUIRED' \
 		${WRKSRC}/CMakeLists.txt | ${XARGS} ${REINPLACE_CMD} \
 		-Ee '/add_subdirectory[(]src\/(qmmp|app|plugins)[)]/d' \
 		-e '/find_package[(]Qt5/s/ REQUIRED//'
