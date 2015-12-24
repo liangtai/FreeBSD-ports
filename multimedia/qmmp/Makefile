@@ -12,6 +12,7 @@ COMMENT=	Qt5-based multimedia player
 LICENSE=	GPLv2
 
 LIB_DEPENDS=	libmad.so:${PORTSDIR}/audio/libmad \
+		libsamplerate.so:${PORTSDIR}/audio/libsamplerate \
 		libsndfile.so:${PORTSDIR}/audio/libsndfile \
 		libogg.so:${PORTSDIR}/audio/libogg \
 		libvorbis.so:${PORTSDIR}/audio/libvorbis \
