@@ -19,6 +19,9 @@ EXTRACT_AFTER_ARGS+=	--exclude '${DISTNAME}/src/plugins' \
 	--exclude '${DISTNAME}/src/qmmpui' --exclude '${DISTNAME}/src/app'
 
 post-patch:
+	@${GREP} -El 'find_package[(]Qt5(LinguistTools|X11Extras|Network)' \
+		${WRKSRC}/src/CMakeLists.txt | ${XARGS} ${REINPLACE_CMD} \
+		-Ee '/Qt5(LinguistTools|X11Extras|Network)/d'
 	@${GREP} -L 'libdata/pkgconfig' \
 		${WRKSRC}/src/qmmp/CMakeLists.txt | ${XARGS} \
 		${REINPLACE_CMD} -e '/pkgconfig/s|$${LIB_DIR}|libdata|'
