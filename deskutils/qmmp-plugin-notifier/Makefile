@@ -11,8 +11,6 @@ LICENSE=	GPLv2
 
 LIB_DEPENDS+=	libqmmpui.so:${PORTSDIR}/multimedia/qmmp-uilib
 
-USE_QT4+=	network
-
 QMMPPLUGIN_TARGET=	General/notifier
 QMMPPLUGIN_TAG=	NOTIFIER
 

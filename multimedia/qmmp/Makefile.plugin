@@ -78,9 +78,10 @@ pre-configure:
 		${REINPLACE_CMD} -e '/CMAKE_CURRENT_.*\/\.\.\/\.\.\/\.\.\//d' \
 		-e '/^add_dependencies/d' \
 		-e '/target_link_libraries/s/libqmmp/-lqmmp/'
-	@${GREP} -El 'add_subdirectory[(]src/(qmmp|qmmpui|app)[)]' \
+	@${GREP} -El 'add_subd.*src/(qmmp|app)|find_pa.* REQUIRED' \
 		${WRKSRC}/CMakeLists.txt | ${XARGS} ${REINPLACE_CMD} \
-		-Ee '/add_subdirectory[(]src\/(qmmp|qmmpui|app)[)]/d'
+		-Ee '/add_subdirectory[(]src\/(qmmp|qmmpui|app)[)]/d' \
+		-e '/find_package[(]Qt5/s/ REQUIRED//'
 	@${RM} -f ${BUILD_WRKSRC}/CMakeCache.txt
 
 # Category/PluginModule ==> lib/qmmp/Category/libpluginmodule.so

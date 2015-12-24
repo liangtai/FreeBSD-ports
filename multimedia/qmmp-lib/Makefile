@@ -22,9 +22,10 @@ post-patch:
 	@${GREP} -L 'libdata/pkgconfig' \
 		${WRKSRC}/src/qmmp/CMakeLists.txt | ${XARGS} \
 		${REINPLACE_CMD} -e '/pkgconfig/s|\$${LIB_DIR}|libdata|'
-	@${GREP} -El 'add_subdirectory[(]src/(app|qmmpui|plugins)[)]' \
+	@${GREP} -El 'add_subd.*src/(app|qmmpui|plugins)|find_pa.* REQUIRED' \
 		${WRKSRC}/CMakeLists.txt | ${XARGS} ${REINPLACE_CMD} \
 		-Ee '/add_subdirectory[(]src\/(app|qmmpui|plugins)[)]/d' \
+		-e '/find_package[(]Qt5/s/ REQUIRED//'
 
 post-install-DOCS-on:
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}; \

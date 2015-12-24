@@ -12,6 +12,8 @@ LICENSE=	GPLv2
 LIB_DEPENDS+=	libqmmp.so.0:${PORTSDIR}/multimedia/qmmp-lib
 BUILD_DEPENDS+=	qmmp-lib>=0.9.0:${PORTSDIR}/multimedia/qmmp-lib
 
+USE_QT4+=	network linguisttools_build
+
 EXTRACT_AFTER_ARGS+=	--exclude '${DISTNAME}/src/plugins' \
 	--exclude '${DISTNAME}/src/app'
 
@@ -20,9 +22,10 @@ post-patch:
 		${WRKSRC}/src/qmmpui/CMakeLists.txt | ${XARGS} \
 		${REINPLACE_CMD} -e '/pkgconfig/s|\$${LIB_DIR}|libdata|' \
 		-e '/^add_dependencies/d'
-	@${GREP} -El 'add_subdirectory[(]src/(app|qmmp|plugins)[)]'
+	@${GREP} -El 'add_subd.*src/(app|qmmp|plugins)[)]|find_pa.* REQUIRED'
 		${WRKSRC}/CMakeLists.txt | ${XARGS} ${REINPLACE_CMD} \
-		-Ee '/add_subdirectory[(]src\/(app|qmmp|plugins)[)]/d'
+		-Ee '/add_subdirectory[(]src\/(app|qmmp|plugins)[)]/d' \
+		-e '/find_package[(]Qt5/s/ REQUIRED//'
 
 .include "${.CURDIR}/../../multimedia/qmmp/Makefile.coresys"
 .include <bsd.port.mk>
