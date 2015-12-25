@@ -17,10 +17,10 @@ EXTRACT_AFTER_ARGS+=	--exclude '${DISTNAME}/src/plugins' \
 	--exclude '${DISTNAME}/src/qmmpui' --exclude '${DISTNAME}/src/app'
 
 pre-configure:
-	@${GREP} -H '^SUBDIRS' ${WRKSRC}/qmmp.pro \
-		| ${SED} -e 's/= src\// src-/' | ${GREP} 'src/' \
-		| ${CUT} -d: -f1 | uniq | ${XARGS} ${REINPLACE_CMD} \
-		-e '/^SUBDIRS/s/=.*$$/=	src\/qmmp/'
+	@${GREP} -El '^SUBDIRS= src/qmmp src/|^[^#].*lrelease' \
+		${WRKSRC}/qmmp.pro | ${XARGS} ${REINPLACE_CMD} \
+		-e '/^SUBDIRS/s|=.*$$|=	src/qmmp|' \
+		-Ee '/(lrelease|LRELEASE|translation|[{}])/s/^/#/'
 
 post-build:
 	@${GREP} -L 'libdata/pkgconfig' ${WRKSRC}/src/qmmp/Makefile \

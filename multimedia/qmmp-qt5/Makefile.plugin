@@ -62,10 +62,8 @@ pre-configure:
 		${WRKSRC}/src/plugins/${PLUGINGROUPDIR}/${PLUGINGROUPDIR}.pro \
 		| ${XARGS} ${REINPLACE_CMD} -Ee '/(TEMPLATE|include)/!d' \
 		-e '1{; h; s/^.*$$/SUBDIRS= ${PLUGINSUBTARGETDIR}/; G;}'
-	@${GREP} -H '^SUBDIRS' ${WRKSRC}/qmmp.pro | \
-		${SED} -e 's/= src\// src-/' | ${GREP} 'src/' | \
-		${CUT} -d: -f1 | uniq | ${XARGS} \
-		${REINPLACE_CMD} -e '/^SUBDIRS/s/=.*$$/=	src\/plugins/'
+	@${GREP} -l '^SUBDIRS= src/qmmp src/' ${WRKSRC}/qmmp.pro | ${XARGS} \
+		${REINPLACE_CMD} -e '/^SUBDIRS/s|=.*$$|=	src/plugins|'
 
 post-install:
 	@${FIND} ${STAGEDIR}${PREFIX}/lib -type f -exec ${STRIP_CMD} {} +
