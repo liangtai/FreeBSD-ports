@@ -1,0 +1,19 @@
+# $FreeBSD$
+
+PORTNAME=	qmmp-qt5-plugin-mad
+PORTVERSION=	${QMMP_VERSION}
+CATEGORIES=	audio multimedia
+
+MAINTAINER=	liangtai.s16@gmail.com
+COMMENT=	Mad file format plug-in of QMMP (Qt5)
+
+LICENSE=	GPLv2
+
+LIB_DEPENDS+=	libmad.so:${PORTSDIR}/audio/libmad \
+	libtag.so:${PORTSDIR}/audio/taglib
+
+QMMPPLUGIN_TARGET=	Input/mad
+QMMPPLUGIN_OPTIONS=
+
+.include "${.CURDIR}/../../multimedia/qmmp-qt5/Makefile.plugin"
+.include <bsd.port.mk>
