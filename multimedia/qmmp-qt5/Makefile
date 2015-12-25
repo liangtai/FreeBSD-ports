@@ -70,7 +70,7 @@ SKINNEDUI_DESC=	Skinned GUI
 SKINNEDUI_QMAKE_CONFIG=	WITH_SKINNED
 
 QSUI_DESC=		Simple UI based on standard widgets set
-QSUI_QMAKE_CONFIG=	SIMPLE_UI_PLUGIN
+QSUI_QMAKE_CONFIG=	WITH_QSUI
 
 JACK_BUILD_DEPENDS=	jackit>=0.121.2:${PORTSDIR}/audio/jack
 JACK_LIB_DEPENDS=	libjack.so:${PORTSDIR}/audio/jack
@@ -155,7 +155,6 @@ WILDMIDI_DESC=	Support to playback MIDI files
 WILDMIDI_LIB_DEPENDS=	libWildMidi.so:${PORTSDIR}/audio/wildmidi
 WILDMIDI_QMAKE_CONFIG=	WILDMIDI_PLUGIN
 
-.include <bsd.port.options.mk>
 .include "options.qmake.mk"
 
 CONFLICTS=	${PORTNAME:C/${PKGNAMESUFFIX}//}-0.*
