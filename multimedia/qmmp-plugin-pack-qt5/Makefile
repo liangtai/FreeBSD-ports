@@ -5,14 +5,15 @@ PORTVERSION=	1.1.0
 CATEGORIES=	multimedia
 MASTER_SITES=	http://qmmp.ylsoftware.com/files/plugins/ \
 	SF/qmmp-dev/${PORTNAME}/
+PKGNAMESUFFIX=	-qt5
 
 MAINTAINER=	liangtai.s16@gmail.com
-COMMENT=	Additional plug-ins for QMMP
+COMMENT=	Additional plug-ins for QMMP (Qt5)
 
 LICENSE=	GPLv2
 
-LIB_DEPENDS=	libqmmpui.so:${PORTSDIR}/multimedia/qmmp
-BUILD_DEPENDS=	qmmp>=1.1.0:${PORTSDIR}/multimedia/qmmp
+LIB_DEPENDS=	libqmmpui.so:${PORTSDIR}/multimedia/qmmp-qt5
+BUILD_DEPENDS=	qmmp-qt5>=1.1.0:${PORTSDIR}/multimedia/qmmp-qt5
 
 USES=		cmake:outsource pkgconfig tar:bzip2
 USE_QT5=	core gui buildtools_build linguisttools_build qmake_build
@@ -46,7 +47,7 @@ XMP_LIB_DEPENDS=	libxmp.so:${PORTSDIR}/audio/libxmp
 XMP_CMAKE_ON=	-DUSE_XMP:BOOL=TRUE
 XMP_CMAKE_OFF=	-DUSE_XMP:BOOL=FALSE
 
-CONFLICTS=	${PORTNAME}-qt4-0.*
+CONFLICTS=	${PORTNAME:C/${PKGNAMESUFFIX}//}-0.*
 
 pre-configure:
 	@${RM} -f ${BUILD_WRKSRC}/CMakeCache.txt

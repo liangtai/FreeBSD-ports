@@ -5,6 +5,7 @@ PORTVERSION=	1.1.0
 CATEGORIES=	multimedia
 MASTER_SITES=	http://qmmp.ylsoftware.com/files/ \
 	SF/qmmp-dev/${PORTNAME}/
+PKGNAMESUFFIX=	-qt5
 
 MAINTAINER=	liangtai.s16@gmail.com
 COMMENT=	Qt5-based multimedia player
@@ -312,7 +313,7 @@ QMMP_DIALOG_CMAKE_OFF=	-DUSE_QMMP_DIALOG:BOOL=FALSE
 
 .include <bsd.port.options.mk>
 
-CONFLICTS=	${PORTNAME}-qt4-0.*
+CONFLICTS=	${PORTNAME:C/${PKGNAMESUFFIX}//}-0.*
 
 PLIST_SUB+=	SHLIB_VER=${PORTVERSION:C/-.*//}
 
@@ -327,10 +328,6 @@ post-patch:
 		${WRKSRC}/src/qmmp/CMakeLists.txt \
 		${WRKSRC}/src/qmmpui/CMakeLists.txt | ${XARGS} \
 		${REINPLACE_CMD} -e '/pkgconfig/s|$${LIB_DIR}|libdata|'
-	# backported upstream patch r5805
-	@${GREP} -l 'Qt5X11Extras .* REQUIRED' \
-		${WRKSRC}/CMakeLists.txt | ${XARGS} \
-		${REINPLACE_CMD} -e '/find_package[(]Qt5X11Extras/s/ REQUIRED//'
 
 pre-configure:
 	@${RM} -f ${BUILD_WRKSRC}/CMakeCache.txt
