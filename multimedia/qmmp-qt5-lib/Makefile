@@ -11,9 +11,7 @@ LICENSE=	GPLv2
 
 OPTIONS_DEFINE=	DOCS
 PORTDOCS=	README README.RUS AUTHORS
-DOCSDIR=	${LOCALBASE}/share/doc/${PORTNAME:C/-lib//}
-
-.include <bsd.port.options.mk>
+DOCSDIR=	${LOCALBASE}/share/doc/${PORTNAME:C/-qt5-lib//}
 
 EXTRACT_AFTER_ARGS+=	--exclude '${DISTNAME}/src/plugins' \
 	--exclude '${DISTNAME}/src/qmmpui' --exclude '${DISTNAME}/src/app'
