@@ -1,0 +1,18 @@
+# $FreeBSD$
+
+PORTNAME=	qmmp-qt5-plugin-sid
+PORTVERSION=	${QMMP_VERSION}
+CATEGORIES=	audio multimedia
+
+MAINTAINER=	liangtai.s16@gmail.com
+COMMENT=	SID plug-in of QMMP (Qt5)
+
+LICENSE=	GPLv2
+
+LIB_DEPENDS+=	libsidplayfp.so:${PORTSDIR}/audio/libsidplayfp
+
+QMMPPLUGIN_TARGET=	Input/sid
+QMMPPLUGIN_OPTIONS=	SID_PLUGIN
+
+.include "${.CURDIR}/../../multimedia/qmmp-qt5/Makefile.plugin"
+.include <bsd.port.mk>
