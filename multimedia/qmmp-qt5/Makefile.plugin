@@ -1,0 +1,82 @@
+# $FreeBSD$
+
+QMMP_VERSION=	1.1.0
+MASTER_SITES=	http://qmmp.ylsoftware.com/files/plugins/ \
+	SF/qmmp-dev/qmmp/
+DISTNAME=	qmmp-${PORTVERSION}
+DISTINFO_FILE=	${.CURDIR}/../../multimedia/qmmp-qt5/distinfo
+
+MAINTAINER?=	liangtai.s16@gmail.com
+LICENSE?=	GPLv2
+
+LIB_DEPENDS+=	libqmmp.so:${PORTSDIR}/multimedia/qmmp-qt5-lib
+BUILD_DEPENDS+=	qmmp-qt5-lib>=1.1.0:${PORTSDIR}/multimedia/qmmp-qt5-lib
+
+USES+=		cmake:outsource pkgconfig tar:bzip2
+USE_QT5+=	core gui buildtools_build linguisttools_build qmake_build
+USE_LDCONFIG=	yes
+
+CONFLICTS=	${PORTNAME:C/-qt5//}-0.*
+
+PLUGIN_TARGETS=	CommandLineOptions PlayListFormats \
+	\
+	Effect/bs2b Effect/crossfade Effect/ladspa Effect/srconverter \
+	Effect/stereo \
+	Engines/mplayer \
+	FileDialogs/QmmpFileDialog \
+	General/converter General/copypaste General/covermanager \
+	General/fileops General/gnomehotkey General/hal General/hotkey \
+	General/kdenotify General/lyrics General/mpris General/notifier \
+	General/rgscan General/scrobbler General/statusicon \
+	General/streambrowser General/trackchange General/udisks2 \
+	Input/aac Input/cdaudio Input/cue Input/ffmpeg Input/ffmpeg_legacy \
+	Input/flac Input/gme Input/mad Input/modplug Input/mpc Input/opus \
+	Input/sid Input/sndfile Input/vorbis Input/wavpack Input/wildmidi \
+	Output/alsa Output/directsound Output/jack Output/null \
+	Output/oss Output/oss4 Output/pulseaudio Output/qtmultimedia \
+	Output/waveout \
+	Transports/http Transports/mms \
+	Ui/qsui Ui/skinned \
+	Visual/analyzer Visual/projectm
+
+PLUGIN_TAGS=	AAC ALSA ANALYZER BS2B CDA CONVERTER COPYPASTE COVER \
+	CROSSFADE CUE CURL DIR_ASSOC DSOUND ENCA FFMPEG FFMPEG_LEGACY \
+	FILEOPS FLAC GME GNOMEHOTKEY HAL HOTKEY JACK KDENOTIFY LADSPA \
+	LYRICS MAD MIDI MMS MODPLUG MPC MPLAYER MPRIS NOTIFIER NULL OPUS \
+	OSS OSS4 PROJECTM PULSE QMMP_DIALOG QSUI QTMULTIMEDIA RGSCAN \
+	SB SCROBBLER SID SKINNED SNDFILE SRC STATICON STEREO TRACKCHANGE \
+	UDISKS2 VORBIS WAVEOUT WAVPACK
+
+.for pidir in ${PLUGIN_TARGETS}
+. if ${QMMPPLUGIN_TARGET} != ${pidir}
+EXTRACT_AFTER_ARGS+=	--exclude '${DISTNAME}/src/plugins/${pidir}'
+. endif
+.endfor
+EXTRACT_AFTER_ARGS+=	--exclude '${DISTNAME}/src/qmmpui' \
+	--exclude '${DISTNAME}/src/app'
+
+.for pitag in ${PLUGIN_TAGS}
+. if ${QMMPPLUGIN_TAG} == ${pitag}
+CMAKE_ARGS+=	-DUSE_${pitag}:BOOL=TRUE
+. else
+CMAKE_ARGS+=	-DUSE_${pitag}:BOOL=FALSE
+. endif
+.endfor
+
+pre-configure:
+	@${GREP} -El 'PlayListFormats|CommandLineOptions' \
+		${WRKSRC}/src/plugins/CMakeLists.txt | ${XARGS} \
+		${REINPLACE_CMD} -e '/PlayListFormats/,/CommandLineOptions/d'
+	@${GREP} -El 'target_link_libraries.*libqmmp|add_dependencies' \
+		${WRKSRC}/src/plugins/${QMMPPLUGIN_TARGET}/CMakeLists.txt | ${XARGS} \
+		${REINPLACE_CMD} -e '/CMAKE_CURRENT_.*\/\.\.\/\.\.\/\.\.\//d' \
+		-e '/^add_dependencies/d' \
+		-e '/target_link_libraries/s/libqmmp/-lqmmp/'
+	@${GREP} -El 'add_subd.*src/(qmmp|app)|find_package.* REQUIRED' \
+		${WRKSRC}/CMakeLists.txt | ${XARGS} ${REINPLACE_CMD} \
+		-Ee '/add_subdirectory[(]src\/(qmmp|qmmpui|app)[)]/d' \
+		-e '/find_package[(]Qt5/s/ REQUIRED//'
+	@${RM} -f ${BUILD_WRKSRC}/CMakeCache.txt
+
+# Category/PluginModule ==> lib/qmmp/Category/libpluginmodule.so
+PLIST_FILES+=	lib/qmmp/${QMMPPLUGIN_TARGET:C@/.*$@/@}${QMMPPLUGIN_TARGET:tl:C@.*/@lib@:S@$@.so@}

@@ -1,0 +1,19 @@
+# $FreeBSD$
+
+QMMP_VERSION=	1.1.0
+MASTER_SITES=	http://qmmp.ylsoftware.com/files/plugins/ \
+	SF/qmmp-dev/qmmp/
+DISTNAME=	qmmp-${PORTVERSION}
+DISTINFO_FILE=	${.CURDIR}/../../multimedia/qmmp-qt5/distinfo
+
+MAINTAINER?=	liangtai.s16@gmail.com
+LICENSE?=	GPLv2
+
+USES+=		cmake:outsource pkgconfig tar:bzip2
+USE_QT5+=	core gui widgets buildtools_build qmake_build
+USE_LDCONFIG=	yes
+
+PLIST_SUB+=	SHLIB_VER=${PORTVERSION:C/-.*//}
+
+pre-configure:
+	@${RM} -f ${BUILD_WRKSRC}/CMakeCache.txt
