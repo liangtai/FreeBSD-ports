@@ -27,7 +27,7 @@ pre-configure:
 		-e 's/=.*$$/= CommandLineOptions PlayListFormats/; /^[^=]*$$/d;}' \
 		-e '/unix:/d'
 	@${GREP} -l '^SUBDIRS.*/qmmp' ${WRKSRC}/qmmp.pro | ${XARGS} \
-		${REINPLACE_CMD} -e '/^SUBDIRS/s/=.*$$/=	src\/plugins src\/app/'
+		${REINPLACE_CMD} -e '/^SUBDIRS/s|=.*$$|=	src/plugins src/app|'
 
 .include "${.CURDIR}/../../multimedia/qmmp-qt5/Makefile.coresys"
 .include <bsd.port.mk>
