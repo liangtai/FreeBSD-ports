@@ -2,9 +2,9 @@
 
 PORTNAME=	libbs2b
 PORTVERSION=	3.1.0
-PORTREVISION=	2
+PORTREVISION=	4
 CATEGORIES=	audio
-MASTER_SITES=	SF/bs2b/bs2b/${PORTVERSION}
+MASTER_SITES=	SF/bs2b/${PORTNAME}/${PORTVERSION}
 
 MAINTAINER=	liangtai.s16@gmail.com
 COMMENT=	Bauer Stereophonic-to-Binaural DSP
@@ -19,5 +19,7 @@ USE_LDCONFIG=	yes
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS+=	CFLAGS=`pkg-config --cflags sndfile` \
 	LDFLAGS=`pkg-config --libs-only-L sndfile`
+
+INSTALL_TARGET=	install-strip
 
 .include <bsd.port.mk>
