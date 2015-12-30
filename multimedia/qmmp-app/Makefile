@@ -27,13 +27,13 @@ EXTRACT_AFTER_ARGS+=	--exclude '${DISTNAME}/src/plugins/${p}'
 INSTALLS_ICONS=	yes
 
 post-patch:
-	@${GREP} -H 'add_subdirectory' ${WRKSRC}/CMakeLists.txt | \
-		${GREP} -v 'src/app' | cut -d: -f1 | uniq | ${XARGS} \
-		${REINPLACE_CMD} -Ee '/add_subdirectory[(]src\/(qmmp|qmmpui)[)]/d'
+	@${GREP} -El 'add_subdirectory.*src/qmmp' \
+		${WRKSRC}/CMakeLists.txt | ${XARGS} ${REINPLACE_CMD} \
+		-Ee '/^add_subdirectory[(]src\/(qmmp|qmmpui)[)]/d'
 	@${GREP} -El 'target_link_libraries.*libqmmp|add_dependencies' \
 		${WRKSRC}/src/app/CMakeLists.txt | ${XARGS} \
 		${REINPLACE_CMD} -e '/^add_dependencies/d' \
-		-e '/target_link_libraries/s/libqmmp/-lqmmp/'
+		-e '/^target_link_libraries/s/libqmmp/-lqmmp/'
 	@${GREP} -El 'Effect|Engines|FileDialogs|General|Input|Output|Transports|Ui|Visual' \
 		${WRKSRC}/src/plugins/CMakeLists.txt | ${XARGS} \
 		${REINPLACE_CMD} -ne '/PlayListFormats/,/CommandLineOptions/p'
