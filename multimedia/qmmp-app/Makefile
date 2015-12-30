@@ -31,10 +31,10 @@ post-patch:
 		${WRKSRC}/CMakeLists.txt | ${XARGS} ${REINPLACE_CMD} \
 		-Ee '/add_subdirectory[(]src\/(qmmp|qmmpui)[)]/d' \
 		-e '/find_package[(]Qt5/s/ REQUIRED//'
-	@${GREP} -El 'target_link_libraries.*::Widgets libqmmp|add_dependencies' \
+	@${GREP} -El 'target_link_libraries.*libqmmp|add_dependencies' \
 		${WRKSRC}/src/app/CMakeLists.txt | ${XARGS} \
 		${REINPLACE_CMD} -e '/^add_dependencies/d' \
-		-e '/^target_link_libraries/s/::Widgets libqmmp/::Widgets Qt5::Network -lqmmp/'
+		-e '/^target_link_libraries/s/libqmmp/-lqmmp/'
 	@${GREP} -El 'Effect|Engines|FileDialogs|General|Input|Output|Transports|Ui|Visual' \
 		${WRKSRC}/src/plugins/CMakeLists.txt | ${XARGS} \
 		${REINPLACE_CMD} -ne '/PlayListFormats/,/CommandLineOptions/p'
