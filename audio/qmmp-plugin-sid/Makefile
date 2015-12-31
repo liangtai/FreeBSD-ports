@@ -11,6 +11,8 @@ LICENSE=	GPLv2
 
 LIB_DEPENDS+=	libsidplayfp.so:${PORTSDIR}/audio/libsidplayfp
 
+USE_QT4+=	uic_build
+
 QMMPPLUGIN_TARGET=	Input/sid
 QMMPPLUGIN_TAG=	SID
 

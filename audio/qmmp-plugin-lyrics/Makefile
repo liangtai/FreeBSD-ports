@@ -11,6 +11,8 @@ LICENSE=	GPLv2
 
 LIB_DEPENDS+=	libqmmpui.so:${PORTSDIR}/multimedia/qmmp-uilib
 
+USE_QT4+=	uic_build
+
 QMMPPLUGIN_TARGET=	General/lyrics
 QMMPPLUGIN_TAG=	LYRICS
 

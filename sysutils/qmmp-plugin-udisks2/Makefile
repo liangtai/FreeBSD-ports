@@ -11,7 +11,7 @@ LICENSE=	GPLv2
 
 LIB_DEPENDS+=	libqmmpui.so:${PORTSDIR}/multimedia/qmmp-uilib
 
-USE_QT4+=	dbus
+USE_QT4+=	dbus uic_build
 
 QMMPPLUGIN_TARGET=	General/udisks2
 QMMPPLUGIN_TAG=	UDISKS2

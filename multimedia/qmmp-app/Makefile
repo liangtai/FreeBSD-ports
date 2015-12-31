@@ -27,10 +27,9 @@ EXTRACT_AFTER_ARGS+=	--exclude '${DISTNAME}/src/plugins/${p}'
 INSTALLS_ICONS=	yes
 
 post-patch:
-	@${GREP} -El 'add_subd.*src/qmmp|find_package.* REQUIRED' \
+	@${GREP} -El 'add_subdirectory.*src/qmmp' \
 		${WRKSRC}/CMakeLists.txt | ${XARGS} ${REINPLACE_CMD} \
-		-Ee '/add_subdirectory[(]src\/(qmmp|qmmpui)[)]/d' \
-		-e '/find_package[(]Qt5/s/ REQUIRED//'
+		-Ee '/add_subdirectory[(]src\/(qmmp|qmmpui)[)]/d'
 	@${GREP} -El 'target_link_libraries.*libqmmp|add_dependencies' \
 		${WRKSRC}/src/app/CMakeLists.txt | ${XARGS} \
 		${REINPLACE_CMD} -e '/^add_dependencies/d' \

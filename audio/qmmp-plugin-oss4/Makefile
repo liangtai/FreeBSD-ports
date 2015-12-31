@@ -11,6 +11,8 @@ LICENSE=	GPLv2
 
 BUILD_DEPENDS+=	${LOCALBASE}/lib/oss/include/sys/soundcard.h:${PORTSDIR}/audio/oss
 
+USE_QT4+=	uic_build
+
 QMMPPLUGIN_TARGET=	Output/oss4
 QMMPPLUGIN_TAG=	OSS4
 

@@ -20,6 +20,8 @@ ENCA_CMAKE_OFF=	-DUSE_ENCA:BOOL=FALSE
 
 LIB_DEPENDS+=	libcurl.so:${PORTSDIR}/ftp/curl
 
+USE_QT4+=	uic_build
+
 QMMPPLUGIN_TARGET=	Transports/http
 QMMPPLUGIN_TAG=	CURL
 

@@ -12,6 +12,8 @@ LICENSE=	GPLv2
 LIB_DEPENDS+=	libcdio.so:${PORTSDIR}/sysutils/libcdio \
 	libcdio_cdda.so:${PORTSDIR}/sysutils/libcdio-paranoia
 
+USE_QT4+=	uic_build
+
 QMMPPLUGIN_TARGET=	Input/cdaudio
 QMMPPLUGIN_TAG=	CDA
 

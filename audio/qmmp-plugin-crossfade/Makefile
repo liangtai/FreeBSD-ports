@@ -9,6 +9,8 @@ COMMENT=	Crossfade dsp-effect plug-in of QMMP (Qt4)
 
 LICENSE=	GPLv2
 
+USE_QT4+=	uic_build
+
 QMMPPLUGIN_TARGET=	Effect/crossfade
 QMMPPLUGIN_TAG=	CROSSFADE
 

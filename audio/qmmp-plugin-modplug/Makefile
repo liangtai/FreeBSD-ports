@@ -11,6 +11,8 @@ LICENSE=	GPLv2
 
 LIB_DEPENDS+=	libmodplug.so:${PORTSDIR}/audio/libmodplug
 
+USE_QT4+=	uic_build
+
 QMMPPLUGIN_TARGET=	Input/modplug
 QMMPPLUGIN_TAG=	MODPLUG
 

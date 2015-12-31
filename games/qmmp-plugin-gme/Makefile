@@ -11,6 +11,8 @@ LICENSE=	GPLv2
 
 LIB_DEPENDS+=	libgme.so:${PORTSDIR}/audio/libgme
 
+USE_QT4+=	uic_build
+
 QMMPPLUGIN_TARGET=	Input/gme
 QMMPPLUGIN_TAG=	GME
 
