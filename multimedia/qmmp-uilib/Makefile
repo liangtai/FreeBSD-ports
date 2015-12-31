@@ -18,8 +18,8 @@ EXTRACT_AFTER_ARGS+=	--exclude '${DISTNAME}/src/plugins' \
 	--exclude '${DISTNAME}/src/app'
 
 pre-configure:
-	@${GREP} -l '^SUBDIRS= src/qmmp src/' ${WRKSRC}/qmmp.pro | ${XARGS} \
-		${REINPLACE_CMD} -e '/^SUBDIRS/s/=.*$$/=	src\/qmmpui/'
+	@${GREP} -l '^SUBDIRS = src/qmmp src/' ${WRKSRC}/qmmp.pro | ${XARGS} \
+		${REINPLACE_CMD} -e '/^SUBDIRS/s|=.*$$|=	src/qmmpui|'
 
 post-build:
 	@${GREP} -L 'libdata/pkgconfig' ${WRKSRC}/src/qmmpui/Makefile \

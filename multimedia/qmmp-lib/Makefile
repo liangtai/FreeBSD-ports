@@ -19,7 +19,7 @@ EXTRACT_AFTER_ARGS+=	--exclude '${DISTNAME}/src/plugins' \
 	--exclude '${DISTNAME}/src/qmmpui' --exclude '${DISTNAME}/src/app'
 
 pre-configure:
-	@${GREP} -lE '^SUBDIRS= src/qmmp src/|^[^#].*lrelease' \
+	@${GREP} -lE '^SUBDIRS = src/qmmp src/|^[^#].*lrelease' \
 		${WRKSRC}/qmmp.pro | ${XARGS} ${REINPLACE_CMD} \
 		-e '/^SUBDIRS/s|=.*$$|=	src/qmmp|' \
 		-Ee '/(lrelease|LRELEASE|translation|[{}])/s/^/#/'

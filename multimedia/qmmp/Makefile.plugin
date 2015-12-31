@@ -63,7 +63,7 @@ pre-configure:
 		${WRKSRC}/src/plugins/${PLUGINGROUPDIR}/${PLUGINGROUPDIR}.pro \
 		| ${XARGS} ${REINPLACE_CMD} -Ee '/(TEMPLATE|include)/!d' \
 		-e '1{; h; s/^.*$$/SUBDIRS= ${PLUGINSUBTARGETDIR}/; G;}'
-	@${GREP} -l '^SUBDIRS= src/qmmp src/' ${WRKSRC}/qmmp.pro | ${XARGS} \
+	@${GREP} -l '^SUBDIRS = src/qmmp src/' ${WRKSRC}/qmmp.pro | ${XARGS} \
 		${REINPLACE_CMD} -e '/^SUBDIRS/s|=.*$$|=	src/plugins|'
 
 pre-install:
