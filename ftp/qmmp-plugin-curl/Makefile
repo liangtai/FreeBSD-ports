@@ -19,6 +19,8 @@ ENCA_QMAKE_CONFIG=	WITH_ENCA
 
 LIB_DEPENDS+=	libcurl.so:${PORTSDIR}/ftp/curl
 
+USE_QT4+=	uic_build
+
 QMMPPLUGIN_TARGET=	Transports/http
 QMMPPLUGIN_OPTIONS=
 

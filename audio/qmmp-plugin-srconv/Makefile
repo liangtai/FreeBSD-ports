@@ -11,6 +11,8 @@ LICENSE=	GPLv2
 
 LIB_DEPENDS+=	libsamplerate.so:${PORTSDIR}/audio/libsamplerate
 
+USE_QT4+=	uic_build
+
 QMMPPLUGIN_TARGET=	Effect/srconverter
 QMMPPLUGIN_OPTIONS=
 

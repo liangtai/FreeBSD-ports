@@ -11,6 +11,8 @@ LICENSE=	GPLv2
 
 LIB_DEPENDS+=	libWildMidi.so:${PORTSDIR}/audio/wildmidi
 
+USE_QT4+=	uic_build
+
 QMMPPLUGIN_TARGET=	Input/wildmidi
 QMMPPLUGIN_OPTIONS=	WILDMIDI_PLUGIN
 

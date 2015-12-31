@@ -12,9 +12,12 @@ LICENSE=	GPLv2
 OPTIONS_SUB=	yes
 OPTIONS_DEFINE=	ENCA
 OPTIONS_DEFAULT=	ENCA
+
 ENCA_DESC=		Support automatic character set detection
 ENCA_LIB_DEPENDS=	libenca.so:${PORTSDIR}/converters/enca
 ENCA_QMAKE_CONFIG=	WITH_ENCA
+
+USE_QT4+=	uic_build
 
 QMMPPLUGIN_TARGET=	Input/cue
 QMMPPLUGIN_OPTIONS=

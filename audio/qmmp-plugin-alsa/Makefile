@@ -11,6 +11,8 @@ LICENSE=	GPLv2
 
 LIB_DEPENDS+=	libasound.so:${PORTSDIR}/audio/alsa-lib
 
+USE_QT4+=	uic_build
+
 QMMPPLUGIN_TARGET=	Output/alsa
 QMMPPLUGIN_OPTIONS=	ALSA_PLUGIN
 
