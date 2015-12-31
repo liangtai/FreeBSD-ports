@@ -5,11 +5,13 @@ PORTVERSION=	${QMMP_VERSION}
 CATEGORIES=	audio multimedia
 
 MAINTAINER=	liangtai.s16@gmail.com
-COMMENT=	Bauer stereophonic-to-binaural dsp-effect plug-in of QMMP
+COMMENT=	Bauer stereophonic-to-binaural dsp-effect plug-in of QMMP (Qt4)
 
 LICENSE=	GPLv2
 
 LIB_DEPENDS+=	libbs2b.so:${PORTSDIR}/audio/libbs2b
+
+USE_QT4+=	uic_build
 
 QMMPPLUGIN_TARGET=	Effect/bs2b
 QMMPPLUGIN_TAG=	BS2B

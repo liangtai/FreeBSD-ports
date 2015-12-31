@@ -5,13 +5,13 @@ PORTVERSION=	${QMMP_VERSION}
 CATEGORIES=	sysutils multimedia
 
 MAINTAINER=	liangtai.s16@gmail.com
-COMMENT=	Removable disc detecting plug-in of QMMP (legacy)
+COMMENT=	Removable disc detecting plug-in of QMMP (Qt4) (legacy)
 
 LICENSE=	GPLv2
 
 LIB_DEPENDS+=	libqmmpui.so:${PORTSDIR}/multimedia/qmmp-uilib
 
-USE_QT4+=	dbus network xml
+USE_QT4+=	dbus uic_build
 
 QMMPPLUGIN_TARGET=	General/udisks
 QMMPPLUGIN_TAG=	UDISKS

@@ -5,7 +5,7 @@ PORTVERSION=	${QMMP_PP_VERSION}
 CATEGORIES=	audio multimedia
 
 MAINTAINER=	liangtai.s16@gmail.com
-COMMENT=	MPG123 file format plug-in of QMMP
+COMMENT=	MPG123 file format plug-in of QMMP (Qt4)
 
 LICENSE=	GPLv2
 

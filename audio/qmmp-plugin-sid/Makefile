@@ -5,11 +5,13 @@ PORTVERSION=	${QMMP_VERSION}
 CATEGORIES=	audio multimedia
 
 MAINTAINER=	liangtai.s16@gmail.com
-COMMENT=	SID plug-in of QMMP
+COMMENT=	SID plug-in of QMMP (Qt4)
 
 LICENSE=	GPLv2
 
 LIB_DEPENDS+=	libsidplayfp.so:${PORTSDIR}/audio/libsidplayfp
+
+USE_QT4+=	uic_build
 
 QMMPPLUGIN_TARGET=	Input/sid
 QMMPPLUGIN_TAG=	SID

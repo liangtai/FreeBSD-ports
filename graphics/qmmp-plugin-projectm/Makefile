@@ -5,7 +5,7 @@ PORTVERSION=	${QMMP_VERSION}
 CATEGORIES=	graphics multimedia
 
 MAINTAINER=	liangtai.s16@gmail.com
-COMMENT=	ProjectM music visualiser plug-in of QMMP
+COMMENT=	ProjectM music visualiser plug-in of QMMP (Qt4)
 
 LICENSE=	GPLv2
 

@@ -5,7 +5,7 @@ PORTVERSION=	${QMMP_VERSION}
 CATEGORIES=	graphics multimedia
 
 MAINTAINER=	liangtai.s16@gmail.com
-COMMENT=	Plug-in of QMMP to fetch and show the cover art
+COMMENT=	Plug-in of QMMP (Qt4) to fetch and show the cover art
 
 LICENSE=	GPLv2
 

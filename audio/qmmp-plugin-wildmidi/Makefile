@@ -5,11 +5,13 @@ PORTVERSION=	${QMMP_VERSION}
 CATEGORIES=	audio multimedia
 
 MAINTAINER=	liangtai.s16@gmail.com
-COMMENT=	MIDI file format plug-in of QMMP
+COMMENT=	MIDI file format plug-in of QMMP (Qt4)
 
 LICENSE=	GPLv2
 
 LIB_DEPENDS+=	libWildMidi.so:${PORTSDIR}/audio/wildmidi
+
+USE_QT4+=	uic_build
 
 QMMPPLUGIN_TARGET=	Input/wildmidi
 QMMPPLUGIN_TAG=	MIDI

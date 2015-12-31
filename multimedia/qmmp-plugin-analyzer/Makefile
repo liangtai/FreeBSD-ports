@@ -5,9 +5,11 @@ PORTVERSION=	${QMMP_VERSION}
 CATEGORIES=	multimedia
 
 MAINTAINER=	liangtai.s16@gmail.com
-COMMENT=	Spectrum analyzer visualization plug-in of QMMP
+COMMENT=	Spectrum analyzer visualization plug-in of QMMP (Qt4)
 
 LICENSE=	GPLv2
+
+USE_QT4+=	uic_build
 
 QMMPPLUGIN_TARGET=	Visual/analyzer
 QMMPPLUGIN_TAG=	ANALYZER

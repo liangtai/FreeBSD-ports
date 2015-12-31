@@ -5,13 +5,13 @@ PORTVERSION=	${QMMP_VERSION}
 CATEGORIES=	deskutils multimedia
 
 MAINTAINER=	liangtai.s16@gmail.com
-COMMENT=	Popup notifier plug-in of QMMP for KDE
+COMMENT=	Popup notifier plug-in of QMMP (Qt4) for KDE
 
 LICENSE=	GPLv2
 
 LIB_DEPENDS+=	libqmmpui.so:${PORTSDIR}/multimedia/qmmp-uilib
 
-USE_QT4+=	dbus network xml
+USE_QT4+=	dbus uic_build
 
 QMMPPLUGIN_TARGET=	General/kdenotify
 QMMPPLUGIN_TAG=	KDENOTIFY

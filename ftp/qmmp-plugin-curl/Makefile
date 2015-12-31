@@ -5,7 +5,7 @@ PORTVERSION=	${QMMP_VERSION}
 CATEGORIES=	ftp multimedia
 
 MAINTAINER=	liangtai.s16@gmail.com
-COMMENT=	CURL plug-in of QMMP
+COMMENT=	CURL plug-in of QMMP (Qt4)
 
 LICENSE=	GPLv2
 
@@ -19,6 +19,8 @@ ENCA_CMAKE_ON=	-DUSE_ENCA:BOOL=TRUE
 ENCA_CMAKE_OFF=	-DUSE_ENCA:BOOL=FALSE
 
 LIB_DEPENDS+=	libcurl.so:${PORTSDIR}/ftp/curl
+
+USE_QT4+=	uic_build
 
 QMMPPLUGIN_TARGET=	Transports/http
 QMMPPLUGIN_TAG=	CURL

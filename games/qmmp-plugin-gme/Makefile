@@ -5,11 +5,13 @@ PORTVERSION=	${QMMP_VERSION}
 CATEGORIES=	games audio multimedia
 
 MAINTAINER=	liangtai.s16@gmail.com
-COMMENT=	Video game music file format plug-in of QMMP
+COMMENT=	Video game music file format plug-in of QMMP (Qt4)
 
 LICENSE=	GPLv2
 
 LIB_DEPENDS+=	libgme.so:${PORTSDIR}/audio/libgme
+
+USE_QT4+=	uic_build
 
 QMMPPLUGIN_TARGET=	Input/gme
 QMMPPLUGIN_TAG=	GME

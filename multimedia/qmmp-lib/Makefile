@@ -21,9 +21,11 @@ EXTRACT_AFTER_ARGS+=	--exclude '${DISTNAME}/src/plugins' \
 post-patch:
 	@${GREP} -L 'libdata/pkgconfig' \
 		${WRKSRC}/src/qmmp/CMakeLists.txt | ${XARGS} \
-		${REINPLACE_CMD} -e '/pkgconfig/s|$${LIB_DIR}|libdata|'
-	@${REINPLACE_CMD} -Ee '/add_subdirectory[(]src\/(app|qmmpui|plugins)[)]/d' \
-		${WRKSRC}/CMakeLists.txt
+		${REINPLACE_CMD} -e '/pkgconfig/s|\$${LIB_DIR}|libdata|'
+	@${GREP} -El 'add_subd.*src/(app|qmmpui|plugins)|^(MESSAGE|execute).*(lrelease|LRELEASE)' \
+		${WRKSRC}/CMakeLists.txt | ${XARGS} ${REINPLACE_CMD} \
+		-Ee '/add_subdirectory[(]src\/(app|qmmpui|plugins)[)]/d' \
+		-Ee '/(LRELEASE|lrelease|translation)/s/^(MESSAGE|execute)/#\1/'
 
 post-install-DOCS-on:
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}; \
