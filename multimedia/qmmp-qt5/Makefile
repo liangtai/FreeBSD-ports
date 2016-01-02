@@ -12,6 +12,8 @@ COMMENT=	Qt5-based multimedia player
 
 LICENSE=	GPLv2
 
+CONFLICTS=	${PORTNAME}-0.*
+
 USES=		cmake:outsource desktop-file-utils pkgconfig tar:bzip2
 USE_QT5=	core gui network widgets xml \
 		buildtools_build linguisttools_build qmake_build
@@ -64,7 +66,7 @@ OPTIONS_DEFAULT=	ALSA ANALYZER BS2B CDDA CONVERTER COPYPASTE COVER \
 
 DOXYGEN_BUILD_DEPENDS=	doxygen:${PORTSDIR}/devel/doxygen
 
-QSUI_DESC=		Simple UI based on standard widgets set
+QSUI_DESC=	Simple UI based on standard widgets set
 QSUI_CMAKE_ON=	-DUSE_QSUI:BOOL=TRUE
 QSUI_CMAKE_OFF=	-DUSE_QSUI:BOOL=FALSE
 
@@ -222,7 +224,7 @@ STEREO_DESC=	Support stereo effect
 STEREO_CMAKE_ON=	-DUSE_STEREO:BOOL=TRUE
 STEREO_CMAKE_OFF=	-DUSE_STEREO:BOOL=FALSE
 
-ANALYZER_DESC=	Supoort spectrum analyzer visualization
+ANALYZER_DESC=	Support spectrum analyzer visualization
 ANALYZER_CMAKE_ON=	-DUSE_ANALYZER:BOOL=TRUE
 ANALYZER_CMAKE_OFF=	-DUSE_ANALYZER:BOOL=FALSE
 
@@ -307,8 +309,6 @@ QMMP_DIALOG_CMAKE_OFF=	-DUSE_QMMP_DIALOG:BOOL=FALSE
 
 .include <bsd.port.options.mk>
 
-CONFLICTS=	${PORTNAME:C/${PKGNAMESUFFIX}//}-0.*
-
 PLIST_SUB+=	SHLIB_VER=${PORTVERSION:C/-.*//}
 
 PORTDOCS=	README README.RUS AUTHORS
@@ -331,7 +331,7 @@ post-build-DOXYGEN-on:
 
 post-install-DOCS-on:
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}; \
-	cd ${WRKSRC} && ${INSTALL_MAN} ${PORTDOCS} ${STAGEDIR}${DOCSDIR}
+		cd ${WRKSRC} && ${INSTALL_MAN} ${PORTDOCS} ${STAGEDIR}${DOCSDIR}
 
 post-install-DOXYGEN-on:
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}/html/search ; \
