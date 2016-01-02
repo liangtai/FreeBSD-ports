@@ -26,7 +26,7 @@ pre-configure:
 		| ${XARGS} ${REINPLACE_CMD} -e '/SUBDIRS/,/^$$/{' \
 		-e 's/=.*$$/= CommandLineOptions PlayListFormats/; /^[^=]*$$/d;}' \
 		-e '/unix:/d'
-	@${GREP} -l '^SUBDIRS= src/qmmp' ${WRKSRC}/qmmp.pro | ${XARGS} \
+	@${GREP} -l '^SUBDIRS = src/qmmp' ${WRKSRC}/qmmp.pro | ${XARGS} \
 		${REINPLACE_CMD} -e '/^SUBDIRS/s|=.*$$|=	src/plugins src/app|'
 
 .include "${.CURDIR}/../../multimedia/qmmp/Makefile.coresys"
