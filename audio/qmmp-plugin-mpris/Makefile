@@ -11,7 +11,7 @@ LICENSE=	GPLv2
 
 LIB_DEPENDS+=	libqmmpui.so:${PORTSDIR}/multimedia/qmmp-uilib
 
-USE_QT4+=	dbus xml
+USE_QT4+=	dbus
 
 QMMPPLUGIN_TARGET=	General/mpris
 QMMPPLUGIN_OPTIONS=

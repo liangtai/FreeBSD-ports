@@ -18,6 +18,8 @@ MPLAYER2_DESC=	mplayer-2.0.x (multimedia/mplayer2)
 MPLAYER1_RUN_DEPENDS+=	mplayer:${PORTSDIR}/multimedia/mplayer
 MPLAYER2_RUN_DEPENDS+=	mplayer:${PORTSDIR}/multimedia/mplayer2
 
+USE_QT4+=	uic_build
+
 QMMPPLUGIN_TARGET=	Engines/mplayer
 QMMPPLUGIN_OPTIONS=
 

@@ -12,14 +12,14 @@ LICENSE=	GPLv2
 LIB_DEPENDS+=	libqmmp.so:${PORTSDIR}/multimedia/qmmp-lib
 BUILD_DEPENDS+=	qmmp-lib>=0.10.0:${PORTSDIR}/multimedia/qmmp-lib
 
-USE_QT4+=	network
+USE_QT4+=	network uic_build
 
 EXTRACT_AFTER_ARGS+=	--exclude '${DISTNAME}/src/plugins' \
 	--exclude '${DISTNAME}/src/app'
 
 pre-configure:
 	@${GREP} -l '^SUBDIRS= src/qmmp src/' ${WRKSRC}/qmmp.pro | ${XARGS} \
-		${REINPLACE_CMD} -e '/^SUBDIRS/s/=.*$$/=	src\/qmmpui/'
+		${REINPLACE_CMD} -e '/^SUBDIRS/s|=.*$$|=	src/qmmpui|'
 
 post-build:
 	@${GREP} -L 'libdata/pkgconfig' ${WRKSRC}/src/qmmpui/Makefile \
