@@ -67,9 +67,11 @@ pre-configure:
 		${WRKSRC}/src/plugins/CMakeLists.txt | ${XARGS} \
 		${REINPLACE_CMD} -e '/PlayListFormats/,/CommandLineOptions/d'
 	@${GREP} -El 'target_link_libraries.*libqmmp|add_dependencies' \
-		${WRKSRC}/src/plugins/${QMMPPLUGIN_TARGET}/CMakeLists.txt | ${XARGS} \
-		${REINPLACE_CMD} -e '/CMAKE_CURRENT_.*\/\.\.\/\.\.\/\.\.\//d' \
-		-e '/^add_dependencies/d' \
+		${WRKSRC}/src/plugins/${QMMPPLUGIN_TARGET}/CMakeLists.txt | \
+		${XARGS} ${REINPLACE_CMD} -e '/^add_dependencies/d' \
+		-e '/CMAKE_CURRENT_.*\/\.\.\/\.\.\/\.\.\//{;/include_dir/d; \
+			s/\(link_dir.*\)[(].*$$/\1($${QMMP_LIBRARY_DIRS})/; h; \
+			s/^.*$$/pkg_search_module(QMMP qmmp>=1.0)/; G;}' \
 		-e '/target_link_libraries/s/libqmmp/-lqmmp/'
 	@${GREP} -El 'add_subd.*src/(qmmp|app)|find_package.* REQUIRED' \
 		${WRKSRC}/CMakeLists.txt | ${XARGS} ${REINPLACE_CMD} \
