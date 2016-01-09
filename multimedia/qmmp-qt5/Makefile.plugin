@@ -66,7 +66,7 @@ pre-configure:
 	@${GREP} -El 'PlayListFormats|CommandLineOptions' \
 		${WRKSRC}/src/plugins/CMakeLists.txt | ${XARGS} \
 		${REINPLACE_CMD} -e '/PlayListFormats/,/CommandLineOptions/d'
-	@${GREP} -El 'target_link_libraries.*libqmmp|add_dependencies' \
+	@${GREP} -El '^add_dep|/\.\./\.\./\.\./|^target_link_lib.*libqmmp' \
 		${WRKSRC}/src/plugins/${QMMPPLUGIN_TARGET}/CMakeLists.txt | \
 		${XARGS} ${REINPLACE_CMD} -e '/^add_dependencies/d' \
 		-e '/CMAKE_CURRENT_.*\/\.\.\/\.\.\/\.\.\//{;/include_dir/d; \
