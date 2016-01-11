@@ -28,6 +28,10 @@ pre-configure:
 		-e '/unix:/d'
 	@${GREP} -l '^SUBDIRS.*/qmmp' ${WRKSRC}/qmmp.pro | ${XARGS} \
 		${REINPLACE_CMD} -e '/^SUBDIRS/s|=.*$$|=	src/plugins src/app|'
+	@${GREP} -L 'PKGCONFIG' ${WRKSRC}/src/app/app.pro | ${XARGS} \
+		${REINPLACE_CMD} -e '/warn_on/{; \
+			s/warn_on/& link_pkgconfig/; h; \
+			s/^.*$$/PKGCONFIG += qmmp/; x; G;}'
 
 .include "${.CURDIR}/../../multimedia/qmmp-qt5/Makefile.coresys"
 .include <bsd.port.mk>
