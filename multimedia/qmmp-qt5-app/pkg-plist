@@ -6,9 +6,9 @@ lib/qmmp/CommandLineOptions/libstatusoption.so
 lib/qmmp/PlayListFormats/libm3uplaylistformat.so
 lib/qmmp/PlayListFormats/libplsplaylistformat.so
 lib/qmmp/PlayListFormats/libxspfplaylistformat.so
-%%DIR_ASSOC%%share/applications/qmmp.desktop
-%%DIR_ASSOC%%share/applications/qmmp_enqueue.desktop
-%%DIR_ASSOC%%share/applications/qmmp_dir.desktop
+share/applications/qmmp.desktop
+share/applications/qmmp_enqueue.desktop
+share/applications/qmmp_dir.desktop
 share/icons/hicolor/16x16/apps/qmmp.png
 share/icons/hicolor/32x32/apps/qmmp.png
 share/icons/hicolor/48x48/apps/qmmp.png
