@@ -21,7 +21,7 @@ LIB_DEPENDS=	libmad.so:${PORTSDIR}/audio/libmad \
 		libcurl.so:${PORTSDIR}/ftp/curl \
 		libmms.so:${PORTSDIR}/net/libmms
 
-USES=		desktop-file-utils dos2unix gmake pkgconfig qmake tar:bzip2
+USES=		desktop-file-utils gmake pkgconfig qmake tar:bzip2
 USE_QT4=	corelib dbus gui network xml \
 		linguisttools_build moc_build qmake_build rcc_build uic_build
 USE_LDCONFIG=	yes
@@ -163,8 +163,6 @@ PLIST_SUB+=	SHLIB_VER=${PORTVERSION:C/-.*//}
 
 PORTDOCS=	README README.RUS AUTHORS
 INSTALLS_ICONS=	yes
-DOS2UNIX_FILES=	${WRKSRC}/src/plugins/General/hotkey/hotkey.pro
-DOCSDIR=	${PREFIX}/share/doc/${PORTNAME}${PKGNAMESUFFIX}
 
 _DESTDIR_VIA_ENV=	no
 MAKE_ARGS+=	INSTALL_ROOT=${STAGEDIR}${PREFIX}
