@@ -115,7 +115,6 @@ MODPLUG_QMAKE_CONFIG=	MODPLUG_PLUGIN
 FAAD_LIB_DEPENDS=	libfaad.so:${PORTSDIR}/audio/faad
 FAAD_QMAKE_CONFIG=	AAC_PLUGIN
 
-CDDA_DESC=	Support to playback compact discs
 CDDA_LIB_DEPENDS=	libcdio.so:${PORTSDIR}/sysutils/libcdio \
 	libcdio_cdda.so:${PORTSDIR}/sysutils/libcdio-paranoia
 CDDA_QMAKE_CONFIG=	CDAUDIO_PLUGIN
