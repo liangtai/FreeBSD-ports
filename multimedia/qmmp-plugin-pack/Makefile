@@ -11,6 +11,8 @@ COMMENT=	Additional plug-ins for QMMP (Qt4)
 
 LICENSE=	GPLv2
 
+CONFLICTS=	${PORTNAME}-qt5-1.*
+
 LIB_DEPENDS=	libqmmpui.so:${PORTSDIR}/multimedia/qmmp
 BUILD_DEPENDS=	qmmp>=0.9.0:${PORTSDIR}/multimedia/qmmp
 
@@ -50,10 +52,6 @@ XMP_CMAKE_OFF=	-DUSE_XMP:BOOL=FALSE
 CMAKE_ARGS+=	-DCMAKE_REQUIRED_INCLUDES:PATH=${LOCALBASE}/include
 CFLAGS+=	-I${LOCALBASE}/include
 LDFLAGS+=	-L${LOCALBASE}/lib
-
-.include <bsd.port.options.mk>
-
-CONFLICTS=	${PORTNAME}-qt5-1.*
 
 pre-configure:
 	@${RM} -f ${BUILD_WRKSRC}/CMakeCache.txt
