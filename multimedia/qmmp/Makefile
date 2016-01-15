@@ -11,6 +11,8 @@ COMMENT=	Qt4-based multimedia player
 
 LICENSE=	GPLv2
 
+CONFLICTS=	${PORTNAME}-qt5-1.*
+
 USES=		cmake:outsource desktop-file-utils pkgconfig tar:bzip2
 USE_QT4=	corelib gui network xml \
 		linguisttools_build moc_build qmake_build rcc_build uic_build

@@ -11,6 +11,8 @@ COMMENT=	Additional plug-ins for QMMP (Qt4)
 
 LICENSE=	GPLv2
 
+CONFLICTS=	${PORTNAME}-qt5-1.*
+
 LIB_DEPENDS=	libqmmpui.so:${PORTSDIR}/multimedia/qmmp
 BUILD_DEPENDS=	qmmp>=0.10.0:${PORTSDIR}/multimedia/qmmp
 
