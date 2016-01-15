@@ -7,7 +7,7 @@ MASTER_SITES=	http://qmmp.ylsoftware.com/files/plugins/ \
 	SF/qmmp-dev/${PORTNAME}/
 
 MAINTAINER=	liangtai.s16@gmail.com
-COMMENT=	Additional plug-ins for QMMP
+COMMENT=	Additional plug-ins for QMMP (Qt4)
 
 LICENSE=	GPLv2
 
@@ -50,8 +50,6 @@ XMP_CMAKE_OFF=	-DUSE_XMP:BOOL=FALSE
 CMAKE_ARGS+=	-DCMAKE_REQUIRED_INCLUDES:PATH=${LOCALBASE}/include
 CFLAGS+=	-I${LOCALBASE}/include
 LDFLAGS+=	-L${LOCALBASE}/lib
-
-.include <bsd.port.options.mk>
 
 pre-configure:
 	@${RM} -f ${BUILD_WRKSRC}/CMakeCache.txt

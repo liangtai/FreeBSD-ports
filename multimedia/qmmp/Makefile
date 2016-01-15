@@ -62,7 +62,7 @@ OPTIONS_DEFAULT=	ALSA ANALYZER BS2B CDDA CONVERTER COPYPASTE COVER \
 
 DOXYGEN_BUILD_DEPENDS=	doxygen:${PORTSDIR}/devel/doxygen
 
-QSUI_DESC=		Simple UI based on standard widgets set
+QSUI_DESC=	Simple UI based on standard widgets set
 QSUI_USE=	QT4=network,uic_build
 QSUI_CMAKE_ON=	-DUSE_QSUI:BOOL=TRUE
 QSUI_CMAKE_OFF=	-DUSE_QSUI:BOOL=FALSE
@@ -332,7 +332,7 @@ post-patch:
 	@${GREP} -L 'libdata/pkgconfig' \
 		${WRKSRC}/src/qmmp/CMakeLists.txt \
 		${WRKSRC}/src/qmmpui/CMakeLists.txt | ${XARGS} \
-		${REINPLACE_CMD} -e '/pkgconfig/s|$${LIB_DIR}|libdata|'
+		${REINPLACE_CMD} -e '/pkgconfig/s|\$${LIB_DIR}|libdata|'
 
 pre-configure:
 	@${RM} -f ${BUILD_WRKSRC}/CMakeCache.txt
@@ -342,7 +342,7 @@ post-build-DOXYGEN-on:
 
 post-install-DOCS-on:
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}; \
-	cd ${WRKSRC} && ${INSTALL_MAN} ${PORTDOCS} ${STAGEDIR}${DOCSDIR}
+		cd ${WRKSRC} && ${INSTALL_MAN} ${PORTDOCS} ${STAGEDIR}${DOCSDIR}
 
 post-install-DOXYGEN-on:
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}/html/search ; \
@@ -353,7 +353,7 @@ post-install-DOXYGEN-on:
 	${RM} -f ${WRKDIR}/PLIST.doc ; \
 	${FIND} ${STAGEDIR}${DOCSDIR}/html -type f | \
 		${SED} 's|${STAGEDIR}${PREFIX}/||' \
-		>> ${WRKDIR}/PLIST.doc
+		>> ${WRKDIR}/PLIST.doc ; \
 	cd ${WRKDIR} ; ${SED} -i -e '/PLIST.doc/ r PLIST.doc' ${TMPPLIST}
 
 .include <bsd.port.mk>
