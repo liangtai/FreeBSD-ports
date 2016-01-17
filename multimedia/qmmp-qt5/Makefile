@@ -108,7 +108,7 @@ SRCONV_RUN_DEPENDS=	${QMMPLIBDIR}/Effect/libsrconverter.so:${PORTSDIR}/audio/qmm
 STEREO_DESC=	Support stereo effect
 STEREO_RUN_DEPENDS=	${QMMPLIBDIR}/Effect/libstereo.so:${PORTSDIR}/audio/qmmp-qt5-plugin-stereo
 
-ANALYZER_DESC=	Supoort spectrum analyzer visualization
+ANALYZER_DESC=	Support spectrum analyzer visualization
 ANALYZER_RUN_DEPENDS=	${QMMPLIBDIR}/Visual/libanalyzer.so:${PORTSDIR}/multimedia/qmmp-qt5-plugin-analyzer
 PROJECTM_DESC=	Support the projectM music visualiser
 PROJECTM_RUN_DEPENDS=	${QMMPLIBDIR}/Visual/libprojectm.so:${PORTSDIR}/graphics/qmmp-qt5-plugin-projectm
