@@ -12,6 +12,8 @@ COMMENT=	Additional plug-ins for QMMP (Qt5)
 
 LICENSE=	GPLv2
 
+CONFLICTS=	${PORTNAME}-0.*
+
 LIB_DEPENDS=	libqmmpui.so:${PORTSDIR}/multimedia/qmmp-qt5
 BUILD_DEPENDS=	qmmp-qt5>=1.1.0:${PORTSDIR}/multimedia/qmmp-qt5
 
@@ -46,8 +48,6 @@ XMP_DESC=	Support various module formats using libxmp
 XMP_LIB_DEPENDS=	libxmp.so:${PORTSDIR}/audio/libxmp
 XMP_CMAKE_ON=	-DUSE_XMP:BOOL=TRUE
 XMP_CMAKE_OFF=	-DUSE_XMP:BOOL=FALSE
-
-CONFLICTS=	${PORTNAME:C/${PKGNAMESUFFIX}//}-0.*
 
 pre-configure:
 	@${RM} -f ${BUILD_WRKSRC}/CMakeCache.txt

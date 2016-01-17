@@ -331,7 +331,7 @@ post-patch:
 	@${GREP} -L 'libdata/pkgconfig' \
 		${WRKSRC}/src/qmmp/CMakeLists.txt \
 		${WRKSRC}/src/qmmpui/CMakeLists.txt | ${XARGS} \
-		${REINPLACE_CMD} -e '/pkgconfig/s|$${LIB_DIR}|libdata|'
+		${REINPLACE_CMD} -e '/pkgconfig/s|\$${LIB_DIR}|libdata|'
 
 pre-configure:
 	@${RM} -f ${BUILD_WRKSRC}/CMakeCache.txt
