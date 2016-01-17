@@ -11,6 +11,8 @@ COMMENT=	Qt4-based multimedia player
 
 LICENSE=	GPLv2
 
+CONFLICTS=	${PORTNAME}-qt5-1.*
+
 LIB_DEPENDS=	libmad.so:${PORTSDIR}/audio/libmad \
 		libsamplerate.so:${PORTSDIR}/audio/libsamplerate \
 		libsndfile.so:${PORTSDIR}/audio/libsndfile \
@@ -156,8 +158,6 @@ WILDMIDI_QMAKE_CONFIG=	WILDMIDI_PLUGIN
 
 .include <bsd.port.options.mk>
 .include "options.qmake.mk"
-
-CONFLICTS=	${PORTNAME}-qt5-1.*
 
 PLIST_SUB+=	SHLIB_VER=${PORTVERSION:C/-.*//}
 
