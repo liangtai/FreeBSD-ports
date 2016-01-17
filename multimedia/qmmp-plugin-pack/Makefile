@@ -7,9 +7,11 @@ MASTER_SITES=	http://qmmp.ylsoftware.com/files/plugins/ \
 	SF/qmmp-dev/${PORTNAME}/
 
 MAINTAINER=	liangtai.s16@gmail.com
-COMMENT=	Additional plug-ins for QMMP
+COMMENT=	Additional plug-ins for QMMP (Qt4)
 
 LICENSE=	GPLv2
+
+CONFLICTS=	${PORTNAME}-qt5-1.*
 
 LIB_DEPENDS=	libqmmpui.so:${PORTSDIR}/multimedia/qmmp
 BUILD_DEPENDS=	qmmp>=0.10.0:${PORTSDIR}/multimedia/qmmp
@@ -43,7 +45,7 @@ XMP_DESC=	Support various module formats using libxmp
 XMP_LIB_DEPENDS=	libxmp.so:${PORTSDIR}/audio/libxmp
 XMP_QMAKE_CONFIG=	XMP_PLUGIN
 
-.include "../qmmp/options.qmake.mk"
+.include "${.CURDIR}/../qmmp/options.qmake.mk"
 
 _DESTDIR_VIA_ENV=	no
 MAKE_ARGS+=	INSTALL_ROOT=${STAGEDIR}${PREFIX}
