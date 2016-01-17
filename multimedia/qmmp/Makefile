@@ -161,6 +161,12 @@ WILDMIDI_QMAKE_CONFIG=	WILDMIDI_PLUGIN
 .include <bsd.port.options.mk>
 .include "options.qmake.mk"
 
+.if ${PORT_OPTIONS:MMPLAYER1} || ${PORT_OPTIONS:MMPLAYER2}
+PLIST_SUB+=	MPLAYER=""
+.else
+PLIST_SUB+=	MPLAYER="@comment "
+.endif
+
 PLIST_SUB+=	SHLIB_VER=${PORTVERSION:C/-.*//}
 
 PORTDOCS=	README README.RUS AUTHORS
