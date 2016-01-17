@@ -16,7 +16,7 @@ CONFLICTS=	${PORTNAME}-qt5-1.*
 LIB_DEPENDS=	libqmmpui.so:${PORTSDIR}/multimedia/qmmp
 BUILD_DEPENDS=	qmmp>=0.10.0:${PORTSDIR}/multimedia/qmmp
 
-USES=		desktop-file-utils gmake pkgconfig qmake tar:bzip2
+USES=		gmake pkgconfig qmake tar:bzip2
 USE_QT4=	corelib gui linguisttools_build moc_build qmake_build rcc_build
 USE_LDCONFIG=	yes
 
