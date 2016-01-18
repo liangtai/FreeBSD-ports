@@ -9,7 +9,7 @@ DISTINFO_FILE=	${.CURDIR}/../../multimedia/qmmp/distinfo
 MAINTAINER?=	liangtai.s16@gmail.com
 LICENSE?=	GPLv2
 
-CONFLICTS=	${PORTNAME}-qt5-1.*
+CONFLICTS=	${PORTNAME:C/qmmp-/qmmp-qt5-/}-1.*
 
 USES+=		cmake:outsource pkgconfig tar:bzip2
 USE_QT4+=	corelib gui linguisttools_build moc_build qmake_build rcc_build
