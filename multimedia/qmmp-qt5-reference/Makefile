@@ -12,6 +12,8 @@ COMMENT=	API document of QMMP (Qt5) libraries
 
 LICENSE=	GPLv2
 
+CONFLICTS=	qmmp-reference-0.*
+
 BUILD_DEPENDS=	doxygen:${PORTSDIR}/devel/doxygen
 
 USES=		tar:bzip2
@@ -19,8 +21,6 @@ USES=		tar:bzip2
 DISTINFO_FILE=	${.CURDIR}/../qmmp-qt5/distinfo
 
 DOCSDIR=	${LOCALBASE}/share/doc/${PORTNAME:C/-qt5-reference//}
-
-CONFLICTS=	${PORTNAME:C/-qt5//}-0.*
 
 do-build:
 	cd ${WRKSRC}/doc && doxygen Doxyfile

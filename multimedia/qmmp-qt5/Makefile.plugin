@@ -9,6 +9,8 @@ DISTINFO_FILE=	${.CURDIR}/../../multimedia/qmmp-qt5/distinfo
 MAINTAINER?=	liangtai.s16@gmail.com
 LICENSE?=	GPLv2
 
+CONFLICTS=	${PORTNAME:C/-qt5//}-0.*
+
 LIB_DEPENDS+=	libqmmp.so:${PORTSDIR}/multimedia/qmmp-qt5-lib
 BUILD_DEPENDS+=	qmmp-qt5-lib>=1.0.0:${PORTSDIR}/multimedia/qmmp-qt5-lib
 
@@ -46,8 +48,6 @@ EXTRACT_AFTER_ARGS+=	--exclude '${DISTNAME}/src/plugins/${pidir}'
 .endfor
 EXTRACT_AFTER_ARGS+=	--exclude '${DISTNAME}/src/qmmpui' \
 	--exclude '${DISTNAME}/src/qmmp' --exclude '${DISTNAME}/src/app'
-
-CONFLICTS=	${PORTNAME:C/-qt5//}-0.*
 
 _DESTDIR_VIA_ENV=	no
 MAKE_ARGS+=	INSTALL_ROOT=${STAGEDIR}${PREFIX}
