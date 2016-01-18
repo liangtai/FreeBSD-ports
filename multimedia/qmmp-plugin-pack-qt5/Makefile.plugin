@@ -18,7 +18,7 @@ USES+=		gmake pkgconfig qmake tar:bzip2
 USE_QT5+=	core gui buildtools_build linguisttools_build qmake_build
 USE_LDCONFIG=	yes
 
-PLUGIN_TARGETS=	Input/ffap Input/mpg123 Input/xmp
+PLUGIN_TARGETS=	Effect/srconverter Input/ffap Input/mpg123 Input/xmp
 
 .for pidir in ${PLUGIN_TARGETS}
 . if ${QMMPPLUGIN_TARGET} != ${pidir}

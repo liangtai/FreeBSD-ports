@@ -20,7 +20,7 @@ USE_LDCONFIG=	yes
 
 PLUGIN_TARGETS=	CommandLineOptions PlayListFormats \
 	\
-	Effect/bs2b Effect/crossfade Effect/ladspa Effect/srconverter \
+	Effect/bs2b Effect/crossfade Effect/ladspa Effect/soxr \
 	Effect/stereo \
 	Engines/mplayer \
 	FileDialogs/QmmpFileDialog \
