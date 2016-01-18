@@ -15,14 +15,16 @@ USES=		metaport
 
 OPTIONS_SUB=	yes
 OPTIONS_MULTI=	PLUGINS
-OPTIONS_MULTI_PLUGINS=	FFAP MPG123 XMP
-OPTIONS_DEFAULT=	FFAP MPG123 XMP
+OPTIONS_MULTI_PLUGINS=	FFAP MPG123 SRCONV XMP
+OPTIONS_DEFAULT=	FFAP MPG123 SRCONV XMP
 
 QMMPLIBDIR=	${LOCALBASE}/lib/qmmp
 
 FFAP_DESC=		Support APE sound file
 FFAP_RUN_DEPENDS=	${QMMPLIBDIR}/Input/libffap.so:${PORTSDIR}/audio/qmmp-plugin-ffap
 MPG123_RUN_DEPENDS=	${QMMPLIBDIR}/Input/libmpg123.so:${PORTSDIR}/audio/qmmp-plugin-mpg123
+SRCONV_DESC=	Support the sample rate converter
+SRCONV_RUN_DEPENDS=	${QMMPLIBDIR}/Effect/libsrconverter.so:${PORTSDIR}/audio/qmmp-plugin-srconv
 XMP_DESC=	Support various module formats with libxmp
 XMP_RUN_DEPENDS=	${QMMPLIBDIR}/Input/libxmp.so:${PORTSDIR}/audio/qmmp-plugin-xmp
 

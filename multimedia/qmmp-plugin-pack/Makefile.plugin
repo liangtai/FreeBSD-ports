@@ -22,8 +22,8 @@ CMAKE_ARGS+=	-DCMAKE_REQUIRED_INCLUDES:PATH=${LOCALBASE}/include
 CFLAGS+=	-I${LOCALBASE}/include
 LDFLAGS+=	-L${LOCALBASE}/lib
 
-PLUGIN_TARGETS=	Input/ffap Input/mpg123 Input/xmp
-PLUGIN_TAGS=	FFAP MPG123 XMP
+PLUGIN_TARGETS=	Effect/srconverter Input/ffap Input/mpg123 Input/xmp
+PLUGIN_TAGS=	FFAP MPG123 SRC XMP
 
 .for pidir in ${PLUGIN_TARGETS}
 . if ${QMMPPLUGIN_TARGET} != ${pidir}
