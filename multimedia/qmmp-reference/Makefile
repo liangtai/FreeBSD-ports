@@ -12,6 +12,8 @@ COMMENT=	API document of QMMP (Qt4) libraries
 
 LICENSE=	GPLv2
 
+CONFLICTS=	qmmp-qt5-reference-1.*
+
 BUILD_DEPENDS=	doxygen:${PORTSDIR}/devel/doxygen
 
 USES=		tar:bzip2
