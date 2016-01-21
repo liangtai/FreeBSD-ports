@@ -20,6 +20,8 @@ LIB_DEPENDS+=	libqmmp.so:${PORTSDIR}/multimedia/qmmp-qt5-lib \
 	libqmmpui.so:${PORTSDIR}/multimedia/qmmp-qt5-uilib
 BUILD_DEPENDS+=	qmmp-qt5-lib>=1.1.0:${PORTSDIR}/multimedia/qmmp-qt5-lib
 
+USE_QT5+=	linguisttools_build
+
 .for p in Effect Engines FileDialogs General Input Output Transports Ui Visual
 EXTRACT_AFTER_ARGS+=	--exclude '${DISTNAME}/src/plugins/${p}'
 .endfor
