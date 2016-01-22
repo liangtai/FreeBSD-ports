@@ -31,14 +31,19 @@ INSTALLS_ICONS=	yes
 post-patch:
 	@${GREP} -El 'add_subdirectory.*src/qmmp' \
 		${WRKSRC}/CMakeLists.txt | ${XARGS} ${REINPLACE_CMD} \
-		-Ee '/add_subdirectory[(]src\/(qmmp|qmmpui)[)]/d'
+		-Ee '/^add_subdirectory[(]src\/(qmmp|qmmpui)[)]/d' \
+		-e '/pkg_search_module/{; h; s/X11 x11/QMMP qmmp>=0.9/; G;}'
 	@${GREP} -El 'target_link_libraries.*libqmmp|add_dependencies' \
 		${WRKSRC}/src/app/CMakeLists.txt | ${XARGS} \
 		${REINPLACE_CMD} -e '/^add_dependencies/d' \
 		-e '/^target_link_libraries/s/libqmmp/-lqmmp/'
 	@${GREP} -El 'Effect|Engines|FileDialogs|General|Input|Output|Transports|Ui|Visual' \
-		${WRKSRC}/src/plugins/CMakeLists.txt | ${XARGS} \
-		${REINPLACE_CMD} -ne '/PlayListFormats/,/CommandLineOptions/p'
+		${WRKSRC}/src/plugins/CMakeLists.txt | ${XARGS} ${REINPLACE_CMD} \
+		-nEe '/SET|include|PlayListFormats|CommandLineOptions/p'
+	@${FIND} ${WRKSRC}/src/plugins/ -type f -name CMakeLists.txt | ${XARGS} \
+		${GREP} -El '/\.\./\.\./\.\./.*[)]$$' | ${XARGS} ${REINPLACE_CMD} \
+		-e '/CMAKE_CURRENT_.*\/\.\.\/\.\.\/\.\.\//{;/include_dir/d; \
+			s/\(link_dir.*\)[(].*$$/\1($${QMMP_LIBRARY_DIRS})/; }'
 
 .include "${.CURDIR}/../../multimedia/qmmp/Makefile.coresys"
 .include <bsd.port.mk>
