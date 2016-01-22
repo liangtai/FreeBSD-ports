@@ -27,6 +27,10 @@ pre-configure:
 		| ${XARGS} ${REINPLACE_CMD} -e '/SUBDIRS/,/^$$/{' \
 		-e 's/=.*$$/= CommandLineOptions PlayListFormats/; /^[^=]*$$/d;}' \
 		-e '/unix:/d'
+	@${GREP} -L 'CONFIG' ${WRKSRC}/src/plugins/plugins.pri \
+		| ${XARGS} ${REINPLACE_CMD} -e '/^INCLUDEPATH/{; \
+			s/^.*$$/PKGCONFIG += qmmp/; h; \
+			s/PKG//; s/qmmp/link_pkgconfig/; G;}'
 	@${GREP} -l '^SUBDIRS = src/qmmp' ${WRKSRC}/qmmp.pro | ${XARGS} \
 		${REINPLACE_CMD} -e '/^SUBDIRS/s|=.*$$|=	src/plugins src/app|'
 	@${GREP} -L 'PKGCONFIG' ${WRKSRC}/src/app/app.pro | ${XARGS} \
