@@ -20,6 +20,9 @@ USE_LDCONFIG=	yes
 
 PLUGIN_TARGETS=	Effect/srconverter Input/ffap Input/mpg123 Input/xmp
 
+PLUGINGROUPDIR=	${QMMPPLUGIN_TARGET:C|/.*$||}
+PLUGINSUBTARGETDIR=	${QMMPPLUGIN_TARGET:C|^.*/||}
+
 .for pidir in ${PLUGIN_TARGETS}
 . if ${QMMPPLUGIN_TARGET} != ${pidir}
 EXTRACT_AFTER_ARGS+=	--exclude '${DISTNAME}/src/${pidir}'
@@ -31,6 +34,14 @@ MAKE_ARGS+=	INSTALL_ROOT=${STAGEDIR}${PREFIX}
 QMAKE_ARGS+=	CONFIG+="${QMMPPLUGIN_OPTIONS}"
 
 post-patch:
+	@${GREP} -l 'SUBDIRS.*\\$$' ${WRKSRC}/qmmp-plugin-pack.pro \
+		| ${XARGS} ${REINPLACE_CMD} \
+		-e '/SUBDIRS/,/^$$/{; s|=.*$$|= src/${PLUGINGROUPDIR}|' \
+		-e '/^[^=]*$$/d;}'
+	@${GREP} -l 'SUBDIRS ' \
+		${WRKSRC}/src/${PLUGINGROUPDIR}/${PLUGINGROUPDIR}.pro \
+		| ${XARGS} ${REINPLACE_CMD} -Ee '/(TEMPLATE|include)/!d' \
+		-e '1{; h; s/^.*$$/SUBDIRS= ${PLUGINSUBTARGETDIR}/; G;}'
 	@${REINPLACE_CMD} -e 's|^CONFIG += |#CONFIG += |' \
 		${WRKSRC}/qmmp-plugin-pack.pri
 

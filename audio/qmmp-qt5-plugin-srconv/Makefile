@@ -12,7 +12,7 @@ LICENSE=	GPLv2
 LIB_DEPENDS+=	libsamplerate.so:${PORTSDIR}/audio/libsamplerate
 
 QMMPPLUGIN_TARGET=	Effect/srconverter
-QMMPPLUGIN_OPTIONS= SRC
+QMMPPLUGIN_OPTIONS=	SRC_PLUGIN
 
 .include "${.CURDIR}/../../multimedia/qmmp-plugin-pack-qt5/Makefile.plugin"
 .include <bsd.port.mk>
