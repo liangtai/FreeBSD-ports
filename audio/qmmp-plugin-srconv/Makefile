@@ -14,7 +14,7 @@ LIB_DEPENDS+=	libsamplerate.so:${PORTSDIR}/audio/libsamplerate
 USE_QT4+=	uic_build
 
 QMMPPLUGIN_TARGET=	Effect/srconverter
-QMMPPLUGIN_OPTIONS=	SRC
+QMMPPLUGIN_OPTIONS=	SRC_PLUGIN
 
 .include "${.CURDIR}/../../multimedia/qmmp-plugin-pack/Makefile.plugin"
 .include <bsd.port.mk>
