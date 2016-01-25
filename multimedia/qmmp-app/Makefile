@@ -39,7 +39,7 @@ post-patch:
 		-e '/^target_link_libraries/s/libqmmp/-lqmmp/'
 	@${GREP} -El 'Effect|Engines|FileDialogs|General|Input|Output|Transports|Ui|Visual' \
 		${WRKSRC}/src/plugins/CMakeLists.txt | ${XARGS} ${REINPLACE_CMD} \
-		-nEe '/SET|include|PlayListFormats|CommandLineOptions/p'
+		-Ee '/add_subd/{/(PlayListFormats|CommandLineOptions)/!d;}'
 	@${FIND} ${WRKSRC}/src/plugins/ -type f -name CMakeLists.txt | ${XARGS} \
 		${GREP} -El '/\.\./\.\./\.\./.*[)]$$' | ${XARGS} ${REINPLACE_CMD} \
 		-e '/CMAKE_CURRENT_.*\/\.\.\/\.\.\/\.\.\//{;/include_dir/d; \
