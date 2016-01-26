@@ -18,10 +18,11 @@ EXTRACT_AFTER_ARGS+=	--exclude '${DISTNAME}/src/plugins' \
 	--exclude '${DISTNAME}/src/app'
 
 post-patch:
-	@${GREP} -L 'libdata/pkgconfig' \
+	@${GREP} -El 'LIB_DIR}/pkgconfig|add_dep|target_link_.*libqmmp' \
 		${WRKSRC}/src/qmmpui/CMakeLists.txt | ${XARGS} \
 		${REINPLACE_CMD} -e '/pkgconfig/s|\$${LIB_DIR}|libdata|' \
-		-e '/^add_dependencies/d'
+		-e '/^add_dependencies/d' \
+		-e '/target_link_libraries/s/libqmmp/-lqmmp/'
 	@${GREP} -El 'add_subd.*src/(app|qmmp|plugins)[)]' \
 		${WRKSRC}/CMakeLists.txt | ${XARGS} ${REINPLACE_CMD} \
 		-Ee '/add_subdirectory[(]src\/(app|qmmp|plugins)[)]/d'

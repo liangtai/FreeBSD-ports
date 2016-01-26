@@ -41,9 +41,11 @@ post-patch:
 		${WRKSRC}/src/plugins/CMakeLists.txt | ${XARGS} ${REINPLACE_CMD} \
 		-Ee '/add_subd/{/(PlayListFormats|CommandLineOptions)/!d;}'
 	@${FIND} ${WRKSRC}/src/plugins/ -type f -name CMakeLists.txt | ${XARGS} \
-		${GREP} -El '/\.\./\.\./\.\./.*[)]$$' | ${XARGS} ${REINPLACE_CMD} \
+		${GREP} -El '/\.\./\.\./\.\./.*[)]$$|target_link_l.*libqmmp' | \
+		${XARGS} ${REINPLACE_CMD} \
 		-e '/CMAKE_CURRENT_.*\/\.\.\/\.\.\/\.\.\//{;/include_dir/d; \
-			s/\(link_dir.*\)[(].*$$/\1($${QMMP_LIBRARY_DIRS})/; }'
+			s/\(link_dir.*\)[(].*$$/\1($${QMMP_LIBRARY_DIRS})/; }' \
+		-e '/^target_link_libraries/s/libqmmp/-lqmmp/'
 
 .include "${.CURDIR}/../../multimedia/qmmp/Makefile.coresys"
 .include <bsd.port.mk>
