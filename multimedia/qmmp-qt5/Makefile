@@ -14,7 +14,7 @@ LICENSE=	GPLv2
 
 CONFLICTS=	${PORTNAME}-0.*
 
-USES=		cmake:outsource desktop-file-utils pkgconfig tar:bzip2
+USES=		cmake:outsource desktop-file-utils pathfix pkgconfig tar:bzip2
 USE_QT5=	core gui network widgets xml \
 		buildtools_build linguisttools_build qmake_build
 USE_LDCONFIG=	yes
@@ -320,6 +320,7 @@ PLIST_SUB+=	MPLAYER="@comment "
 
 PLIST_SUB+=	SHLIB_VER=${PORTVERSION:C/-.*//}
 
+PATHFIX_CMAKELISTSTXT=	\\"CMakeLists.txt -exec grep -l /pkgconfig {} +\\"
 PORTDOCS=	README README.RUS AUTHORS
 INSTALLS_ICONS=	yes
 
@@ -327,10 +328,6 @@ post-patch:
 	@${GREP} -L '${LOCALBASE}/lib/oss' \
 		${WRKSRC}/src/plugins/Output/oss4/CMakeLists.txt | ${XARGS} \
 		${REINPLACE_CMD} -e 's|/usr/local/|${LOCALBASE}/|'
-	@${GREP} -L 'libdata/pkgconfig' \
-		${WRKSRC}/src/qmmp/CMakeLists.txt \
-		${WRKSRC}/src/qmmpui/CMakeLists.txt | ${XARGS} \
-		${REINPLACE_CMD} -e '/pkgconfig/s|\$${LIB_DIR}|libdata|'
 
 pre-configure:
 	@${RM} -f ${BUILD_WRKSRC}/CMakeCache.txt
