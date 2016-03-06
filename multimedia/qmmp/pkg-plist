@@ -65,6 +65,7 @@ lib/qmmp/CommandLineOptions/libstatusoption.so
 %%CROSSFADE%%lib/qmmp/Effect/libcrossfade.so
 %%MPLAYER%%lib/qmmp/Engines/libmplayer.so
 %%QMMP_DIALOG%%lib/qmmp/FileDialogs/libqmmpfiledialog.so
+%%TWOPANELDIALOG%%lib/qmmp/FileDialogs/libtwopanelfiledialog.so
 %%CONVERTER%%lib/qmmp/General/libconverter.so
 %%COPYPASTE%%lib/qmmp/General/libcopypaste.so
 %%COVER%%lib/qmmp/General/libcovermanager.so
