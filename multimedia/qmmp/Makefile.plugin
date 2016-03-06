@@ -23,7 +23,7 @@ PLUGIN_TARGETS=	CommandLineOptions PlayListFormats \
 	Effect/bs2b Effect/crossfade Effect/ladspa Effect/soxr \
 	Effect/stereo \
 	Engines/mplayer \
-	FileDialogs/QmmpFileDialog \
+	FileDialogs/QmmpFileDialog FileDialogs/TwoPanelFileDialog \
 	General/converter General/copypaste General/covermanager \
 	General/fileops General/gnomehotkey General/hal General/hotkey \
 	General/kdenotify General/lyrics General/mpris General/notifier \
