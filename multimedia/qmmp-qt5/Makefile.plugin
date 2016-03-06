@@ -23,7 +23,7 @@ PLUGIN_TARGETS=	CommandLineOptions PlayListFormats \
 	Effect/bs2b Effect/crossfade Effect/ladspa Effect/soxr \
 	Effect/stereo \
 	Engines/mplayer \
-	FileDialogs/QmmpFileDialog \
+	FileDialogs/QmmpFileDialog FileDialogs/TwoPanelFileDialog \
 	General/converter General/copypaste General/covermanager \
 	General/fileops General/gnomehotkey General/hal General/hotkey \
 	General/kdenotify General/lyrics General/mpris General/notifier \
@@ -45,7 +45,7 @@ PLUGIN_TAGS=	AAC ALSA ANALYZER BS2B CDA CONVERTER COPYPASTE COVER \
 	LYRICS MAD MIDI MMS MODPLUG MPC MPLAYER MPRIS NOTIFIER NULL OPUS \
 	OSS OSS4 PROJECTM PULSE QMMP_DIALOG QSUI QTMULTIMEDIA RGSCAN \
 	SB SCROBBLER SID SKINNED SNDFILE SOXR STATICON STEREO TRACKCHANGE \
-	UDISKS2 VORBIS WAVEOUT WAVPACK
+	TWO_PANEL_DIALOG UDISKS2 VORBIS WAVEOUT WAVPACK
 
 .for pidir in ${PLUGIN_TARGETS}
 . if ${QMMPPLUGIN_TARGET} != ${pidir}

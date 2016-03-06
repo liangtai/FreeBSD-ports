@@ -1,0 +1,10 @@
+filedialog in two panels plug-in of QMMP
+
+- Two panel file dialog:    This is a file selector consists with an upside-
+                            down tree shaped directory browser at the left
+                            panel, and file chooser from the list of files
+                            in the selected directory at the right panel.
+                            It can be used when you activate it at the
+                            settings dialog.
+
+WWW: http://qmmp.ylsoftware.com/
