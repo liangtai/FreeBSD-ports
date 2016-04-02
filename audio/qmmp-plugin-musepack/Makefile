@@ -9,8 +9,8 @@ COMMENT=	Musepack file format plug-in of QMMP (Qt4)
 
 LICENSE=	GPLv2
 
-LIB_DEPENDS+=	libmpcdec.so:${PORTSDIR}/audio/musepack \
-	libtag.so:${PORTSDIR}/audio/taglib
+LIB_DEPENDS+=	libmpcdec.so:audio/musepack \
+	libtag.so:audio/taglib
 
 QMMPPLUGIN_TARGET=	Input/mpc
 QMMPPLUGIN_TAG=	MPC

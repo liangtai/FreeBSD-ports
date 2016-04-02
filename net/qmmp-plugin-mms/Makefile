@@ -9,7 +9,7 @@ COMMENT=	MMS streaming plug-in of QMMP (Qt4)
 
 LICENSE=	GPLv2
 
-LIB_DEPENDS+=	libmms.so:${PORTSDIR}/net/libmms
+LIB_DEPENDS+=	libmms.so:net/libmms
 
 USE_QT4+=	uic_build
 

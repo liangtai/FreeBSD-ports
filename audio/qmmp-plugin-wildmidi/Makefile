@@ -9,7 +9,7 @@ COMMENT=	MIDI file format plug-in of QMMP (Qt4)
 
 LICENSE=	GPLv2
 
-LIB_DEPENDS+=	libWildMidi.so:${PORTSDIR}/audio/wildmidi
+LIB_DEPENDS+=	libWildMidi.so:audio/wildmidi
 
 USE_QT4+=	uic_build
 

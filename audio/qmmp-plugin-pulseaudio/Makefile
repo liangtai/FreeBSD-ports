@@ -9,7 +9,7 @@ COMMENT=	Pulseaudio output plug-in of QMMP (Qt4)
 
 LICENSE=	GPLv2
 
-LIB_DEPENDS+=	libpulse.so:${PORTSDIR}/audio/pulseaudio
+LIB_DEPENDS+=	libpulse.so:audio/pulseaudio
 
 QMMPPLUGIN_TARGET=	Output/pulseaudio
 QMMPPLUGIN_TAG=	PULSE
