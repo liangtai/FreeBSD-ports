@@ -13,8 +13,8 @@ LICENSE=	GPLv2
 
 CONFLICTS=	${PORTNAME}-qt5-1.*
 
-LIB_DEPENDS=	libqmmpui.so:${PORTSDIR}/multimedia/qmmp
-BUILD_DEPENDS=	qmmp>=0.10.0:${PORTSDIR}/multimedia/qmmp
+LIB_DEPENDS=	libqmmpui.so:multimedia/qmmp
+BUILD_DEPENDS=	qmmp>=0.10.0:multimedia/qmmp
 
 USES=		gmake pkgconfig qmake tar:bzip2
 USE_QT4=	corelib gui linguisttools_build moc_build qmake_build rcc_build
@@ -27,26 +27,26 @@ OPTIONS_MULTI_PLUGINS=	FFAP MPG123 SRCONV XMP
 OPTIONS_DEFAULT=	FFAP MPG123 SRCONV XMP
 
 FFAP_DESC=		Support APE sound file
-FFAP_LIB_DEPENDS=	libtag.so:${PORTSDIR}/audio/taglib
+FFAP_LIB_DEPENDS=	libtag.so:audio/taglib
 FFAP_QMAKE_CONFIG=	FFAP_PLUGIN
 OPTIONS_DEFINE_i386=	FFAPASM
 OPTIONS_DEFAULT_i386=	FFAPASM
 OPTIONS_DEFINE_amd64=	FFAPASM
 OPTIONS_DEFAULT_amd64=	FFAPASM
 FFAPASM_DESC=	Optimize FFap decoder using devel/yasm
-FFAPASM_BUILD_DEPENDS=	yasm:${PORTSDIR}/devel/yasm
+FFAPASM_BUILD_DEPENDS=	yasm:devel/yasm
 FFAPASM_QMAKE_CONFIG=	FFAP_YASM
 
-MPG123_LIB_DEPENDS=	libmpg123.so:${PORTSDIR}/audio/mpg123
+MPG123_LIB_DEPENDS=	libmpg123.so:audio/mpg123
 MPG123_USE=	QT4=uic_build
 MPG123_QMAKE_CONFIG=	MPG123_PLUGIN
 
 SRCONV_DESC=	Support the sample rate converter
-SRCONV_LIB_DEPENDS=	libsamplerate.so:${PORTSDIR}/audio/libsamplerate
+SRCONV_LIB_DEPENDS=	libsamplerate.so:audio/libsamplerate
 SRCONV_QMAKE_CONFIG=	SRC_PLUGIN
 
 XMP_DESC=	Support various module formats using libxmp
-XMP_LIB_DEPENDS=	libxmp.so:${PORTSDIR}/audio/libxmp
+XMP_LIB_DEPENDS=	libxmp.so:audio/libxmp
 XMP_QMAKE_CONFIG=	XMP_PLUGIN
 
 .include "${.CURDIR}/../qmmp/options.qmake.mk"
