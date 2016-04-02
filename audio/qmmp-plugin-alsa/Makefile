@@ -9,7 +9,7 @@ COMMENT=	ALSA output plug-in of QMMP (Qt4)
 
 LICENSE=	GPLv2
 
-LIB_DEPENDS+=	libasound.so:${PORTSDIR}/audio/alsa-lib
+LIB_DEPENDS+=	libasound.so:audio/alsa-lib
 
 USE_QT4+=	uic_build
 
