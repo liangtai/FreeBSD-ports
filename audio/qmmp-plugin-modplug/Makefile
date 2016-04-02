@@ -9,7 +9,7 @@ COMMENT=	Modplug file format plug-in of QMMP (Qt4)
 
 LICENSE=	GPLv2
 
-LIB_DEPENDS+=	libmodplug.so:${PORTSDIR}/audio/libmodplug
+LIB_DEPENDS+=	libmodplug.so:audio/libmodplug
 
 USE_QT4+=	uic_build
 

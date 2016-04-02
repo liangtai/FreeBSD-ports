@@ -9,7 +9,7 @@ COMMENT=	Sndfile media format plug-in of QMMP (Qt4)
 
 LICENSE=	GPLv2
 
-LIB_DEPENDS+=	libsndfile.so:${PORTSDIR}/audio/libsndfile
+LIB_DEPENDS+=	libsndfile.so:audio/libsndfile
 
 QMMPPLUGIN_TARGET=	Input/sndfile
 QMMPPLUGIN_OPTIONS=
