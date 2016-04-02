@@ -9,7 +9,7 @@ COMMENT=	Special made filedialog plug-in of QMMP (Qt5)
 
 LICENSE=	GPLv2
 
-LIB_DEPENDS+=	libqmmpui.so:${PORTSDIR}/multimedia/qmmp-qt5-uilib
+LIB_DEPENDS+=	libqmmpui.so:multimedia/qmmp-qt5-uilib
 
 QMMPPLUGIN_TARGET=	FileDialogs/QmmpFileDialog
 QMMPPLUGIN_TAG=	QMMP_DIALOG

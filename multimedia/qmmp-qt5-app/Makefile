@@ -17,9 +17,9 @@ DIR_ASSOC_CMAKE_ON=	-DUSE_DIR_ASSOC:BOOL=TRUE
 DIR_ASSOC_CMAKE_OFF=	-DUSE_DIR_ASSOC:BOOL=FALSE
 DIR_ASSOC_USES=	desktop-file-utils
 
-LIB_DEPENDS+=	libqmmp.so:${PORTSDIR}/multimedia/qmmp-qt5-lib \
-	libqmmpui.so:${PORTSDIR}/multimedia/qmmp-qt5-uilib
-BUILD_DEPENDS+=	qmmp-qt5-lib>=1.1.0:${PORTSDIR}/multimedia/qmmp-qt5-lib
+LIB_DEPENDS+=	libqmmp.so:multimedia/qmmp-qt5-lib \
+	libqmmpui.so:multimedia/qmmp-qt5-uilib
+BUILD_DEPENDS+=	qmmp-qt5-lib>=1.1.0:multimedia/qmmp-qt5-lib
 
 USE_QT5+=	linguisttools_build
 

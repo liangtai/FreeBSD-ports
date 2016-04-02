@@ -9,7 +9,7 @@ COMMENT=	XMP plug-in of QMMP (Qt5)
 
 LICENSE=	GPLv2
 
-LIB_DEPENDS+=	libxmp.so:${PORTSDIR}/audio/libxmp
+LIB_DEPENDS+=	libxmp.so:audio/libxmp
 
 QMMPPLUGIN_TARGET=	Input/xmp
 QMMPPLUGIN_TAG=	XMP

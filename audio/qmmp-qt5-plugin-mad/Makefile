@@ -9,8 +9,8 @@ COMMENT=	Mad file format plug-in of QMMP (Qt5)
 
 LICENSE=	GPLv2
 
-LIB_DEPENDS+=	libmad.so:${PORTSDIR}/audio/libmad \
-	libtag.so:${PORTSDIR}/audio/taglib
+LIB_DEPENDS+=	libmad.so:audio/libmad \
+	libtag.so:audio/taglib
 
 QMMPPLUGIN_TARGET=	Input/mad
 QMMPPLUGIN_TAG=	MAD

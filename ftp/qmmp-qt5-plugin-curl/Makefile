@@ -14,11 +14,11 @@ OPTIONS_DEFINE=	ENCA
 OPTIONS_DEFAULT=	ENCA
 
 ENCA_DESC=		Support automatic character set detection
-ENCA_LIB_DEPENDS=	libenca.so:${PORTSDIR}/converters/enca
+ENCA_LIB_DEPENDS=	libenca.so:converters/enca
 ENCA_CMAKE_ON=	-DUSE_ENCA:BOOL=TRUE
 ENCA_CMAKE_OFF=	-DUSE_ENCA:BOOL=FALSE
 
-LIB_DEPENDS+=	libcurl.so:${PORTSDIR}/ftp/curl
+LIB_DEPENDS+=	libcurl.so:ftp/curl
 
 QMMPPLUGIN_TARGET=	Transports/http
 QMMPPLUGIN_TAG=	CURL
