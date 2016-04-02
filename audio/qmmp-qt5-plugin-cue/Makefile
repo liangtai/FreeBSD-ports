@@ -13,7 +13,7 @@ OPTIONS_SUB=	yes
 OPTIONS_DEFINE=	ENCA
 OPTIONS_DEFAULT=	ENCA
 ENCA_DESC=		Support automatic character set detection
-ENCA_LIB_DEPENDS=	libenca.so:${PORTSDIR}/converters/enca
+ENCA_LIB_DEPENDS=	libenca.so:converters/enca
 ENCA_QMAKE_CONFIG=	WITH_ENCA
 
 QMMPPLUGIN_TARGET=	Input/cue

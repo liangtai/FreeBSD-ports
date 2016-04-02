@@ -9,7 +9,7 @@ COMMENT=	Bauer stereophonic-to-binaural dsp-effect plug-in of QMMP (Qt5)
 
 LICENSE=	GPLv2
 
-LIB_DEPENDS+=	libbs2b.so:${PORTSDIR}/audio/libbs2b
+LIB_DEPENDS+=	libbs2b.so:audio/libbs2b
 
 QMMPPLUGIN_TARGET=	Effect/bs2b
 QMMPPLUGIN_OPTIONS=	BS2B_PLUGIN

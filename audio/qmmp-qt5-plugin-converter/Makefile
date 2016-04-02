@@ -9,8 +9,8 @@ COMMENT=	File type converter plug-in of QMMP (Qt5)
 
 LICENSE=	GPLv2
 
-LIB_DEPENDS+=	libqmmpui.so:${PORTSDIR}/multimedia/qmmp-qt5-uilib \
-	libtag.so:${PORTSDIR}/audio/taglib
+LIB_DEPENDS+=	libqmmpui.so:multimedia/qmmp-qt5-uilib \
+	libtag.so:audio/taglib
 
 QMMPPLUGIN_TARGET=	General/converter
 QMMPPLUGIN_OPTIONS=

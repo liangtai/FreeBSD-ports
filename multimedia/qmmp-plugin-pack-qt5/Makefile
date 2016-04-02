@@ -22,11 +22,11 @@ OPTIONS_DEFAULT=	FFAP MPG123 SRCONV XMP
 QMMPLIBDIR=	${LOCALBASE}/lib/qmmp
 
 FFAP_DESC=		Support APE sound file
-FFAP_RUN_DEPENDS=	${QMMPLIBDIR}/Input/libffap.so:${PORTSDIR}/audio/qmmp-qt5-plugin-ffap
-MPG123_RUN_DEPENDS=	${QMMPLIBDIR}/Input/libmpg123.so:${PORTSDIR}/audio/qmmp-qt5-plugin-mpg123
+FFAP_RUN_DEPENDS=	${QMMPLIBDIR}/Input/libffap.so:audio/qmmp-qt5-plugin-ffap
+MPG123_RUN_DEPENDS=	${QMMPLIBDIR}/Input/libmpg123.so:audio/qmmp-qt5-plugin-mpg123
 SRCONV_DESC=	Support the sample rate converter
-SRCONV_RUN_DEPENDS=	${QMMPLIBDIR}/Effect/libsrconverter.so:${PORTSDIR}/audio/qmmp-qt5-plugin-srconv
+SRCONV_RUN_DEPENDS=	${QMMPLIBDIR}/Effect/libsrconverter.so:audio/qmmp-qt5-plugin-srconv
 XMP_DESC=	Support various module formats using libxmp
-XMP_RUN_DEPENDS=	${QMMPLIBDIR}/Input/libxmp.so:${PORTSDIR}/audio/qmmp-qt5-plugin-xmp
+XMP_RUN_DEPENDS=	${QMMPLIBDIR}/Input/libxmp.so:audio/qmmp-qt5-plugin-xmp
 
 .include <bsd.port.mk>

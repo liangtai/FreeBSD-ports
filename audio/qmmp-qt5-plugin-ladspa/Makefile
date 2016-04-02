@@ -9,7 +9,7 @@ COMMENT=	Ladspa dsp-effect plug-in of QMMP (Qt5)
 
 LICENSE=	GPLv2
 
-RUN_DEPENDS+=	analyseplugin:${PORTSDIR}/audio/ladspa
+RUN_DEPENDS+=	analyseplugin:audio/ladspa
 
 QMMPPLUGIN_TARGET=	Effect/ladspa
 QMMPPLUGIN_OPTIONS=	LADSPA_PLUGIN

@@ -9,7 +9,7 @@ COMMENT=	SID plug-in of QMMP (Qt5)
 
 LICENSE=	GPLv2
 
-LIB_DEPENDS+=	libsidplayfp.so:${PORTSDIR}/audio/libsidplayfp
+LIB_DEPENDS+=	libsidplayfp.so:audio/libsidplayfp
 
 QMMPPLUGIN_TARGET=	Input/sid
 QMMPPLUGIN_OPTIONS=	SID_PLUGIN
