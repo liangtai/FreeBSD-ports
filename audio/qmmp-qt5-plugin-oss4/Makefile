@@ -9,7 +9,7 @@ COMMENT=	OSS version 4 output plug-in of QMMP (Qt5)
 
 LICENSE=	GPLv2
 
-BUILD_DEPENDS+=	${LOCALBASE}/lib/oss/include/sys/soundcard.h:${PORTSDIR}/audio/oss
+BUILD_DEPENDS+=	${LOCALBASE}/lib/oss/include/sys/soundcard.h:audio/oss
 
 QMMPPLUGIN_TARGET=	Output/oss4
 QMMPPLUGIN_OPTIONS=	OSS4_PLUGIN

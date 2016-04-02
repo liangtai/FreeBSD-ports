@@ -9,7 +9,7 @@ COMMENT=	ProjectM music visualiser plug-in of QMMP (Qt5)
 
 LICENSE=	GPLv2
 
-LIB_DEPENDS+=	libprojectM.so:${PORTSDIR}/graphics/libprojectm
+LIB_DEPENDS+=	libprojectM.so:graphics/libprojectm
 
 USE_QT5+=	opengl
 

@@ -9,8 +9,8 @@ COMMENT=	MPG123 file format plug-in of QMMP (Qt5)
 
 LICENSE=	GPLv2
 
-LIB_DEPENDS+=	libmpg123.so:${PORTSDIR}/audio/mpg123 \
-	libtag.so:${PORTSDIR}/audio/taglib
+LIB_DEPENDS+=	libmpg123.so:audio/mpg123 \
+	libtag.so:audio/taglib
 
 QMMPPLUGIN_TARGET=	Input/mpg123
 QMMPPLUGIN_OPTIONS=	MPG123_PLUGIN

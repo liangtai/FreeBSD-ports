@@ -14,7 +14,7 @@ LICENSE=	GPLv2
 
 CONFLICTS=	qmmp-reference-0.*
 
-BUILD_DEPENDS=	doxygen:${PORTSDIR}/devel/doxygen
+BUILD_DEPENDS=	doxygen:devel/doxygen
 
 USES=		tar:bzip2
 

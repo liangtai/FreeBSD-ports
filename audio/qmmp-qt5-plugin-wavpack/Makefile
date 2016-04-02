@@ -9,7 +9,7 @@ COMMENT=	Wavpack file format plug-in of QMMP (Qt5)
 
 LICENSE=	GPLv2
 
-LIB_DEPENDS+=	libwavpack.so:${PORTSDIR}/audio/wavpack
+LIB_DEPENDS+=	libwavpack.so:audio/wavpack
 
 QMMPPLUGIN_TARGET=	Input/wavpack
 QMMPPLUGIN_OPTIONS=

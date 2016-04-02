@@ -9,7 +9,7 @@ COMMENT=	Removable disc detecting plug-in of QMMP (Qt5)
 
 LICENSE=	GPLv2
 
-LIB_DEPENDS+=	libqmmpui.so:${PORTSDIR}/multimedia/qmmp-qt5-uilib
+LIB_DEPENDS+=	libqmmpui.so:multimedia/qmmp-qt5-uilib
 
 USE_QT5+=	dbus
 

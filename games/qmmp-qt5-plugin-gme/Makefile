@@ -9,7 +9,7 @@ COMMENT=	Video game music file format plug-in of QMMP (Qt5)
 
 LICENSE=	GPLv2
 
-LIB_DEPENDS+=	libgme.so:${PORTSDIR}/audio/libgme
+LIB_DEPENDS+=	libgme.so:audio/libgme
 
 QMMPPLUGIN_TARGET=	Input/gme
 QMMPPLUGIN_OPTIONS=	GME_PLUGIN
