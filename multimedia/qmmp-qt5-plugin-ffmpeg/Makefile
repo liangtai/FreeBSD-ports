@@ -9,7 +9,7 @@ COMMENT=	FFmpeg plug-in of QMMP (Qt5)
 
 LICENSE=	GPLv2
 
-LIB_DEPENDS+=	libavcodec.so:${PORTSDIR}/multimedia/ffmpeg
+LIB_DEPENDS+=	libavcodec.so:multimedia/ffmpeg
 
 QMMPPLUGIN_TARGET=	Input/ffmpeg
 QMMPPLUGIN_TAG=	FFMPEG

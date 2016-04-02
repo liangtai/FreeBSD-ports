@@ -9,7 +9,7 @@ COMMENT=	IceCast stream directory browser plug-in of QMMP (Qt5)
 
 LICENSE=	GPLv2
 
-LIB_DEPENDS+=	libqmmpui.so:${PORTSDIR}/multimedia/qmmp-qt5-uilib
+LIB_DEPENDS+=	libqmmpui.so:multimedia/qmmp-qt5-uilib
 
 QMMPPLUGIN_TARGET=	General/streambrowser
 QMMPPLUGIN_TAG=	SB

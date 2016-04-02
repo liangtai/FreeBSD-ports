@@ -9,7 +9,7 @@ COMMENT=	MIDI file format plug-in of QMMP (Qt5)
 
 LICENSE=	GPLv2
 
-LIB_DEPENDS+=	libWildMidi.so:${PORTSDIR}/audio/wildmidi
+LIB_DEPENDS+=	libWildMidi.so:audio/wildmidi
 
 QMMPPLUGIN_TARGET=	Input/wildmidi
 QMMPPLUGIN_TAG=	MIDI

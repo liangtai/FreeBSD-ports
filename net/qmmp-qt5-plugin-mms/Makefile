@@ -9,7 +9,7 @@ COMMENT=	MMS streaming plug-in of QMMP (Qt5)
 
 LICENSE=	GPLv2
 
-LIB_DEPENDS+=	libmms.so:${PORTSDIR}/net/libmms
+LIB_DEPENDS+=	libmms.so:net/libmms
 
 QMMPPLUGIN_TARGET=	Transports/mms
 QMMPPLUGIN_TAG=	MMS

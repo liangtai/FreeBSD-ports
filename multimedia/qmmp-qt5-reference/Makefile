@@ -14,7 +14,7 @@ LICENSE=	GPLv2
 
 CONFLICTS=	${PORTNAME:C/-qt5//}-0.*
 
-BUILD_DEPENDS=	doxygen:${PORTSDIR}/devel/doxygen
+BUILD_DEPENDS=	doxygen:devel/doxygen
 
 USES=		tar:bzip2
 

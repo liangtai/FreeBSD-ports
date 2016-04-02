@@ -45,15 +45,15 @@ OPENALSOFT_DESC=	OpenAL support
 LICENSE+=	GPLv3
 LICENSE_COMB=	multi
 .  if ${PORT_OPTIONS:MOPENALSOFT}
-LIB_DEPENDS+=	libopenal.so:${PORTSDIR}/audio/openal-soft
+LIB_DEPENDS+=	libopenal.so:audio/openal-soft
 CMAKE_ARGS+=	-DWANT_OPENAL:BOOL=ON
 .  elif ${PORT_OPTIONS:MOPENAL}
-LIB_DEPENDS+=	libopenal.so:${PORTSDIR}/audio/openal
+LIB_DEPENDS+=	libopenal.so:audio/openal
 CMAKE_ARGS+=	-DWANT_OPENAL:BOOL=ON
 .  else
 CMAKE_ARGS+=	-DWANT_OPENAL:BOOL=OFF
 .    if ${PORT_OPTIONS:MALSA}
-LIB_DEPENDS+=	libasound.so:${PORTSDIR}/audio/alsa-lib
+LIB_DEPENDS+=	libasound.so:audio/alsa-lib
 .    endif
 .  endif
 .endif

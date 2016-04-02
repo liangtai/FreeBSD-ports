@@ -11,8 +11,8 @@ LICENSE?=	GPLv2
 
 CONFLICTS=	${PORTNAME:C/-qt5//}-0.*
 
-LIB_DEPENDS+=	libqmmp.so:${PORTSDIR}/multimedia/qmmp-qt5-lib
-BUILD_DEPENDS+=	qmmp-qt5-lib>=1.0.0:${PORTSDIR}/multimedia/qmmp-qt5-lib
+LIB_DEPENDS+=	libqmmp.so:multimedia/qmmp-qt5-lib
+BUILD_DEPENDS+=	qmmp-qt5-lib>=1.0.0:multimedia/qmmp-qt5-lib
 
 USES+=		cmake:outsource pkgconfig tar:bzip2
 USE_QT5+=	core gui buildtools_build linguisttools_build qmake_build
