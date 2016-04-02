@@ -13,15 +13,15 @@ LICENSE=	GPLv2
 
 CONFLICTS=	${PORTNAME}-qt5-1.*
 
-LIB_DEPENDS=	libmad.so:${PORTSDIR}/audio/libmad \
-		libsamplerate.so:${PORTSDIR}/audio/libsamplerate \
-		libsndfile.so:${PORTSDIR}/audio/libsndfile \
-		libogg.so:${PORTSDIR}/audio/libogg \
-		libvorbis.so:${PORTSDIR}/audio/libvorbis \
-		libwavpack.so:${PORTSDIR}/audio/wavpack \
-		libtag.so:${PORTSDIR}/audio/taglib \
-		libcurl.so:${PORTSDIR}/ftp/curl \
-		libmms.so:${PORTSDIR}/net/libmms
+LIB_DEPENDS=	libmad.so:audio/libmad \
+		libsamplerate.so:audio/libsamplerate \
+		libsndfile.so:audio/libsndfile \
+		libogg.so:audio/libogg \
+		libvorbis.so:audio/libvorbis \
+		libwavpack.so:audio/wavpack \
+		libtag.so:audio/taglib \
+		libcurl.so:ftp/curl \
+		libmms.so:net/libmms
 
 USES=		desktop-file-utils gmake pkgconfig qmake tar:bzip2
 USE_QT4=	corelib dbus gui network xml \
@@ -63,7 +63,7 @@ OPTIONS_DEFAULT=	ALSA BS2B CDDA ENCA FAAD FFMPEG \
 		MUSEPACK OPUS OSS4 PROJECTM PULSEAUDIO QSUI \
 		SID SKINNEDUI UDISKS2 WILDMIDI
 
-DOXYGEN_BUILD_DEPENDS=	doxygen:${PORTSDIR}/devel/doxygen
+DOXYGEN_BUILD_DEPENDS=	doxygen:devel/doxygen
 
 QSUI_DESC=		Simple UI based on standard widgets set
 QSUI_USE=	QT4=network,uic_build
@@ -72,79 +72,79 @@ QSUI_QMAKE_CONFIG=	WITH_QSUI
 SKINNEDUI_DESC=	Skinned GUI
 SKINNEDUI_QMAKE_CONFIG=	WITH_SKINNED
 
-JACK_BUILD_DEPENDS=	jackit>=0.121.2:${PORTSDIR}/audio/jack
-JACK_LIB_DEPENDS=	libjack.so:${PORTSDIR}/audio/jack
+JACK_BUILD_DEPENDS=	jackit>=0.121.2:audio/jack
+JACK_LIB_DEPENDS=	libjack.so:audio/jack
 JACK_QMAKE_CONFIG=	JACK_PLUGIN
 
-ALSA_LIB_DEPENDS=	libasound.so:${PORTSDIR}/audio/alsa-lib
+ALSA_LIB_DEPENDS=	libasound.so:audio/alsa-lib
 ALSA_QMAKE_CONFIG=	ALSA_PLUGIN
 
 BS2B_DESC=	Support the Bauer stereophonic2binaural effect
-BS2B_LIB_DEPENDS=	libbs2b.so:${PORTSDIR}/audio/libbs2b
+BS2B_LIB_DEPENDS=	libbs2b.so:audio/libbs2b
 BS2B_QMAKE_CONFIG=	BS2B_PLUGIN
 
-PULSEAUDIO_LIB_DEPENDS=	libpulse.so:${PORTSDIR}/audio/pulseaudio
+PULSEAUDIO_LIB_DEPENDS=	libpulse.so:audio/pulseaudio
 PULSEAUDIO_QMAKE_CONFIG=	PULSE_AUDIO_PLUGIN
 
-FLAC_LIB_DEPENDS=	libFLAC.so:${PORTSDIR}/audio/flac
+FLAC_LIB_DEPENDS=	libFLAC.so:audio/flac
 FLAC_QMAKE_CONFIG=	FLAC_PLUGIN
 
-MUSEPACK_LIB_DEPENDS=	libmpcdec.so:${PORTSDIR}/audio/musepack
+MUSEPACK_LIB_DEPENDS=	libmpcdec.so:audio/musepack
 MUSEPACK_QMAKE_CONFIG=	MUSEPACK_PLUGIN
 
 GME_DESC=	Support video game music files
-GME_LIB_DEPENDS=	libgme.so:${PORTSDIR}/audio/libgme
+GME_LIB_DEPENDS=	libgme.so:audio/libgme
 GME_QMAKE_CONFIG=	GME_PLUGIN
 
 OPUS_DESC=	Enable reading opusfile tags
-OPUS_LIB_DEPENDS=	libopusfile.so:${PORTSDIR}/audio/opusfile
+OPUS_LIB_DEPENDS=	libopusfile.so:audio/opusfile
 OPUS_QMAKE_CONFIG=	OPUS_PLUGIN
 
 SID_DESC=	Support sid
-SID_LIB_DEPENDS=	libsidplayfp.so:${PORTSDIR}/audio/libsidplayfp
+SID_LIB_DEPENDS=	libsidplayfp.so:audio/libsidplayfp
 SID_QMAKE_CONFIG=	SID_PLUGIN
 
-FFMPEG_LIB_DEPENDS=	libavcodec.so:${PORTSDIR}/multimedia/ffmpeg
+FFMPEG_LIB_DEPENDS=	libavcodec.so:multimedia/ffmpeg
 FFMPEG_QMAKE_CONFIG=	FFMPEG_PLUGIN
 
-MODPLUG_LIB_DEPENDS=	libmodplug.so:${PORTSDIR}/audio/libmodplug
+MODPLUG_LIB_DEPENDS=	libmodplug.so:audio/libmodplug
 MODPLUG_QMAKE_CONFIG=	MODPLUG_PLUGIN
 
-FAAD_LIB_DEPENDS=	libfaad.so:${PORTSDIR}/audio/faad
+FAAD_LIB_DEPENDS=	libfaad.so:audio/faad
 FAAD_QMAKE_CONFIG=	AAC_PLUGIN
 
-CDDA_LIB_DEPENDS=	libcdio.so:${PORTSDIR}/sysutils/libcdio \
-	libcdio_cdda.so:${PORTSDIR}/sysutils/libcdio-paranoia
+CDDA_LIB_DEPENDS=	libcdio.so:sysutils/libcdio \
+	libcdio_cdda.so:sysutils/libcdio-paranoia
 CDDA_QMAKE_CONFIG=	CDAUDIO_PLUGIN
 
 ENCA_DESC=	Support automatic character set detection
-ENCA_LIB_DEPENDS=	libenca.so:${PORTSDIR}/converters/enca
+ENCA_LIB_DEPENDS=	libenca.so:converters/enca
 ENCA_QMAKE_CONFIG=	WITH_ENCA
 
 MPLAYER1_DESC=	mplayer-1.1.x (multimedia/mplayer)
 MPLAYER2_DESC=	mplayer-2.0.x (multimedia/mplayer2)
-MPLAYER1_RUN_DEPENDS=	mplayer:${PORTSDIR}/multimedia/mplayer
+MPLAYER1_RUN_DEPENDS=	mplayer:multimedia/mplayer
 MPLAYER1_PREVENTS=	MPLAYER2
-MPLAYER2_RUN_DEPENDS=	mplayer:${PORTSDIR}/multimedia/mplayer2
+MPLAYER2_RUN_DEPENDS=	mplayer:multimedia/mplayer2
 MPLAYER2_PREVENTS=	MPLAYER1
 MPLAYER1_QMAKE_CONFIG=	MPLAYER_PLUGIN
 MPLAYER2_QMAKE_CONFIG=	MPLAYER_PLUGIN
 
 PROJECTM_DESC=	Support the projectM music visualiser
-PROJECTM_LIB_DEPENDS=	libprojectM.so.2:${PORTSDIR}/graphics/libprojectm
+PROJECTM_LIB_DEPENDS=	libprojectM.so.2:graphics/libprojectm
 PROJECTM_USE=	QT4=opengl
 PROJECTM_QMAKE_CONFIG=	PROJECTM_PLUGIN WITH_PROJECTM20
 
 OSS_QMAKE_CONFIG=	OSS_PLUGIN
 
 OSS4_DESC=	Open Sound System (ver4) support
-OSS4_BUILD_DEPENDS=	${LOCALBASE}/lib/oss/include/sys/soundcard.h:${PORTSDIR}/audio/oss
+OSS4_BUILD_DEPENDS=	${LOCALBASE}/lib/oss/include/sys/soundcard.h:audio/oss
 OSS4_QMAKE_CONFIG=	OSS4_PLUGIN
 
-LADSPA_RUN_DEPENDS=	analyseplugin:${PORTSDIR}/audio/ladspa
+LADSPA_RUN_DEPENDS=	analyseplugin:audio/ladspa
 LADSPA_QMAKE_CONFIG=	LADSPA_PLUGIN
 
-HAL_LIB_DEPENDS=	libhal.so:${PORTSDIR}/sysutils/hal
+HAL_LIB_DEPENDS=	libhal.so:sysutils/hal
 HAL_QMAKE_CONFIG=	HAL_PLUGIN
 
 UDISKS_DESC=	Support removable disc detection (obsolete)
@@ -153,7 +153,7 @@ UDISKS_QMAKE_CONFIG=	UDISKS_PLUGIN
 UDISKS2_QMAKE_CONFIG=	UDISKS2_PLUGIN
 
 WILDMIDI_DESC=	Support to playback MIDI files
-WILDMIDI_LIB_DEPENDS=	libWildMidi.so:${PORTSDIR}/audio/wildmidi
+WILDMIDI_LIB_DEPENDS=	libWildMidi.so:audio/wildmidi
 WILDMIDI_QMAKE_CONFIG=	WILDMIDI_PLUGIN
 
 .include <bsd.port.options.mk>
