@@ -9,7 +9,7 @@ COMMENT=	Playlist operation plug-in of QMMP (Qt4) to copy/paste track infos
 
 LICENSE=	GPLv2
 
-LIB_DEPENDS+=	libqmmpui.so:${PORTSDIR}/multimedia/qmmp-uilib
+LIB_DEPENDS+=	libqmmpui.so:multimedia/qmmp-uilib
 
 QMMPPLUGIN_TARGET=	General/copypaste
 QMMPPLUGIN_TAG=	COPYPASTE

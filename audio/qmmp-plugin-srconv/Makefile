@@ -9,7 +9,7 @@ COMMENT=	Sample rate converter dsp-effect plug-in of QMMP (Qt4)
 
 LICENSE=	GPLv2
 
-LIB_DEPENDS+=	libsamplerate.so:${PORTSDIR}/audio/libsamplerate
+LIB_DEPENDS+=	libsamplerate.so:audio/libsamplerate
 
 USE_QT4+=	uic_build
 

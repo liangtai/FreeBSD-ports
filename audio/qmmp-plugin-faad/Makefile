@@ -9,8 +9,8 @@ COMMENT=	FAAD file format plug-in of QMMP (Qt4)
 
 LICENSE=	GPLv2
 
-LIB_DEPENDS+=	libfaad.so:${PORTSDIR}/audio/faad \
-	libtag.so:${PORTSDIR}/audio/taglib
+LIB_DEPENDS+=	libfaad.so:audio/faad \
+	libtag.so:audio/taglib
 
 QMMPPLUGIN_TARGET=	Input/aac
 QMMPPLUGIN_TAG=	AAC

@@ -9,8 +9,8 @@ COMMENT=	FLAC file format plug-in of QMMP (Qt4)
 
 LICENSE=	GPLv2
 
-LIB_DEPENDS+=	libFLAC.so:${PORTSDIR}/audio/flac \
-	libtag.so:${PORTSDIR}/audio/taglib
+LIB_DEPENDS+=	libFLAC.so:audio/flac \
+	libtag.so:audio/taglib
 
 QMMPPLUGIN_TARGET=	Input/flac
 QMMPPLUGIN_TAG=	FLAC

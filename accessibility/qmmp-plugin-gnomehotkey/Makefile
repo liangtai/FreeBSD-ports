@@ -9,7 +9,7 @@ COMMENT=	GNOME/Cinnamon shortcut key plug-in of QMMP (Qt4)
 
 LICENSE=	GPLv2
 
-LIB_DEPENDS+=	libqmmpui.so:${PORTSDIR}/multimedia/qmmp-uilib
+LIB_DEPENDS+=	libqmmpui.so:multimedia/qmmp-uilib
 
 USE_QT4+=	dbus
 
