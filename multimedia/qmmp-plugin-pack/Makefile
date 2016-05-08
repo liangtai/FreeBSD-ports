@@ -37,7 +37,8 @@ FFAPASM_DESC=	Optimize FFap decoder using devel/yasm
 FFAPASM_BUILD_DEPENDS=	yasm:devel/yasm
 FFAPASM_QMAKE_CONFIG=	FFAP_YASM
 
-MPG123_LIB_DEPENDS=	libmpg123.so:audio/mpg123
+MPG123_LIB_DEPENDS=	libmpg123.so:audio/mpg123 \
+		libtag.so:audio/taglib
 MPG123_USE=	QT4=uic_build
 MPG123_QMAKE_CONFIG=	MPG123_PLUGIN
 
