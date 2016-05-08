@@ -16,7 +16,7 @@ CONFLICTS=	${PORTNAME}-qt5-1.*
 LIB_DEPENDS=	libqmmpui.so:multimedia/qmmp
 BUILD_DEPENDS=	qmmp>=0.10.0:multimedia/qmmp
 
-USES=		cmake:outsource pkgconfig tar:bzip2
+USES=		cmake:outsource localbase pkgconfig tar:bzip2
 USE_QT4=	corelib gui linguisttools_build moc_build qmake_build rcc_build
 USE_LDCONFIG=	yes
 
@@ -56,8 +56,6 @@ XMP_CMAKE_ON=	-DUSE_XMP:BOOL=TRUE
 XMP_CMAKE_OFF=	-DUSE_XMP:BOOL=FALSE
 
 CMAKE_ARGS+=	-DCMAKE_REQUIRED_INCLUDES:PATH=${LOCALBASE}/include
-CFLAGS+=	-I${LOCALBASE}/include
-LDFLAGS+=	-L${LOCALBASE}/lib
 
 pre-configure:
 	@${RM} -f ${BUILD_WRKSRC}/CMakeCache.txt

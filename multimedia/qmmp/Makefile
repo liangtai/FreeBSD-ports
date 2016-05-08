@@ -13,7 +13,7 @@ LICENSE=	GPLv2
 
 CONFLICTS=	${PORTNAME}-qt5-1.*
 
-USES=		cmake:outsource pathfix pkgconfig tar:bzip2
+USES=		cmake:outsource localbase pathfix pkgconfig tar:bzip2
 USE_QT4=	corelib gui network xml \
 		linguisttools_build moc_build qmake_build rcc_build uic_build
 USE_LDCONFIG=	yes
@@ -333,8 +333,6 @@ INSTALLS_ICONS=	yes
 
 CMAKE_ARGS+=	-DUSE_FFMPEG_LEGACY:BOOL=FALSE \
 	-DCMAKE_REQUIRED_INCLUDES:PATH=${LOCALBASE}/include
-CFLAGS+=	-I${LOCALBASE}/include
-LDFLAGS+=	-L${LOCALBASE}/lib
 
 post-patch:
 	@${GREP} -L '${LOCALBASE}/lib/oss' \
