@@ -40,7 +40,8 @@ FFAPASM_BUILD_DEPENDS=	yasm:devel/yasm
 FFAPASM_CMAKE_ON=	-DUSE_ASM:BOOL=TRUE
 FFAPASM_CMAKE_OFF=	-DUSE_ASM:BOOL=FALSE
 
-MPG123_LIB_DEPENDS=	libmpg123.so:audio/mpg123
+MPG123_LIB_DEPENDS=	libmpg123.so:audio/mpg123 \
+		libtag.so:audio/taglib
 MPG123_CMAKE_ON=	-DUSE_MPG123:BOOL=TRUE
 MPG123_CMAKE_OFF=	-DUSE_MPG123:BOOL=FALSE
 
@@ -48,6 +49,12 @@ XMP_DESC=	Support various module formats using libxmp
 XMP_LIB_DEPENDS=	libxmp.so:audio/libxmp
 XMP_CMAKE_ON=	-DUSE_XMP:BOOL=TRUE
 XMP_CMAKE_OFF=	-DUSE_XMP:BOOL=FALSE
+
+# Downgrade TagLib, otherwise MPG123 and FFAP options don't work!
+post-patch:
+	@${GREP} -l 'TAGLIB taglib>=1\.10\.0' \
+		${WRKSRC}/src/Input/CMakeLists.txt | ${XARGS} \
+		${REINPLACE_CMD} -e '/TAGLIB/s|1\.10\.0|1.10|'
 
 pre-configure:
 	@${RM} -f ${BUILD_WRKSRC}/CMakeCache.txt
