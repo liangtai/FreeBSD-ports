@@ -45,7 +45,7 @@ MPG123_USE=	QT4=uic_build
 MPG123_CMAKE_ON=	-DUSE_MPG123:BOOL=TRUE
 MPG123_CMAKE_OFF=	-DUSE_MPG123:BOOL=FALSE
 
-XMP_DESC=	Support various module formats using libxmp
+XMP_DESC=		Support various module formats using libxmp
 XMP_LIB_DEPENDS=	libxmp.so:audio/libxmp
 XMP_CMAKE_ON=	-DUSE_XMP:BOOL=TRUE
 XMP_CMAKE_OFF=	-DUSE_XMP:BOOL=FALSE
