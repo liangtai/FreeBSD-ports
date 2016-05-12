@@ -40,6 +40,10 @@ pre-configure:
 		${WRKSRC}/src/${QMMPPLUGIN_TARGET}/CMakeLists.txt | ${XARGS} \
 		${REINPLACE_CMD} -e '/^add_dependencies/d'
 	@${RM} -f ${BUILD_WRKSRC}/CMakeCache.txt
+# Downgrade TagLib, otherwise MPG123 and FFAP options don't work!
+	${GREP} -l 'TAGLIB taglib>=1\.10\.0' \
+		${WRKSRC}/src/Input/CMakeLists.txt | ${XARGS} \
+		${REINPLACE_CMD} -e '/TAGLIB/s|1\.10\.0|1.9|'
 
 # Category/PluginModule ==> lib/qmmp/Category/libpluginmodule.so
 PLIST_FILES+=	lib/qmmp/${QMMPPLUGIN_TARGET:C@/.*$@/@}${QMMPPLUGIN_TARGET:tl:C@.*/@lib@:S@$@.so@}
