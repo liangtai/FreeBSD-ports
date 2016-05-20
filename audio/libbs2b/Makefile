@@ -9,6 +9,8 @@ MASTER_SITES=	SF/bs2b/${PORTNAME}/${PORTVERSION}
 MAINTAINER=	liangtai.s16@gmail.com
 COMMENT=	Bauer Stereophonic-to-Binaural DSP
 
+LICENSE=	MIT
+
 LIB_DEPENDS+=	libsndfile.so:audio/libsndfile \
 		libogg.so:audio/libogg \
 		libFLAC.so:audio/flac \
