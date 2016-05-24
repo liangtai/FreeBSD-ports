@@ -8,7 +8,8 @@ MASTER_SITES=	SF/sidplay-residfp/libsidplayfp/${PORTVERSION:R}
 MAINTAINER=	liangtai.s16@gmail.com
 COMMENT=	Library to play Commodore 64 music derived from libsidplay2
 
-LICENSE=	GPLv2
+LICENSE=	GPLv2+
+LICENSE_FILE=	${WRKSRC}/COPYING
 
 USES=		gmake libtool pathfix pkgconfig
 GNU_CONFIGURE=	yes
