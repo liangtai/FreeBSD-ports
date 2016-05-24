@@ -10,6 +10,7 @@ MAINTAINER=	liangtai.s16@gmail.com
 COMMENT=	Bauer Stereophonic-to-Binaural DSP
 
 LICENSE=	MIT
+LICENSE_FILE=	${WRKSRC}/COPYING
 
 LIB_DEPENDS+=	libsndfile.so:audio/libsndfile \
 		libogg.so:audio/libogg \
