@@ -124,7 +124,8 @@ FAAD_CMAKE_ON=	-DUSE_AAC:BOOL=TRUE
 FAAD_CMAKE_OFF=	-DUSE_AAC:BOOL=FALSE
 
 CDDA_LIB_DEPENDS=	libcdio.so:sysutils/libcdio \
-	libcdio_cdda.so:sysutils/libcdio-paranoia
+		libcddb.so:audio/libcddb \
+		libcdio_cdda.so:sysutils/libcdio-paranoia
 CDDA_CMAKE_ON=	-DUSE_CDA:BOOL=TRUE
 CDDA_CMAKE_OFF=	-DUSE_CDA:BOOL=FALSE
 
@@ -142,7 +143,7 @@ MPLAYER2_PREVENTS=	MPLAYER1
 
 PROJECTM_DESC=	Support the projectM music visualiser
 PROJECTM_LIB_DEPENDS=	libprojectM.so.2:graphics/libprojectm
-PROJECTM_USE=	QT4=opengl
+PROJECTM_USE=	GL=gl QT4=opengl
 PROJECTM_CMAKE_ON=	-DUSE_PROJECTM:BOOL=TRUE
 PROJECTM_CMAKE_OFF=	-DUSE_PROJECTM:BOOL=FALSE
 
@@ -170,6 +171,7 @@ MAD_CMAKE_OFF=	-DUSE_MAD:BOOL=FALSE
 
 OPUS_DESC=		Enable reading opusfile tags
 OPUS_LIB_DEPENDS=	libopusfile.so:audio/opusfile \
+		libopus.so:audio/opus \
 		libtag.so:audio/taglib
 OPUS_CMAKE_ON=	-DUSE_OPUS:BOOL=TRUE
 OPUS_CMAKE_OFF=	-DUSE_OPUS:BOOL=FALSE
@@ -184,6 +186,7 @@ SNDFILE_CMAKE_ON=	-DUSE_SNDFILE:BOOL=TRUE
 SNDFILE_CMAKE_OFF=	-DUSE_SNDFILE:BOOL=FALSE
 
 VORBIS_LIB_DEPENDS=	libvorbis.so:audio/libvorbis \
+		libogg.so:audio/libogg \
 		libtag.so:audio/taglib
 VORBIS_CMAKE_ON=	-DUSE_VORBIS:BOOL=TRUE
 VORBIS_CMAKE_OFF=	-DUSE_VORBIS:BOOL=FALSE
@@ -268,6 +271,7 @@ HAL_CMAKE_ON=	-DUSE_HAL:BOOL=TRUE
 HAL_CMAKE_OFF=	-DUSE_HAL:BOOL=FALSE
 
 HOTKEY_DESC=	Support global shortcut keys
+HOTKEY_USE=	XORG=x11
 HOTKEY_CMAKE_ON=	-DUSE_HOTKEY:BOOL=TRUE
 HOTKEY_CMAKE_OFF=	-DUSE_HOTKEY:BOOL=FALSE
 
