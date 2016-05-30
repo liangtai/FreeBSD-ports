@@ -26,6 +26,7 @@ USES=		desktop-file-utils gmake pkgconfig qmake tar:bzip2
 USE_QT4=	corelib dbus gui network xml \
 		linguisttools_build moc_build qmake_build rcc_build uic_build
 USE_LDCONFIG=	yes
+USE_XORG=	x11
 
 OPTIONS_SUB=	yes
 OPTIONS_GROUP=	DOCUMENTS PLUGIN_APPLICATION PLUGIN_FORMATS \
@@ -104,7 +105,8 @@ GME_LIB_DEPENDS=	libgme.so:audio/libgme
 GME_QMAKE_CONFIG=	GME_PLUGIN
 
 OPUS_DESC=	Enable reading opusfile tags
-OPUS_LIB_DEPENDS=	libopusfile.so:audio/opusfile
+OPUS_LIB_DEPENDS=	libopusfile.so:audio/opusfile \
+		libopus.so:audio/opus
 OPUS_QMAKE_CONFIG=	OPUS_PLUGIN
 
 SID_DESC=	Support sid
@@ -121,7 +123,8 @@ FAAD_LIB_DEPENDS=	libfaad.so:audio/faad
 FAAD_QMAKE_CONFIG=	AAC_PLUGIN
 
 CDDA_LIB_DEPENDS=	libcdio.so:sysutils/libcdio \
-	libcdio_cdda.so:sysutils/libcdio-paranoia
+		libcddb.so:audio/libcddb \
+		libcdio_cdda.so:sysutils/libcdio-paranoia
 CDDA_QMAKE_CONFIG=	CDAUDIO_PLUGIN
 
 ENCA_DESC=	Support automatic character set detection
@@ -139,7 +142,7 @@ MPLAYER2_QMAKE_CONFIG=	MPLAYER_PLUGIN
 
 PROJECTM_DESC=	Support the projectM music visualiser
 PROJECTM_LIB_DEPENDS=	libprojectM.so.2:graphics/libprojectm
-PROJECTM_USE=	QT4=opengl
+PROJECTM_USE=	GL=gl QT4=opengl
 PROJECTM_QMAKE_CONFIG=	PROJECTM_PLUGIN WITH_PROJECTM20
 
 OSS_QMAKE_CONFIG=	OSS_PLUGIN
