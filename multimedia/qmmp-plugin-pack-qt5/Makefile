@@ -43,7 +43,8 @@ XMP_DESC=	Support various module formats using libxmp
 XMP_LIB_DEPENDS=	libxmp.so:audio/libxmp
 XMP_QMAKE_CONFIG=	XMP_PLUGIN
 
-.include "../qmmp-qt5/options.qmake.mk"
+.include <bsd.port.options.mk>
+.include "${.CURDIR}/../qmmp-qt5/options.qmake.mk"
 
 _DESTDIR_VIA_ENV=	no
 MAKE_ARGS+=	INSTALL_ROOT=${STAGEDIR}${PREFIX}
