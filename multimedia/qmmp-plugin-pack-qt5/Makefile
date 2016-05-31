@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	qmmp-plugin-pack
-PORTVERSION=	1.0.3
+PORTVERSION=	1.0.4
 CATEGORIES=	multimedia
 MASTER_SITES=	http://qmmp.ylsoftware.com/files/plugins/ \
 	SF/qmmp-dev/${PORTNAME}/
@@ -13,6 +13,7 @@ COMMENT=	Additional plug-ins for QMMP (Qt5)
 LICENSE=	GPLv2
 
 CONFLICTS=	${PORTNAME}-0.*
+PORTSCOUT=	limit:^1\..*
 
 LIB_DEPENDS=	libqmmpui.so:multimedia/qmmp-qt5
 BUILD_DEPENDS=	qmmp-qt5>=1.0.0:multimedia/qmmp-qt5
@@ -50,12 +51,6 @@ XMP_DESC=		Support various module formats using libxmp
 XMP_LIB_DEPENDS=	libxmp.so:audio/libxmp
 XMP_CMAKE_ON=	-DUSE_XMP:BOOL=TRUE
 XMP_CMAKE_OFF=	-DUSE_XMP:BOOL=FALSE
-
-# Downgrade TagLib, otherwise MPG123 and FFAP options don't work!
-post-patch:
-	@${GREP} -l 'TAGLIB taglib>=1\.10\.0' \
-		${WRKSRC}/src/Input/CMakeLists.txt | ${XARGS} \
-		${REINPLACE_CMD} -e '/TAGLIB/s|1\.10\.0|1.10|'
 
 pre-configure:
 	@${RM} -f ${BUILD_WRKSRC}/CMakeCache.txt
