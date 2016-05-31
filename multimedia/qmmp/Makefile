@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	qmmp
-PORTVERSION=	0.9.9
+PORTVERSION=	0.9.10
 CATEGORIES=	multimedia
 MASTER_SITES=	http://qmmp.ylsoftware.com/files/ \
 	SF/qmmp-dev/${PORTNAME}/
@@ -12,6 +12,7 @@ COMMENT=	Qt4-based multimedia player
 LICENSE=	GPLv2
 
 CONFLICTS=	${PORTNAME}-qt5-1.*
+PORTSCOUT=	limit:^0.*
 
 USES=		cmake:outsource localbase pathfix pkgconfig tar:bzip2
 USE_QT4=	corelib gui network xml \
