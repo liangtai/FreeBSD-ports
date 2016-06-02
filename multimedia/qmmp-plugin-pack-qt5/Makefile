@@ -19,7 +19,8 @@ LIB_DEPENDS=	libqmmpui.so:multimedia/qmmp-qt5
 BUILD_DEPENDS=	qmmp-qt5>=1.0.0:multimedia/qmmp-qt5
 
 USES=		cmake:outsource pkgconfig tar:bzip2
-USE_QT5=	core gui buildtools_build linguisttools_build qmake_build
+USE_QT5=	core gui widgets \
+		buildtools_build linguisttools_build qmake_build
 USE_LDCONFIG=	yes
 
 OPTIONS_SUB=	yes
@@ -30,7 +31,6 @@ OPTIONS_DEFAULT=	FFAP MPG123 XMP
 
 FFAP_DESC=		Support APE sound file
 FFAP_LIB_DEPENDS=	libtag.so:audio/taglib
-FFAP_USE=	QT5=widgets
 FFAP_CMAKE_ON=	-DUSE_FFAP:BOOL=TRUE
 FFAP_CMAKE_OFF=	-DUSE_FFAP:BOOL=FALSE
 OPTIONS_DEFINE_i386=	FFAPASM
