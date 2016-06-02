@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	qmmp
-PORTVERSION=	1.0.9
+PORTVERSION=	1.0.10
 CATEGORIES=	multimedia
 MASTER_SITES=	http://qmmp.ylsoftware.com/files/ \
 	SF/qmmp-dev/${PORTNAME}/
@@ -13,6 +13,7 @@ COMMENT=	Qt5-based multimedia player
 LICENSE=	GPLv2
 
 CONFLICTS=	${PORTNAME}-0.*
+PORTSCOUT=	limit:^1\..*
 
 LIB_DEPENDS=	libmad.so:audio/libmad \
 		libsamplerate.so:audio/libsamplerate \
@@ -25,9 +26,10 @@ LIB_DEPENDS=	libmad.so:audio/libmad \
 		libmms.so:net/libmms
 
 USES=		desktop-file-utils gmake pkgconfig qmake tar:bzip2
-USE_QT5=	core dbus gui network x11extras xml \
+USE_QT5=	core dbus gui network widgets x11extras xml \
 		buildtools_build linguisttools_build qmake_build
 USE_LDCONFIG=	yes
+USE_XORG=	x11
 
 OPTIONS_SUB=	yes
 OPTIONS_GROUP=	DOCUMENTS PLUGIN_APPLICATION PLUGIN_FORMATS \
@@ -97,7 +99,8 @@ GME_LIB_DEPENDS=	libgme.so:audio/libgme
 GME_QMAKE_CONFIG=	GME_PLUGIN
 
 OPUS_DESC=	Enable reading opusfile tags
-OPUS_LIB_DEPENDS=	libopusfile.so:audio/opusfile
+OPUS_LIB_DEPENDS=	libopusfile.so:audio/opusfile \
+		libopus.so:audio/opus
 OPUS_QMAKE_CONFIG=	OPUS_PLUGIN
 
 SID_DESC=	Support sid
@@ -115,7 +118,8 @@ FAAD_QMAKE_CONFIG=	AAC_PLUGIN
 
 CDDA_DESC=	Support to playback compact discs
 CDDA_LIB_DEPENDS=	libcdio.so:sysutils/libcdio \
-	libcdio_cdda.so:sysutils/libcdio-paranoia
+		libcddb.so:audio/libcddb \
+		libcdio_cdda.so:sysutils/libcdio-paranoia
 CDDA_QMAKE_CONFIG=	CDAUDIO_PLUGIN
 
 ENCA_DESC=	Support automatic character set detection
@@ -133,7 +137,7 @@ MPLAYER2_QMAKE_CONFIG=	MPLAYER_PLUGIN
 
 PROJECTM_DESC=	Support the projectM music visualiser
 PROJECTM_LIB_DEPENDS=	libprojectM.so.2:graphics/libprojectm
-PROJECTM_USE=	QT5=opengl
+PROJECTM_USE=	GL=gl
 PROJECTM_QMAKE_CONFIG=	PROJECTM_PLUGIN
 
 OSS_QMAKE_CONFIG=	OSS_PLUGIN

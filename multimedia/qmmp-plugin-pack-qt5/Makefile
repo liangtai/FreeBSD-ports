@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	qmmp-plugin-pack
-PORTVERSION=	1.0.3
+PORTVERSION=	1.0.4
 CATEGORIES=	multimedia
 MASTER_SITES=	http://qmmp.ylsoftware.com/files/plugins/ \
 	SF/qmmp-dev/${PORTNAME}/
@@ -12,11 +12,15 @@ COMMENT=	Additional plug-ins for QMMP (Qt5)
 
 LICENSE=	GPLv2
 
+CONFLICTS=	${PORTNAME}-0.*
+PORTSCOUT=	limit:^1\..*
+
 LIB_DEPENDS=	libqmmpui.so:multimedia/qmmp-qt5
 BUILD_DEPENDS=	qmmp-qt5>=1.0.0:multimedia/qmmp-qt5
 
 USES=		gmake pkgconfig qmake tar:bzip2
-USE_QT5=	core gui buildtools_build linguisttools_build qmake_build
+USE_QT5=	core gui widgets \
+		buildtools_build linguisttools_build qmake_build
 USE_LDCONFIG=	yes
 
 OPTIONS_SUB=	yes
@@ -39,7 +43,7 @@ MPG123_LIB_DEPENDS=	libmpg123.so:audio/mpg123 \
 		libtag.so:audio/taglib
 MPG123_QMAKE_CONFIG=	MPG123_PLUGIN
 
-XMP_DESC=	Support various module formats using libxmp
+XMP_DESC=		Support various module formats using libxmp
 XMP_LIB_DEPENDS=	libxmp.so:audio/libxmp
 XMP_QMAKE_CONFIG=	XMP_PLUGIN
 
@@ -48,8 +52,6 @@ XMP_QMAKE_CONFIG=	XMP_PLUGIN
 
 _DESTDIR_VIA_ENV=	no
 MAKE_ARGS+=	INSTALL_ROOT=${STAGEDIR}${PREFIX}
-
-CONFLICTS=	${PORTNAME:C/${PKGNAMESUFFIX}//}-0.*
 
 pre-install:
 	@${FIND} ${WRKSRC}/lib/ -type f -exec ${STRIP_CMD} {} +
