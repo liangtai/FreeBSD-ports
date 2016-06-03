@@ -12,6 +12,7 @@ COMMENT=	Additional plug-ins for QMMP (Qt4)
 LICENSE=	GPLv2
 
 CONFLICTS=	${PORTNAME}-qt5-1.*
+PORTSCOUT=	limit:^0.*
 
 LIB_DEPENDS=	libqmmpui.so:multimedia/qmmp
 BUILD_DEPENDS=	qmmp>=0.10.0:multimedia/qmmp
@@ -50,12 +51,10 @@ SRCONV_LIB_DEPENDS=	libsamplerate.so:audio/libsamplerate
 SRCONV_CMAKE_ON=	-DUSE_SRC:BOOL=TRUE
 SRCONV_CMAKE_OFF=	-DUSE_SRC:BOOL=FALSE
 
-XMP_DESC=	Support various module formats using libxmp
+XMP_DESC=		Support various module formats using libxmp
 XMP_LIB_DEPENDS=	libxmp.so:audio/libxmp
 XMP_CMAKE_ON=	-DUSE_XMP:BOOL=TRUE
 XMP_CMAKE_OFF=	-DUSE_XMP:BOOL=FALSE
-
-CMAKE_ARGS+=	-DCMAKE_REQUIRED_INCLUDES:PATH=${LOCALBASE}/include
 
 pre-configure:
 	@${RM} -f ${BUILD_WRKSRC}/CMakeCache.txt
