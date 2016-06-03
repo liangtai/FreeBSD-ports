@@ -12,6 +12,7 @@ COMMENT=	Qt4-based multimedia player
 LICENSE=	GPLv2
 
 CONFLICTS=	${PORTNAME}-qt5-1.*
+PORTSCOUT=	limit:^0.*
 
 LIB_DEPENDS=	libmad.so:audio/libmad \
 		libsndfile.so:audio/libsndfile \
@@ -66,13 +67,14 @@ OPTIONS_DEFAULT=	ALSA BS2B CDDA ENCA FAAD FFMPEG \
 DOXYGEN_BUILD_DEPENDS=	doxygen:devel/doxygen
 
 QSUI_DESC=		Simple UI based on standard widgets set
-QSUI_USE=	QT4=network,uic_build
+QSUI_USE=	QT4=uic_build
 QSUI_QMAKE_CONFIG=	WITH_QSUI
 
 SKINNEDUI_DESC=	Skinned GUI
 SKINNEDUI_QMAKE_CONFIG=	WITH_SKINNED
 
-JACK_BUILD_DEPENDS=	jackit>=0.121.2:audio/jack
+JACK_BUILD_DEPENDS=	jackit>=0.121.2:audio/jack \
+		libsamplerate.so:audio/libsamplerate
 JACK_LIB_DEPENDS=	libjack.so:audio/jack
 JACK_QMAKE_CONFIG=	JACK_PLUGIN
 
