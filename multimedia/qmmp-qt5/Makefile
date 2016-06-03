@@ -13,6 +13,7 @@ COMMENT=	Qt5-based multimedia player
 LICENSE=	GPLv2
 
 CONFLICTS=	${PORTNAME}-0.*
+PORTSCOUT=	limit:^1\..*
 
 LIB_DEPENDS=	libmad.so:audio/libmad \
 		libsndfile.so:audio/libsndfile \
@@ -24,9 +25,10 @@ LIB_DEPENDS=	libmad.so:audio/libmad \
 		libmms.so:net/libmms
 
 USES=		desktop-file-utils gmake pkgconfig qmake tar:bzip2
-USE_QT5=	core dbus gui network x11extras xml \
+USE_QT5=	core dbus gui network widgets x11extras xml \
 		buildtools_build linguisttools_build qmake_build
 USE_LDCONFIG=	yes
+USE_XORG=	x11
 
 OPTIONS_SUB=	yes
 OPTIONS_GROUP=	DOCUMENTS PLUGIN_APPLICATION PLUGIN_FORMATS \
@@ -71,7 +73,8 @@ SKINNEDUI_QMAKE_CONFIG=	WITH_SKINNED
 QSUI_DESC=		Simple UI based on standard widgets set
 QSUI_QMAKE_CONFIG=	WITH_QSUI
 
-JACK_BUILD_DEPENDS=	jackit>=0.121.2:audio/jack
+JACK_BUILD_DEPENDS=	jackit>=0.121.2:audio/jack \
+		libsamplerate.so:audio/libsamplerate
 JACK_LIB_DEPENDS=	libjack.so:audio/jack
 JACK_QMAKE_CONFIG=	JACK_PLUGIN
 
@@ -104,7 +107,8 @@ GME_LIB_DEPENDS=	libgme.so:audio/libgme
 GME_QMAKE_CONFIG=	GME_PLUGIN
 
 OPUS_DESC=	Enable reading opusfile tags
-OPUS_LIB_DEPENDS=	libopusfile.so:audio/opusfile
+OPUS_LIB_DEPENDS=	libopusfile.so:audio/opusfile \
+		libopus.so:audio/opus
 OPUS_QMAKE_CONFIG=	OPUS_PLUGIN
 
 SID_DESC=	Support sid
@@ -122,7 +126,8 @@ FAAD_QMAKE_CONFIG=	AAC_PLUGIN
 
 CDDA_DESC=	Support to playback compact discs
 CDDA_LIB_DEPENDS=	libcdio.so:sysutils/libcdio \
-	libcdio_cdda.so:sysutils/libcdio-paranoia
+		libcddb.so:audio/libcddb \
+		libcdio_cdda.so:sysutils/libcdio-paranoia
 CDDA_QMAKE_CONFIG=	CDAUDIO_PLUGIN
 
 ENCA_DESC=	Support automatic character set detection
@@ -140,7 +145,7 @@ MPLAYER2_QMAKE_CONFIG=	MPLAYER_PLUGIN
 
 PROJECTM_DESC=	Support the projectM music visualiser
 PROJECTM_LIB_DEPENDS=	libprojectM.so.2:graphics/libprojectm
-PROJECTM_USE=	QT5=opengl
+PROJECTM_USE=	GL=gl
 PROJECTM_QMAKE_CONFIG=	PROJECTM_PLUGIN
 
 OSS_QMAKE_CONFIG=	OSS_PLUGIN
@@ -162,6 +167,7 @@ WILDMIDI_DESC=	Support to playback MIDI files
 WILDMIDI_LIB_DEPENDS=	libWildMidi.so:audio/wildmidi
 WILDMIDI_QMAKE_CONFIG=	WILDMIDI_PLUGIN
 
+.include <bsd.port.options.mk>
 .include "options.qmake.mk"
 
 .if ${PORT_OPTIONS:MMPLAYER1} || ${PORT_OPTIONS:MMPLAYER2}
