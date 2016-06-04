@@ -12,6 +12,7 @@ LICENSE=	GPLv2
 LIB_DEPENDS+=	libqmmpui.so:multimedia/qmmp-uilib
 
 USE_QT4+=	uic_build
+USE_XORG=	x11
 
 QMMPPLUGIN_TARGET=	Ui/skinned
 QMMPPLUGIN_TAG=	SKINNED

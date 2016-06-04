@@ -1,6 +1,6 @@
 # $FreeBSD$
 
-QMMP_VERSION=	0.9.9
+QMMP_VERSION=	0.9.10
 MASTER_SITES=	http://qmmp.ylsoftware.com/files/plugins/ \
 	SF/qmmp-dev/qmmp/
 DISTNAME=	qmmp-${PORTVERSION}
@@ -11,15 +11,11 @@ LICENSE?=	GPLv2
 
 CONFLICTS=	${PORTNAME:C/qmmp-/qmmp-qt5-/}-1.*
 
-USES+=		cmake:outsource pkgconfig tar:bzip2
+USES+=		cmake:outsource localbase pkgconfig tar:bzip2
 USE_QT4+=	corelib gui linguisttools_build moc_build qmake_build rcc_build
 USE_LDCONFIG=	yes
 
 PLIST_SUB+=	SHLIB_VER=${PORTVERSION:C/-.*//}
-
-CMAKE_ARGS+=	-DCMAKE_REQUIRED_INCLUDES:PATH=${LOCALBASE}/include
-CFLAGS+=	-I${LOCALBASE}/include
-LDFLAGS+=	-L${LOCALBASE}/lib
 
 pre-configure:
 	@${RM} -f ${BUILD_WRKSRC}/CMakeCache.txt
