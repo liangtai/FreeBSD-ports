@@ -10,7 +10,8 @@ COMMENT=	CDDA media plug-in of QMMP (Qt4)
 LICENSE=	GPLv2
 
 LIB_DEPENDS+=	libcdio.so:sysutils/libcdio \
-	libcdio_cdda.so:sysutils/libcdio-paranoia
+	libcdio_cdda.so:sysutils/libcdio-paranoia \
+	libcddb.so:audio/libcddb
 
 USE_QT4+=	uic_build
 

@@ -14,13 +14,9 @@ CONFLICTS=	${PORTNAME:C/qmmp-/qmmp-qt5-/}-1.*
 LIB_DEPENDS+=	libqmmp.so.0:multimedia/qmmp-lib
 BUILD_DEPENDS+=	qmmp-lib>=0.10.0:multimedia/qmmp-lib
 
-USES+=		cmake:outsource pkgconfig tar:bzip2
+USES+=		cmake:outsource localbase pkgconfig tar:bzip2
 USE_QT4+=	corelib gui linguisttools_build moc_build qmake_build rcc_build
 USE_LDCONFIG=	yes
-
-CMAKE_ARGS+=	-DCMAKE_REQUIRED_INCLUDES:PATH=${LOCALBASE}/include
-CFLAGS+=	-I${LOCALBASE}/include
-LDFLAGS+=	-L${LOCALBASE}/lib
 
 PLUGIN_TARGETS=	CommandLineOptions PlayListFormats \
 	\
