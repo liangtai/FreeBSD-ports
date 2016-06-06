@@ -12,6 +12,7 @@ LICENSE=	GPLv2
 LIB_DEPENDS+=	libprojectM.so:graphics/libprojectm
 
 USE_QT4+=	opengl
+USE_GL=	gl
 
 QMMPPLUGIN_TARGET=	Visual/projectm
 QMMPPLUGIN_OPTIONS=	PROJECTM_PLUGIN PROJECTM_20

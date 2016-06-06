@@ -11,6 +11,8 @@ LICENSE=	GPLv2
 
 LIB_DEPENDS+=	libqmmpui.so:multimedia/qmmp-uilib
 
+USE_QT4+=	network
+
 QMMPPLUGIN_TARGET=	General/covermanager
 QMMPPLUGIN_OPTIONS=
 
