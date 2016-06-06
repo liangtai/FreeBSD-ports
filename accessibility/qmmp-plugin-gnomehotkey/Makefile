@@ -11,7 +11,7 @@ LICENSE=	GPLv2
 
 LIB_DEPENDS+=	libqmmpui.so:multimedia/qmmp-uilib
 
-USE_QT4+=	dbus
+USE_QT4+=	dbus xml
 
 QMMPPLUGIN_TARGET=	General/gnomehotkey
 QMMPPLUGIN_OPTIONS=
