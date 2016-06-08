@@ -14,6 +14,7 @@ CONFLICTS=	${PORTNAME:C/-qt5//}-0.*
 USES+=		gmake pkgconfig qmake tar:bzip2
 USE_QT5+=	core gui widgets buildtools_build qmake_build
 USE_LDCONFIG=	yes
+USE_GL=	gl
 
 PLIST_SUB+=	SHLIB_VER=${PORTVERSION:C/-.*//}
 

@@ -10,6 +10,7 @@ COMMENT=	Opus file format plug-in of QMMP (Qt5)
 LICENSE=	GPLv2
 
 LIB_DEPENDS+=	libopusfile.so:audio/opusfile \
+	libopus.so:audio/opus \
 	libtag.so:audio/taglib
 
 QMMPPLUGIN_TARGET=	Input/opus

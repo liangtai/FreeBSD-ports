@@ -10,7 +10,8 @@ COMMENT=	CDDA media plug-in of QMMP (Qt5)
 LICENSE=	GPLv2
 
 LIB_DEPENDS+=	libcdio.so:sysutils/libcdio \
-	libcdio_cdda.so:sysutils/libcdio-paranoia
+	libcdio_cdda.so:sysutils/libcdio-paranoia \
+	libcddb.so:audio/libcddb
 
 QMMPPLUGIN_TARGET=	Input/cdaudio
 QMMPPLUGIN_OPTIONS=	CDAUDIO_PLUGIN
