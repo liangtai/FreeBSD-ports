@@ -10,6 +10,7 @@ COMMENT=	Vorbis file format plug-in of QMMP (Qt5)
 LICENSE=	GPLv2
 
 LIB_DEPENDS+=	libvorbis.so:audio/libvorbis \
+	libogg.so:audio/libogg \
 	libtag.so:audio/taglib
 
 QMMPPLUGIN_TARGET=	Input/vorbis
