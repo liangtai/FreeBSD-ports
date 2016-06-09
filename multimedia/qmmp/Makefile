@@ -125,8 +125,8 @@ ENCA_DESC=	Support automatic character set detection
 ENCA_LIB_DEPENDS=	libenca.so:converters/enca
 ENCA_QMAKE_CONFIG=	WITH_ENCA
 
-MPLAYER1_DESC=	mplayer-1.1.x (multimedia/mplayer)
-MPLAYER2_DESC=	mplayer-2.0.x (multimedia/mplayer2)
+MPLAYER1_DESC=	mplayer-1.x (multimedia/mplayer)
+MPLAYER2_DESC=	mplayer-2.x (multimedia/mplayer2)
 MPLAYER1_RUN_DEPENDS=	mplayer:multimedia/mplayer
 MPLAYER1_PREVENTS=	MPLAYER2
 MPLAYER2_RUN_DEPENDS=	mplayer:multimedia/mplayer2
