@@ -1,9 +1,10 @@
 # $FreeBSD$
 
 PORTNAME=	wildmidi
-PORTVERSION=	0.4.0
+PORTVERSION=	0.3.9
 DISTVERSIONPREFIX=	${PORTNAME}-
 CATEGORIES=	audio
+PKGNAMESUFFIX=	03
 
 MAINTAINER=	liangtai.s16@gmail.com
 COMMENT=	Simple software midi player and core softsynth library
@@ -11,8 +12,8 @@ COMMENT=	Simple software midi player and core softsynth library
 # player: GPLv3, library: LGPL3
 LICENSE=	LGPL3
 
-CONFLICTS=	${PORTNAME}03-0\.3\..*
-PORTSCOUT=	ignore:^0\.3\.9
+CONFLICTS=	${PORTNAME}-0\.4.*
+PORTSCOUT=	limit:^0\.3\.9
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	Mindwerks
