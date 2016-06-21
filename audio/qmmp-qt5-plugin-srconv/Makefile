@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	qmmp-qt5-plugin-srconv
-PORTVERSION=	${QMMP_VERSION}
+PORTVERSION=	${QMMP_PP_VERSION}
 CATEGORIES=	audio multimedia
 
 MAINTAINER=	liangtai.s16@gmail.com
@@ -14,5 +14,5 @@ LIB_DEPENDS+=	libsamplerate.so:audio/libsamplerate
 QMMPPLUGIN_TARGET=	Effect/srconverter
 QMMPPLUGIN_TAG=	SRC
 
-.include "${.CURDIR}/../../multimedia/qmmp-qt5/Makefile.plugin"
+.include "${.CURDIR}/../../multimedia/qmmp-plugin-pack-qt5/Makefile.plugin"
 .include <bsd.port.mk>
