@@ -2,6 +2,7 @@
 
 PORTNAME=	qmmp
 PORTVERSION=	0.9.10
+PORTREVISION=	1
 CATEGORIES=	multimedia
 MASTER_SITES=	http://qmmp.ylsoftware.com/files/ \
 	SF/qmmp-dev/${PORTNAME}/
@@ -157,7 +158,7 @@ UDISKS_QMAKE_CONFIG=	UDISKS_PLUGIN
 UDISKS2_QMAKE_CONFIG=	UDISKS2_PLUGIN
 
 WILDMIDI_DESC=	Support to playback MIDI files
-WILDMIDI_LIB_DEPENDS=	libWildMidi.so:audio/wildmidi
+WILDMIDI_LIB_DEPENDS=	libWildMidi.so.1:audio/wildmidi03
 WILDMIDI_QMAKE_CONFIG=	WILDMIDI_PLUGIN
 
 .include <bsd.port.options.mk>
