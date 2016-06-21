@@ -62,11 +62,12 @@ lib/qmmp/CommandLineOptions/libseekoption.so
 lib/qmmp/CommandLineOptions/libstatusoption.so
 %%LADSPA%%lib/qmmp/Effect/libladspa.so
 %%BS2B%%lib/qmmp/Effect/libbs2b.so
-lib/qmmp/Effect/libsrconverter.so
+%%SOXR%%lib/qmmp/Effect/libsoxr.so
 lib/qmmp/Effect/libstereo.so
 lib/qmmp/Effect/libcrossfade.so
 %%MPLAYER%%lib/qmmp/Engines/libmplayer.so
 lib/qmmp/FileDialogs/libqmmpfiledialog.so
+lib/qmmp/FileDialogs/libtwopanelfiledialog.so
 lib/qmmp/General/libconverter.so
 lib/qmmp/General/libcopypaste.so
 lib/qmmp/General/libcovermanager.so
@@ -105,6 +106,7 @@ lib/qmmp/Output/libnull.so
 %%OSS%%lib/qmmp/Output/liboss.so
 %%OSS4%%lib/qmmp/Output/liboss4.so
 %%PULSEAUDIO%%lib/qmmp/Output/libpulseaudio.so
+%%QTMULTIMEDIA%%lib/qmmp/Output/libqtmultimedia.so
 lib/qmmp/PlayListFormats/libm3uplaylistformat.so
 lib/qmmp/PlayListFormats/libplsplaylistformat.so
 lib/qmmp/PlayListFormats/libxspfplaylistformat.so
