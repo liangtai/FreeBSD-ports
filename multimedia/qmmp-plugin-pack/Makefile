@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	qmmp-plugin-pack
-PORTVERSION=	0.9.5
+PORTVERSION=	0.10.0
 CATEGORIES=	multimedia
 MASTER_SITES=	http://qmmp.ylsoftware.com/files/plugins/ \
 	SF/qmmp-dev/${PORTNAME}/
@@ -11,11 +11,11 @@ COMMENT=	Additional plug-ins for QMMP (Qt4)
 
 LICENSE=	GPLv2
 
-CONFLICTS=	${PORTNAME}-qt5-1.*
-PORTSCOUT=	limit:^0.*
+CONFLICTS=	${PORTNAME}-qt5-1\..*
+PORTSCOUT=	limit:^0\..*
 
 LIB_DEPENDS=	libqmmpui.so:multimedia/qmmp
-BUILD_DEPENDS=	qmmp>=0.9.0:multimedia/qmmp
+BUILD_DEPENDS=	qmmp>=0.10.0:multimedia/qmmp
 
 USES=		gmake pkgconfig qmake tar:bzip2
 USE_QT4=	corelib gui linguisttools_build moc_build qmake_build rcc_build
@@ -24,8 +24,8 @@ USE_LDCONFIG=	yes
 OPTIONS_SUB=	yes
 
 OPTIONS_MULTI=	PLUGINS
-OPTIONS_MULTI_PLUGINS=	FFAP MPG123 XMP
-OPTIONS_DEFAULT=	FFAP MPG123 XMP
+OPTIONS_MULTI_PLUGINS=	FFAP MPG123 SRCONV XMP
+OPTIONS_DEFAULT=	FFAP MPG123 SRCONV XMP
 
 FFAP_DESC=		Support APE sound file
 FFAP_LIB_DEPENDS=	libtag.so:audio/taglib
@@ -42,6 +42,10 @@ MPG123_LIB_DEPENDS=	libmpg123.so:audio/mpg123 \
 		libtag.so:audio/taglib
 MPG123_USE=	QT4=uic_build
 MPG123_QMAKE_CONFIG=	MPG123_PLUGIN
+
+SRCONV_DESC=	Support the sample rate converter
+SRCONV_LIB_DEPENDS=	libsamplerate.so:audio/libsamplerate
+SRCONV_QMAKE_CONFIG=	SRC_PLUGIN
 
 XMP_DESC=	Support various module formats using libxmp
 XMP_LIB_DEPENDS=	libxmp.so:audio/libxmp
