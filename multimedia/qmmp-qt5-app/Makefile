@@ -19,7 +19,7 @@ DIR_ASSOC_USES=	desktop-file-utils
 
 LIB_DEPENDS+=	libqmmp.so:multimedia/qmmp-qt5-lib \
 	libqmmpui.so:multimedia/qmmp-qt5-uilib
-BUILD_DEPENDS+=	qmmp-qt5-lib>=1.1.0:multimedia/qmmp-qt5-lib
+BUILD_DEPENDS+=	qmmp-qt5-lib>=1.2.0:multimedia/qmmp-qt5-lib
 
 USE_QT5+=	network linguisttools_build
 
@@ -34,7 +34,7 @@ post-patch:
 		${WRKSRC}/CMakeLists.txt | ${XARGS} ${REINPLACE_CMD} \
 		-Ee '/add_subdirectory[(]src\/(qmmp|qmmpui)[)]/d' \
 		-e '/find_package[(]Qt5/s/ REQUIRED//' \
-		-e '/pkg_search_module/{; h; s/X11 x11/QMMP qmmp>=1.1/; G;}'
+		-e '/pkg_search_module/{; h; s/X11 x11/QMMP qmmp>=1.2/; G;}'
 	@${GREP} -El 'target_link_libraries.*::Widgets libqmmp|add_dependencies' \
 		${WRKSRC}/src/app/CMakeLists.txt | ${XARGS} \
 		${REINPLACE_CMD} -e '/^add_dependencies/d' \

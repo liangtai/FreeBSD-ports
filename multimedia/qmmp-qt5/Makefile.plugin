@@ -1,6 +1,6 @@
 # $FreeBSD$
 
-QMMP_VERSION=	1.1.0
+QMMP_VERSION=	1.2.0
 MASTER_SITES=	http://qmmp.ylsoftware.com/files/plugins/ \
 	SF/qmmp-dev/qmmp/
 DISTNAME=	qmmp-${PORTVERSION}
@@ -12,7 +12,7 @@ LICENSE?=	GPLv2
 CONFLICTS=	${PORTNAME:C/-qt5//}-0.*
 
 LIB_DEPENDS+=	libqmmp.so:multimedia/qmmp-qt5-lib
-BUILD_DEPENDS+=	qmmp-qt5-lib>=1.1.0:multimedia/qmmp-qt5-lib
+BUILD_DEPENDS+=	qmmp-qt5-lib>=1.2.0:multimedia/qmmp-qt5-lib
 
 USES+=		cmake:outsource localbase pkgconfig tar:bzip2
 USE_QT5+=	core gui widgets \
@@ -73,7 +73,7 @@ pre-configure:
 		${XARGS} ${REINPLACE_CMD} -e '/^add_dependencies/d' \
 		-e '/CMAKE_CURRENT_.*\/\.\.\/\.\.\/\.\.\//{;/include_dir/d; \
 			s/\(link_dir.*\)[(].*$$/\1($${QMMP_LIBRARY_DIRS})/; h; \
-			s/^.*$$/pkg_search_module(QMMP qmmp>=1.1)/; G;}' \
+			s/^.*$$/pkg_search_module(QMMP qmmp>=1.2)/; G;}' \
 		-e '/target_link_libraries/s/libqmmp/-lqmmp/'
 	@${GREP} -El 'add_subd.*src/(qmmp|app)|find_package.* REQUIRED' \
 		${WRKSRC}/CMakeLists.txt | ${XARGS} ${REINPLACE_CMD} \
