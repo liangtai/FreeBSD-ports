@@ -9,8 +9,8 @@ COMMENT=	UI library of the QMMP Qt4-based multimedia player
 
 LICENSE=	GPLv2
 
-LIB_DEPENDS+=	libqmmp.so:multimedia/qmmp-lib
-BUILD_DEPENDS+=	qmmp-lib>=0.9.0:multimedia/qmmp-lib
+LIB_DEPENDS+=	libqmmp.so.0:multimedia/qmmp-lib
+BUILD_DEPENDS+=	qmmp-lib>=0.10.0:multimedia/qmmp-lib
 
 USE_QT4+=	network uic_build
 
