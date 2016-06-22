@@ -1,6 +1,6 @@
 # $FreeBSD$
 
-QMMP_VERSION=	0.9.10
+QMMP_VERSION=	0.10.0
 MASTER_SITES=	http://qmmp.ylsoftware.com/files/plugins/ \
 	SF/qmmp-dev/qmmp/
 DISTNAME=	qmmp-${PORTVERSION}
@@ -12,20 +12,18 @@ LICENSE?=	GPLv2
 CONFLICTS=	${PORTNAME:C/qmmp-/qmmp-qt5-/}-1.*
 
 LIB_DEPENDS+=	libqmmp.so.0:multimedia/qmmp-lib
-BUILD_DEPENDS+=	qmmp-lib>=0.9.0:multimedia/qmmp-lib
+BUILD_DEPENDS+=	qmmp-lib>=0.10.0:multimedia/qmmp-lib
 
 USES+=		cmake:outsource localbase pkgconfig tar:bzip2
 USE_QT4+=	corelib gui linguisttools_build moc_build qmake_build rcc_build
 USE_LDCONFIG=	yes
 
-PLIST_SUB+=	SHLIB_VER="${PORTVERSION:C/-.*//}"
-
 PLUGIN_TARGETS=	CommandLineOptions PlayListFormats \
 	\
-	Effect/bs2b Effect/crossfade Effect/ladspa Effect/srconverter \
+	Effect/bs2b Effect/crossfade Effect/ladspa Effect/soxr \
 	Effect/stereo \
 	Engines/mplayer \
-	FileDialogs/QmmpFileDialog \
+	FileDialogs/QmmpFileDialog FileDialogs/TwoPanelFileDialog \
 	General/converter General/copypaste General/covermanager \
 	General/fileops General/gnomehotkey General/hal General/hotkey \
 	General/kdenotify General/lyrics General/mpris General/notifier \
@@ -36,7 +34,8 @@ PLUGIN_TARGETS=	CommandLineOptions PlayListFormats \
 	Input/flac Input/gme Input/mad Input/modplug Input/mpc Input/opus \
 	Input/sid Input/sndfile Input/vorbis Input/wavpack Input/wildmidi \
 	Output/alsa Output/directsound Output/jack Output/null \
-	Output/oss Output/oss4 Output/pulseaudio Output/waveout \
+	Output/oss Output/oss4 Output/pulseaudio Output/qtmultimedia \
+	Output/waveout \
 	Transports/http Transports/mms \
 	Ui/qsui Ui/skinned \
 	Visual/analyzer Visual/projectm
@@ -45,9 +44,9 @@ PLUGIN_TAGS=	AAC ALSA ANALYZER BS2B CDA CONVERTER COPYPASTE COVER \
 	CROSSFADE CUE CURL DIR_ASSOC DSOUND ENCA FFMPEG FFMPEG_LEGACY \
 	FILEOPS FLAC GME GNOMEHOTKEY HAL HOTKEY JACK KDENOTIFY LADSPA \
 	LYRICS MAD MIDI MMS MODPLUG MPC MPLAYER MPRIS NOTIFIER NULL OPUS \
-	OSS OSS4 PROJECTM PULSE QMMP_DIALOG QSUI RGSCAN SB SCROBBLER SID \
-	SKINNED SNDFILE SRC STATICON STEREO TRACKCHANGE UDISKS UDISKS2 \
-	VORBIS WAVEOUT WAVPACK
+	OSS OSS4 PROJECTM PULSE QMMP_DIALOG QSUI QTMULTIMEDIA RGSCAN \
+	SB SCROBBLER SID SKINNED SNDFILE SOXR STATICON STEREO TRACKCHANGE \
+	TWO_PANEL_DIALOG UDISKS UDISKS2 VORBIS WAVEOUT WAVPACK
 
 .for pidir in ${PLUGIN_TARGETS}
 . if ${QMMPPLUGIN_TARGET} != ${pidir}

@@ -1,4 +1,5 @@
 include/qmmp/abstractengine.h
+include/qmmp/audioconverter.h
 include/qmmp/audioparameters.h
 include/qmmp/buffer.h
 include/qmmp/channelmap.h

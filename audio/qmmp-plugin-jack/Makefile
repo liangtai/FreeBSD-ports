@@ -10,7 +10,7 @@ COMMENT=	Jack output plug-in of QMMP (Qt4)
 LICENSE=	GPLv2
 
 LIB_DEPENDS+=	libjack.so:audio/jack \
-		libsamplerate.so:audio/libsamplerate
+		libsoxr.so:audio/soxr
 BUILD_DEPENDS+=	jackit>=0.121.2:audio/jack
 
 QMMPPLUGIN_TARGET=	Output/jack

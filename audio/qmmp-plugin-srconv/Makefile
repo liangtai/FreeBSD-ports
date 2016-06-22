@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	qmmp-plugin-srconv
-PORTVERSION=	${QMMP_VERSION}
+PORTVERSION=	${QMMP_PP_VERSION}
 CATEGORIES=	audio multimedia
 
 MAINTAINER=	liangtai.s16@gmail.com
@@ -16,5 +16,5 @@ USE_QT4+=	uic_build
 QMMPPLUGIN_TARGET=	Effect/srconverter
 QMMPPLUGIN_TAG=	SRC
 
-.include "${.CURDIR}/../../multimedia/qmmp/Makefile.plugin"
+.include "${.CURDIR}/../../multimedia/qmmp-plugin-pack/Makefile.plugin"
 .include <bsd.port.mk>
