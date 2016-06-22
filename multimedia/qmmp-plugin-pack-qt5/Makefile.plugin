@@ -1,6 +1,6 @@
 # $FreeBSD$
 
-QMMP_PP_VERSION=	1.0.4
+QMMP_PP_VERSION=	1.1.0
 MASTER_SITES=	http://qmmp.ylsoftware.com/files/plugins/ \
 	SF/qmmp-dev/qmmp-plugin-pack/
 DISTNAME=	qmmp-plugin-pack-${PORTVERSION}
@@ -12,7 +12,7 @@ LICENSE?=	GPLv2
 CONFLICTS=	${PORTNAME:C/-qt5//}-0.*
 
 LIB_DEPENDS+=	libqmmp.so:multimedia/qmmp-qt5-lib
-BUILD_DEPENDS+=	qmmp-qt5-lib>=1.0.0:multimedia/qmmp-qt5-lib
+BUILD_DEPENDS+=	qmmp-qt5-lib>=1.1.0:multimedia/qmmp-qt5-lib
 
 USES+=		gmake localbase pkgconfig qmake tar:bzip2
 USE_QT5+=	core gui widgets \
@@ -20,7 +20,10 @@ USE_QT5+=	core gui widgets \
 USE_LDCONFIG=	yes
 USE_GL=	gl
 
-PLUGIN_TARGETS=	Input/ffap Input/mpg123 Input/xmp
+PLUGIN_TARGETS=	Effect/srconverter Input/ffap Input/mpg123 Input/xmp
+
+PLUGINGROUPDIR=	${QMMPPLUGIN_TARGET:C|/.*$||}
+PLUGINSUBTARGETDIR=	${QMMPPLUGIN_TARGET:C|^.*/||}
 
 .for pidir in ${PLUGIN_TARGETS}
 . if ${QMMPPLUGIN_TARGET} != ${pidir}
@@ -33,6 +36,14 @@ MAKE_ARGS+=	INSTALL_ROOT=${STAGEDIR}${PREFIX}
 QMAKE_ARGS+=	CONFIG+="${QMMPPLUGIN_OPTIONS}"
 
 post-patch:
+	@${GREP} -l 'SUBDIRS.*\\$$' ${WRKSRC}/qmmp-plugin-pack.pro \
+		| ${XARGS} ${REINPLACE_CMD} \
+		-e '/SUBDIRS/,/^$$/{; s|=.*$$|= src/${PLUGINGROUPDIR}|' \
+		-e '/^[^=]*$$/d;}'
+	@${GREP} -l 'SUBDIRS ' \
+		${WRKSRC}/src/${PLUGINGROUPDIR}/${PLUGINGROUPDIR}.pro \
+		| ${XARGS} ${REINPLACE_CMD} -Ee '/(TEMPLATE|include)/!d' \
+		-e '1{; h; s/^.*$$/SUBDIRS= ${PLUGINSUBTARGETDIR}/; G;}'
 	@${REINPLACE_CMD} -e 's|^CONFIG += |#CONFIG += |' \
 		${WRKSRC}/qmmp-plugin-pack.pri
 

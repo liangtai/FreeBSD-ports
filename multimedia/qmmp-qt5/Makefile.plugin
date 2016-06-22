@@ -1,6 +1,6 @@
 # $FreeBSD$
 
-QMMP_VERSION=	1.0.10
+QMMP_VERSION=	1.1.0
 MASTER_SITES=	http://qmmp.ylsoftware.com/files/plugins/ \
 	SF/qmmp-dev/qmmp/
 DISTNAME=	qmmp-${PORTVERSION}
@@ -12,7 +12,7 @@ LICENSE?=	GPLv2
 CONFLICTS=	${PORTNAME:C/-qt5//}-0.*
 
 LIB_DEPENDS+=	libqmmp.so:multimedia/qmmp-qt5-lib
-BUILD_DEPENDS+=	qmmp-qt5-lib>=1.0.0:multimedia/qmmp-qt5-lib
+BUILD_DEPENDS+=	qmmp-qt5-lib>=1.1.0:multimedia/qmmp-qt5-lib
 
 USES+=		gmake localbase pkgconfig qmake tar:bzip2
 USE_QT5+=	core gui widgets \
@@ -22,10 +22,10 @@ USE_GL=	gl
 
 PLUGIN_TARGETS=	CommandLineOptions PlayListFormats \
 	\
-	Effect/bs2b Effect/crossfade Effect/ladspa Effect/srconverter \
+	Effect/bs2b Effect/crossfade Effect/ladspa Effect/soxr \
 	Effect/stereo \
 	Engines/mplayer \
-	FileDialogs/QmmpFileDialog \
+	FileDialogs/QmmpFileDialog FileDialogs/TwoPanelFileDialog \
 	General/converter General/copypaste General/covermanager \
 	General/fileops General/gnomehotkey General/hal General/hotkey \
 	General/kdenotify General/lyrics General/mpris General/notifier \
@@ -35,7 +35,8 @@ PLUGIN_TARGETS=	CommandLineOptions PlayListFormats \
 	Input/flac Input/gme Input/mad Input/modplug Input/mpc Input/opus \
 	Input/sid Input/sndfile Input/vorbis Input/wavpack Input/wildmidi \
 	Output/alsa Output/directsound Output/jack Output/null \
-	Output/oss Output/oss4 Output/pulseaudio Output/waveout \
+	Output/oss Output/oss4 Output/pulseaudio Output/qtmultimedia \
+	Output/waveout \
 	Transports/http Transports/mms \
 	Ui/qsui Ui/skinned \
 	Visual/analyzer Visual/projectm
