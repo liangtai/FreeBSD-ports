@@ -11,7 +11,7 @@ LICENSE=	GPLv2
 
 LIB_DEPENDS+=	libqmmp.so.0:multimedia/qmmp-lib \
 	libqmmpui.so.0:multimedia/qmmp-uilib
-BUILD_DEPENDS+=	qmmp-lib>=0.10.0:multimedia/qmmp-lib
+BUILD_DEPENDS+=	qmmp-lib>=0.11.0:multimedia/qmmp-lib
 
 USES+=	desktop-file-utils
 USE_QT4+=	network
