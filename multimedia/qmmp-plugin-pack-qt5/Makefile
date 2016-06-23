@@ -21,6 +21,7 @@ BUILD_DEPENDS=	qmmp-qt5>=1.1.0:multimedia/qmmp-qt5
 USES=		gmake pkgconfig qmake tar:bzip2
 USE_QT5=	core gui widgets \
 		buildtools_build linguisttools_build qmake_build
+USE_GL=	gl
 USE_LDCONFIG=	yes
 
 OPTIONS_SUB=	yes
