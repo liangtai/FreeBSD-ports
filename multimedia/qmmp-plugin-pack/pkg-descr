@@ -5,6 +5,6 @@ Additional plug-ins for Qt MultiMedia Player
 - FFap:		provides enhanced Monkey's Audio (APE) support
 		(24-bit samples and embedded cue support)
 - xmp:		Decodes module audio and renders sound
-- soxr:		Sample Rate Converter
+- SRCONV:		Sample Rate Converter
 
 WWW: http://qmmp.ylsoftware.com/ or https://sourceforge.net/projects/qmmp-dev/
