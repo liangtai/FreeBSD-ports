@@ -73,9 +73,9 @@ QSUI_QMAKE_CONFIG=	WITH_QSUI
 SKINNEDUI_DESC=	Skinned GUI
 SKINNEDUI_QMAKE_CONFIG=	WITH_SKINNED
 
-JACK_BUILD_DEPENDS=	jackit>=0.121.2:audio/jack \
-		libsamplerate.so:audio/libsamplerate
-JACK_LIB_DEPENDS=	libjack.so:audio/jack
+JACK_BUILD_DEPENDS=	jackit>=0.121.2:audio/jack
+JACK_LIB_DEPENDS=	libjack.so:audio/jack \
+		libsoxr.so:audio/soxr
 JACK_QMAKE_CONFIG=	JACK_PLUGIN
 
 ALSA_LIB_DEPENDS=	libasound.so:audio/alsa-lib
