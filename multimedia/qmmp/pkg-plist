@@ -51,11 +51,11 @@ include/qmmpui/uihelper.h
 include/qmmpui/uiloader.h
 lib/libqmmp.so
 lib/libqmmp.so.0
-lib/libqmmp.so.0.10
+lib/libqmmp.so.0.11
 lib/libqmmp.so.%%SHLIB_VER%%
 lib/libqmmpui.so
 lib/libqmmpui.so.0
-lib/libqmmpui.so.0.10
+lib/libqmmpui.so.0.11
 lib/libqmmpui.so.%%SHLIB_VER%%
 lib/qmmp/CommandLineOptions/libincdecvolumeoption.so
 lib/qmmp/CommandLineOptions/libplaylistoption.so
