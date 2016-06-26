@@ -75,7 +75,7 @@ SKINNEDUI_QMAKE_CONFIG=	WITH_SKINNED
 
 JACK_BUILD_DEPENDS=	jackit>=0.121.2:audio/jack
 JACK_LIB_DEPENDS=	libjack.so:audio/jack \
-		libsoxr.so:audio/soxr
+		libsoxr.so:audio/libsoxr
 JACK_QMAKE_CONFIG=	JACK_PLUGIN
 
 ALSA_LIB_DEPENDS=	libasound.so:audio/alsa-lib
@@ -87,7 +87,7 @@ BS2B_QMAKE_CONFIG=	BS2B_PLUGIN
 
 SOXR_DESC=	Support SoX Resampler
 SOXR_QMAKE_CONFIG=	SOXR_PLUGIN
-SOXR_LIB_DEPENDS=	libsoxr.so:audio/soxr
+SOXR_LIB_DEPENDS=	libsoxr.so:audio/libsoxr
 
 PULSEAUDIO_LIB_DEPENDS=	libpulse.so:audio/pulseaudio
 PULSEAUDIO_QMAKE_CONFIG=	PULSE_AUDIO_PLUGIN
