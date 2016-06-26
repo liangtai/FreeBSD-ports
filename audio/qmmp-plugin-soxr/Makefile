@@ -9,7 +9,7 @@ COMMENT=	SoX Resampler dsp-effect plug-in of QMMP (Qt4)
 
 LICENSE=	GPLv2
 
-LIB_DEPENDS+=	libsoxr.so:audio/soxr
+LIB_DEPENDS+=	libsoxr.so:audio/libsoxr
 
 USE_QT4+=	uic_build
 
