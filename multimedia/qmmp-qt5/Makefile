@@ -81,7 +81,7 @@ DIR_ASSOC_CMAKE_OFF=	-DUSE_DIR_ASSOC:BOOL=FALSE
 DIR_ASSOC_USES=	desktop-file-utils
 
 JACK_LIB_DEPENDS=	libjack.so:audio/jack \
-		libsoxr.so:audio/soxr
+		libsoxr.so:audio/libsoxr
 JACK_BUILD_DEPENDS=	jackit>=0.121.2:audio/jack
 JACK_CMAKE_ON=	-DUSE_JACK:BOOL=TRUE
 JACK_CMAKE_OFF=	-DUSE_JACK:BOOL=FALSE
@@ -220,7 +220,7 @@ NULLOUT_CMAKE_ON=	-DUSE_NULL:BOOL=TRUE
 NULLOUT_CMAKE_OFF=	-DUSE_NULL:BOOL=FALSE
 
 SOXR_DESC=	Support SoX Resampler
-SOXR_LIB_DEPENDS=	libsoxr.so:audio/soxr
+SOXR_LIB_DEPENDS=	libsoxr.so:audio/libsoxr
 SOXR_CMAKE_ON=	-DUSE_SOXR:BOOL=TRUE
 SOXR_CMAKE_OFF=	-DUSE_SOXR:BOOL=FALSE
 
