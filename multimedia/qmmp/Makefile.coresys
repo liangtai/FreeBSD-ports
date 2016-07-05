@@ -1,6 +1,6 @@
 # $FreeBSD$
 
-QMMP_VERSION=	0.10.0
+QMMP_VERSION=	0.10.1
 MASTER_SITES=	http://qmmp.ylsoftware.com/files/plugins/ \
 	SF/qmmp-dev/qmmp/
 DISTNAME=	qmmp-${PORTVERSION}
