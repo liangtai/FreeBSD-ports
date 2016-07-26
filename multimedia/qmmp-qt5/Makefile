@@ -285,6 +285,10 @@ post-patch:
 	@${GREP} -L '${LOCALBASE}/lib/oss' \
 		${WRKSRC}/src/plugins/Output/oss4/CMakeLists.txt | ${XARGS} \
 		${REINPLACE_CMD} -e 's|/usr/local/|${LOCALBASE}/|'
+# https://sourceforge.net/p/qmmp-dev/code/6598/
+	@${GREP} -l 'query(QUrl::FullyDecoded)' \
+		${WRKSRC}/src/plugins/General/scrobbler/scrobbler.cpp | ${XARGS} \
+		${REINPLACE_CMD} -e '/query/s/FullyDecoded/FullyEncoded/'
 
 pre-configure:
 	@${RM} -f ${BUILD_WRKSRC}/CMakeCache.txt
