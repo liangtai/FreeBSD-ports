@@ -16,5 +16,11 @@ USE_QT5+=	network
 QMMPPLUGIN_TARGET=	General/scrobbler
 QMMPPLUGIN_OPTIONS=
 
+post-patch:
+# https://sourceforge.net/p/qmmp-dev/code/6598/
+	@${GREP} -l 'query(QUrl::FullyDecoded)' \
+		${WRKSRC}/src/plugins/General/scrobbler/scrobbler.cpp | ${XARGS} \
+		${REINPLACE_CMD} -e '/query/s/FullyDecoded/FullyEncoded/'
+
 .include "${.CURDIR}/../../multimedia/qmmp-qt5/Makefile.plugin"
 .include <bsd.port.mk>
