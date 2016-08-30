@@ -189,10 +189,6 @@ post-patch:
 		${WRKSRC}/src/plugins/Input/mpc/mpc.pro \
 		${WRKSRC}/src/plugins/Output/oss4/oss4.pro | ${XARGS} \
 		${REINPLACE_CMD} -e 's|/usr/|${LOCALBASE}/|g'
-# https://sourceforge.net/p/qmmp-dev/code/6598/
-	@${GREP} -l 'query(QUrl::FullyDecoded)' \
-		${WRKSRC}/src/plugins/General/scrobbler/scrobbler.cpp | ${XARGS} \
-		${REINPLACE_CMD} -e '/query/s/FullyDecoded/FullyEncoded/'
 
 post-build:
 	@${GREP} -L 'libdata/pkgconfig' ${WRKSRC}/src/qmmp/Makefile \
