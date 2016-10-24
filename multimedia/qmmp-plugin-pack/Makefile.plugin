@@ -39,7 +39,7 @@ pre-configure:
 	@${GREP} -l 'add_dependencies' \
 		${WRKSRC}/src/${QMMPPLUGIN_TARGET}/CMakeLists.txt | ${XARGS} \
 		${REINPLACE_CMD} -e '/^add_dependencies/d'
-	@${RM} -f ${BUILD_WRKSRC}/CMakeCache.txt
+	@${RM} ${BUILD_WRKSRC}/CMakeCache.txt
 
 # Category/PluginModule ==> lib/qmmp/Category/libpluginmodule.so
 PLIST_FILES+=	lib/qmmp/${QMMPPLUGIN_TARGET:C@/.*$@/@}${QMMPPLUGIN_TARGET:tl:C@.*/@lib@:S@$@.so@}
