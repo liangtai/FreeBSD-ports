@@ -18,4 +18,4 @@ USE_LDCONFIG=	yes
 PLIST_SUB+=	SHLIB_VER=${PORTVERSION:C/-.*//}
 
 pre-configure:
-	@${RM} -f ${BUILD_WRKSRC}/CMakeCache.txt
+	@${RM} ${BUILD_WRKSRC}/CMakeCache.txt
