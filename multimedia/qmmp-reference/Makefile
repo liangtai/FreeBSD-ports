@@ -31,7 +31,7 @@ do-install:
 		${INSTALL_MAN} *.html *.png *.css ${STAGEDIR}${DOCSDIR}/html ; \
 	cd ${WRKSRC}/doc/html/search && \
 		${INSTALL_MAN} *.html *.png *.css *.js ${STAGEDIR}${DOCSDIR}/html/search ; \
-	${RM} -f ${WRKDIR}/PLIST.doc ; \
+	${RM} ${WRKDIR}/PLIST.doc ; \
 	${FIND} ${STAGEDIR}${DOCSDIR}/html -type f | \
 		${SED} 's|${STAGEDIR}${PREFIX}/||' \
 		>> ${WRKDIR}/PLIST.doc ; \
