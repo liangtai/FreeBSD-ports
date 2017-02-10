@@ -1,6 +1,6 @@
 # $FreeBSD$
 
-QMMP_VERSION=	0.10.5
+QMMP_VERSION=	0.10.6
 MASTER_SITES=	http://qmmp.ylsoftware.com/files/plugins/ \
 	SF/qmmp-dev/qmmp/
 DISTNAME=	qmmp-${PORTVERSION}
@@ -75,7 +75,11 @@ pre-configure:
 		-e '/target_link_libraries/s/libqmmp/-lqmmp/'
 	@${GREP} -El 'add_subd.*src/(qmmp|app)' \
 		${WRKSRC}/CMakeLists.txt | ${XARGS} ${REINPLACE_CMD} \
-		-Ee '/add_subdirectory[(]src\/(qmmp|qmmpui|app)[)]/d'
+		-Ee '/add_subdirectory[(]src\/(qmmp|qmmpui|app)[)]/d' \
+		-e '/pkg_search_module/{h;' \
+		-e 's/^.*$$/pkg_check_modules(QMMP qmmp>=0.10.0 REQUIRED)/; H;' \
+		-e 's/^.*$$/include_directories($${QMMP_INCLUDE_DIRS})/; H;' \
+		-e 's/^.*$$/link_directories($${QMMP_LIBRARY_DIRS})/; H; x;}'
 	@${RM} ${BUILD_WRKSRC}/CMakeCache.txt
 
 # Category/PluginModule ==> lib/qmmp/Category/libpluginmodule.so
