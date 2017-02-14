@@ -210,7 +210,8 @@ post-build-DOXYGEN-on:
 	cd ${WRKSRC}/doc && doxygen Doxyfile
 
 pre-install:
-	@${FIND} ${WRKSRC}/lib/ -type f -name 'lib*' -exec ${STRIP_CMD} {} +
+	@${FIND} ${WRKSRC}/lib/ -type f -name 'lib*' | ${GREP} -v \.prl$$ | \
+		${XARGS} ${STRIP_CMD}
 
 pre-install-SKINNEDUI-on:
 	${STRIP_CMD} ${WRKSRC}/bin/qmmp
