@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	qmmp
-PORTVERSION=	0.10.6
+PORTVERSION=	0.10.7
 CATEGORIES=	multimedia
 MASTER_SITES=	# empty
 EXTRACT_ONLY=	# empty
