@@ -86,6 +86,7 @@ lib/qmmp/CommandLineOptions/libstatusoption.so
 %%UDISKS%%lib/qmmp/General/libudisks.so
 %%UDISKS2%%lib/qmmp/General/libudisks2.so
 %%FAAD%%lib/qmmp/Input/libaac.so
+%%ARCHIVE%%lib/qmmp/Input/libarchive.so
 %%CDDA%%lib/qmmp/Input/libcdaudio.so
 %%CUE%%lib/qmmp/Input/libcue.so
 %%FFMPEG%%lib/qmmp/Input/libffmpeg.so
