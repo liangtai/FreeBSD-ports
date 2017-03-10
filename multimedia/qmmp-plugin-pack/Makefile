@@ -15,8 +15,8 @@ USES=		metaport
 
 OPTIONS_SUB=	yes
 OPTIONS_MULTI=	PLUGINS
-OPTIONS_MULTI_PLUGINS=	FFAP MPG123 SRCONV XMP
-OPTIONS_DEFAULT=	FFAP MPG123 SRCONV XMP
+OPTIONS_MULTI_PLUGINS=	FFAP GOOM MPG123 SRCONV XMP
+OPTIONS_DEFAULT=	FFAP GOOM MPG123 SRCONV XMP
 
 QMMPLIBDIR=	${LOCALBASE}/lib/qmmp
 
@@ -27,5 +27,7 @@ SRCONV_DESC=	Support the sample rate converter
 SRCONV_RUN_DEPENDS=	${QMMPLIBDIR}/Effect/libsrconverter.so:audio/qmmp-plugin-srconv
 XMP_DESC=	Support various module formats using libxmp
 XMP_RUN_DEPENDS=	${QMMPLIBDIR}/Input/libxmp.so:audio/qmmp-plugin-xmp
+GOOM_DESC=	Goom visual effect
+GOOM_RUN_DEPENDS=	${QMMPLIBDIR}/Visual/libgoom.so:graphics/qmmp-plugin-goom
 
 .include <bsd.port.mk>
