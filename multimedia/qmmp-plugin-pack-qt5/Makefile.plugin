@@ -19,8 +19,9 @@ USE_QT5+=	core gui widgets \
 		buildtools_build linguisttools_build qmake_build
 USE_LDCONFIG=	yes
 
-PLUGIN_TARGETS=	Effect/srconverter Input/ffap Input/mpg123 Input/xmp
-PLUGIN_TAGS=	FFAP MPG123 SRC XMP
+PLUGIN_TARGETS=	Effect/srconverter Input/ffap Input/mpg123 Input/xmp \
+		Visual/goom
+PLUGIN_TAGS=	FFAP GOOM MPG123 SRC XMP
 
 .for pidir in ${PLUGIN_TARGETS}
 . if ${QMMPPLUGIN_TARGET} != ${pidir}
