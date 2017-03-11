@@ -30,7 +30,8 @@ PLUGIN_TARGETS=	CommandLineOptions PlayListFormats \
 	General/rgscan General/scrobbler General/statusicon \
 	General/streambrowser General/trackchange General/udisks \
 	General/udisks2 \
-	Input/aac Input/cdaudio Input/cue Input/ffmpeg Input/ffmpeg_legacy \
+	Input/archive Input/aac Input/cdaudio Input/cue \
+	Input/ffmpeg Input/ffmpeg_legacy \
 	Input/flac Input/gme Input/mad Input/modplug Input/mpc Input/opus \
 	Input/sid Input/sndfile Input/vorbis Input/wavpack Input/wildmidi \
 	Output/alsa Output/directsound Output/jack Output/null \
@@ -40,8 +41,8 @@ PLUGIN_TARGETS=	CommandLineOptions PlayListFormats \
 	Ui/qsui Ui/skinned \
 	Visual/analyzer Visual/projectm
 
-PLUGIN_TAGS=	AAC ALSA ANALYZER BS2B CDA CONVERTER COPYPASTE COVER \
-	CROSSFADE CUE CURL DIR_ASSOC DSOUND ENCA FFMPEG FFMPEG_LEGACY \
+PLUGIN_TAGS=	ARCHIVE AAC ALSA ANALYZER BS2B CDA CONVERTER COPYPASTE \
+	COVER CROSSFADE CUE CURL DIR_ASSOC DSOUND ENCA FFMPEG FFMPEG_LEGACY \
 	FILEOPS FLAC GME GNOMEHOTKEY HAL HOTKEY JACK KDENOTIFY LADSPA \
 	LYRICS MAD MIDI MMS MODPLUG MPC MPLAYER MPRIS NOTIFIER NULL OPUS \
 	OSS OSS4 PROJECTM PULSE QMMP_DIALOG QSUI QTMULTIMEDIA RGSCAN \
