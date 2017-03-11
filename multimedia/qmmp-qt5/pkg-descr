@@ -11,7 +11,7 @@ DSP effects:
 Visual effects:
 	Spectrum Analyzer, and projectM audio visulaliser
 Output system support:
-	PulseAudio, OSS, OSS4, jack, ALSA, and Qt multimedia API
+	PulseAudio, OSS, OSS4, jack, ALSA, Qt multimedia API, and shoutcast
 Other features:
 	multi-band equalizer, Last.fm/Libre.fm scrobbler, global hotkey,
 	streaming (MP3, Vorbis, AAC, AAC+ via IceCast/ShoutCast) and browser,
