@@ -61,7 +61,7 @@ pre-configure:
 		| ${XARGS} ${REINPLACE_CMD} \
 		-e '/SUBDIRS/,/^$$/{; s/=.*$$/= ${PLUGINGROUPDIR}/' \
 		-e '/^[^=]*$$/d;}; /unix:/d'
-	@${GREP} -L 'CONFIG' ${WRKSRC}/src/plugins/plugins.pri \
+	@${GREP} -L 'PKGCONFIG' ${WRKSRC}/src/plugins/plugins.pri \
 		| ${XARGS} ${REINPLACE_CMD} \
 		-e '/^INCLUDEPATH/{; s/^.*$$/PKGCONFIG += qmmp/; h; \
 			s/PKG//; s/qmmp/link_pkgconfig/; G;}'
