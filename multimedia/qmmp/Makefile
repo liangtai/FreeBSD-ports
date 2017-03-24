@@ -88,7 +88,6 @@ BS2B_DESC=	Support the Bauer stereophonic2binaural effect
 BS2B_LIB_DEPENDS=	libbs2b.so:audio/libbs2b
 BS2B_QMAKE_CONFIG=	BS2B_PLUGIN
 
-SOXR_DESC=	Support SoX Resampler
 SOXR_QMAKE_CONFIG=	SOXR_PLUGIN
 SOXR_LIB_DEPENDS=	libsoxr.so:audio/libsoxr
 
