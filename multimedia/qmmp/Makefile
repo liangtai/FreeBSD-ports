@@ -108,7 +108,6 @@ BS2B_RUN_DEPENDS=	${QMMPLIBDIR}/Effect/libbs2b.so:audio/qmmp-plugin-bs2b
 CROSSFADE_DESC=	Support cross-fade effect
 CROSSFADE_RUN_DEPENDS=	${QMMPLIBDIR}/Effect/libcrossfade.so:audio/qmmp-plugin-crossfade
 LADSPA_RUN_DEPENDS=	${QMMPLIBDIR}/Effect/libladspa.so:audio/qmmp-plugin-ladspa
-SOXR_DESC=	Support SoX Resampler
 SOXR_RUN_DEPENDS=	${QMMPLIBDIR}/Effect/libsoxr.so:audio/qmmp-plugin-soxr
 STEREO_DESC=	Support stereo effect
 STEREO_RUN_DEPENDS=	${QMMPLIBDIR}/Effect/libstereo.so:audio/qmmp-plugin-stereo
