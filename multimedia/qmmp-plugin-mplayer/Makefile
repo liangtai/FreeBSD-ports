@@ -9,14 +9,8 @@ COMMENT=	MPlayer plug-in of QMMP (Qt4)
 
 LICENSE=	GPLv2
 
-OPTIONS_SINGLE=	MPLAYER
-OPTIONS_SINGLE_MPLAYER=	MPLAYER1 MPLAYER2
-OPTIONS_DEFAULT=	MPLAYER1
-
-MPLAYER1_DESC=	mplayer-1.x (multimedia/mplayer)
-MPLAYER2_DESC=	mplayer-2.x (multimedia/mplayer2)
-MPLAYER1_RUN_DEPENDS+=	mplayer:multimedia/mplayer
-MPLAYER2_RUN_DEPENDS+=	mplayer:multimedia/mplayer2
+MPLAYER_DESC=	Enable showing videos by mplayer
+MPLAYER_RUN_DEPENDS+=	mplayer:multimedia/mplayer
 
 USE_QT4+=	uic_build
 
