@@ -161,6 +161,7 @@ WILDMIDI_DESC=	Support to playback MIDI files
 WILDMIDI_LIB_DEPENDS=	libWildMidi.so:audio/wildmidi
 WILDMIDI_QMAKE_CONFIG=	WILDMIDI_PLUGIN
 
+.include <bsd.port.options.mk>
 .include "options.qmake.mk"
 
 PLIST_SUB+=	SHLIB_VER=${PORTVERSION:C/-.*//}
