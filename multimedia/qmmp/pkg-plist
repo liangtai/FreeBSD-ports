@@ -63,6 +63,7 @@ lib/qmmp/CommandLineOptions/libseekoption.so
 lib/qmmp/CommandLineOptions/libstatusoption.so
 %%LADSPA%%lib/qmmp/Effect/libladspa.so
 %%BS2B%%lib/qmmp/Effect/libbs2b.so
+%%FILEWRITER%%lib/qmmp/Effect/libfilewriter.so
 %%SOXR%%lib/qmmp/Effect/libsoxr.so
 lib/qmmp/Effect/libstereo.so
 lib/qmmp/Effect/libcrossfade.so
