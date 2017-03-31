@@ -47,10 +47,10 @@ PLUGIN_NETWORKING_DESC=	Features via the Net
 OPTIONS_GROUP_PLUGIN_NETWORKING=	COVER CURL LYRICS MMS SB SCROBBLER
 
 MISC_DESC=	Other features
-OPTIONS_GROUP_MISC=	CONVERTER CUE MPLAYER MPRIS RGSCAN SID
+OPTIONS_GROUP_MISC=	CONVERTER CUE FILEWRITER MPLAYER MPRIS RGSCAN SID
 
 OPTIONS_DEFAULT=	APP ALSA ANALYZER BS2B CDDA CONVERTER COPYPASTE COVER \
-		CROSSFADE CUE CURL FAAD FFMPEG FILEOPS FLAC \
+		CROSSFADE CUE CURL FAAD FFMPEG FILEOPS FILEWRITER FLAC \
 		GNOMEHOTKEY GME HAL HOTKEY JACK KDENOTIFY LADSPA LYRICS MAD \
 		MMS MODPLUG MPRIS MPLAYER MUSEPACK NOTIFIER NULLOUT \
 		OPUS OSS4 PROJECTM PULSEAUDIO QMMP_DIALOG QSUI QTMULTIMEDIA RGSCAN \
@@ -152,10 +152,12 @@ SB_RUN_DEPENDS=	${QMMPLIBDIR}/General/libstreambrowser.so:audio/qmmp-plugin-stre
 SCROBBLER_DESC=	Support Libre.fm/Last.fm scrobbler feature
 SCROBBLER_RUN_DEPENDS=	${QMMPLIBDIR}/General/libscrobbler.so:net/qmmp-plugin-scrobbler
 
-MPLAYER_RUN_DEPENDS=	${QMMPLIBDIR}/Engines/libmplayer.so:multimedia/qmmp-plugin-mplayer
 CONVERTER_DESC=	Support file type converter
 CONVERTER_RUN_DEPENDS=	${QMMPLIBDIR}/General/libconverter.so:audio/qmmp-plugin-converter
 CUE_RUN_DEPENDS=	${QMMPLIBDIR}/Input/libcue.so:audio/qmmp-plugin-cue
+FILEWRITER_DESC=	Dump output sound into vorbis audio file
+FILEWRITER_RUN_DEPENDS=	${QMMPLIBDIR}/Effects/libfilewriter.so:audio/qmmp-plugin-filewriter
+MPLAYER_RUN_DEPENDS=	${QMMPLIBDIR}/Engines/libmplayer.so:multimedia/qmmp-plugin-mplayer
 MPRIS_DESC=	Support the Media Player Remote
 MPRIS_RUN_DEPENDS=	${QMMPLIBDIR}/General/libmpris.so:audio/qmmp-plugin-mpris
 RGSCAN_DESC=	ReplayGain scanner
