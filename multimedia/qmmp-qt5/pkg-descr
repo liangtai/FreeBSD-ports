@@ -19,6 +19,6 @@ Other features:
 	multiple playlists, file type determination and converter, ReplayGain,
 	CUE sheet, embedded CUE (for FLAC and WavPack), MPRIS, archived media,
 	automatic charset detection for cue files and ShoutCast metadata,
-	video playback via Mplayer, lyrics (using lyrics.wikia.com), simple
+	video playback via Mplayer, dump, lyrics (using lyrics.wikia.com), simple
 	UI, and skinned UI (supports all skins for XMMS and Winamp 2.x)
 WWW: http://qmmp.ylsoftware.com/ or https://sourceforge.net/projects/qmmp-dev/
