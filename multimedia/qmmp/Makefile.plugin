@@ -69,14 +69,17 @@ pre-configure:
 	@${GREP} -El 'PlayListFormats|CommandLineOptions' \
 		${WRKSRC}/src/plugins/CMakeLists.txt | ${XARGS} \
 		${REINPLACE_CMD} -e '/PlayListFormats/,/CommandLineOptions/d'
-	@${GREP} -El 'target_link_libraries.*libqmmp|add_dependencies' \
-		${WRKSRC}/src/plugins/${QMMPPLUGIN_TARGET}/CMakeLists.txt | ${XARGS} \
-		${REINPLACE_CMD} -e '/CMAKE_CURRENT_.*\/\.\.\/\.\.\/\.\.\//d' \
-		-e '/^add_dependencies/d' \
+	@${GREP} -El '^add_dep|/\.\./\.\./\.\./|^target_link_lib.*libqmmp' \
+		${WRKSRC}/src/plugins/${QMMPPLUGIN_TARGET}/CMakeLists.txt | \
+		${XARGS} ${REINPLACE_CMD} -e '/^add_dependencies/d' \
+		-e '/CMAKE_CURRENT_.*\/\.\.\/\.\.\/\.\.\//{;/include_dir/d; \
+			s/\(link_dir.*\)[(].*$$/\1($${QMMP_LIBRARY_DIRS})/; h; \
+			s/^.*$$/pkg_check_module(QMMP qmmp>=0.11.0 REQUIRED)/; G;}' \
 		-e '/target_link_libraries/s/libqmmp/-lqmmp/'
-	@${GREP} -El 'add_subd.*src/(qmmp|app)' \
+	@${GREP} -El 'add_subd.*src/(qmmp|app)|find_package.* REQUIRED' \
 		${WRKSRC}/CMakeLists.txt | ${XARGS} ${REINPLACE_CMD} \
-		-Ee '/add_subdirectory[(]src\/(qmmp|qmmpui|app)[)]/d'
+		-Ee '/add_subdirectory[(]src\/(qmmp|qmmpui|app)[)]/d' \
+		-e '/find_package[(]Qt5/s/ REQUIRED//'
 	@${RM} ${BUILD_WRKSRC}/CMakeCache.txt
 
 # Category/PluginModule ==> lib/qmmp/Category/libpluginmodule.so
