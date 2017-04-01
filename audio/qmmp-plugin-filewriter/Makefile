@@ -14,5 +14,5 @@ LIB_DEPENDS+=	libvorbisenc.so:audio/libvorbis
 QMMPPLUGIN_TARGET=	Effect/filewriter
 QMMPPLUGIN_TAG=	FILEWRITER
 
-.include "${.CURDIR}/../../multimedia/qmmp-qt5/Makefile.plugin"
+.include "${.CURDIR}/../../multimedia/qmmp/Makefile.plugin"
 .include <bsd.port.mk>
