@@ -9,7 +9,8 @@ COMMENT=	recording plug-in of QMMP (Qt5)
 
 LICENSE=	GPLv2
 
-LIB_DEPENDS+=	libvorbisenc.so:audio/libvorbis
+LIB_DEPENDS+=	libvorbisenc.so:audio/libvorbis \
+	libqmmpui.so:multimedia/qmmp-qt5-uilib
 
 QMMPPLUGIN_TARGET=	Effect/filewriter
 QMMPPLUGIN_TAG=	FILEWRITER
