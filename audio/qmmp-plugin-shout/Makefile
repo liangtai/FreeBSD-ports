@@ -11,7 +11,7 @@ LICENSE=	GPLv2
 
 LIB_DEPENDS+=	libogg.so:audio/libogg \
 		libshout.so:audio/libshout \
-		libsoxr.so:Uaudio/libsoxr \
+		libsoxr.so:audio/libsoxr \
 		libvorbis.so:audio/libvorbis
 
 QMMPPLUGIN_TARGET=	Output/shout
