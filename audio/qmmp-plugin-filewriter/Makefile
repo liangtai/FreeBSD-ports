@@ -12,6 +12,8 @@ LICENSE=	GPLv2
 LIB_DEPENDS+=	libvorbisenc.so:audio/libvorbis \
 	libqmmpui.so:multimedia/qmmp-uilib
 
+USE_QT4+=	uic_build
+
 QMMPPLUGIN_TARGET=	Effect/filewriter
 QMMPPLUGIN_OPTIONS=	FILEWRITER_PLUGIN
 
