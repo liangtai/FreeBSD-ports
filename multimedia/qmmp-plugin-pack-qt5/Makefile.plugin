@@ -44,8 +44,9 @@ post-patch:
 		${WRKSRC}/src/${PLUGINGROUPDIR}/${PLUGINGROUPDIR}.pro \
 		| ${XARGS} ${REINPLACE_CMD} -Ee '/(TEMPLATE|include)/!d' \
 		-e '1{; h; s/^.*$$/SUBDIRS= ${PLUGINSUBTARGETDIR}/; G;}'
-	@${REINPLACE_CMD} -e 's|^CONFIG += |#CONFIG += |' \
-		${WRKSRC}/qmmp-plugin-pack.pri
+	@${GREP} -lE '/usr/include|^CONFIG' ${WRKSRC}/qmmp-plugin-pack.pri \
+		| ${XARGS} ${REINPLACE_CMD} \
+		-e '/\/usr\/include/d' -e 's/^CONFIG += /#CONFIG += /'
 
 post-install:
 	@${FIND} ${STAGEDIR}${PREFIX}/lib -type f -exec ${STRIP_CMD} {} +
