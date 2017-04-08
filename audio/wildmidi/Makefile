@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	wildmidi
-PORTVERSION=	0.4.0
+PORTVERSION=	0.4.1
 DISTVERSIONPREFIX=	${PORTNAME}-
 CATEGORIES=	audio
 
@@ -64,8 +64,9 @@ post-patch:
 		${WRKSRC}/CMakeLists.txt | ${XARGS} \
 		${REINPLACE_CMD} -e 's@/etc/wildmidi/@${DATADIR}/@' \
 		-e 's@/etc/@${DATADIR}/@'
-	@${GREP} -l share/man ${WRKSRC}/src/CMakeLists.txt | ${XARGS} \
-		${REINPLACE_CMD} '/INSTALL/s@share/man@man@'
+	@${GREP} -lE 'share/man|}/pkgconfig' ${WRKSRC}/src/CMakeLists.txt \
+		| ${XARGS} ${REINPLACE_CMD} -e '/INSTALL/s@share/man@man@' \
+		-e '/pkgconfig/s/$${WILDMIDILIB_INSTALLDIR}/libdata/'
 
 pre-install:
 	@${RM} ${WRKSRC}/docs/man/man1/wildmidi.1${REINPLACE_ARGS:S/-i//} \
