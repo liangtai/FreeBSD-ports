@@ -63,6 +63,11 @@ XMP_QMAKE_CONFIG=	XMP_PLUGIN
 _DESTDIR_VIA_ENV=	no
 MAKE_ARGS+=	INSTALL_ROOT=${STAGEDIR}${PREFIX}
 
+# For CLang, avoid to pass '-isystem /usr/include' to INCPATH.
+post-patch:
+	@${GREP} -l '/usr/include' ${WRKSRC}/qmmp-plugin-pack.pri | ${XARGS} \
+		${REINPLACE_CMD} -e '/\/usr\/include/d'
+
 pre-install:
 	@${FIND} ${WRKSRC}/lib/ -type f -exec ${STRIP_CMD} {} +
 
