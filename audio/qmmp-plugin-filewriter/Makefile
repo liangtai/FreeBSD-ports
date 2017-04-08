@@ -1,6 +1,6 @@
 # $FreeBSD$
 
-PORTNAME=	qmmp-qt5-plugin-filewriter
+PORTNAME=	qmmp-plugin-filewriter
 PORTVERSION=	${QMMP_VERSION}
 CATEGORIES=	audio multimedia
 
