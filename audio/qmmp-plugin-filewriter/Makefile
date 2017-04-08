@@ -1,6 +1,6 @@
 # $FreeBSD$
 
-PORTNAME=	qmmp-qt5-plugin-filewriter
+PORTNAME=	qmmp-plugin-filewriter
 PORTVERSION=	${QMMP_VERSION}
 CATEGORIES=	audio multimedia
 
@@ -9,7 +9,8 @@ COMMENT=	recording plug-in of QMMP (Qt5)
 
 LICENSE=	GPLv2
 
-LIB_DEPENDS+=	libvorbisenc.so:audio/libvorbis
+LIB_DEPENDS+=	libvorbisenc.so:audio/libvorbis \
+	libqmmpui.so:multimedia/qmmp-uilib
 
 QMMPPLUGIN_TARGET=	Effect/filewriter
 QMMPPLUGIN_OPTIONS=	FILEWRITER_PLUGIN
