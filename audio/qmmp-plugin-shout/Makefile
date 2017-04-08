@@ -14,6 +14,8 @@ LIB_DEPENDS+=	libogg.so:audio/libogg \
 		libsoxr.so:audio/libsoxr \
 		libvorbis.so:audio/libvorbis
 
+USE_QT4+=	uic_build
+
 QMMPPLUGIN_TARGET=	Output/shout
 QMMPPLUGIN_TAG=	SHOUT
 
