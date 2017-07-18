@@ -17,7 +17,7 @@ PORTSCOUT=	ignore:^0\.3\.9
 USE_GITHUB=	yes
 GH_ACCOUNT=	Mindwerks
 
-USES=		gmake cmake:outsource
+USES=		cmake:outsource
 USE_LDCONFIG=	yes
 
 OPTIONS_SUB=	yes
