@@ -10,6 +10,7 @@ COMMENT=	Removable disc detecting plug-in of QMMP (Qt4)
 LICENSE=	GPLv2
 
 LIB_DEPENDS+=	libqmmpui.so:multimedia/qmmp-uilib
+RUN_DEPENDS+=	bsdisks:sysutils/bsdisks
 
 USE_QT4+=	dbus uic_build
 
