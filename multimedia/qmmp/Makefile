@@ -253,6 +253,7 @@ TRACKCHANGE_CMAKE_BOOL=	USE_TRACKCHANGE
 
 UDISKS_DESC=	Support removable disc detection (obsolete)
 UDISKS2_DESC=	Support removable disc detection using UDisks
+UDISKS2_RUN_DEPENDS=	bsdisks:sysutils/bsdisks
 UDISKS_USE=	QT4=dbus
 UDISKS2_USE=	QT4=dbus
 UDISKS_CMAKE_BOOL=	USE_UDISKS
