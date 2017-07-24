@@ -252,6 +252,7 @@ TRACKCHANGE_DESC=	Enable to run external command each track
 TRACKCHANGE_CMAKE_BOOL=	USE_TRACKCHANGE
 
 UDISKS2_DESC=	Support removable disc detection using UDisks
+UDISKS2_RUN_DEPENDS=	bsdisks:sysutils/bsdisks
 UDISKS2_USE=	QT5=dbus
 UDISKS2_CMAKE_BOOL=	USE_UDISKS2
 
