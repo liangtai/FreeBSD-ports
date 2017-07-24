@@ -155,6 +155,7 @@ HAL_QMAKE_CONFIG=	HAL_PLUGIN
 
 UDISKS_DESC=	Support removable disc detection (obsolete)
 UDISKS2_DESC=	Support removable disc detection using UDisks
+UDISKS2_RUN_DEPENDS=	bsdisks:sysutils/bsdisks
 UDISKS_QMAKE_CONFIG=	UDISKS_PLUGIN
 UDISKS2_QMAKE_CONFIG=	UDISKS2_PLUGIN
 
