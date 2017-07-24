@@ -155,6 +155,7 @@ HAL_LIB_DEPENDS=	libhal.so:sysutils/hal
 HAL_QMAKE_CONFIG=	HAL_PLUGIN
 
 UDISKS2_DESC=	Support removable disc detection using UDisks
+UDISKS2_RUN_DEPENDS=	bsdisks:sysutils/bsdisks
 UDISKS2_QMAKE_CONFIG=	UDISKS2_PLUGIN
 
 WILDMIDI_DESC=	Support to playback MIDI files
