@@ -7,5 +7,6 @@ Additional plug-ins for Qt MultiMedia Player
 - Goom:		Goom spectacle
 - xmp:		Decodes module audio and renders sound
 - Sample Rate Converter:	Changes frequency of sample rate.
+- History:	Collects information about listend tracks.
 
 WWW: http://qmmp.ylsoftware.com/ or https://sourceforge.net/projects/qmmp-dev/
