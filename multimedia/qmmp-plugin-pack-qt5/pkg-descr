@@ -8,5 +8,6 @@ Additional plug-ins for Qt MultiMedia Player
 - xmp:		Decodes module audio and renders sound
 - Sample Rate Converter:	Changes frequency of sample rate.
 - History:	Collects information about listend tracks.
+- FFvideo:	FFmpeg-based video
 
 WWW: http://qmmp.ylsoftware.com/ or https://sourceforge.net/projects/qmmp-dev/
