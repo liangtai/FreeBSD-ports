@@ -8,6 +8,7 @@ include/qmmpui/general.h
 include/qmmpui/generalfactory.h
 include/qmmpui/mediaplayer.h
 include/qmmpui/metadataformatter.h
+include/qmmpui/metadataformattermenu.h
 include/qmmpui/playlistdownloader.h
 include/qmmpui/playlistformat.h
 include/qmmpui/playlistgroup.h
