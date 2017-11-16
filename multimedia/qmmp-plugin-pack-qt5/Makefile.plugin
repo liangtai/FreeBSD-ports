@@ -19,7 +19,7 @@ USE_QT5+=	core gui widgets \
 		buildtools_build linguisttools_build qmake_build
 USE_LDCONFIG=	yes
 
-PLUGIN_TARGETS=	Effect/srconverter General/history \
+PLUGIN_TARGETS=	Effect/srconverter Engines/ffvideo General/history \
 		Input/ffap Input/mpg123 Input/xmp Visual/goom
 
 PLUGINGROUPDIR=	${QMMPPLUGIN_TARGET:C|/.*$||}
