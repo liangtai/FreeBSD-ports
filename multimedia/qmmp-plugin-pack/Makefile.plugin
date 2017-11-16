@@ -18,9 +18,9 @@ USES+=		cmake:outsource localbase pkgconfig tar:bzip2
 USE_QT4+=	corelib gui linguisttools_build moc_build qmake_build rcc_build
 USE_LDCONFIG=	yes
 
-PLUGIN_TARGETS=	Effect/srconverter Input/ffap Input/mpg123 Input/xmp \
-		Visual/goom
-PLUGIN_TAGS=	FFAP GOOM MPG123 SRC XMP
+PLUGIN_TARGETS=	Effect/srconverter General/history \
+		Input/ffap Input/mpg123 Input/xmp Visual/goom
+PLUGIN_TAGS=	FFAP GOOM HISTORY MPG123 SRC XMP
 
 .for pidir in ${PLUGIN_TARGETS}
 . if ${QMMPPLUGIN_TARGET} != ${pidir}
