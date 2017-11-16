@@ -15,13 +15,15 @@ USES=		metaport
 
 OPTIONS_SUB=	yes
 OPTIONS_MULTI=	PLUGINS
-OPTIONS_MULTI_PLUGINS=	FFAP GOOM HISTORY MPG123 SRCONV XMP
-OPTIONS_DEFAULT=	FFAP GOOM HISTORY MPG123 XMP
+OPTIONS_MULTI_PLUGINS=	FFAP FFVIDEO GOOM HISTORY MPG123 SRCONV XMP
+OPTIONS_DEFAULT=	FFAP FFVIDEO GOOM HISTORY MPG123 XMP
 
 QMMPLIBDIR=	${LOCALBASE}/lib/qmmp
 
 FFAP_DESC=		Support APE sound file
 FFAP_RUN_DEPENDS=	${QMMPLIBDIR}/Input/libffap.so:audio/qmmp-plugin-ffap
+FFVIDEO_DESC=	FFmpeg-based movie player
+FFVIDEO_RUN_DEPENDS=	${QMMPLIBDIR}/Engines/libffvideo.so:multimedia/qmmp-plugin-ffvideo
 HISTORY_DESC=	Collects information about listened tracks
 HISTORY_RUN_DEPENDS=	${QMMPLIBDIR}/General/libhistory.so:multimedia/qmmp-plugin-history
 MPG123_RUN_DEPENDS=	${QMMPLIBDIR}/Input/libmpg123.so:audio/qmmp-plugin-mpg123
