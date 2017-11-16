@@ -15,13 +15,15 @@ USES=		metaport
 
 OPTIONS_SUB=	yes
 OPTIONS_MULTI=	PLUGINS
-OPTIONS_MULTI_PLUGINS=	FFAP GOOM MPG123 SRCONV XMP
-OPTIONS_DEFAULT=	FFAP GOOM MPG123 SRCONV XMP
+OPTIONS_MULTI_PLUGINS=	FFAP GOOM HISTORY MPG123 SRCONV XMP
+OPTIONS_DEFAULT=	FFAP GOOM HISTORY MPG123 XMP
 
 QMMPLIBDIR=	${LOCALBASE}/lib/qmmp
 
 FFAP_DESC=		Support APE sound file
 FFAP_RUN_DEPENDS=	${QMMPLIBDIR}/Input/libffap.so:audio/qmmp-plugin-ffap
+HISTORY_DESC=	Collects information about listened tracks
+HISTORY_RUN_DEPENDS=	${QMMPLIBDIR}/General/libhistory.so:multimedia/qmmp-plugin-history
 MPG123_RUN_DEPENDS=	${QMMPLIBDIR}/Input/libmpg123.so:audio/qmmp-plugin-mpg123
 SRCONV_DESC=	Support the sample rate converter
 SRCONV_RUN_DEPENDS=	${QMMPLIBDIR}/Effect/libsrconverter.so:audio/qmmp-plugin-srconv
