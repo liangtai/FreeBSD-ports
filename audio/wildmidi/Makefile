@@ -11,9 +11,6 @@ COMMENT=	Simple software midi player and core softsynth library
 # player: GPLv3, library: LGPL3
 LICENSE=	LGPL3
 
-CONFLICTS=	${PORTNAME}03-0\.3\..*
-PORTSCOUT=	ignore:^0\.3\.9
-
 USE_GITHUB=	yes
 GH_ACCOUNT=	Mindwerks
 
