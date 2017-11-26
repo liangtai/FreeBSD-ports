@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	qmmp-plugin-pack
-PORTVERSION=	1.2.0
+PORTVERSION=	1.3.0
 CATEGORIES=	multimedia
 MASTER_SITES=	http://qmmp.ylsoftware.com/files/plugins/ \
 	SF/qmmp-dev/${PORTNAME}/
@@ -16,7 +16,7 @@ CONFLICTS=	${PORTNAME}-0.*
 PORTSCOUT=	limit:^1\..*
 
 LIB_DEPENDS=	libqmmpui.so:multimedia/qmmp-qt5
-BUILD_DEPENDS=	qmmp-qt5>=1.2.0:multimedia/qmmp-qt5
+BUILD_DEPENDS=	qmmp-qt5>=1.3.0:multimedia/qmmp-qt5
 
 USES=		cmake:outsource pkgconfig tar:bzip2
 USE_QT5=	core gui widgets \
