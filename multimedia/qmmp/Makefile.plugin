@@ -79,6 +79,10 @@ pre-configure:
 	@${GREP} -El 'add_subd.*src/(qmmp|app)|find_package.* REQUIRED' \
 		${WRKSRC}/CMakeLists.txt | ${XARGS} ${REINPLACE_CMD} \
 		-Ee '/add_subdirectory[(]src\/(qmmp|qmmpui|app)[)]/d' \
+		-e '/pkg_search_module/{h;' \
+		-e 's/^.*$$/pkg_check_modules(QMMP qmmp>=0.12.0 REQUIRED)/; H;' \
+		-e 's/^.*$$/include_directories($${QMMP_INCLUDE_DIRS})/; H;' \
+		-e 's/^.*$$/link_directories($${QMMP_LIBRARY_DIRS})/; H; x;}' \
 		-e '/find_package[(]Qt5/s/ REQUIRED//'
 	@${RM} ${BUILD_WRKSRC}/CMakeCache.txt
 
