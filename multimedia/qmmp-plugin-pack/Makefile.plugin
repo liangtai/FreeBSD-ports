@@ -1,6 +1,6 @@
 # $FreeBSD$
 
-QMMP_PP_VERSION=	0.11.0
+QMMP_PP_VERSION=	0.12.0
 MASTER_SITES=	http://qmmp.ylsoftware.com/files/plugins/ \
 	SF/qmmp-dev/qmmp-plugin-pack/
 DISTNAME=	qmmp-plugin-pack-${PORTVERSION}
@@ -12,7 +12,7 @@ LICENSE?=	GPLv2
 CONFLICTS=	${PORTNAME:C/qmmp-/qmmp-qt5-/}-1.*
 
 LIB_DEPENDS+=	libqmmp.so:multimedia/qmmp-lib
-BUILD_DEPENDS+=	qmmp-lib>=0.11.0:multimedia/qmmp-lib
+BUILD_DEPENDS+=	qmmp-lib>=0.12.0:multimedia/qmmp-lib
 
 USES+=		cmake:outsource localbase pkgconfig tar:bzip2
 USE_QT4+=	corelib gui linguisttools_build moc_build qmake_build rcc_build

@@ -18,7 +18,7 @@ DIR_ASSOC_USES=	desktop-file-utils
 
 LIB_DEPENDS+=	libqmmp.so.0:multimedia/qmmp-lib \
 	libqmmpui.so.0:multimedia/qmmp-uilib
-BUILD_DEPENDS+=	qmmp-lib>=0.11.0:multimedia/qmmp-lib
+BUILD_DEPENDS+=	qmmp-lib>=0.12.0:multimedia/qmmp-lib
 
 USE_QT4+=	network linguisttools_build
 
@@ -32,7 +32,7 @@ post-patch:
 	@${GREP} -El 'add_subdirectory.*src/qmmp' \
 		${WRKSRC}/CMakeLists.txt | ${XARGS} ${REINPLACE_CMD} \
 		-Ee '/^add_subdirectory[(]src\/(qmmp|qmmpui)[)]/d' \
-		-e '/pkg_search_module/{; h; s/X11 x11/QMMP qmmp>=0.11/; G;}'
+		-e '/pkg_search_module/{; h; s/X11 x11/QMMP qmmp>=0.12/; G;}'
 	@${GREP} -El 'target_link_libraries.*libqmmp|add_dependencies' \
 		${WRKSRC}/src/app/CMakeLists.txt | ${XARGS} \
 		${REINPLACE_CMD} -e '/^add_dependencies/d' \
@@ -49,3 +49,4 @@ post-patch:
 
 .include "${.CURDIR}/../../multimedia/qmmp/Makefile.coresys"
 .include <bsd.port.mk>
+
