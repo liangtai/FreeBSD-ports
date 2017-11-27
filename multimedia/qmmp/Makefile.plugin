@@ -1,6 +1,6 @@
 # $FreeBSD$
 
-QMMP_VERSION=	0.10.11
+QMMP_VERSION=	0.11.0
 MASTER_SITES=	http://qmmp.ylsoftware.com/files/plugins/ \
 	SF/qmmp-dev/qmmp/
 DISTNAME=	qmmp-${PORTVERSION}
@@ -12,7 +12,7 @@ LICENSE?=	GPLv2
 CONFLICTS=	${PORTNAME:C/qmmp-/qmmp-qt5-/}-1.*
 
 LIB_DEPENDS+=	libqmmp.so.0:multimedia/qmmp-lib
-BUILD_DEPENDS+=	qmmp-lib>=0.10.0:multimedia/qmmp-lib
+BUILD_DEPENDS+=	qmmp-lib>=0.11.0:multimedia/qmmp-lib
 
 USES+=		gmake localbase pkgconfig qmake tar:bzip2
 USE_QT4+=	corelib gui linguisttools_build moc_build qmake_build rcc_build
@@ -20,8 +20,8 @@ USE_LDCONFIG=	yes
 
 PLUGIN_TARGETS=	CommandLineOptions PlayListFormats \
 	\
-	Effect/bs2b Effect/crossfade Effect/ladspa Effect/soxr \
-	Effect/stereo \
+	Effect/bs2b Effect/crossfade Effect/filewriter Effect/ladspa \
+	Effect/soxr Effect/stereo \
 	Engines/mplayer \
 	FileDialogs/QmmpFileDialog FileDialogs/TwoPanelFileDialog \
 	General/converter General/copypaste General/covermanager \
@@ -30,12 +30,13 @@ PLUGIN_TARGETS=	CommandLineOptions PlayListFormats \
 	General/rgscan General/scrobbler General/statusicon \
 	General/streambrowser General/trackchange General/udisks \
 	General/udisks2 \
-	Input/aac Input/cdaudio Input/cue Input/ffmpeg Input/ffmpeg_legacy \
+	Input/archive Input/aac Input/cdaudio Input/cue \
+	Input/ffmpeg Input/ffmpeg_legacy \
 	Input/flac Input/gme Input/mad Input/modplug Input/mpc Input/opus \
 	Input/sid Input/sndfile Input/vorbis Input/wavpack Input/wildmidi \
 	Output/alsa Output/directsound Output/jack Output/null \
 	Output/oss Output/oss4 Output/pulseaudio Output/qtmultimedia \
-	Output/waveout \
+	Output/shout Output/waveout \
 	Transports/http Transports/mms \
 	Ui/qsui Ui/skinned \
 	Visual/analyzer Visual/projectm
