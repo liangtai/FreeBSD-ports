@@ -1,0 +1,6 @@
+streaming archive formats handler plug-in of QMMP
+
+- Archive:     Supports to read streaming archive formats, including
+               .rar and .zip compressed data.
+
+WWW: http://qmmp.ylsoftware.com/
