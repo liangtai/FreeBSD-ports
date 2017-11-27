@@ -1,6 +1,6 @@
 # $FreeBSD$
 
-QMMP_PP_VERSION=	1.2.0
+QMMP_PP_VERSION=	1.3.0
 MASTER_SITES=	http://qmmp.ylsoftware.com/files/plugins/ \
 	SF/qmmp-dev/qmmp-plugin-pack/
 DISTNAME=	qmmp-plugin-pack-${PORTVERSION}
@@ -12,12 +12,13 @@ LICENSE?=	GPLv2
 CONFLICTS=	${PORTNAME:C/-qt5//}-0.*
 
 LIB_DEPENDS+=	libqmmp.so:multimedia/qmmp-qt5-lib
-BUILD_DEPENDS+=	qmmp-qt5-lib>=1.2.0:multimedia/qmmp-qt5-lib
+BUILD_DEPENDS+=	qmmp-qt5-lib>=1.3.0:multimedia/qmmp-qt5-lib
 
 USES+=		gmake localbase pkgconfig qmake tar:bzip2
 USE_QT5+=	core gui widgets \
 		buildtools_build linguisttools_build qmake_build
 USE_LDCONFIG=	yes
+USE_GL=	gl
 
 PLUGIN_TARGETS=	Effect/srconverter Engines/ffvideo General/history \
 		Input/ffap Input/mpg123 Input/xmp Visual/goom

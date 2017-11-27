@@ -25,6 +25,6 @@ include/qmmpui/uihelper.h
 include/qmmpui/uiloader.h
 lib/libqmmpui.so
 lib/libqmmpui.so.1
-lib/libqmmpui.so.1.2
+lib/libqmmpui.so.1.3
 lib/libqmmpui.so.%%SHLIB_VER%%
 libdata/pkgconfig/qmmpui.pc
