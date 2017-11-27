@@ -4,7 +4,10 @@ Additional plug-ins for Qt MultiMedia Player
 		libmpg123 library
 - FFap:		provides enhanced Monkey's Audio (APE) support
 		(24-bit samples and embedded cue support)
+- FFvideo:  FFmpeg-based movie player
 - Sample Rate Converter:	Changes frequency of sample rate.
 - xmp:		Decodes module audio and renders sound.
+- Goom:		Goom spectacle
+- History:  Collects information about listened tracks.
 
 WWW: http://qmmp.ylsoftware.com/ or https://sourceforge.net/projects/qmmp-dev/

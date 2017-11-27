@@ -1,6 +1,6 @@
 # $FreeBSD$
 
-QMMP_VERSION=	1.1.12
+QMMP_VERSION=	1.2.0
 MASTER_SITES=	http://qmmp.ylsoftware.com/files/plugins/ \
 	SF/qmmp-dev/qmmp/
 DISTNAME=	qmmp-${PORTVERSION}
@@ -26,5 +26,5 @@ post-patch:
 		${REINPLACE_CMD} -e 's|^CONFIG += |#CONFIG += |'
 
 post-install:
-	@${FIND} ${STAGEDIR}${PREFIX}/bin ${STAGEDIR}${PREFIX}/lib -type f \
-		-exec ${STRIP_CMD} {} +
+	@${FIND} ${STAGEDIR}${PREFIX}/bin ${STAGEDIR}${PREFIX}/lib -type f | \
+		${GREP} -v \.prl$$ | ${XARGS} ${STRIP_CMD}

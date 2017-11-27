@@ -11,7 +11,7 @@ LICENSE=	GPLv2
 
 LIB_DEPENDS+=	libqmmp.so:multimedia/qmmp-qt5-lib \
 	libqmmpui.so:multimedia/qmmp-qt5-uilib
-BUILD_DEPENDS+=	qmmp-qt5-lib>=1.1.0:multimedia/qmmp-qt5-lib
+BUILD_DEPENDS+=	qmmp-qt5-lib>=1.2.0:multimedia/qmmp-qt5-lib
 
 USES+=	desktop-file-utils
 USE_QT5+=	network linguisttools_build
