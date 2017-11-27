@@ -11,7 +11,6 @@ LICENSE=	GPLv2
 
 LIB_DEPENDS+=	libarchive.so:archivers/libarchive \
 		libtag.so:audio/taglib
-BUILD_DEPENDS+=	taglib>=1.11:audio/taglib
 
 QMMPPLUGIN_TARGET=	Input/archive
 QMMPPLUGIN_OPTIONS=	ARCHIVE_PLUGIN
