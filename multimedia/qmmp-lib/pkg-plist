@@ -26,6 +26,6 @@ include/qmmp/visualfactory.h
 include/qmmp/volume.h
 lib/libqmmp.so
 lib/libqmmp.so.0
-lib/libqmmp.so.0.11
+lib/libqmmp.so.0.12
 lib/libqmmp.so.%%SHLIB_VER%%
 libdata/pkgconfig/qmmp.pc
