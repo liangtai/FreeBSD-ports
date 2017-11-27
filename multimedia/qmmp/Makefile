@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	qmmp
-PORTVERSION=	0.11.0
+PORTVERSION=	0.12.0
 CATEGORIES=	multimedia
 MASTER_SITES=	http://qmmp.ylsoftware.com/files/ \
 	SF/qmmp-dev/${PORTNAME}/
@@ -11,8 +11,8 @@ COMMENT=	Qt4-based multimedia player
 
 LICENSE=	GPLv2
 
-CONFLICTS=	${PORTNAME}-qt5-1.*
-PORTSCOUT=	limit:^0.*
+CONFLICTS=	${PORTNAME}-qt5-1\..*
+PORTSCOUT=	limit:^0\..*
 
 LIB_DEPENDS=	libmad.so:audio/libmad \
 		libsndfile.so:audio/libsndfile \

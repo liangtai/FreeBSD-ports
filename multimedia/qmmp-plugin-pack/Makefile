@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	qmmp-plugin-pack
-PORTVERSION=	0.11.0
+PORTVERSION=	0.12.0
 CATEGORIES=	multimedia
 MASTER_SITES=	http://qmmp.ylsoftware.com/files/plugins/ \
 	SF/qmmp-dev/${PORTNAME}/
@@ -11,11 +11,11 @@ COMMENT=	Additional plug-ins for QMMP (Qt4)
 
 LICENSE=	GPLv2
 
-CONFLICTS=	${PORTNAME}-qt5-1.*
-PORTSCOUT=	limit:^0.*
+CONFLICTS=	${PORTNAME}-qt5-1\..*
+PORTSCOUT=	limit:^0\..*
 
 LIB_DEPENDS=	libqmmpui.so:multimedia/qmmp
-BUILD_DEPENDS=	qmmp>=0.11.0:multimedia/qmmp
+BUILD_DEPENDS=	qmmp>=0.12.0:multimedia/qmmp
 
 USES=		gmake pkgconfig qmake tar:bzip2
 USE_QT4=	corelib gui linguisttools_build moc_build qmake_build rcc_build
