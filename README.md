@@ -3,7 +3,7 @@ FreeBSD-ports
 
 FreeBSD's port for qmmp, and its depending ports
 
-separated/qt5/cmake:    Developing version of QMMP, in splitted ports
+separated/qt5/devel-cmake:    Developing version of QMMP, in splitted ports
 
 
 =BRANCHES information=
@@ -26,4 +26,5 @@ separated/devel-qmake:   same as 'devel-qmake' but in splitted ports (see above)
 
 separated/devel-cmake:   same as 'devel-cmake' but in splitted ports (see above)
 
-qmmp-0.6.x, qmmp-0.7.x, and qmmp-0.8.x:   deprecated versions
+qmmp-0.6.x, qmmp-0.7.x, qmmp-0.8.x, qmmp-0.9.x, qmmp-0.10.x,
+qmmp-1.0.x, and qmmp-1.1.x:   deprecated versions
