@@ -51,7 +51,7 @@ GOOMASM_BUILD_DEPENDS=	yasm:devel/yasm
 GOOMASM_QMAKE_CONFIG=	GOOM_ASM
 
 HISTORY_DESC=	Information about listened tracks
-HISTORY_USE=	QT4=sql,uic_build
+HISTORY_USE=	QT5=sql
 HISTORY_QMAKE_CONFIG=	HISTORY_PLUGIN
 
 MPG123_LIB_DEPENDS=	libmpg123.so:audio/mpg123 \
