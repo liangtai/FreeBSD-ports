@@ -10,6 +10,7 @@ MAINTAINER=	liangtai.s16@gmail.com
 COMMENT=	Additional plug-ins for QMMP (Qt4)
 
 LICENSE=	GPLv2
+LICENSE_FILE=	${WRKSRC}/COPYING
 
 CONFLICTS=	${PORTNAME}-qt5-1.*
 PORTSCOUT=	limit:^0.*

@@ -10,6 +10,7 @@ MAINTAINER=	liangtai.s16@gmail.com
 COMMENT=	Qt4-based multimedia player
 
 LICENSE=	GPLv2
+LICESE_FILE=	${WRKSRC}/COPYING
 
 CONFLICTS=	${PORTNAME}-qt5-1.*
 PORTSCOUT=	limit:^0.*
