@@ -8,6 +8,7 @@ DISTINFO_FILE=	${.CURDIR}/../../multimedia/qmmp/distinfo
 
 MAINTAINER?=	liangtai.s16@gmail.com
 LICENSE?=	GPLv2
+LICENSE_FILE=	${WRKSRC}/COPYING
 
 CONFLICTS=	${PORTNAME:C/qmmp-/qmmp-qt5-/}-1.*
 
