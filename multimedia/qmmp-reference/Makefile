@@ -11,6 +11,7 @@ MAINTAINER=	liangtai.s16@gmail.com
 COMMENT=	API document of QMMP (Qt4) libraries
 
 LICENSE=	GPLv2
+LICENSE_FILE=	${WRKSRC}/COPYING
 
 CONFLICTS=	qmmp-qt5-reference-1.*
 
