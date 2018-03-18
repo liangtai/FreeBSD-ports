@@ -9,8 +9,8 @@ COMMENT=	streaming archive formats handler plug-in of QMMP (Qt5)
 
 LICENSE=	GPLv2
 
-LIB_DEPENDS+=	libarchive.so:archivers/libarchive \
-		libtag.so:audio/taglib
+LIB_DEPENDS+=	libtag.so:audio/taglib
+USES+=	libarchive
 
 QMMPPLUGIN_TARGET=	Input/archive
 QMMPPLUGIN_OPTION=	ARCHIVE_PLUGIN
