@@ -209,7 +209,7 @@ ANALYZER_DESC=	Support spectrum analyzer visualization
 ANALYZER_CMAKE_BOOL=	USE_ANALYZER
 
 ARCHIVE_DESC=	Read archived media file
-ARCHIVE_LIB_DEPENDS=	libarchive.so:archivers/libarchive
+ARCHIVE_USES=	libarchive
 ARCHIVE_CMAKE_BOOL=	USE_ARCHIVE
 
 CONVERTER_DESC=	Support file type converter
