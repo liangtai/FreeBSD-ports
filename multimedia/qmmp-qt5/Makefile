@@ -2,6 +2,7 @@
 
 PORTNAME=	qmmp
 PORTVERSION=	1.2.0
+PORTREVISION=	1
 CATEGORIES=	multimedia
 MASTER_SITES=	http://qmmp.ylsoftware.com/files/ \
 	SF/qmmp-dev/${PORTNAME}/
@@ -136,7 +137,7 @@ CDDA_LIB_DEPENDS=	libcdio.so:sysutils/libcdio \
 CDDA_QMAKE_CONFIG=	CDAUDIO_PLUGIN
 
 ARCHIVE_DESC=	Read archived media file
-ARCHIVE_LIB_DEPENDS=	libarchive.so:archivers/libarchive
+ARCHIVE_USES=	libarchive
 ARCHIVE_QMAKE_CONFIG=	ARCHIVE_PLUGIN
 
 ENCA_DESC=	Support automatic character set detection
