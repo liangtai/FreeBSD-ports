@@ -19,8 +19,8 @@ PORTSCOUT=	limit:^1\..*
 LIB_DEPENDS=	libqmmpui.so:multimedia/qmmp-qt5
 BUILD_DEPENDS=	qmmp-qt5>=1.2.0:multimedia/qmmp-qt5
 
-USES=		gmake pkgconfig qmake tar:bzip2
-USE_QT5=	core gui widgets \
+USES=		gmake pkgconfig qmake qt:5 tar:bzip2
+USE_QT=	core gui widgets \
 		buildtools_build linguisttools_build qmake_build
 USE_GL=	gl
 USE_LDCONFIG=	yes
@@ -52,7 +52,7 @@ GOOMASM_BUILD_DEPENDS=	yasm:devel/yasm
 GOOMASM_QMAKE_CONFIG=	GOOM_ASM
 
 HISTORY_DESC=	Information about listened tracks
-HISTORY_USE=	QT5=sql
+HISTORY_USE=	QT=sql
 HISTORY_QMAKE_CONFIG=	HISTORY_PLUGIN
 
 MPG123_LIB_DEPENDS=	libmpg123.so:audio/mpg123 \

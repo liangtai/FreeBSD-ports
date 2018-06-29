@@ -25,8 +25,8 @@ LIB_DEPENDS=	libmad.so:audio/libmad \
 		libcurl.so:ftp/curl \
 		libmms.so:net/libmms
 
-USES=		desktop-file-utils gmake pkgconfig qmake tar:bzip2
-USE_QT5=	core dbus gui network widgets x11extras xml \
+USES=		desktop-file-utils gmake pkgconfig qmake qt:5 tar:bzip2
+USE_QT=	core dbus gui network widgets x11extras xml \
 		buildtools_build linguisttools_build qmake_build
 USE_LDCONFIG=	yes
 USE_XORG=	x11
@@ -94,7 +94,7 @@ PULSEAUDIO_LIB_DEPENDS=	libpulse.so:audio/pulseaudio
 PULSEAUDIO_QMAKE_CONFIG=	PULSE_AUDIO_PLUGIN
 
 QTMULTIMEDIA_DESC=	Support to use Qt low-level multimedia API
-QTMULTIMEDIA_USE=	QT5=multimedia
+QTMULTIMEDIA_USE=	QT=multimedia
 QTMULTIMEDIA_QMAKE_CONFIG=	QTMULTIMEDIA_PLUGIN
 
 SHOUTCAST_LIB_DEPENDS=	libshout.so:audio/libshout \
