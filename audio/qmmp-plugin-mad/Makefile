@@ -12,7 +12,7 @@ LICENSE=	GPLv2
 LIB_DEPENDS+=	libmad.so:audio/libmad \
 	libtag.so:audio/taglib
 
-USE_QT4+=	uic_build
+USE_QT+=	uic_build
 
 QMMPPLUGIN_TARGET=	Input/mad
 QMMPPLUGIN_OPTIONS=

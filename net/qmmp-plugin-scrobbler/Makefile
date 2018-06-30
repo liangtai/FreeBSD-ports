@@ -11,7 +11,7 @@ LICENSE=	GPLv2
 
 LIB_DEPENDS+=	libqmmpui.so:multimedia/qmmp-uilib
 
-USE_QT4+=	network uic_build
+USE_QT+=	network uic_build
 
 QMMPPLUGIN_TARGET=	General/scrobbler
 QMMPPLUGIN_OPTIONS=

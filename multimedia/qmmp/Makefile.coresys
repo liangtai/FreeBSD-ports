@@ -12,8 +12,8 @@ LICENSE_FILE=	${WRKSRC}/COPYING
 
 CONFLICTS=	${PORTNAME:C/qmmp-/qmmp-qt5-/}-1.*
 
-USES+=		gmake localbase pkgconfig qmake tar:bzip2
-USE_QT4+=	corelib gui linguisttools_build moc_build qmake_build rcc_build
+USES+=		gmake localbase pkgconfig qmake qt:4 tar:bzip2
+USE_QT+=	corelib gui linguisttools_build moc_build qmake_build rcc_build
 USE_LDCONFIG=	yes
 
 PLIST_SUB+=	SHLIB_VER=${PORTVERSION:C/-.*//}

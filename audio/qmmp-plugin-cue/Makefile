@@ -17,7 +17,7 @@ ENCA_DESC=		Support automatic character set detection
 ENCA_LIB_DEPENDS=	libenca.so:converters/enca
 ENCA_QMAKE_CONFIG=	WITH_ENCA
 
-USE_QT4+=	uic_build
+USE_QT+=	uic_build
 
 QMMPPLUGIN_TARGET=	Input/cue
 QMMPPLUGIN_OPTIONS=
