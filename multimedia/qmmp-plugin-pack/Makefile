@@ -18,8 +18,8 @@ PORTSCOUT=	limit:^0\..*
 LIB_DEPENDS=	libqmmpui.so:multimedia/qmmp
 BUILD_DEPENDS=	qmmp>=0.11.0:multimedia/qmmp
 
-USES=		gmake pkgconfig qmake tar:bzip2
-USE_QT4=	corelib gui linguisttools_build moc_build qmake_build rcc_build
+USES=		gmake pkgconfig qmake qt:4 tar:bzip2
+USE_QT=	corelib gui linguisttools_build moc_build qmake_build rcc_build
 USE_LDCONFIG=	yes
 
 OPTIONS_SUB=	yes
@@ -50,12 +50,12 @@ GOOMASM_BUILD_DEPENDS=	yasm:devel/yasm
 GOOMASM_QMAKE_CONFIG=	GOOM_ASM
 
 HISTORY_DESC=	Information about listened tracks
-HISTORY_USE=	QT4=sql,uic_build
+HISTORY_USE=	QT=sql,uic_build
 HISTORY_QMAKE_CONFIG=	HISTORY_PLUGIN
 
 MPG123_LIB_DEPENDS=	libmpg123.so:audio/mpg123 \
 		libtag.so:audio/taglib
-MPG123_USE=	QT4=uic_build
+MPG123_USE=	QT=uic_build
 MPG123_QMAKE_CONFIG=	MPG123_PLUGIN
 
 SRCONV_DESC=	Support the sample rate converter

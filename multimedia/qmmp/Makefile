@@ -24,8 +24,8 @@ LIB_DEPENDS=	libmad.so:audio/libmad \
 		libcurl.so:ftp/curl \
 		libmms.so:net/libmms
 
-USES=		desktop-file-utils gmake pkgconfig qmake tar:bzip2
-USE_QT4=	corelib dbus gui network xml \
+USES=		desktop-file-utils gmake pkgconfig qmake qt:4 tar:bzip2
+USE_QT=	corelib dbus gui network xml \
 		linguisttools_build moc_build qmake_build rcc_build uic_build
 USE_LDCONFIG=	yes
 USE_XORG=	x11
@@ -69,7 +69,7 @@ OPTIONS_DEFAULT=	ALSA ARCHIVE BS2B CDDA ENCA FAAD FFMPEG FILEWRITER \
 DOXYGEN_BUILD_DEPENDS=	doxygen:devel/doxygen
 
 QSUI_DESC=		Simple UI based on standard widgets set
-QSUI_USE=	QT4=uic_build
+QSUI_USE=	QT=uic_build
 QSUI_QMAKE_CONFIG=	WITH_QSUI
 
 SKINNEDUI_DESC=	Skinned GUI
@@ -94,7 +94,7 @@ PULSEAUDIO_LIB_DEPENDS=	libpulse.so:audio/pulseaudio
 PULSEAUDIO_QMAKE_CONFIG=	PULSE_AUDIO_PLUGIN
 
 QTMULTIMEDIA_DESC=	Support to use Qt low-level multimedia API
-QTMULTIMEDIA_USE=	QT4=multimedia
+QTMULTIMEDIA_USE=	QT=multimedia
 QTMULTIMEDIA_QMAKE_CONFIG=	QTMULTIMEDIA_PLUGIN
 
 SHOUTCAST_LIB_DEPENDS=	libshout.so:audio/libshout \
@@ -152,7 +152,7 @@ MPLAYER_QMAKE_CONFIG=	MPLAYER_PLUGIN
 
 PROJECTM_DESC=	Support the projectM music visualiser
 PROJECTM_LIB_DEPENDS=	libprojectM.so.2:graphics/libprojectm
-PROJECTM_USE=	GL=gl QT4=opengl
+PROJECTM_USE=	GL=gl QT=opengl
 PROJECTM_QMAKE_CONFIG=	PROJECTM_PLUGIN WITH_PROJECTM20
 
 OSS_QMAKE_CONFIG=	OSS_PLUGIN
