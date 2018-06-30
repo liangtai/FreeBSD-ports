@@ -20,7 +20,7 @@ LIB_DEPENDS+=	libqmmp.so.0:multimedia/qmmp-lib \
 	libqmmpui.so.0:multimedia/qmmp-uilib
 BUILD_DEPENDS+=	qmmp-lib>=0.12.0:multimedia/qmmp-lib
 
-USE_QT4+=	network linguisttools_build
+USE_QT+=	network linguisttools_build
 
 .for p in Effect Engines FileDialogs General Input Output Transports Ui Visual
 EXTRACT_AFTER_ARGS+=	--exclude '${DISTNAME}/src/plugins/${p}'

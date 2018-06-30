@@ -19,7 +19,7 @@ ENCA_CMAKE_BOOL=	USE_ENCA
 
 LIB_DEPENDS+=	libcurl.so:ftp/curl
 
-USE_QT4+=	uic_build
+USE_QT+=	uic_build
 
 QMMPPLUGIN_TARGET=	Transports/http
 QMMPPLUGIN_TAG=	CURL
