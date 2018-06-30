@@ -15,8 +15,8 @@ LICENSE_FILE=	${WRKSRC}/COPYING
 CONFLICTS=	${PORTNAME}-qt5-1.*
 PORTSCOUT=	limit:^0.*
 
-USES=		cmake:outsource localbase pathfix pkgconfig tar:bzip2
-USE_QT4=	corelib gui network xml \
+USES=		cmake:outsource localbase pathfix pkgconfig qt:4 tar:bzip2
+USE_QT=	corelib gui network xml \
 		linguisttools_build moc_build qmake_build rcc_build uic_build
 USE_LDCONFIG=	yes
 
@@ -67,7 +67,7 @@ OPTIONS_DEFAULT=	ALSA ANALYZER ARCHIVE BS2B CDDA CONVERTER COPYPASTE COVER \
 DOXYGEN_BUILD_DEPENDS=	doxygen:devel/doxygen
 
 QSUI_DESC=	Simple UI based on standard widgets set
-QSUI_USE=	QT4=uic_build
+QSUI_USE=	QT=uic_build
 QSUI_CMAKE_BOOL=	USE_QSUI
 
 SKINNEDUI_DESC=	Skinned GUI
@@ -94,7 +94,7 @@ PULSEAUDIO_LIB_DEPENDS=	libpulse.so:audio/pulseaudio
 PULSEAUDIO_CMAKE_BOOL=	USE_PULSE
 
 QTMULTIMEDIA_DESC=	Support to use Qt low-level multimedia API
-QTMULTIMEDIA_USE=	QT4=multimedia
+QTMULTIMEDIA_USE=	QT=multimedia
 QTMULTIMEDIA_CMAKE_BOOL=	USE_QTMULTIMEDIA
 
 SHOUTCAST_LIB_DEPENDS=	libogg.so:audio/libogg \
@@ -144,7 +144,7 @@ MPLAYER_CMAKE_BOOL=	USE_MPLAYER
 
 PROJECTM_DESC=	Support the projectM music visualiser
 PROJECTM_LIB_DEPENDS=	libprojectM.so.2:graphics/libprojectm
-PROJECTM_USE=	GL=gl QT4=opengl
+PROJECTM_USE=	GL=gl QT=opengl
 PROJECTM_CMAKE_BOOL=	USE_PROJECTM
 
 OSS_CMAKE_BOOL=	USE_OSS
@@ -220,7 +220,7 @@ COPYPASTE_DESC=	Enable copy/paste track infos between playlists
 COPYPASTE_CMAKE_BOOL=	USE_COPYPASTE
 
 MPRIS_DESC=	Support the Media Player Remote
-MPRIS_USE=	QT4=dbus
+MPRIS_USE=	QT=dbus
 MPRIS_CMAKE_BOOL=	USE_MPRIS
 
 SCROBBLER_DESC=	Support Libre.fm/Last.fm scrobbler feature
@@ -242,7 +242,7 @@ NOTIFIER_CMAKE_BOOL=	USE_NOTIFIER
 LYRICS_DESC=	Support to show lyrics using lyrics.wikia.com
 LYRICS_CMAKE_BOOL=	USE_LYRICS
 
-HAL_USE=	QT4=dbus
+HAL_USE=	QT=dbus
 HAL_CMAKE_BOOL=	USE_HAL
 
 HOTKEY_DESC=	Support global shortcut keys
@@ -250,7 +250,7 @@ HOTKEY_USE=	XORG=x11
 HOTKEY_CMAKE_BOOL=	USE_HOTKEY
 
 GNOMEHOTKEY_DESC=	Support GNOME/Cinnamon shortcut keys
-GNOMEHOTKEY_USE=	QT4=dbus
+GNOMEHOTKEY_USE=	QT=dbus
 GNOMEHOTKEY_CMAKE_BOOL=	USE_GNOMEHOTKEY
 
 FILEOPS_DESC=	Support file operation
@@ -260,7 +260,7 @@ COVER_DESC=	Support to show cover images
 COVER_CMAKE_BOOL=	USE_COVER
 
 KDENOTIFY_DESC=	Support to popup notifier for KDE
-KDENOTIFY_USE=	QT4=dbus
+KDENOTIFY_USE=	QT=dbus
 KDENOTIFY_CMAKE_BOOL=	USE_KDENOTIFY
 
 TRACKCHANGE_DESC=	Enable to run external command each track
@@ -269,8 +269,8 @@ TRACKCHANGE_CMAKE_BOOL=	USE_TRACKCHANGE
 UDISKS_DESC=	Support removable disc detection (obsolete)
 UDISKS2_DESC=	Support removable disc detection using UDisks
 UDISKS2_RUN_DEPENDS=	bsdisks:sysutils/bsdisks
-UDISKS_USE=	QT4=dbus
-UDISKS2_USE=	QT4=dbus
+UDISKS_USE=	QT=dbus
+UDISKS2_USE=	QT=dbus
 UDISKS_CMAKE_BOOL=	USE_UDISKS
 UDISKS2_CMAKE_BOOL=	USE_UDISKS2
 
