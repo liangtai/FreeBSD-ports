@@ -11,7 +11,7 @@ LICENSE=	GPLv2
 
 LIB_DEPENDS+=	libqmmpui.so:multimedia/qmmp-qt5-uilib
 
-USE_QT5+=	sql
+USE_QT+=	sql
 
 QMMPPLUGIN_TARGET=	General/history
 QMMPPLUGIN_TAG=	HISTORY

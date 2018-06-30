@@ -12,7 +12,7 @@ LICENSE=	GPLv2
 LIB_DEPENDS+=	libqmmp.so:multimedia/qmmp-qt5-lib
 BUILD_DEPENDS+=	qmmp-qt5-lib>=1.2.0:multimedia/qmmp-qt5-lib
 
-USE_QT5+=	network linguisttools_build
+USE_QT+=	network linguisttools_build
 
 EXTRACT_AFTER_ARGS+=	--exclude '${DISTNAME}/src/plugins' \
 	--exclude '${DISTNAME}/src/app'
