@@ -12,7 +12,7 @@ LICENSE=	GPLv2
 LIB_DEPENDS+=	libqmmpui.so:multimedia/qmmp-uilib
 RUN_DEPENDS+=	bsdisks:sysutils/bsdisks
 
-USE_QT4+=	dbus xml uic_build
+USE_QT+=	dbus xml uic_build
 
 QMMPPLUGIN_TARGET=	General/udisks2
 QMMPPLUGIN_OPTIONS=	UDISKS2_PLUGIN

@@ -13,7 +13,7 @@ LIB_DEPENDS+=	libcdio.so:sysutils/libcdio \
 	libcdio_cdda.so:sysutils/libcdio-paranoia \
 	libcddb.so:audio/libcddb
 
-USE_QT4+=	uic_build
+USE_QT+=	uic_build
 
 QMMPPLUGIN_TARGET=	Input/cdaudio
 QMMPPLUGIN_OPTIONS=	CDAUDIO_PLUGIN

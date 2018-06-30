@@ -11,7 +11,7 @@ LICENSE=	GPLv2
 
 LIB_DEPENDS+=	libbs2b.so:audio/libbs2b
 
-USE_QT4+=	uic_build
+USE_QT+=	uic_build
 
 QMMPPLUGIN_TARGET=	Effect/bs2b
 QMMPPLUGIN_OPTIONS=	BS2B_PLUGIN

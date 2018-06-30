@@ -12,7 +12,7 @@ LICENSE=	GPLv2
 MPLAYER_DESC=	Enable showing videos by mplayer
 MPLAYER_RUN_DEPENDS+=	mplayer:multimedia/mplayer
 
-USE_QT4+=	uic_build
+USE_QT+=	uic_build
 
 QMMPPLUGIN_TARGET=	Engines/mplayer
 QMMPPLUGIN_OPTIONS=

@@ -11,7 +11,7 @@ LICENSE=	GPLv2
 
 RUN_DEPENDS+=	analyseplugin:audio/ladspa
 
-USE_QT4+=	uic_build
+USE_QT+=	uic_build
 
 QMMPPLUGIN_TARGET=	Effect/ladspa
 QMMPPLUGIN_OPTIONS=	LADSPA_PLUGIN

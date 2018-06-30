@@ -9,7 +9,7 @@ COMMENT=	OSS output plug-in of QMMP (Qt4)
 
 LICENSE=	GPLv2
 
-USE_QT4+=	uic_build
+USE_QT+=	uic_build
 
 QMMPPLUGIN_TARGET=	Output/oss
 QMMPPLUGIN_OPTIONS=	OSS_PLUGIN
