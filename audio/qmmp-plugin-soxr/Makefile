@@ -11,7 +11,7 @@ LICENSE=	GPLv2
 
 LIB_DEPENDS+=	libsoxr.so:audio/libsoxr
 
-USE_QT4+=	uic_build
+USE_QT+=	uic_build
 
 QMMPPLUGIN_TARGET=	Effect/soxr
 QMMPPLUGIN_TAG=	SOXR

@@ -9,7 +9,7 @@ COMMENT=	Stereo effect plug-in of QMMP (Qt4)
 
 LICENSE=	GPLv2
 
-USE_QT4+=	uic_build
+USE_QT+=	uic_build
 
 QMMPPLUGIN_TARGET=	Effect/stereo
 QMMPPLUGIN_TAG=	STEREO

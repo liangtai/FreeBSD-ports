@@ -12,7 +12,7 @@ LICENSE=	GPLv2
 LIB_DEPENDS+=	libtag.so:audio/taglib \
 	libqmmpui.so:multimedia/qmmp-uilib
 
-USE_QT4+=	uic_build
+USE_QT+=	uic_build
 
 QMMPPLUGIN_TARGET=	General/rgscan
 QMMPPLUGIN_TAG=	RGSCAN
