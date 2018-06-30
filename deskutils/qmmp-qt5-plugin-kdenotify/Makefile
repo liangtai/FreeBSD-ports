@@ -11,7 +11,7 @@ LICENSE=	GPLv2
 
 LIB_DEPENDS+=	libqmmpui.so:multimedia/qmmp-qt5-uilib
 
-USE_QT5+=	dbus
+USE_QT+=	dbus
 
 QMMPPLUGIN_TARGET=	General/kdenotify
 QMMPPLUGIN_OPTIONS=

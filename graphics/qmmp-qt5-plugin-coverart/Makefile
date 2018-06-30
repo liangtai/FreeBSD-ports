@@ -11,7 +11,7 @@ LICENSE=	GPLv2
 
 LIB_DEPENDS+=	libqmmpui.so:multimedia/qmmp-qt5-uilib
 
-USE_QT5+=	network
+USE_QT+=	network
 
 QMMPPLUGIN_TARGET=	General/covermanager
 QMMPPLUGIN_OPTIONS=

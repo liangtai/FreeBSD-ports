@@ -15,8 +15,8 @@ CONFLICTS=	${PORTNAME:C/-qt5//}-0.*
 LIB_DEPENDS+=	libqmmp.so:multimedia/qmmp-qt5-lib
 BUILD_DEPENDS+=	qmmp-qt5-lib>=1.3.0:multimedia/qmmp-qt5-lib
 
-USES+=		gmake localbase pkgconfig qmake tar:bzip2
-USE_QT5+=	core gui widgets \
+USES+=		gmake localbase pkgconfig qmake qt:5 tar:bzip2
+USE_QT+=	core gui widgets \
 		buildtools_build linguisttools_build qmake_build
 USE_LDCONFIG=	yes
 USE_GL=	gl

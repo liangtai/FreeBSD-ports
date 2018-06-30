@@ -11,7 +11,7 @@ LICENSE=	GPLv2
 
 LIB_DEPENDS+=	libqmmpui.so:multimedia/qmmp-qt5-uilib
 
-USE_QT5+=	x11extras
+USE_QT+=	x11extras
 USE_XORG=	x11
 
 QMMPPLUGIN_TARGET=	General/hotkey
