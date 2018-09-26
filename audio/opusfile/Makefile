@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	opusfile
-PORTVERSION=	0.10
+PORTVERSION=	0.11
 CATEGORIES=	audio
 MASTER_SITES=	http://downloads.xiph.org/releases/opus/ \
 		MOZILLA/opus
